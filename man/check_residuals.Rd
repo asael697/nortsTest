@@ -13,9 +13,16 @@
 \alias{check_residuals.forecast}
 \title{Generic function and methods for checking residuals in time series models}
 \usage{
-check_residuals(y,normality = "epps",
-unit_root = NULL,seasonal = NULL,arch = NULL,
-alpha = 0.05,plot = TRUE,...)
+\method{check_residuals}{ts}(
+  y,
+  normality = "epps",
+  unit_root = NULL,
+  seasonal = NULL,
+  arch = NULL,
+  alpha = 0.05,
+  plot = FALSE,
+  ...
+)
 }
 \arguments{
 \item{y}{Either a time series model,the supported classes are \code{arima0}, \code{Arima}, \code{sarima},

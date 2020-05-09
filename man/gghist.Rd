@@ -18,7 +18,8 @@ gghist(y, title = NULL, xlab = NULL, ylab = "counts", bins, add.normal = TRUE)
 \item{bins}{The number of bins to use for the histogram. Selected by default
 using the Friedman-Diaconis rule.}
 
-\item{add.normal}{Add a normal density function for comparison.}
+\item{add.normal}{A boolean value. Add a normal density function for comparison,
+by default \code{add.normal = TRUE}.}
 }
 \value{
 None.

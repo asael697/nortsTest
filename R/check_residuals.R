@@ -1,15 +1,19 @@
+#'
+#' @export
+#'
+check_residuals<- function(y,...) {
+  UseMethod("check_residuals")
+}
 #' Generic function and methods for checking residuals in time series models
 #'
 #' Generic function for residuals check analysis, this methods are inspired in the \code{check.residuals} function
 #' provided by the \code{forecast} package.
 #'
-#' @usage  check_residuals(y,normality = "epps",
-#' unit_root = NULL,seasonal = NULL,arch = NULL,
-#' alpha = 0.05,plot = TRUE,...)
-#'
 #' @aliases check_residuals check_residuals.ts check_residuals.arima0 check_residuals.Arima
 #' check_residuals.fGarch check_residuals.numeric check_residuals.lm  check_residuals.HoltWinters
 #' check_residuals.ets check_residuals.forecast
+#'
+#' @rdname check_residuals
 #'
 #' @param y 	Either a time series model,the supported classes are \code{arima0}, \code{Arima}, \code{sarima},
 #' \code{fGarch}, or a time series (assumed to be residuals).
@@ -44,8 +48,8 @@
 #' @author Asael Alonzo Matamoros
 #'
 #' @importFrom forecast  ggtsdisplay
-#'
 #' @method check_residuals ts
+#'
 #' @export
 #'
 #' @references
@@ -60,6 +64,7 @@
 #' Osborn, D., Chui, A., Smith, J., & Birchenhall, C. (1988). Seasonality and the
 #' order of integration for consumption. \emph{Oxford Bulletin of Economics
 #' and Statistics}. 50(4), 361-377.
+#'
 #'
 check_residuals.ts = function(y,normality = "epps",
                               unit_root = NULL,
@@ -114,12 +119,6 @@ check_residuals.ts = function(y,normality = "epps",
   if (plot) {
    suppressMessages(suppressWarnings(check_plot.ts(y)))
   }
-}
-#'
-#' @export
-#'
-check_residuals<- function(y,...) {
-  UseMethod("check_residuals")
 }
 #'
 #' @method check_residuals numeric

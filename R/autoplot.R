@@ -9,6 +9,9 @@
 #' @param object Object of class \dQuote{\code{ts}} or \dQuote{\code{mts}}.
 #' @param series Identifies the time series with a colour, which integrates well
 #' with the functionality of \link{geom_forecast}.
+#' @param xlab a string with the plot's x axis label. By default a NUll value.
+#' @param ylab a string with the plot's y axis label. By default a counts" value.
+#' @param main a string with the plot's title.
 #' @param facets If TRUE, multiple time series will be faceted (and unless
 #' specified, colour is set to FALSE). If FALSE, each series will be assigned a
 #' colour.
@@ -38,7 +41,7 @@
 #' @export
 #'
 autoplot.ts <- function(object, series=NULL, xlab = "Time", ylab = deparse(substitute(object)),
-                        main = NULL,  ...) {
+                        main = NULL,facets = FALSE,colour = TRUE, ...) {
   if (!is.ts(object))
     stop("autoplot.ts requires a ts object, use object=object")
 
@@ -157,7 +160,8 @@ ggtsbreaks <- function(x) {
 #' @param title a string with the plot's title.
 #' @param xlab a string with the plot's x axis label. By default a NUll value
 #' @param ylab a string with the plot's y axis label. By default a counts" value
-#' @param add.normal Add a normal density function for comparison.
+#' @param add.normal A boolean value. Add a normal density function for comparison,
+#' by default \code{add.normal = TRUE}.
 #' @param bins The number of bins to use for the histogram. Selected by default
 #' using the Friedman-Diaconis rule.
 #'
@@ -302,15 +306,22 @@ ggpacf = function(y,title = NULL){
 
   return(p)
 }
+#'
+#' @export
+#'
+check_plot<- function(y,...) {
+  UseMethod("check_plot")
+}
 #' Generic function and methods for check plots residuals in time series models
+#'
 #'
 #' Generic function for residuals to visualize check analysis, this methods are inspired in
 #' the \code{check.residuals} function provided by the \code{forecast} package.
 #'
-#' @usage  check_plot(y,model = " ",...)
-#'
 #' @aliases check_plot check_plot.ts check_plot.arima0 check_plot.Arima check_plot.fGarch
 #' check_plot.numeric check_plot.lm  check_plot.HoltWinters check_plot.ets check_plot.forecast
+#'
+#' @rdname check_plot
 #'
 #' @param y a time series or numerical vector
 #' @param model A string with the model name
@@ -322,11 +333,8 @@ ggpacf = function(y,title = NULL){
 #'
 #' @seealso \code{check_residuals}
 #'
-#' @examples
-#'
-#' @method check_plot ts
-#'
 #' @importFrom gridExtra grid.arrange
+#' @method check_plot ts
 #' @export
 #'
 #' @examples
@@ -334,12 +342,6 @@ ggpacf = function(y,title = NULL){
 #'  y = arima.sim(100,model = list(ar = 0.3))
 #'   check_plot(y)
 #' }
-#'
-check_plot<- function(y,...) {
-  UseMethod("check_plot")
-}
-#'
-#'@export
 #'
 check_plot.ts = function(y,model = " ",...){
 
