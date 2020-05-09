@@ -51,11 +51,15 @@
 #' vavra.test(y)
 #'
 vavra.test = function(y,reps = 1000,h = 100,seed = NULL){
+
   if( !is.numeric(y) & !is(y,class2 = "ts") )
     stop("y object must be numeric or a time series")
 
   if(NA %in% y )
     stop("The time series contains missing values")
+
+  if (!is.null(seed))
+    set.seed(seed)
 
   ad0 = ad.statistic(y)
 
@@ -134,6 +138,9 @@ vavra.sample = function(y,reps = 1000,h = 100,seed = NULL){
   if(NA %in% y )
     stop("The time series contains missing values")
 
+  if (!is.null(seed))
+    set.seed(seed)
+
   n = length(y);h1 = h
   if(n >= h) h1 = floor(h/2)
 
@@ -190,7 +197,8 @@ sieve.bootstrap = function(y,reps = 1000,pmax = NULL,h = 100,seed = NULL){
   if(NA %in% y )
     stop("The time series contains missing values")
 
-  if (!is.null(seed)) set.seed(seed)
+  if (!is.null(seed))
+    set.seed(seed)
 
   n = length(y)
   if(is.null(pmax)){

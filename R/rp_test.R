@@ -207,6 +207,7 @@ rp.sample = function(y,k = 2,pars1 = c(100,1),pars2 = c(2,7),seed = NULL){
 
   if (!is.null(seed))
     set.seed(seed)
+
   if(k <= 1)
     k = 1
 
@@ -283,7 +284,8 @@ random.projection = function(y,shape1,shape2,seed = NULL){
   if(NA %in% y )
     stop("The time series contains missing values")
 
-  if (!is.null(seed)) set.seed(seed)
+  if (!is.null(seed))
+    set.seed(seed)
 
   n = length(y);yp = rep(0,n);ch = 1; C = n
   H = rbeta(n,shape1,shape2)
