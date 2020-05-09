@@ -15,8 +15,8 @@ data. The four principal package’s functions are:
 -   lobato.test function with the [Lobato and
     Velsasco](https://www.researchgate.net/publication/23564884),
 
--   vavra.test function with the implements[Psaradaki and
-    Vavra](http://www.applied-econometrics.com/html),
+-   vavra.test function with the implements of [Psaradaki and Vavra
+    test](http://www.applied-econometrics.com),
 
 -   rp.test with the random projections test of [Nieto-Reyes,
     Cuesta-Albertos and
@@ -120,7 +120,6 @@ National Oceanic and Atmospheric Administration.
 library(astsa)
 data("cardox")
 
-#plotting the data
 autoplot(cardox,xlab = "years",ylab = " CO2 (ppm)",color = "darkred",
 size = 1,main = "Carbon Dioxide Levels at Mauna Loa")
 ```

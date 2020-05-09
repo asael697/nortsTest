@@ -33,7 +33,7 @@ library(gridExtra)
 
 + lobato.test function with the [Lobato and Velsasco](https://www.researchgate.net/publication/23564884),
 
-+ vavra.test function with the implements[Psaradaki and Vavra](http://www.applied-econometrics.com/html), 
++ vavra.test function with the implements of [Psaradaki and Vavra test](http://www.applied-econometrics.com), 
 
 + rp.test with the random projections test of [Nieto-Reyes, Cuesta-Albertos and Gamboa](https://www.sciencedirect.com/science/article/pii/S0167947314000243?via%3Dihub).
 
