@@ -1,0 +1,61 @@
+**Packages NEWS and Updates**
+============
+
+**normality 0.0.1.000 Date: 12/03/2020**
+----------------------------------
+
+### Features:
+
+-  normal.test() function  with all the normality test available
+
+-  uroot.test() function with all the unit root test available
+
+-  seasonal.test() function with all the seasonal unit root test available
+
+-  arch.test() function with the arch effect test for stationarity
+
+- check_plot() methods implemented for residual diagnostics visualization for lm, glm, ets, forecast, Arima, arima0, fgarch, HoltWinters, ts, and numeric classes
+
+- check_residuals() methods implemented for residual diagnostics for lm, glm, ets, forecast, Arima, arima0, fgarch, HoltWinters, ts, and numeric classes
+
+- the autoplot() methods are overloaded for plotting time series (*ts*) and multivariate (*mts*) classes
+
+### Improvements:
+
+-   lobato.test() is implemented as a htest method
+
+-   epps.test() is implemented as a htest method
+
+### Changes:
+
+-   LV.statistic() function change to lobato.statistic()
+
+### Fixes:
+
+-   The amoebam algorithm for Epps.statistc() is changed for the one implemented by the **PoweR** package
+
+
+**normality 0.0.1.000 Date: 23/10/2020**
+----------------------------------
+
+### Features:
+
+-  Updated the epps.statistic function
+
+-  Updated the LV.statistic function
+
+-  Perform documentation and package description
+
+
+**normality 0.0.1.000 Date: 22/10/2020**
+----------------------------------
+
+### Features:
+
+-  Package Repository created
+
+-  Discussion of the previous work and code homogeneity check README.md
+
+-  Incorporation of references and latex thesis algorithm
+
+-  Incorporation of the article structure

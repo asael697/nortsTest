@@ -1,0 +1,32 @@
+Package: nortsTest
+Title: An R package for testing Gaussian distribution on stationary time series
+Version: 1.0.0.0000
+Authors@R: c(
+  person("Asael","Alonzo Matamoros", role = c("aut", "cre"),email = "asael.alonzo@gmail.com"),
+  person("Alicia","Nieto-Reyes", role = 'aut', email = "alicia.nieto@unican.es")
+  )
+Description: This package is for testing normal distribution on stationary time series,
+    it performs the Lobato and Velasco's, Epps, Psaradakis and  Vavra, and the random 
+    projections tests for stationary univariate time  series, some other diagnostics such as, 
+    unit root test for stationarity, seasonal tests for seasonality, and arch effect test for 
+    volatility; are also performed. The package also offers residual diagnostic for linear 
+    time series model develop in several time series analysis packages.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+NeedsCompilation: no
+RoxygenNote: 7.1.0
+Depends: 
+    R (>= 3.5.0),
+    methods
+Imports: 
+    forecast,
+    nortest,
+    ggplot2,
+    gridExtra,
+    tseries,
+    matlib,
+    uroot,
+    zoo
+URL: https://github.com/asael697/nortsTest
+BugReports: https://github.com/asael697/nortsTest/issues

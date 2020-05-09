@@ -1,0 +1,310 @@
+#' The k random projections Test for normal distribution
+#'
+#' Performs the random projections test for normal distribution of a univariate
+#' stationary process. The initial hypothesis (H0), is that the process follows
+#' a normal distribution, and k is the number of used random projections.
+#'
+#' @usage  rp.test(y,k = 2,FDR = FALSE,pars1 = c(100,1),pars2  = c(2,7),seed = NULL)
+#'
+#' @param y a numeric vector or an object of the ts class containing an univariate
+#' stationary time series.
+#' @param k an integer with the number of random projections to be used, by default
+#' k = 2.
+#' @param FDR a logical value for mixing the p-values using a dependent False discovery
+#' rate method. By default FDR = FALSE.
+#' @param pars1 an optional real vector with the shape parameters of the beta distribution
+#' used for the odd number random projection. By default, pars1 = c(100,1) where,
+#' shape1 = 100 and shape2 = 1.
+#' @param pars2 an optional real vector with the shape parameters of the beta distribution
+#' used for the even number random projection. By default, pars1 = c(2,7) where,
+#' shape1 = 2 and shape2 = 7.
+#' @param seed An optional \code{\link[=set.seed]{seed}} to use.
+#'
+#' @return a h.test class with the main results of the Epps hypothesis test. The
+#' h.test class have the following values
+#' \itemize{
+#'  \item{"k"}{The number of used projections}
+#'  \item{"lobato"}{The average Lobato and Velasco's test statistics of the k projected samples}
+#'  \item{"epps"}{The average Epps test statistics of the k projected samples}
+#'  \item{"p.value"}{The mixed p value}
+#'  \item{"alternative"}{The alternative hypothesis}
+#'  \item{"method"}{The used method: rp.test}
+#'  \item{"data.name"}{The data name}
+#' }
+#'
+#' @details
+#' The random projections test generates k independent random projections of the process. A Lobato and
+#' Velasco's test is applied to the first half of the projections. And a epps test for
+#' the other half. By default, a Monte Carlo p.value estimate is used for mixing the
+#' tests. A False discovery rate can be used for mixing by setting FDR = TRUE.
+#'
+#' For generating the k random projections a beta distribution is used. By default a
+#' beta(shape1 = 100,shape = 1) and a beta(shape1 = 2,shape = 7) are used to generate
+#' the odd and even projections respectively. For using a different parameter set, change
+#' pars1 or pars2.
+#'
+#' The test was proposed by \emph{Nieto-Reyes, A.,Cuesta-Albertos, J. & Gamboa, F. (2014)}.
+#'
+#' @export
+#'
+#' @author Asael Alonzo Matamoros
+#'
+#' @seealso \code{\link{lobato.test}} \code{\link{epps.test}}
+#'
+#' @references
+#' Nieto-Reyes, A., Cuesta-Albertos, J. & Gamboa, F. (2014). A random-projection
+#' based test of Gaussianity for stationary processes. \emph{Computational
+#' Statistics & Data Analysis, Elsevier}, vol. 75(C), pages 124-141.
+#' \url{http://www.sciencedirect.com/science/article/pii/S0167947314000243}
+#' \code{doi:https://doi.org/10.1016/j.csda.2014.01.013}.
+#'
+#' Epps, T.W. (1987). Testing that a stationary time series is Gaussian. \emph{The
+#' Annals of Statistic}. 15(4), 1683-1698.\url{http://www.jstor.org/stable/2336512}.
+#' \code{doi:10.1214/aos/1176350618}
+#'
+#' Lobato, I., & Velasco, C. (2004). A simple test of normality in time series.
+#' \emph{Journal of econometric theory}. 20(4), 671-689.
+#' \url{doi:10.1017/S0266466604204030}
+#'
+#' @examples
+#' # Generating an stationary arma process
+#' y = arima.sim(100,model = list(ar = 0.3))
+#' rp.test(y)
+#'
+rp.test = function(y,k = 2,FDR = FALSE,pars1 = c(100,1),pars2 = c(2,7),seed = NULL){
+
+  if( !is.numeric(y) & !is(y,class2 = "ts") )
+    stop("y object must be numeric or a time series")
+
+  if(NA %in% y )
+    stop("The time series contains missing values")
+
+  # checking stationarity
+  cc = uroot.test(y)
+  if(!cc$stationary)
+    warning("y has a unit root, epps.test requires stationary process")
+
+  # checking seasonality
+  if(frequency(y) > 1){
+    cc = seasonal.test(y)
+    if(cc$seasonal)
+      warning("y has a seasonal unit root, epps.test requires stationary process")
+  }
+
+  if (!is.null(seed))
+    set.seed(seed)
+
+  rps = rp.sample(as.numeric(y),k = k,seed = seed,pars1 = pars1,pars2 = pars2)
+
+  if(FDR){
+    rate = 0;Cs = sum(1/(1:k))
+    cc = qchisq( 1-.05*(1:k)/(k*Cs), 2)
+
+    F1 = sort( c(rps$lobato,rps$epps), decreasing = TRUE)
+    for (j in k:1){
+      if(F1[j] >= cc[j])
+        rate = rate+1;
+      break;
+    }
+    F1 = 1-(rate/k)
+  }
+  else{
+    F1 = pchisq(q = c(rps$lobato,rps$epps),df = 2,lower.tail = FALSE)
+    F1 = mean(F1)
+  }
+
+  dname = deparse(substitute(y))
+  alt = paste(dname,"is not Gaussian")
+  stat = k
+  names(stat) = "k"
+
+  # tests parameters
+  lobato.stat = ifelse(is.null(rps$lobato),0,mean(rps$lobato))
+  epps.stat   = ifelse(is.null(rps$epps),0,mean(rps$epps))
+  parameters  = c(lobato.stat,epps.stat)
+  names(parameters) = c("lobato","epps")
+
+  #htest class
+  rval <- list(statistic = stat,parameters = parameters, p.value = F1,
+               alternative = alt,
+               method = "k random projections test", data.name = dname)
+  class(rval) <- "htest"
+
+  return(rval)
+}
+#' Generates a test statistics sample of random projections
+#'
+#' Generates a sample of test statistics using k independent random projections
+#' of a univariate stationary process. The first half values of the sample, are
+#' estimated using a Lobato and Velasco's statistic test. The last half values with a epps
+#' statistic test.
+#'
+#' @usage  rp.sample(y,k = 2,pars1 = c(100,1),pars2 = c(2,7),seed = NULL)
+#'
+#' @param y a numeric vector or an object of the ts class containing an univariate
+#' stationary time series.
+#' @param k an integer with the number of random projections to be used, by default k = 2.
+#' @param pars1 an optional real vector with the shape parameters of the beta distribution
+#' used for the odd number random projection. By default, pars1 = c(100,1) where,
+#' shape1 = 100 and shape2 = 1.
+#' @param pars2 an optional real vector with the shape parameters of the beta distribution
+#' used for the even number random projection. By default, pars1 = c(2,7) where,
+#' shape1 = 2 and shape2 = 7.
+#' @param seed An optional \code{\link[=set.seed]{seed}} to use.
+#'
+#' @return a list with 2 real value vectors
+#' \itemize{
+#'  \item{"lobato"}{A vector with the Lobato and Velasco's statistics sample}
+#'  \item{"epps"}{A vector with the Epps statistics sample}
+#'  \item{"epps"}{The average epps' test statistics of the k projected samples}
+#' }
+#'
+#' @details
+#' The \code{rp.sample} function, generates k independent random projections of the process.
+#' A lobatos and Velasco's test is applied to the first half of the projections. And a
+#' Epps test for the other half.
+#'
+#' For generating the k random projections a beta distribution is used. By default a
+#' beta(shape1 = 100,shape = 1) and a beta(shape1 = 2,shape = 7) are used to generate
+#' the odd and even projections respectively. For using a different parameter set,
+#' change pars1 or pars2 values.
+#'
+#' The test was proposed by \emph{Nieto-Reyes, A.,Cuesta-Albertos, J. & Gamboa, F. (2014)}.
+#'
+#' @export
+#'
+#' @author Asael Alonzo Matamoros
+#'
+#' @seealso \code{\link{lobato.test}} \code{\link{epps.test}}
+#'
+#' @references
+#' Nieto-Reyes, A., Cuesta-Albertos, J. & Gamboa, F. (2014). A random-projection
+#' based test of Gaussianity for stationary processes. \emph{Computational
+#' Statistics & Data Analysis, Elsevier}, vol. 75(C), pages 124-141.
+#' \url{http://www.sciencedirect.com/science/article/pii/S0167947314000243}
+#' \code{doi:https://doi.org/10.1016/j.csda.2014.01.013}.
+#'
+#' Epps, T.W. (1987). Testing that a stationary time series is Gaussian. \emph{The
+#' Annals of Statistic}. 15(4), 1683-1698.\url{http://www.jstor.org/stable/2336512}.
+#' \code{doi:10.1214/aos/1176350618}
+#'
+#' Lobato, I., & Velasco, C. (2004). A simple test of normality in time series.
+#' \emph{Journal of econometric theory}. 20(4), 671-689.
+#' \url{doi:10.1017/S0266466604204030}
+#'
+#' @examples
+#' # Generating an stationary arma process
+#' y = arima.sim(100,model = list(ar = 0.3))
+#' rp.test(y)
+#'
+rp.sample = function(y,k = 2,pars1 = c(100,1),pars2 = c(2,7),seed = NULL){
+
+  if( !is.numeric(y) & !is(y,class2 = "ts") )
+    stop("y object must be numeric or a time series")
+
+  if(NA %in% y )
+    stop("The time series contains missing values")
+
+  if (!is.null(seed))
+    set.seed(seed)
+  if(k <= 1)
+    k = 1
+
+  n = length(y);T1 = NULL;T2 = NULL
+
+  for(j in 1:k){
+    pars = pars2
+    if( j %% 2 == 1) pars = pars1
+
+    yh = random.projection(as.numeric(y),shape1 = pars[1],shape2 = pars[2])
+
+    if(j <= k/2)
+      T1 = c(T1,lobato.statistic(yh) )
+    else
+      T2 = c(T2,epps.statistic(yh) )
+  }
+
+  rp.sample = list(lobato = T1,epps = T2)
+
+  return(rp.sample)
+}
+#' Generate a random projection
+#'
+#' Generates a random projection of an univariate stationary stochastic process. Using
+#' a beta(shape1,shape2) distribution.
+#'
+#' @usage  random.projection(y,shape1,shape2,seed = NULL)
+#'
+#' @param y a numeric vector or an object of the ts class containing an univariate
+#' stationary time series.
+#' @param shape1 an optional real value with the first shape parameters of the beta
+#' distribution.
+#' @param shape2 an optional real value with the second shape parameters of the beta
+#' distribution.
+#' @param seed An optional \code{\link[=set.seed]{seed}} to use.
+#'
+#' @return a real vector with the projected stochastic process
+#'
+#' @details
+#' Generates one random projection of an stochastic process using a beta distribution.
+#' For more details see: \emph{Nieto-Reyes, A.,Cuesta-Albertos, J. & Gamboa, F. (2014)}.
+#'
+#' @export
+#'
+#' @author Asael Alonzo Matamoros
+#'
+#' @seealso \code{\link{lobato.test}} \code{\link{epps.test}}
+#'
+#' @references
+#' Nieto-Reyes, A., Cuesta-Albertos, J. & Gamboa, F. (2014). A random-projection
+#' based test of Gaussianity for stationary processes. \emph{Computational
+#' Statistics & Data Analysis, Elsevier}, vol. 75(C), pages 124-141.
+#' \url{http://www.sciencedirect.com/science/article/pii/S0167947314000243}
+#' \code{doi:https://doi.org/10.1016/j.csda.2014.01.013}.
+#'
+#' Epps, T.W. (1987). Testing that a stationary time series is Gaussian. \emph{The
+#' Annals of Statistic}. 15(4), 1683-1698.\url{http://www.jstor.org/stable/2336512}.
+#' \code{doi:10.1214/aos/1176350618}
+#'
+#' Lobato, I., & Velasco, C. (2004). A simple test of normality in time series.
+#' \emph{Journal of econometric theory}. 20(4), 671-689.
+#' \url{doi:10.1017/S0266466604204030}
+#'
+#' @examples
+#' # Generating an stationary arma process
+#' y = arima.sim(100,model = list(ar = 0.3))
+#' rp.test(y)
+#'
+random.projection = function(y,shape1,shape2,seed = NULL){
+
+  if( !is.numeric(y) & !is(y,class2 = "ts") )
+    stop("y object must be numeric or a time series")
+
+  if(NA %in% y )
+    stop("The time series contains missing values")
+
+  if (!is.null(seed)) set.seed(seed)
+
+  n = length(y);yp = rep(0,n);ch = 1; C = n
+  H = rbeta(n,shape1,shape2)
+
+  while(ch > 10^(-15) && C > 1){
+
+    a = ch*H[C]; ch=ch-a;
+    if (C == n)
+      H[C] = sqrt(a)
+    else
+      H[C] = sqrt(a)/(n-C)
+
+    C = C-1
+  }
+  H[C] = sqrt(ch)/(n-C); h = H[C:n]; k = length(h);
+
+  for (j in 1:(k-1))
+    yp[j] = sum(y[1:j]*h[(k-j+1):k])
+
+  for (j in k:n)
+    yp[j] = sum(y[(j-k+1):j]*h)
+
+  return(yp)
+}
