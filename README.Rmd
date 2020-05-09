@@ -24,6 +24,7 @@ library(nortest)
 
 # **nortsTest: An R package for testing normal distribution in stationary time series**
 
+prueba
 
 **nortsTest** is an R package for assessing normal distribution, in numeric and time series data. The package works as an extension of [nortest](https://cran.r-project.org/web/packages/nortest/index.html) package that checks Gaussian distribution assumptions on independent data. The four principal package's functions are:
 
