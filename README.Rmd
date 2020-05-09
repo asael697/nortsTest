@@ -42,7 +42,7 @@ Additionally, inspired in the function *check.residuals()* of the [forecast pack
 # Checking normal distribution in time series
 
 ```{r, message=FALSE,warning=FALSE}
-library(nortstest)
+library(nortsTest)
 ```
 
 
@@ -74,7 +74,7 @@ As an example, we analyze the monthly deaths from lung diseases in the Uk (1974-
 
 ```{r}
 lungDeaths = cbind(male = mdeaths,female = fdeaths)
-autoplot(lungDeaths) +labs(title = "Monthly Deaths Lung Diseases UK",y = "Lung Deaths")
+autoplot(lungDeaths,ylab ="Lung Deaths",main ="Monthly Deaths Lung Diseases UK",colour = TRUE,facets = TRUE)
 ```
 
 In the linear model, all the estimated parameters are significant,  Adjusted $R^2$ is close to one indicating a good model fit, and the significance of the  F-test validates the model.
