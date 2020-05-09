@@ -19,12 +19,13 @@ knitr::opts_chunk$set(
 )
 set.seed(298)
 library(nortest)
+library(gridExtra)
 ```
 
+<img src="man/figures/logo.png" width = 120 alt="nortsTest Logo"/>
 
 # **nortsTest: An R package for testing normal distribution in stationary time series**
 
-prueba
 
 **nortsTest** is an R package for assessing normal distribution, in numeric and time series data. The package works as an extension of [nortest](https://cran.r-project.org/web/packages/nortest/index.html) package that checks Gaussian distribution assumptions on independent data. The four principal package's functions are:
 
@@ -36,81 +37,121 @@ prueba
 
 + rp.test with the random projections test of [Nieto-Reyes, Cuesta-Albertos and Gamboa](https://www.sciencedirect.com/science/article/pii/S0167947314000243?via%3Dihub).
 
-Additionally, inspired in the function *check.residuals()* of the [forecast package](https://www.jstatsoft.org/article/view/v027i03), we provide the **check\_residuals** methods and plots for checking models assumptions using the estimated residuals. The function checks stationarity, homoscedasticity and normal distribution, presenting a report of the used test and conclusions.
+Additionally, inspired in the function *check.residuals()* of the [forecast package](https://www.jstatsoft.org/article/view/v027i03), we provide the **check\_residuals** methods and plots for checking models assumptions using the model estimated residuals. The function checks stationarity, homoscedasticity and normal distribution, presenting a report of the used test and conclusions.
 
 
-# Checking normal distribution in time series
+## Checking normal distribution in time series
 
 ```{r, message=FALSE,warning=FALSE}
 library(nortsTest)
 ```
 
-
-To check normal distribution hypothesis in a random sample you can use the classical hypothesis test such as *Shapiro & Wilk, Anderson & Darling, Cramer-von Mises, Lillie, Pearson and Shapiro Francia* tests adapted from the nortest package, and the *Jarque & Bera* from the **tseries* package.
-, Lobatos-Velascos, Epps and Vavras goodness of fit tests are implemented as well. 
-
-As a simple example, we generate a stationary ARMA(1,1) model simulated using an normal distribution, and perform the Epps test, the initial hypothesis is that the process follows a normal distribution. The *normal.test* function, calls the epp.test(), and returns a *htest* class.
+Classic hypothesis test for normal distribution such as  *Shapiro & Wilk, Anderson & Darling*, and *Jarque & Bera*, does not perform well on dependent data, therefore, these test can not be used to check models asumptions in time series analysis. As a simple example, we generate a stationary ARMA(1,1) model simulated using an t student  with 7 degree freedom distribution, and perform the Anderson-Darling form *nortest package*. 
 
 ```{r}
 x = arima.sim(100,model = list(ar = 0.32,ma = 0.25),rand.gen = rt,df = 7)
-ad.test(x)
+
+nortest::ad.test(x)
 ```
+
+The test's initial hypothesis is that the process follows normal distribution, at $\alpha = 0.05$ significance level the alternative hypothesis is rejected and wrongly conclude the process has a normal distribution. Applying the Lobato and Velasco's test of our package, the initial hypothesis is rejected and conclude the process *does not* follow a normal distribution.  
 
 ```{r}
 lobato.test(x)
 ```
 
+## Example: stationary AR(2) model
 
-In the next example we generate a stationary ar(2) model, using an exponential distribution, and perform the Lobato and Velasco's normality test, In addition we print the test's conclusion using a significance of $alpha = 0.08$
+In the next example we generate a stationary AR(2) model, using an exponential distribution with rate 5, and perform the *epps* and *rp* with k = 5 random projections tests. With a significance level at $alpha = 0.05$, the initial hypothesis is rejected in all the tests, and conclude the process **does not** follows a normal distribution.
 
 ```{r}
-x = arima.sim(250,model = list(ar =c(0.2,0.57)),rand.gen = rexp,rate = 1)
+set.seed(298)
+# Simulating the AR(2) process
+x = arima.sim(250,model = list(ar =c(0.2,0.3)),rand.gen = rexp,rate = 5)
+
+# tests
 epps.test(x)
+rp.test(x,k = 5)
 ```
 
-# Checking residuals in time series models
 
-As an example, we analyze the monthly deaths from lung diseases in the Uk (1974-1979), and try to establish a relationship in the amount of deaths between male and female. We propose a classic linear model, and a dynamic regression, in both models we check the fit and parameter estimation, visualize the model residuals for diagnostic, and finally normality and stationarity tests. 
+## Checking model's assumptions: cardox data
+
+
+As an example, we analyze the monthly mean carbon dioxide (*in ppm*) from the [astsa package](https://cran.r-project.org/web/packages/astsa/index.html), measured at Mauna Loa Observatory, Hawaii.from March, 1958 to November 2018. The carbon dioxide data measured as the mole fraction in dry air, on Mauna Loa constitute the longest record of direct measurements of CO2 in the atmosphere. They were started by C. David Keeling of the Scripps Institution of Oceanography in March of 1958 at a facility of the National Oceanic and Atmospheric Administration.
 
 ```{r}
-lungDeaths = cbind(male = mdeaths,female = fdeaths)
-autoplot(lungDeaths,ylab ="Lung Deaths",main ="Monthly Deaths Lung Diseases UK",colour = TRUE,facets = TRUE)
+library(astsa)
+data("cardox")
+
+autoplot(cardox,xlab = "years",ylab = " CO2 (ppm)",color = "darkred",
+size = 1,main = "Carbon Dioxide Levels at Mauna Loa")
 ```
 
-In the linear model, all the estimated parameters are significant,  Adjusted $R^2$ is close to one indicating a good model fit, and the significance of the  F-test validates the model.
+
+The time series clearly has a trend and seasonal component, for analyzing the *cardox* data we proposed a Gaussian linear state space model. We use the model's implementation from the [forecast package](https://github.com/robjhyndman/forecast) as follows:
 
 ```{r}
-mod1 = lm(male~female,data = lungDeaths)
-summary(mod1)
+library(forecast)
+
+model = ets(cardox)
+summary(model)
 ```
 
-In counterpart, the time series plot reveals some dependency on the data, and a dynamic regression could offer better results, the estimated parameters in this new model are significant as well.
+The best fitted model is a *multiplicative level, additive trend and seasonality* state space model. If the model's assumptions are satisfied, then the model's errors behave like a Gaussian stationary process. This assumptions can be checked using our *check_residuals* functions.
+
+In this case, we use an Augmented Dickey-Fuller test for stationary assumption, and a random projections test for normal distribution.
 
 ```{r}
-mod2 = Arima(lungDeaths[,1],xreg = lungDeaths[,2],order = c(0,1,1))
-summary(mod2)
+check_residuals(model,unit_root = "adf",normality = "rp",plot = TRUE)
 ```
 
-Now we perform a visual comparative of the two models, the linear model residuals, do not seem to have a Gaussian distribution (*left qqplot and histogram*) and the acf plots shows some correlated structure. 
-In contrast, the histograms and qq-plots of the dynamic regression indicate that the residuals have a normal distribution, and the acf plots do not show a strong correlation
+
+Now that all the models assumptions are checked, the model is accepted and can be use for forecast.
 
 ```{r}
-g = plot_compare(model1 = mod1,model2 = mod2,name1 = "Linear model",name2 = "Dynamic Regression")
-g
+autoplot(forecast(model,h = 12),include = 100,xlab = "years",ylab = " CO2 (ppm)",
+         main = "Forecast: Carbon Dioxide Levels at Mauna Loa")
+```
+
+## How to install nortsTest?
+
+The current developmental version can be downloaded from github via
+
+```{r, eval = FALSE}
+if (!requireNamespace("remotes")) install.packages("remotes")
+
+remotes::install_github("asael697/nortsTest",dependencies = TRUE)
 ```
 
 
-The residuals diagnostic show  that the dynamic regression adjust better to the data than a simple linear model. Finally, we check the selected model assumptions, for it  we use the *check_residuals()* method, the function performs a unit root, seasonal and arch effect tests to check stationarity, and a normality test to check the Gaussian distribution.
+## Additional test functions
 
-If the given model is for time series analysis, the check_residuals() function will perform the *Epps test* for stationary process by default, in other case it will perform the *shapiro & wilk test* for random samples.
+The **nortsTest** package offers additional functions for descriptive analysis in univariate time series.
 
-```{r}
-check_residuals(y = mod2,unit_root = "pp",normality = "lobatos")
-```
+ + *uroot.test*: performs unit root test for checking stationary in linear time series. The Ljung-Box, Augmented Dickey-Fuller, Phillips-Perron and Kpps tests can be selected with the *unit_root* option parameter.
+ 
+ + *seasonal.test*: performs seasonal unit root test for stationary in seasonal time series. The hegy, ch and ocsb tests are available with the seasonal option parameter.
+ 
+ + *arch.test*: for checking ARCH effect in time series. The Ljung-Box and Lagrange Multiplier tests can be selected from the *arch* option parameter.
+ 
+ + *normal.test*: for normal distribution check in time series and random samples. The tests presented above can be chosen for stationary time series. For random samples (*independent data*), the Anderson & Darling, Shapiro & Wilks, and Jarque-Bera tests are available with the normality option parameter.
+ 
+For visual diagnostic, we offer ggplot2 functions overloaded for numeric and time series data. Most of the functions were adapted from Rob Hyndman's [forecast package](https://github.com/robjhyndman/forecast).
+ 
+ + *autoplot*: For plotting time series objects (*ts class*).
+
+ + *gghist*: histograms for numeric and univariate time series.
+ 
+ + *ggnorm*: quantile-quantile plot for numeric and univariate time series.
+ 
+ + *ggacf & ggpacf*: partial and auto correlation functions plots for numeric and univariate time series.
+ 
+ + *check_plot*: summary diagnostic plot for univariate starionary time series.
 
 ## Accepted models for residual check
 
-Currently our check_residuals(), check_plot(), and plot compare methods are valid for the current models and classes:
+Currently our check_residuals() and check_plot() functions are valid for the current models and classes:
 
 + **ts**: for uni variate time series
 
@@ -132,18 +173,21 @@ Currently our check_residuals(), check_plot(), and plot compare methods are vali
 
 + **forecast methods**: from the forecast package.
 
-For overloading more functions, methods or packages, please made a pull request or send  a mail to: asael_am\@hotmail.com 
+For overloading more functions, methods or packages, please make a pull request or send a mail to: asael\_am\@hotmail.com 
 
-# References
+## References
 
- + Epps, T.W. (1987). Testing that a stationary time series is Gaussian. **The Annals of Statistic**. 15(4), 1683-1698. Url: (http://www.jstor.org/stable/2336512). [doi:10.1214/aos/1176350618](http://www.jstor.org/stable/2336512)
+ + Epps, T.W. (1987). Testing that a stationary time series is Gaussian. *The Annals of Statistic*. 15(4), 1683-1698. Url: (http://www.jstor.org/stable/2336512). [doi:10.1214/aos/1176350618](http://www.jstor.org/stable/2336512)
 
- + Nieto-Reyes, A., Cuesta-Albertos, J. & Gamboa, F. (2014). A random-projection based test of Gaussianity for stationary processes. *Computational Statistics & Data Analysis, Elsevier*. 75(C), 124-141. url:(http://www.sciencedirect.com/science/article/pii/S0167947314000243). [doi:https://doi.org/10.1016/j.csda.2014.01.013}](ttp://www.sciencedirect.com/science/article/pii/S0167947314000243)
+ + Nieto-Reyes, A., Cuesta-Albertos, J. & Gamboa, F. (2014). A random-projection based test of Gaussianity for stationary processes. *Computational Statistics & Data Analysis, Elsevier*. 75(C), 124-141.
+ url:(http://www.sciencedirect.com/science/article/pii/S0167947314000243).
+ [doi:https://doi.org/10.1016/j.csda.2014.01.013}](ttp://www.sciencedirect.com/science/article/pii/S0167947314000243)
 
- + Lobato, I., & Velasco, C. (2004). A simple test of normality for time series. *Journal Econometric Theory*. 20(4), 671-689. [doi:(10.1017/S0266466604204030)].
+ + Lobato, I., & Velasco, C. (2004). A simple test of normality for time series. *Journal Econometric Theory*. 20(4), 671-689. [doi:10.1017/S0266466604204030]().
 
- + Psaradakis, Z. & Vavra, M. (2017). A distance test of normality for a wide class of stationary process. \emph{Journal of Econometrics and Statistics}. 2, 50-60. url:(http://www.sciencedirect.com/science/article/pii/S2452306216300296).
-[doi: https://doi.org/10.1016/j.ecosta.2016.11.005](http://www.sciencedirect.com/science/article/pii/S2452306216300296)
+ + Psaradakis, Z. & Vavra, M. (2017). A distance test of normality for a wide class of stationary process. *Journal of Econometrics and Statistics*. 2, 50-60. 
+ url:(http://www.sciencedirect.com/science/article/pii/S2452306216300296).
+ [doi: https://doi.org/10.1016/j.ecosta.2016.11.005](http://www.sciencedirect.com/science/article/pii/S2452306216300296)
 
- + Hyndman, R. & Khandakar, Y. (2008). Automatic time series forecasting: the forecast package for R. \emph{Journal of Statistical Software}. 26(3), 1-22. Url: (http://www.jstatsoft.org/article/view/v027i03).
+ + Hyndman, R. & Khandakar, Y. (2008). Automatic time series forecasting: the forecast package for R. *Journal of Statistical Software*. 26(3), 1-22. Url: (http://www.jstatsoft.org/article/view/v027i03).
 

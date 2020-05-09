@@ -124,11 +124,8 @@ check_residuals.ts = function(y,normality = "epps",
 #' @method check_residuals numeric
 #' @export
 #'
-check_residuals.numeric = function(y,normality = "epps",
-                                   unit_root = NULL,
-                                   seasonal = NULL,
-                                   arch = NULL,
-                                   alpha = 0.05,plot = FALSE,...){
+check_residuals.numeric = function(y,normality = "epps", unit_root = NULL,seasonal = NULL,
+                                   arch = NULL,alpha = 0.05,plot = FALSE,...){
   if( !is.numeric(y) )
     stop("The object y is not a numeric array")
 
