@@ -1,6 +1,42 @@
 **Packages NEWS and Updates**
 ============
 
+**nortsTest 1.0.0 Date: 09/05/2020**
+----------------------------------
+
+### Features:
+
+- vavra.test() function for the Psaradaki and Vavra test.
+
+- sieve.bootstrap() function for bootstrap sub-sample in stationary time series.
+
+- vavra.sample() function for the Anderson Darling sample statistics for the Psaradaki and Vavra test.
+
+- rp.test() function for the random projections test.
+
+- rp.sample() function for the random projections statistics samples.
+
+- random.projection() function to generate a random projection of a stationary process.
+
+- gghist(), ggnorm(), ggacf() and ggpacf() function for visualization.
+
+### Improvements:
+
+- epps.statistic() bug fixed.
+
+- package documentation, errors, warnings and notes corrected.
+
+### Changes:
+
+- plot.compare() function deleted
+
+- epps.statistic() using the **poweR** package deleted.
+
+### Fixes:
+
+-   The amoebam algorithm for epps.statistc() is corrected.
+
+
 **normality 0.0.1.000 Date: 12/03/2020**
 ----------------------------------
 
