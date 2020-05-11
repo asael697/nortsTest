@@ -20,8 +20,7 @@
 #' for unit root, seasonality and arch effects tests for stationary, and other additional
 #' methods for visual checks using the \pkg{ggplot2} and \pkg{forecast} packages.
 #'
-#' @import methods
-#' @import ggplot2 gridExtra forecast nortest stats tseries uroot MASS
+#' @import methods ggplot2 gridExtra forecast nortest stats tseries uroot MASS
 #'
 #'
 #' @references
