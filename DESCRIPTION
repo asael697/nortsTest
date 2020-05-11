@@ -25,7 +25,7 @@ Imports:
     ggplot2,
     gridExtra,
     tseries,
-    matlib,
+    MASS,
     uroot,
     zoo
 URL: https://github.com/asael697/nortsTest

@@ -21,7 +21,7 @@
 #' methods for visual checks using the \pkg{ggplot2} and \pkg{forecast} packages.
 #'
 #' @import methods
-#' @import ggplot2 gridExtra forecast nortest stats tseries matlib uroot
+#' @import ggplot2 gridExtra forecast nortest stats tseries uroot MASS
 #'
 #'
 #' @references

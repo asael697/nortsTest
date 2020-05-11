@@ -95,7 +95,7 @@ epps.test = function(y){
 #'
 #' @return a real value with the Epps test's statistic
 #'
-#' @importFrom matlib Ginv
+#' @importFrom MASS ginv
 #' @export
 #'
 #' @author Alicia Nieto-Reyes and Asael Alonzo Matamoros.
@@ -146,7 +146,7 @@ epps.statistic =  function(y){
   }
 
   dpifcero = (dpifcero+2*de2)/n;
-  Gm = matlib::Ginv(dpifcero);
+  Gm = MASS::ginv(dpifcero);
   me = mean(y); sts = deviSt/sqrt(n); ts2 = sqrt(2/n); Va = deviSt^2;
   P  = matrix(c(me-sts,me+sts,me,Va*(1-ts2),Va*(1-ts2),Va*(1+ts2)),nrow=3,ncol=2)
   Y  = cbind(rep(0,3))
