@@ -1,12 +1,11 @@
-#' The Lagrange Multiplier Test for arch effect.
+#' The Lagrange Multiplier test for arch effect.
 #'
 #' Performs the Lagrange Multipliers test for homoscedasticity in  a univariate
-#' stationary process. The initial hypothesis (H0), is that Y process is
-#' homoscedastic.
+#' stationary process. The null hypothesis (H0), is that the process is homoscedastic.
 #'
 #' @usage  Lm.test(y,lag.max = 2,alpha = 0.05)
 #'
-#' @param y a numeric vector or an object of the ts class containing an univariate
+#' @param y a numeric vector or an object of the \code{ts} class containing an univariate
 #' time series to be tested.
 #' @param lag.max an integer with the number of used lags.
 #' @param alpha Level of the test, possible values range from 0.01 to 0.1. By default
@@ -26,7 +25,7 @@
 #' @details
 #' The Lagrange Multiplier test proposed by \emph{Engle (1982)}
 #' fits a linear regression model for the squared residuals and
-#' examine whether the fitted model is significant. So the null
+#' examines whether the fitted model is significant. So the null
 #' hypothesis is that the squared residuals are a sequence of
 #' white noise, namely, the residuals are homoscedastic.
 #'

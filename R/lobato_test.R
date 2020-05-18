@@ -1,15 +1,15 @@
 #' The Lobato and Velasco's Test for normal distribution
 #'
 #' Performs the Lobato and Velasco's test for normal distribution of
-#' a univariate stationary process.The initial hypothesis (H0), is
-#' that Y process follows a normal distribution.
+#' a univariate stationary process.The null hypothesis (H0), is
+#' that the process follows a normal distribution.
 #'
 #' @usage  lobato.test(y,c = 1)
 #'
-#' @param y a numeric vector or an object of the ts class containing an univariate
+#' @param y a numeric vector or an object of the \code{ts} class containing an univariate
 #' stationary time series.
-#' @param c a positive real value that identifies the total amount of values that
-#' are going to be used in the cumulative sum
+#' @param c a positive real value that identifies the total amount of values used in the
+#' cumulative sum.
 #'
 #' @return A h.test class with the main results of the Lobato and Velasco's hypothesis test. The
 #' h.test class have the following values
@@ -24,8 +24,8 @@
 #'
 #' @details
 #'
-#' This test  proof a normality assumptions in correlated data, employing the
-#' skewness-kurtosis test statistic, but studentized by standard error estimators
+#' This test  proves a normality assumption in correlated data employing the
+#' skewness-kurtosis test statistic, but studentized by standard error estimates
 #' that are consistent under serial dependence of the observations. The test was
 #' proposed by \emph{Lobato, I., & Velasco, C. (2004)} and implemented by
 #' \emph{Nieto-Reyes, A., Cuesta-Albertos, J. & Gamboa, F. (2014)}
@@ -88,17 +88,17 @@ lobato.test = function(y, c = 1){
 }
 #'  Computes the Lobato and Velasco statistic
 #'
-#' Computes the Lobato and Velasco statistic for a univariate stationary process.
-#' This test  proof a normality assumptions in correlated data, employing the
-#' skewness-kurtosis test statistic, but studentized by standard error estimators
+#' Computes the Lobato and Velasco's statistic for a univariate stationary process.
+#' This test  proves a normality assumption in correlated data employing the
+#' skewness-kurtosis test statistic, but studentized by standard error estimates
 #' that are consistent under serial dependence of the observations
 #'
 #' @usage lobato.statistic(y,c = 1)
 #'
-#' @param y a numeric vector or an object of the ts class containing an univariate
+#' @param y a numeric vector or an object of the \code{ts} class containing an univariate
 #' time series to be tested
-#' @param c a positive real value that identifies the total amount of values that
-#' are going to be used in the cumulative sum
+#' @param c a positive real value that identifies the total amount of values used in the
+#' cumulative sum
 #'
 #' @details This function is the equivalent of \code{GestadisticoVn} of \emph{Nieto-Reyes, A.,
 #' Cuesta-Albertos, J. & Gamboa, F. (2014)}.

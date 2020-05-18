@@ -3,22 +3,22 @@
 **nortsTest: An R package for testing normal distribution in stationary time series**
 =====================================================================================
 
-**nortsTest** is an R package for assessing normal distribution, in
-numeric and time series data. The package works as an extension of
+**nortsTest** is an R package for assessing normal distribution in
+numeric and time series data. The package works as an extension of the
 [nortest](https://cran.r-project.org/web/packages/nortest/index.html)
 package that checks Gaussian distribution assumptions on independent
 data. The four principal package’s functions are:
 
--   epps.test function that implements the [Epps
+-   epps.tes: function that implements the [Epps
     test](https://projecteuclid.org/euclid.aos/1176350618),
 
--   lobato.test function with the [Lobato and
-    Velsasco](https://www.researchgate.net/publication/23564884),
+-   lobato.test function that implements the [Lobato and
+    Veslasco](https://www.researchgate.net/publication/23564884),
 
--   vavra.test function with the implements of [Psaradaki and Vavra
+-   vavra.test function that implements the [Psaradaki and Vavra
     test](http://www.applied-econometrics.com),
 
--   rp.test with the random projections test of [Nieto-Reyes,
+-   rp.test that implements the random projections test of [Nieto-Reyes,
     Cuesta-Albertos and
     Gamboa](https://www.sciencedirect.com/science/article/pii/S0167947314000243?via%3Dihub).
 
@@ -36,13 +36,13 @@ Checking normal distribution in time series
 library(nortsTest)
 ```
 
-Classic hypothesis test for normal distribution such as *Shapiro & Wilk,
-Anderson & Darling*, and *Jarque & Bera*, does not perform well on
-dependent data, therefore, these test can not be used to check models
-asumptions in time series analysis. As a simple example, we generate a
-stationary ARMA(1,1) model simulated using an t student with 7 degree
-freedom distribution, and perform the Anderson-Darling form *nortest
-package*.
+Classic hypothesis test for normality such as *Shapiro & Wilk, Anderson
+& Darling*, or *Jarque & Bera*, do not perform well on dependent data.
+Therefore, these tests should not be used to check whether a given time
+series analysis has been drawn from a Gaussian process. As a simple
+example, we generate a stationary ARMA(1,1) model simulated using an t
+student distribution with 7 degrees of freedom, and perform the
+Anderson-Darling test from *nortest package*.
 
 ``` r
 x = arima.sim(100,model = list(ar = 0.32,ma = 0.25),rand.gen = rt,df = 7)
@@ -55,12 +55,12 @@ nortest::ad.test(x)
 #> A = 0.50769, p-value = 0.1954
 ```
 
-The test’s initial hypothesis is that the process follows normal
-distribution, at *α* = 0.05 significance level the alternative
-hypothesis is rejected and wrongly conclude the process has a normal
-distribution. Applying the Lobato and Velasco’s test of our package, the
-initial hypothesis is rejected and conclude the process *does not*
-follow a normal distribution.
+The null hypothesis is that the process follows a normal distribution,
+at *α* = 0.05 significance level the alternative hypothesis is rejected
+and wrongly concludes the process has a normal distribution. Applying
+the Lobato and Velasco’s test of our package, the initial hypothesis is
+rejected. Therefore, the process *does not* follow a normal
+distribution.
 
 ``` r
 lobato.test(x)
@@ -76,13 +76,13 @@ Example: stationary AR(2) model
 -------------------------------
 
 In the next example we generate a stationary AR(2) model, using an
-exponential distribution with rate 5, and perform the *epps* and *rp*
-with k = 5 random projections tests. With a significance level at
-*a**l**p**h**a* = 0.05, the initial hypothesis is rejected in all the
-tests, and conclude the process **does not** follows a normal
-distribution.
+exponential distribution with rate of 5, and perform the *epps* and *rp*
+with k = 5 random projections test. With a significance level at
+*a**l**p**h**a* = 0.05, the initial hypothesis is rejected in both tests
+Therefore, the process **does not** follows a normal distribution.
 
 ``` r
+set.seed(298)
 # Simulating the AR(2) process
 x = arima.sim(250,model = list(ar =c(0.2,0.3)),rand.gen = rexp,rate = 5)
 
@@ -126,13 +126,18 @@ size = 1,main = "Carbon Dioxide Levels at Mauna Loa")
 
 <img src="man/figures/unnamed-chunk-5-1.png" width="60%" style="display: block; margin: auto;" />
 
-The time series clearly has a trend and seasonal component, for
-analyzing the *cardox* data we proposed a Gaussian linear state space
-model. We use the model’s implementation from the [forecast
+The time series clearly has trend and seasonal components, for analyzing
+the *cardox* data we proposed a Gaussian linear state space model. We
+use the model’s implementation from the [forecast
 package](https://github.com/robjhyndman/forecast) as follows:
 
 ``` r
 library(forecast)
+#> 
+#> Attaching package: 'forecast'
+#> The following object is masked from 'package:astsa':
+#> 
+#>     gas
 
 model = ets(cardox)
 summary(model)
@@ -167,7 +172,7 @@ summary(model)
 The best fitted model is a *multiplicative level, additive trend and
 seasonality* state space model. If the model’s assumptions are
 satisfied, then the model’s errors behave like a Gaussian stationary
-process. This assumptions can be checked using our *check\_residuals*
+process. These assumptions can be checked using our *check\_residuals*
 functions.
 
 In this case, we use an Augmented Dickey-Fuller test for stationary
@@ -206,8 +211,8 @@ check_residuals(model,unit_root = "adf",normality = "rp",plot = TRUE)
 
 <img src="man/figures/unnamed-chunk-7-1.png" width="60%" style="display: block; margin: auto;" />
 
-Now that all the models assumptions are checked, the model is accepted
-and can be use for forecast.
+Now that all the model’s assumptions are checked, the model is accepted
+and can be used to forecast.
 
 ``` r
 autoplot(forecast(model,h = 12),include = 100,xlab = "years",ylab = " CO2 (ppm)",
@@ -219,7 +224,7 @@ autoplot(forecast(model,h = 12),include = 100,xlab = "years",ylab = " CO2 (ppm)"
 How to install nortsTest?
 -------------------------
 
-The current developmental version can be downloaded from github via
+The current development version can be downloaded from GitHub via
 
 ``` r
 if (!requireNamespace("remotes")) install.packages("remotes")
@@ -242,9 +247,9 @@ analysis in univariate time series.
     seasonal time series. The hegy, ch and ocsb tests are available with
     the seasonal option parameter.
 
--   *arch.test*: for checking ARCH effect in time series. The Ljung-Box
-    and Lagrange Multiplier tests can be selected from the *arch* option
-    parameter.
+-   *arch.test*: for checking the ARCH effect in time series. The
+    Ljung-Box and Lagrange Multiplier tests can be selected from the
+    *arch* option parameter.
 
 -   *normal.test*: for normal distribution check in time series and
     random samples. The tests presented above can be chosen for
@@ -252,9 +257,9 @@ analysis in univariate time series.
     Anderson & Darling, Shapiro & Wilks, and Jarque-Bera tests are
     available with the normality option parameter.
 
-For visual diagnostic, we offer ggplot2 functions overloaded for numeric
-and time series data. Most of the functions were adapted from Rob
-Hyndman’s [forecast package](https://github.com/robjhyndman/forecast).
+For visual diagnostic, we offer ggplot2 methods for numeric and
+time-series data. Most of the functions were adapted from Rob Hyndman’s
+[forecast package](https://github.com/robjhyndman/forecast).
 
 -   *autoplot*: For plotting time series objects (*ts class*).
 
@@ -272,8 +277,8 @@ Hyndman’s [forecast package](https://github.com/robjhyndman/forecast).
 Accepted models for residual check
 ----------------------------------
 
-Currently our check\_residuals() and check\_plot() functions are valid
-for the current models and classes:
+Currently our check\_residuals() and check\_plot() mthods are valid for
+the current models and classes:
 
 -   **ts**: for uni variate time series
 
@@ -311,7 +316,7 @@ References
     processes. *Computational Statistics & Data Analysis, Elsevier*.
     75(C), 124-141.
     url:(<a href="http://www.sciencedirect.com/science/article/pii/S0167947314000243" class="uri">http://www.sciencedirect.com/science/article/pii/S0167947314000243</a>).
-    [doi:https://doi.org/10.1016/j.csda.2014.01.013}](ttp://www.sciencedirect.com/science/article/pii/S0167947314000243)
+    [doi:https://doi.org/10.1016/j.csda.2014.01.013](ttp://www.sciencedirect.com/science/article/pii/S0167947314000243)
 
 -   Lobato, I., & Velasco, C. (2004). A simple test of normality for
     time series. *Journal Econometric Theory*. 20(4), 671-689.

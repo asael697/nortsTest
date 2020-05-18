@@ -4,9 +4,9 @@
 check_residuals<- function(y,...) {
   UseMethod("check_residuals")
 }
-#' Generic function and methods for checking residuals in time series models
+#' Generic functions for checking residuals in time series models
 #'
-#' Generic function for residuals check analysis, this methods are inspired in the \code{check.residuals} function
+#' Generic function for residuals check analysis, these methods are inspired in the \code{check.residuals} function
 #' provided by the \code{forecast} package.
 #'
 #' @aliases check_residuals check_residuals.ts check_residuals.arima0 check_residuals.Arima
@@ -24,11 +24,11 @@ check_residuals<- function(y,...) {
 #' is \code{"epps"} test.
 #' @param unit_root A character string naming the desired unit root test for checking stationarity.
 #' Valid values are \code{"adf"} for the Augmented Dickey-Fuller, \code{"pp"} for the Phillips-Perron,
-#' and \code{"kpss"} for Kwiatkowski-Phillips-Schmidt-Shin. The default value is \code{"adf"} for the
+#' and \code{"kpss"} for Kwiatkowski, Phillips, Schmidt, and Shin. The default value is \code{"adf"} for the
 #' Augmented Dickey-Fuller test.
 #' @param seasonal A character string naming the desired unit root test for checking seasonality.
 #' Valid values are \code{"ocsb"} for the Osborn, Chui, Smith, and Birchenhall, \code{"ch"} for the
-#' Canova and Hansen, and \code{"hegy"} for Hylleberg, Engle, Granger and Yoo. The default value is
+#' Canova and Hansen, and \code{"hegy"} for Hylleberg, Engle, Granger, and Yoo. The default value is
 #' \code{"ocsb"} for the Osborn, Chui, Smith, and Birchenhall test.
 #' @param arch A character string naming the desired  test for checking stationarity. Valid values are
 #' \code{"box"} for the Ljung-Box, and \code{"Lm"} for the Lagrange Multiplier test. The default
@@ -40,8 +40,8 @@ check_residuals<- function(y,...) {
 #' @param ... Other testing parameters
 #'
 #' @details The function performs a residuals analysis, it prints a unit root and seasonal test to check
-#' stationarity, and a normality test for checking  Gaussian distribution. In addition, if plot option is
-#' \code{TRUE} a time plot, ACF and histogram of the series are presented.
+#' stationarity, and a normality test for checking  Gaussian distribution. In addition, if the plot option is
+#' \code{TRUE} a time plot, ACF, and histogram of the series are presented.
 #'
 #' @return The function does not return any value
 #'

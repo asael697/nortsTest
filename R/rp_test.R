@@ -1,23 +1,23 @@
-#' The k random projections Test for normal distribution
+#' The k random projections test for normal distribution
 #'
-#' Performs the random projections test for normal distribution of a univariate
-#' stationary process. The initial hypothesis (H0), is that the process follows
+#' Performs the random projection test for normal distribution of a univariate
+#' stationary process. The null hypothesis (H0), is that the process follows
 #' a normal distribution, and k is the number of used random projections.
 #'
 #' @usage  rp.test(y,k = 2,FDR = FALSE,pars1 = c(100,1),pars2  = c(2,7),seed = NULL)
 #'
-#' @param y a numeric vector or an object of the ts class containing an univariate
+#' @param y a numeric vector or an object of the \code{ts} class containing an univariate
 #' stationary time series.
 #' @param k an integer with the number of random projections to be used, by default
-#' k = 2.
+#' \code{k = 2}.
 #' @param FDR a logical value for mixing the p-values using a dependent False discovery
-#' rate method. By default FDR = FALSE.
+#' rate method. By default \code{FDR = FALSE}.
 #' @param pars1 an optional real vector with the shape parameters of the beta distribution
-#' used for the odd number random projection. By default, pars1 = c(100,1) where,
-#' shape1 = 100 and shape2 = 1.
+#' used for the odd number random projection. By default, \code{pars1 = c(100,1)} where,
+#' \code{shape1 = 100} and \code{shape2 = 1}.
 #' @param pars2 an optional real vector with the shape parameters of the beta distribution
-#' used for the even number random projection. By default, pars1 = c(2,7) where,
-#' shape1 = 2 and shape2 = 7.
+#' used for the even number random projection. By default, \code{pars2 = c(2,7)} where,
+#' \code{shape1 = 2} and \code{shape2 = 7}.
 #' @param seed An optional \code{\link[=set.seed]{seed}} to use.
 #'
 #' @return a h.test class with the main results of the Epps hypothesis test. The
@@ -33,15 +33,15 @@
 #' }
 #'
 #' @details
-#' The random projections test generates k independent random projections of the process. A Lobato and
-#' Velasco's test is applied to the first half of the projections. And a epps test for
-#' the other half. By default, a Monte Carlo p.value estimate is used for mixing the
-#' tests. A False discovery rate can be used for mixing by setting FDR = TRUE.
+#' The random projection test generates k independent random projections of the process.
+#' A Lobato and Velasco's test are applied to the first half of the projections, and an
+#' Epps test for the other half. By default, a Monte Carlo p-value estimate is used for
+#' mixing the tests. A False discovery rate can be used for mixing by setting \code{FDR = TRUE}.
 #'
 #' For generating the k random projections a beta distribution is used. By default a
-#' beta(shape1 = 100,shape = 1) and a beta(shape1 = 2,shape = 7) are used to generate
-#' the odd and even projections respectively. For using a different parameter set, change
-#' pars1 or pars2.
+#' \code{beta(shape1 = 100,shape = 1)} and a \code{beta(shape1 = 2,shape = 7)} are used
+#' to generate the odd and even projections respectively. For using a different parameter
+#' set, change \code{pars1} or \code{pars2}.
 #'
 #' The test was proposed by \emph{Nieto-Reyes, A.,Cuesta-Albertos, J. & Gamboa, F. (2014)}.
 #'
@@ -136,38 +136,37 @@ rp.test = function(y,k = 2,FDR = FALSE,pars1 = c(100,1),pars2 = c(2,7),seed = NU
 #'
 #' Generates a sample of test statistics using k independent random projections
 #' of a univariate stationary process. The first half values of the sample, are
-#' estimated using a Lobato and Velasco's statistic test. The last half values with a epps
-#' statistic test.
+#' estimated using a Lobato and Velasco's statistic test. The last half values
+#' with an Epps statistic test.
 #'
 #' @usage  rp.sample(y,k = 2,pars1 = c(100,1),pars2 = c(2,7),seed = NULL)
 #'
-#' @param y a numeric vector or an object of the ts class containing an univariate
+#' @param y a numeric vector or an object of the \code{ts} class containing an univariate
 #' stationary time series.
-#' @param k an integer with the number of random projections to be used, by default k = 2.
+#' @param k an integer with the number of random projections to be used, by default \code{k = 2}.
 #' @param pars1 an optional real vector with the shape parameters of the beta distribution
-#' used for the odd number random projection. By default, pars1 = c(100,1) where,
-#' shape1 = 100 and shape2 = 1.
+#' used for the odd number random projection. By default, \code{pars1 = c(100,1)} where,
+#' \code{shape1 = 100} and \code{shape2 = 1}.
 #' @param pars2 an optional real vector with the shape parameters of the beta distribution
-#' used for the even number random projection. By default, pars1 = c(2,7) where,
-#' shape1 = 2 and shape2 = 7.
+#' used for the even number random projection. By default, \code{pars2 = c(2,7)} where,
+#'\code{shape1 = 2} and \code{shape2 = 7}.
 #' @param seed An optional \code{\link[=set.seed]{seed}} to use.
 #'
-#' @return a list with 2 real value vectors
+#' @return A list with 2 real value vectors
 #' \itemize{
 #'  \item{"lobato"}{A vector with the Lobato and Velasco's statistics sample}
 #'  \item{"epps"}{A vector with the Epps statistics sample}
-#'  \item{"epps"}{The average epps' test statistics of the k projected samples}
 #' }
 #'
 #' @details
-#' The \code{rp.sample} function, generates k independent random projections of the process.
-#' A lobatos and Velasco's test is applied to the first half of the projections. And a
+#' The \code{rp.sample} function generates k independent random projections of the process.
+#' A Lobatos and Velasco's test is applied to the first half of the projections. And an
 #' Epps test for the other half.
 #'
 #' For generating the k random projections a beta distribution is used. By default a
-#' beta(shape1 = 100,shape = 1) and a beta(shape1 = 2,shape = 7) are used to generate
-#' the odd and even projections respectively. For using a different parameter set,
-#' change pars1 or pars2 values.
+#' \code{beta(shape1 = 100,shape = 1)} and a \code{beta(shape1 = 2,shape = 7)} are used
+#' to generate the odd and even projections respectively. For using a different parameter
+#' set, change \code{pars1} or \code{pars2} values.
 #'
 #' The test was proposed by \emph{Nieto-Reyes, A.,Cuesta-Albertos, J. & Gamboa, F. (2014)}.
 #'
@@ -231,12 +230,12 @@ rp.sample = function(y,k = 2,pars1 = c(100,1),pars2 = c(2,7),seed = NULL){
 }
 #' Generate a random projection
 #'
-#' Generates a random projection of an univariate stationary stochastic process. Using
+#' Generates a random projection of a univariate stationary stochastic process. Using
 #' a beta(shape1,shape2) distribution.
 #'
 #' @usage  random.projection(y,shape1,shape2,seed = NULL)
 #'
-#' @param y a numeric vector or an object of the ts class containing an univariate
+#' @param y a numeric vector or an object of the \code{ts} class containing an univariate
 #' stationary time series.
 #' @param shape1 an optional real value with the first shape parameters of the beta
 #' distribution.
@@ -247,8 +246,8 @@ rp.sample = function(y,k = 2,pars1 = c(100,1),pars2 = c(2,7),seed = NULL){
 #' @return a real vector with the projected stochastic process
 #'
 #' @details
-#' Generates one random projection of an stochastic process using a beta distribution.
-#' For more details see: \emph{Nieto-Reyes, A.,Cuesta-Albertos, J. & Gamboa, F. (2014)}.
+#' Generates one random projection of a stochastic process using a beta distribution.
+#' For more details, see: \emph{Nieto-Reyes, A.,Cuesta-Albertos, J. & Gamboa, F. (2014)}.
 #'
 #' @export
 #'

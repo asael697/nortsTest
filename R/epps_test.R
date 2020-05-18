@@ -1,11 +1,11 @@
 #' The Epps and Pulley Test for normal distribution
 #'
 #' Performs the Epps test for normal distribution of a univariate stationary process.
-#' The initial hypothesis (H0), is that Y process follows a normal distribution.
+#' The null hypothesis (H0), is that the process follows a normal distribution.
 #'
 #' @usage  epps.test(y)
 #'
-#' @param y a numeric vector or an object of the ts class containing an univariate
+#' @param y a numeric vector or an object of the \code{ts} class containing an univariate
 #' stationary time series.
 #'
 #' @return a h.test class with the main results of the Epps hypothesis test. The
@@ -20,10 +20,10 @@
 #' }
 #'
 #' @details
-#' The Epps test minimize the process empirical characteristic function using a
+#' The Epps test minimize the process' empirical characteristic function using a
 #' quadratic loss in terms of the process two first moments. The test was proposed
-#'  by \emph{Epps, T.W. (1987)} and implemented by \emph{Nieto-Reyes, A.,
-#'  Cuesta-Albertos, J. & Gamboa, F. (2014)}.
+#' by \emph{Epps, T.W. (1987)} and implemented by \emph{Nieto-Reyes, A.,
+#' Cuesta-Albertos, J. & Gamboa, F. (2014)}.
 #'
 #' @export
 #'
@@ -83,8 +83,8 @@ epps.test = function(y){
 }
 #' Estimates the Epps statistic for normal distribution test.
 #'
-#' Estimates the Epps statistic minimizing the quadratic loss of the characteristic
-#' function of the process in terms of the first two moments.
+#' Estimates the Epps statistic minimizing the quadratic loss of the process'
+#' characteristic function in terms of the first two moments.
 #'
 #' @usage  epps.statistic(y)
 #'

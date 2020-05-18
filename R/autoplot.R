@@ -159,7 +159,7 @@ ggtsbreaks <- function(x) {
 #' @param y a numerical vector or a time series.
 #' @param title a string with the plot's title.
 #' @param xlab a string with the plot's x axis label. By default a NUll value
-#' @param ylab a string with the plot's y axis label. By default a counts" value
+#' @param ylab a string with the plot's y axis label. By default a "counts" value
 #' @param add.normal A boolean value. Add a normal density function for comparison,
 #' by default \code{add.normal = TRUE}.
 #' @param bins The number of bins to use for the histogram. Selected by default
@@ -256,7 +256,7 @@ ggnorm = function(y,title = NULL,add.normal = TRUE){
 }
 #' \code{acf} plot
 #'
-#' Plot for the auto-correlation function for a univariate time series
+#' Plot of the auto-correlation function for a univariate time series
 #'
 #' @param y a numerical vector or a time series.
 #' @param title a string with the plot's title.
@@ -282,7 +282,7 @@ ggacf = function(y,title = NULL){
 }
 #' \code{pacf} plot
 #'
-#' Plot for the partial auto-correlation function for a univariate time series
+#' Plot of the partial autocorrelation function for a univariate time series
 #'
 #' @param y a numerical vector or a time series.
 #' @param title a string with the plot's title.
@@ -312,10 +312,10 @@ ggpacf = function(y,title = NULL){
 check_plot<- function(y,...) {
   UseMethod("check_plot")
 }
-#' Generic function and methods for check plots residuals in time series models
+#' Generic function for a visual check of residuals in time series models
 #'
 #'
-#' Generic function for residuals to visualize check analysis, this methods are inspired in
+#' Generic function for a visual check of residuals in time series models, these methods are inspired in
 #' the \code{check.residuals} function provided by the \code{forecast} package.
 #'
 #' @aliases check_plot check_plot.ts check_plot.arima0 check_plot.Arima check_plot.fGarch

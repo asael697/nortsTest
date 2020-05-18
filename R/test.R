@@ -7,7 +7,7 @@
 #' @param y A univariate time series
 #' @param unit_root A character string naming the desired unit root test for checking stationarity.
 #' Valid values are \code{"adf"} for the Augmented Dickey-Fuller, \code{"pp"} for the Phillips-Perron,
-#' \code{"kpss"} for Kwiatkowski-Phillips-Schmidt-Shin, and \code{"box"} for the Ljung-Box. The default
+#' \code{"kpss"} for Kwiatkowski, Phillips, Schmidt, and Shin, and \code{"box"} for the Ljung-Box. The default
 #' value is \code{"adf"} for the Augmented Dickey-Fuller test.
 #' @param alpha Level of the test, possible values range from 0.01 to 0.1. By default \code{alpha = 0.05}
 #' is used
@@ -15,9 +15,9 @@
 #' @return a h.test class with the main results of unit root hypothesis test.
 #'
 #' @details Several different tests are available:
-#' In the  \code{kpss} test, the null hypothesis that\code{y} has a stationary root
+#' In the  \code{kpss} test, the null hypothesis that \code{y} has a stationary root
 #' against a unit-root alternative. In the two remaining tests, the null hypothesis
-#' is that \code{y} has a unit root against a stationary root alternative.By default,
+#' is that \code{y} has a unit root against a stationary root alternative. By default,
 #'  \code{alpha = 0.05} is used to select the more likely hypothesis.
 #'
 #' @importFrom tseries adf.test pp.test kpss.test
@@ -104,7 +104,7 @@ uroot.test = function(y,unit_root = "adf",alpha = 0.05){
 }
 #' The goodness of fit tests for normal distribution.
 #'
-#' Perform a goodness of fit test to check gaussian distribution in stationarity stochastic process.
+#' Perform goodness of fit test to check Gaussian distribution in stationarity stochastic process.
 #'
 #' @usage  normal.test(y,normality="epps",alpha=0.05)
 #'
@@ -122,8 +122,8 @@ uroot.test = function(y,unit_root = "adf",alpha = 0.05){
 #' @details Several different tests are available:
 #' \code{"lobato"}, \code{"epps"}, \code{"vavras"} and \code{"rp"} test are for testing normal
 #' distributions in stationary time series. \code{"jb"}, \code{"ad"}, and  \code{"shapiro"} tests
-#' are for random numeric vectors. In all cases, the alternative hypothesis is that \code{y} has
-#' a gaussian distribution. By default, \code{alpha = 0.05} is used to select the more likely
+#' are for numeric data. In all cases, the alternative hypothesis is that \code{y} has
+#' a Gaussian distribution. By default, \code{alpha = 0.05} is used to select the more likely
 #' hypothesis.
 #'
 #' @importFrom tseries jarque.bera.test
@@ -255,7 +255,7 @@ normal.test = function(y,normality = "epps",alpha = 0.05){
 #' @param y A univariate time series
 #' @param seasonal A character string naming the desired seasonal unit root test for checking seasonality.
 #' Valid values are \code{"ocsb"} for the Osborn, Chui, Smith, and Birchenhall, \code{"ch"} for the
-#' Canova and Hansen, and \code{"hegy"} for Hylleberg, Engle, Granger and Yoo. The default value is
+#' Canova and Hansen, and \code{"hegy"} for Hylleberg, Engle, Granger, and Yoo. The default value is
 #' \code{"ocsb"} for the Osborn, Chui, Smith, and Birchenhall test.
 #' @param alpha Level of the test, possible values range from 0.01 to 0.1. By default \code{alpha = 0.05}
 #' is used
@@ -263,9 +263,9 @@ normal.test = function(y,normality = "epps",alpha = 0.05){
 #' @return a h.test class with the main results of unit root hypothesis test.
 #'
 #' @details Several different tests are available:
-#' In the  \code{kpss} test, the null hypothesis that\code{y} has a stationary root
+#' In the  \code{kpss} test, the null hypothesis that \code{y} has a stationary root
 #' against a unit-root alternative. In the two remaining tests, the null hypothesis
-#' is that \code{y} has a unit root against a stationary root alternative.By default,
+#' is that \code{y} has a unit root against a stationary root alternative. By default,
 #'  \code{alpha = 0.05} is used to select the more likely hypothesis.
 #'
 #' @importFrom uroot ch.test hegy.test
@@ -334,10 +334,10 @@ seasonal.test = function(y,seasonal = "ocsb",alpha = 0.05){
   }
   return(cc)
 }
-#' The ARCH effect Test function.
+#' The ARCH effect test function.
 #'
 #' Performs the Pormanteau Q and Lagrange Multipliers test for homoscedasticity in  a univariate
-#' stationary process. The initial hypothesis (H0), is that Y process is homoscedastic.
+#' stationary process. The null hypothesis (H0), is that the process is homoscedastic.
 #'
 #' @usage  arch.test(y,arch="box",alpha=0.05,lag.max = 2)
 #'
@@ -353,10 +353,10 @@ seasonal.test = function(y,seasonal = "ocsb",alpha = 0.05){
 #'
 #' @details Several different tests are available:
 #' Performs Portmanteau Q and Lagrange Multiplier tests for the null hypothesis that the residuals of
-#' a ARIMA model are homoscedastic. The ARCH test is based on the fact that if the residuals (defined
-#' as \code{e(t)}) are heteroscedastic, the squared residuals (e^2[t]) are auto correlated.
+#' an ARIMA model are homoscedastic. The ARCH test is based on the fact that if the residuals (defined
+#' as \code{e(t)}) are heteroscedastic, the squared residuals (e^2[t]) are autocorrelated.
 #' The first type of test is to examine whether the squares of residuals are a sequence of white noise,
-#' which is called Portmanteau Q test and similar to the Ljung-Box test on the squared residuals.
+#' which is called the Portmanteau Q test, and similar to the Ljung-Box test on the squared residuals.
 #' By default, \code{alpha = 0.05} is used to select the more likely hypothesis.
 #'
 #' @importFrom stats Box.test

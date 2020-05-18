@@ -5,19 +5,19 @@
 #' @aliases nortsTest
 #'
 #' @description
-#' This package is for testing normal distribution on stationary time series,
+#' This package is for testing normal distribution of stationary time series,
 #' it performs the Lobato and Velasco's, Epps, Psaradakis and  Vavra, and the
-#' random projections tests for stationary univariate time  series, some other
-#' diagnostics such as unit root test for stationarity, seasonal tests for seasonality,
-#' and arch effect test for volatility; are also performed. The package also
-#' offers residual diagnostic for linear time series model develop in several
-#' time series analysis packages.
+#' random projection tests for stationary univariate time  series. Some other
+#' diagnostics such as unit root test for stationarity, seasonal tests for
+#' seasonality, and ARCH effect tests for volatility; are also performed. The
+#' package also offers residual diagnostic for linear time series model developed
+#' in several time series analysis packages.
 #'
 #' @details
-#' The \pkg{nortstest} package has four main functions, for testing the hypothesis of
-#' normal distribution in stationary time series, \code{epps.test}, \code{lobato.test},
+#' The \pkg{nortsTest} package has four main functions, for testing the hypothesis of
+#' normal distribution in stationary time series, the \code{epps.test}, \code{lobato.test},
 #' \code{rp.test}, and \code{varvra.test()}. Additionally, we provide functions
-#' for unit root, seasonality and arch effects tests for stationary, and other additional
+#' for unit root, seasonality and ARCH effects tests for stationary, and other additional
 #' methods for visual checks using the \pkg{ggplot2} and \pkg{forecast} packages.
 #'
 #' @import methods ggplot2 gridExtra forecast nortest stats tseries uroot MASS

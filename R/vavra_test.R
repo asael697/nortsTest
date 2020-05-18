@@ -1,12 +1,12 @@
-#' The Psaradakis and  Vavra Test for normal distribution
+#' The Psaradakis and  Vavra test for normal distribution
 #'
-#' Performs the Vavra distance test for normal distribution of a univariate
-#' process. The initial hypothesis (H0), is that Y process follows a
+#' Performs the Psaradakis and Vavra distance test for normal distribution of a univariate
+#' process. The null hypothesis (H0), is that the process follows a
 #' normal distribution.
 #'
 #' @usage  vavra.test(y,reps = 1000,h = 100,seed = NULL)
 #'
-#' @param y a numeric vector or an object of the ts class containing an univariate
+#' @param y a numeric vector or an object of the \code{ts} class containing an univariate
 #' time series.
 #' @param reps an integer with the total bootstrap repetitions.
 #' @param h an integer with the sieve bootstrap replicates.
@@ -23,11 +23,11 @@
 #' }
 #'
 #' @details
-#' The Vavra test approximates the empirical distribution function of the
-#' Anderson Darlings statistic, using a sieve bootstrap approximation.
-#' If length of the time series is greater than h, then h value changes
-#' to floor(h/2). The test was proposed by \emph{Psaradakis, Z. &
-#' Vavra, M (20.17)}.
+#' The Psaradakis and Vavra test approximates the empirical distribution
+#' function of the Anderson Darling's statistic, using a sieve bootstrap
+#' approximation. If the time series' length is greater than \code{h}, then \code{h}
+#' value changes to \code{floor(h/2)}. The test was proposed by \emph{Psaradakis,
+#' Z. & Vavra, M (20.17)}.
 #'
 #' @export
 #'
@@ -81,14 +81,14 @@ vavra.test = function(y,reps = 1000,h = 100,seed = NULL){
   class(rval) = "htest"
   return(rval)
 }
-#' vavra test sieve Bootstrap sample for Anderson Darling statistic
+#' vavra test's sieve Bootstrap sample for Anderson Darling statistic
 #'
 #' Generates a sieve bootstrap sample of the Anderson-Darling
 #' statistic test.
 #'
 #' @usage vavra.sample(y,reps = 1000,h = 100,seed = NULL)
 #'
-#' @param y a numeric vector or an object of the ts class containing an univariate
+#' @param y a numeric vector or an object of the \code{ts} class containing an univariate
 #' time series.
 #' @param reps an integer with the total bootstrap repetitions.
 #' @param h an integer with the sieve bootstrap replicates.
@@ -97,8 +97,8 @@ vavra.test = function(y,reps = 1000,h = 100,seed = NULL){
 #' @details
 #' The Vavra test approximates the empirical distribution function of the
 #' Anderson-Darlings statistic, using a sieve bootstrap approximation.
-#' If length of the time series is greater than h, then h value changes
-#' to floor(h/2). The test was proposed by \emph{Psaradakis, Z. &
+#' If the time series' length is greater than h, then h value changes
+#' to \code{floor(h/2)}. The test was proposed by \emph{Psaradakis, Z. &
 #' Vavra, M (20.17)}.
 #'
 #' This function is the equivalent of \code{xarsieve} of
@@ -154,7 +154,7 @@ vavra.sample = function(y,reps = 1000,h = 100,seed = NULL){
 #'
 #' @usage  sieve.bootstrap(y,reps = 1000,pmax = NULL,h = 100,seed = NULL)
 #'
-#' @param y a numeric vector or an object of the ts class containing an univariate
+#' @param y a numeric vector or an object of the \code{ts} class containing an univariate
 #' time series.
 #' @param reps an integer with the total bootstrap repetitions.
 #' @param pmax an integer with the max considered lags for the generated \code{ar(p)} process.
@@ -167,9 +167,9 @@ vavra.sample = function(y,reps = 1000,h = 100,seed = NULL){
 #'
 #' @details
 #' simulates bootstrap samples for the stochastic process y, using a stationary
-#' autoregressive model of order \code{"pmax"}, \code{ar(pmax)}. If \code{pmax = NULL} (\emph{default}),
-#' the function is going to estimate the process maximum lags using an \code{AIC}
-#' as a model selection criteria.
+#' autoregressive model of order \code{"pmax"}, \code{AR(pmax)}. If \code{pmax = NULL} (\emph{default}),
+#' the function estimates the process maximum lags using an \code{AIC} as a model
+#' selection criteria.
 #'
 #' @importFrom forecast auto.arima
 #' @importFrom stats arima
