@@ -1,22 +1,22 @@
-#' The 'nortsTest' package.
+#' 'An R Package for Assessing Normality Stationary Process.'
 #'
 #' @docType package
 #' @name nortsTest-package
 #' @aliases nortsTest
 #'
 #' @description
-#' This package is for testing normal distribution of stationary time series,
-#' it performs the Lobato and Velasco's, Epps, Psaradakis and  Vavra, and the
-#' random projection tests for stationary univariate time  series. Some other
-#' diagnostics such as unit root test for stationarity, seasonal tests for
-#' seasonality, and ARCH effect tests for volatility; are also performed. The
-#' package also offers residual diagnostic for linear time series model developed
-#' in several time series analysis packages.
+#' This package is for testing normality on stationary process, it tests if a
+#' given data follows a stationary Gaussian process. The package performs the
+#' Lobato and Velasco's, Epps, Psaradakis and  Vavra, and the random projections
+#' tests for stationary process. Some other diagnostics such as, unit root test
+#' for stationarity, seasonal tests for seasonality, and arch effect test for
+#' volatility; are also performed. The package also offers residual diagnostic
+#' for linear time series models developed in several packages.
 #'
 #' @details
 #' The \pkg{nortsTest} package has four main functions, for testing the hypothesis of
-#' normal distribution in stationary time series, the \code{epps.test}, \code{lobato.test},
-#' \code{rp.test}, and \code{varvra.test()}. Additionally, we provide functions
+#' normality in stationary process, the \code{epps.test}, \code{lobato.test},
+#' \code{rp.test}, and \code{varvra.test}. Additionally, we provide functions
 #' for unit root, seasonality and ARCH effects tests for stationary, and other additional
 #' methods for visual checks using the \pkg{ggplot2} and \pkg{forecast} packages.
 #'

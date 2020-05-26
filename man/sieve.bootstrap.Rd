@@ -7,8 +7,7 @@
 sieve.bootstrap(y,reps = 1000,pmax = NULL,h = 100,seed = NULL)
 }
 \arguments{
-\item{y}{a numeric vector or an object of the ts class containing an univariate
-time series.}
+\item{y}{a numeric vector or an object of the \code{ts} class containing a stationary time series.}
 
 \item{reps}{an integer with the total bootstrap repetitions.}
 
@@ -28,9 +27,9 @@ The function generates a sieve bootstrap sample for a univariate stochastic proc
 }
 \details{
 simulates bootstrap samples for the stochastic process y, using a stationary
-autoregressive model of order \code{"pmax"}, \code{ar(pmax)}. If \code{pmax = NULL} (\emph{default}),
-the function is going to estimate the process maximum lags using an \code{AIC}
-as a model selection criteria.
+autoregressive model of order \code{"pmax"}, \code{AR(pmax)}. If \code{pmax = NULL} (\emph{default}),
+the function estimates the process maximum lags using an \code{AIC} as a model
+selection criteria.
 }
 \examples{
 # Generating an stationary arma process
@@ -47,5 +46,5 @@ Bulmann, P. (1997). Sieve Bootstrap for time series. \emph{Bernoulli}.
 \code{\link{lobato.test}},\code{\link{epps.test}}
 }
 \author{
-Asael Alonzo Matamoros
+Marian Vavra and Asael Alonzo Matamoros
 }

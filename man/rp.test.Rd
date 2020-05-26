@@ -2,33 +2,32 @@
 % Please edit documentation in R/rp_test.R
 \name{rp.test}
 \alias{rp.test}
-\title{The k random projections Test for normal distribution}
+\title{The k random projections test for normality}
 \usage{
 rp.test(y,k = 2,FDR = FALSE,pars1 = c(100,1),pars2  = c(2,7),seed = NULL)
 }
 \arguments{
-\item{y}{a numeric vector or an object of the ts class containing an univariate
-stationary time series.}
+\item{y}{a numeric vector or an object of the \code{ts} class containing a stationary time series.}
 
 \item{k}{an integer with the number of random projections to be used, by default
-k = 2.}
+\code{k = 2}.}
 
 \item{FDR}{a logical value for mixing the p-values using a dependent False discovery
-rate method. By default FDR = FALSE.}
+rate method. By default \code{FDR = FALSE}.}
 
 \item{pars1}{an optional real vector with the shape parameters of the beta distribution
-used for the odd number random projection. By default, pars1 = c(100,1) where,
-shape1 = 100 and shape2 = 1.}
+used for the odd number random projection. By default, \code{pars1 = c(100,1)} where,
+\code{shape1 = 100} and \code{shape2 = 1}.}
 
 \item{pars2}{an optional real vector with the shape parameters of the beta distribution
-used for the even number random projection. By default, pars1 = c(2,7) where,
-shape1 = 2 and shape2 = 7.}
+used for the even number random projection. By default, \code{pars2 = c(2,7)} where,
+\code{shape1 = 2} and \code{shape2 = 7}.}
 
 \item{seed}{An optional \code{\link[=set.seed]{seed}} to use.}
 }
 \value{
 a h.test class with the main results of the Epps hypothesis test. The
-h.test class have the following values
+h.test class have the following values:
 \itemize{
  \item{"k"}{The number of used projections}
  \item{"lobato"}{The average Lobato and Velasco's test statistics of the k projected samples}
@@ -36,24 +35,23 @@ h.test class have the following values
  \item{"p.value"}{The mixed p value}
  \item{"alternative"}{The alternative hypothesis}
  \item{"method"}{The used method: rp.test}
- \item{"data.name"}{The data name}
+ \item{"data.name"}{The data name.}
 }
 }
 \description{
-Performs the random projections test for normal distribution of a univariate
-stationary process. The initial hypothesis (H0), is that the process follows
-a normal distribution, and k is the number of used random projections.
+Performs the random projection test for normality. The null hypothesis (H0) is that the given data
+follows a stationary Gaussian process, and k is the number of used random projections.
 }
 \details{
-The random projections test generates k independent random projections of the process. A Lobato and
-Velasco's test is applied to the first half of the projections. And a epps test for
-the other half. By default, a Monte Carlo p.value estimate is used for mixing the
-tests. A False discovery rate can be used for mixing by setting FDR = TRUE.
+The random projection test generates k independent random projections of the process.
+A Lobato and Velasco's test are applied to the first half of the projections, and an
+Epps test for the other half. By default, a Monte Carlo p-value estimate is used for
+mixing the tests. A False discovery rate can be used for mixing by setting \code{FDR = TRUE}.
 
 For generating the k random projections a beta distribution is used. By default a
-beta(shape1 = 100,shape = 1) and a beta(shape1 = 2,shape = 7) are used to generate
-the odd and even projections respectively. For using a different parameter set, change
-pars1 or pars2.
+\code{beta(shape1 = 100,shape = 1)} and a \code{beta(shape1 = 2,shape = 7)} are used
+to generate the odd and even projections respectively. For using a different parameter
+set, change \code{pars1} or \code{pars2}.
 
 The test was proposed by \emph{Nieto-Reyes, A.,Cuesta-Albertos, J. & Gamboa, F. (2014)}.
 }

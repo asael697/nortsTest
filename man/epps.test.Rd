@@ -2,35 +2,34 @@
 % Please edit documentation in R/epps_test.R
 \name{epps.test}
 \alias{epps.test}
-\title{The Epps and Pulley Test for normal distribution}
+\title{The Epps and Pulley Test for normality.}
 \usage{
 epps.test(y)
 }
 \arguments{
-\item{y}{a numeric vector or an object of the ts class containing an univariate
-stationary time series.}
+\item{y}{a numeric vector or an object of the \code{ts} class containing a stationary time series.}
 }
 \value{
 a h.test class with the main results of the Epps hypothesis test. The
-h.test class have the following values
+h.test class have the following values:
 \itemize{
  \item{"epps"}{The Epps statistic}
  \item{"df"}{The test degrees freedoms}
  \item{"p.value"}{The p value}
  \item{"alternative"}{The alternative hypothesis}
  \item{"method"}{The used method}
- \item{"data.name"}{The data name}
+ \item{"data.name"}{The data name.}
 }
 }
 \description{
-Performs the Epps test for normal distribution of a univariate stationary process.
-The initial hypothesis (H0), is that Y process follows a normal distribution.
+Performs the Epps test for normality. The null hypothesis (H0) is that the given data
+follows a stationary Gaussian process.
 }
 \details{
-The Epps test minimize the process empirical characteristic function using a
+The Epps test minimize the process' empirical characteristic function using a
 quadratic loss in terms of the process two first moments. The test was proposed
- by \emph{Epps, T.W. (1987)} and implemented by \emph{Nieto-Reyes, A.,
- Cuesta-Albertos, J. & Gamboa, F. (2014)}.
+by \emph{Epps, T.W. (1987)} and implemented by \emph{Nieto-Reyes, A.,
+Cuesta-Albertos, J. & Gamboa, F. (2014)}.
 }
 \examples{
 # Generating an stationary arma process
@@ -53,5 +52,5 @@ Statistics & Data Analysis, Elsevier}, vol. 75(C), pages 124-141.
 \code{\link{lobato.test}}
 }
 \author{
-Asael Alonzo Matamoros
+Asael Alonzo Matamoros and Alicia Nieto-Reyes.
 }

@@ -2,40 +2,38 @@
 % Please edit documentation in R/Lm_test.R
 \name{Lm.test}
 \alias{Lm.test}
-\title{The Lagrange Multiplier Test for arch effect.}
+\title{The Lagrange Multiplier test for arch effect.}
 \usage{
 Lm.test(y,lag.max = 2,alpha = 0.05)
 }
 \arguments{
-\item{y}{a numeric vector or an object of the ts class containing an univariate
-time series to be tested.}
+\item{y}{a numeric vector or an object of the \code{ts} class containing a stationary time series.}
 
 \item{lag.max}{an integer with the number of used lags.}
 
 \item{alpha}{Level of the test, possible values range from 0.01 to 0.1. By default
-\code{alpha = 0.05} is used}
+\code{alpha = 0.05} is used.}
 }
 \value{
 a h.test class with the main results of the Lagrage multiplier hypothesis test.
-The h.test class have the following values
+The h.test class have the following values:
 \itemize{
  \item{"Lm"}{The lagrange multiplier statistic}
  \item{"df"}{The test degrees freedoms}
  \item{"p.value"}{The p value}
  \item{"alternative"}{The alternative hypothesis}
  \item{"method"}{The used method}
- \item{"data.name"}{The data name}
+ \item{"data.name"}{The data name.}
 }
 }
 \description{
-Performs the Lagrange Multipliers test for homoscedasticity in  a univariate
-stationary process. The initial hypothesis (H0), is that Y process is
-homoscedastic.
+Performs the Lagrange Multipliers test for homoscedasticity in a stationary process.
+The null hypothesis (H0), is that the process is homoscedastic.
 }
 \details{
 The Lagrange Multiplier test proposed by \emph{Engle (1982)}
 fits a linear regression model for the squared residuals and
-examine whether the fitted model is significant. So the null
+examines whether the fitted model is significant. So the null
 hypothesis is that the squared residuals are a sequence of
 white noise, namely, the residuals are homoscedastic.
 }
@@ -60,5 +58,5 @@ Series Analysis.} 4, 269-273.
 \code{\link{arch.test}}
 }
 \author{
-Asael Alonzo Matamoros
+Asael Alonzo Matamoros and A. Trapletti
 }

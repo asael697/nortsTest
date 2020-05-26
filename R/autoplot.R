@@ -156,7 +156,7 @@ ggtsbreaks <- function(x) {
 #' Plots a histogram and density estimates using ggplot.
 #'
 #'
-#' @param y a numerical vector or a time series.
+#' @param y a numeric vector or an object of the \code{ts} class containing a stationary time series.
 #' @param title a string with the plot's title.
 #' @param xlab a string with the plot's x axis label. By default a NUll value
 #' @param ylab a string with the plot's y axis label. By default a "counts" value
@@ -224,7 +224,7 @@ gghist = function(y,title = NULL,xlab = NULL,ylab = "counts",bins,add.normal = T
 #' Plot the quantile-quantile plot and quantile-quantile line using ggplot.
 #'
 #'
-#' @param y a numerical vector or a time series.
+#' @param y a numeric vector or an object of the \code{ts} class containing a stationary time series.
 #' @param add.normal Add a normal density function for comparison.
 #' @param title a string with the plot's title.
 #'
@@ -256,14 +256,14 @@ ggnorm = function(y,title = NULL,add.normal = TRUE){
 }
 #' \code{acf} plot
 #'
-#' Plot of the auto-correlation function for a univariate time series
+#' Plot of the auto-correlation function for a univariate time series.
 #'
-#' @param y a numerical vector or a time series.
+#' @param y a numeric vector or an object of the \code{ts} class containing a stationary time series.
 #' @param title a string with the plot's title.
 #'
 #' @return None.
 #'
-#' @author Asael Alonzo Matamoros
+#' @author Mitchell O'Hara-Wild and Asael Alonzo Matamoros
 #'
 #' @import forecast
 #' @export
@@ -280,16 +280,16 @@ ggacf = function(y,title = NULL){
 
   return(p)
 }
-#' \code{pacf} plot
+#' \code{pacf} plot.
 #'
-#' Plot of the partial autocorrelation function for a univariate time series
+#' Plot of the partial autocorrelation function for a univariate time series.
 #'
-#' @param y a numerical vector or a time series.
+#' @param y a numeric vector or an object of the \code{ts} class containing a stationary time series.
 #' @param title a string with the plot's title.
 #'
 #' @return None.
 #'
-#' @author Asael Alonzo Matamoros
+#' @author Mitchell O'Hara-Wild and Asael Alonzo Matamoros
 #'
 #' @import forecast
 #' @export
@@ -323,13 +323,13 @@ check_plot<- function(y,...) {
 #'
 #' @rdname check_plot
 #'
-#' @param y a time series or numerical vector
-#' @param model A string with the model name
+#' @param y a numeric vector or an object of the \code{ts} class containing a stationary time series.
+#' @param model A string with the model name.
 #' @param ... Other plotting parameters to affect the plot.
 #'
 #' @return A graph object from ggplot2
 #'
-#' @author Asael Alonzo Matamoros
+#' @author Mitchell O'Hara-Wild and Asael Alonzo Matamoros
 #'
 #' @seealso \code{check_residuals}
 #'

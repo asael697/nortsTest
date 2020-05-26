@@ -1,16 +1,16 @@
 Package: nortsTest
-Title: An R package for testing Gaussian distribution on stationary time series
+Title: An R Package for Assessing Normality Stationary Process
 Version: 1.0.0.0000
 Authors@R: c(
   person("Asael","Alonzo Matamoros", role = c("aut", "cre"),email = "asael.alonzo@gmail.com"),
   person("Alicia","Nieto-Reyes", role = 'aut', email = "alicia.nieto@unican.es")
   )
-Description: This package is for testing normal distribution on stationary time series,
-    it performs the Lobato and Velasco's, Epps, Psaradakis and  Vavra, and the random 
-    projections tests for stationary univariate time  series, some other diagnostics such as, 
-    unit root test for stationarity, seasonal tests for seasonality, and arch effect test for 
-    volatility; are also performed. The package also offers residual diagnostic for linear 
-    time series model develop in several time series analysis packages.
+Description: This package is for testing normality on stationary process, it tests if a given 
+    data follows a stationary Gaussian process. The package performs the Lobato and Velasco's, 
+    Epps, Psaradakis and  Vavra, and the random projections tests for stationary process. Some 
+    other diagnostics such as, unit root test for stationarity, seasonal tests for seasonality, 
+    and arch effect test for volatility; are also performed. The package also offers residual 
+    diagnostic for linear time series models developed in several packages.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true

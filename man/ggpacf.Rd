@@ -2,12 +2,12 @@
 % Please edit documentation in R/autoplot.R
 \name{ggpacf}
 \alias{ggpacf}
-\title{\code{pacf} plot}
+\title{\code{pacf} plot.}
 \usage{
 ggpacf(y, title = NULL)
 }
 \arguments{
-\item{y}{a numerical vector or a time series.}
+\item{y}{a numeric vector or an object of the \code{ts} class containing a stationary time series.}
 
 \item{title}{a string with the plot's title.}
 }
@@ -15,7 +15,7 @@ ggpacf(y, title = NULL)
 None.
 }
 \description{
-Plot for the partial auto-correlation function for a univariate time series
+Plot of the partial autocorrelation function for a univariate time series.
 }
 \examples{
 x = rnorm(100)
@@ -23,5 +23,5 @@ ggpacf(x)
 
 }
 \author{
-Asael Alonzo Matamoros
+Mitchell O'Hara-Wild and Asael Alonzo Matamoros
 }

@@ -1,25 +1,23 @@
-#' The Psaradakis and  Vavra test for normal distribution
+#' The Psaradakis and  Vavra test for normality
 #'
-#' Performs the Psaradakis and Vavra distance test for normal distribution of a univariate
-#' process. The null hypothesis (H0), is that the process follows a
-#' normal distribution.
+#' Performs the Psaradakis and Vavra distance test for normality. The null hypothesis (H0),
+#' is that the given data follows a Gaussian process.
 #'
 #' @usage  vavra.test(y,reps = 1000,h = 100,seed = NULL)
 #'
-#' @param y a numeric vector or an object of the \code{ts} class containing an univariate
-#' time series.
+#' @param y a numeric vector or an object of the \code{ts} class containing a stationary time series.
 #' @param reps an integer with the total bootstrap repetitions.
 #' @param h an integer with the sieve bootstrap replicates.
 #' @param seed An optional \code{\link[=set.seed]{seed}} to use.
 #'
 #' @return a h.test class with the main results of the Epps hypothesis test. The
-#' h.test class have the following values
+#' h.test class have the following values:
 #' \itemize{
 #'  \item{"bootstrap A"}{The sieve bootstrap A statistic}
 #'  \item{"p.value"}{The p value}
 #'  \item{"alternative"}{The alternative hypothesis}
 #'  \item{"method"}{The used method}
-#'  \item{"data.name"}{The data name}
+#'  \item{"data.name"}{The data name.}
 #' }
 #'
 #' @details
@@ -31,7 +29,7 @@
 #'
 #' @export
 #'
-#' @author Asael Alonzo Matamoros
+#' @author Asael Alonzo Matamoros.
 #'
 #' @seealso \code{\link{lobato.test}},\code{\link{epps.test}}
 #'
@@ -67,7 +65,7 @@ vavra.test = function(y,reps = 1000,h = 100,seed = NULL){
 
   # Aditional values
   dname = deparse(substitute(y))
-  alt = paste(dname,"is not Gaussian")
+  alt = paste(dname,"does not follow a Gaussian Process")
   # Bootstrap test statistic
   tstat = mean(ad)
   names(tstat) = "bootstrap A"
@@ -88,8 +86,7 @@ vavra.test = function(y,reps = 1000,h = 100,seed = NULL){
 #'
 #' @usage vavra.sample(y,reps = 1000,h = 100,seed = NULL)
 #'
-#' @param y a numeric vector or an object of the \code{ts} class containing an univariate
-#' time series.
+#' @param y a numeric vector or an object of the \code{ts} class containing a stationary time series.
 #' @param reps an integer with the total bootstrap repetitions.
 #' @param h an integer with the sieve bootstrap replicates.
 #' @param seed An optional \code{\link[=set.seed]{seed}} to use.
@@ -108,7 +105,7 @@ vavra.test = function(y,reps = 1000,h = 100,seed = NULL){
 #'
 #' @export
 #'
-#' @author  Asael Alonzo Matamoros.
+#' @author Marian Vavra and Asael Alonzo Matamoros.
 #'
 #' @keywords Psaradakis and  Vavra's test, bootstrap sieve, xarsieve
 #'
@@ -154,8 +151,7 @@ vavra.sample = function(y,reps = 1000,h = 100,seed = NULL){
 #'
 #' @usage  sieve.bootstrap(y,reps = 1000,pmax = NULL,h = 100,seed = NULL)
 #'
-#' @param y a numeric vector or an object of the \code{ts} class containing an univariate
-#' time series.
+#' @param y a numeric vector or an object of the \code{ts} class containing a stationary time series.
 #' @param reps an integer with the total bootstrap repetitions.
 #' @param pmax an integer with the max considered lags for the generated \code{ar(p)} process.
 #' By default, \code{pmax = NULL}.
@@ -175,7 +171,7 @@ vavra.sample = function(y,reps = 1000,h = 100,seed = NULL){
 #' @importFrom stats arima
 #' @export
 #'
-#' @author Asael Alonzo Matamoros
+#' @author Marian Vavra and Asael Alonzo Matamoros
 #'
 #' @seealso \code{\link{lobato.test}},\code{\link{epps.test}}
 #'

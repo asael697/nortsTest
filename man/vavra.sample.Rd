@@ -2,13 +2,12 @@
 % Please edit documentation in R/vavra_test.R
 \name{vavra.sample}
 \alias{vavra.sample}
-\title{vavra test sieve Bootstrap sample for Anderson Darling statistic}
+\title{vavra test's sieve Bootstrap sample for Anderson Darling statistic}
 \usage{
 vavra.sample(y,reps = 1000,h = 100,seed = NULL)
 }
 \arguments{
-\item{y}{a numeric vector or an object of the ts class containing an univariate
-time series.}
+\item{y}{a numeric vector or an object of the \code{ts} class containing a stationary time series.}
 
 \item{reps}{an integer with the total bootstrap repetitions.}
 
@@ -26,8 +25,8 @@ statistic test.
 \details{
 The Vavra test approximates the empirical distribution function of the
 Anderson-Darlings statistic, using a sieve bootstrap approximation.
-If length of the time series is greater than h, then h value changes
-to floor(h/2). The test was proposed by \emph{Psaradakis, Z. &
+If the time series' length is greater than h, then h value changes
+to \code{floor(h/2)}. The test was proposed by \emph{Psaradakis, Z. &
 Vavra, M (20.17)}.
 
 This function is the equivalent of \code{xarsieve} of
@@ -54,7 +53,7 @@ Bulmann, P. (1997). Sieve Bootstrap for time series. \emph{Bernoulli}.
 \code{\link{epps.statistic}} \code{\link{lobato.statistic}}
 }
 \author{
-Asael Alonzo Matamoros.
+Marian Vavra and Asael Alonzo Matamoros.
 }
 \keyword{Psaradakis}
 \keyword{Vavra's}

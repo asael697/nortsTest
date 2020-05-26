@@ -1,25 +1,23 @@
-#' The Lobato and Velasco's Test for normal distribution
+#' The Lobato and Velasco's Test for normality
 #'
-#' Performs the Lobato and Velasco's test for normal distribution of
-#' a univariate stationary process.The null hypothesis (H0), is
-#' that the process follows a normal distribution.
+#' Performs the Lobato and Velasco's test for normality. The null hypothesis (H0),
+#' is that the given data follows a Gaussian process.
 #'
 #' @usage  lobato.test(y,c = 1)
 #'
-#' @param y a numeric vector or an object of the \code{ts} class containing an univariate
-#' stationary time series.
+#' @param y a numeric vector or an object of the \code{ts} class containing a stationary time series.
 #' @param c a positive real value that identifies the total amount of values used in the
 #' cumulative sum.
 #'
 #' @return A h.test class with the main results of the Lobato and Velasco's hypothesis test. The
-#' h.test class have the following values
+#' h.test class have the following values:
 #' \itemize{
 #'  \item{"lobato"}{The Lobato and Velasco's statistic}
 #'  \item{"df"}{The test degrees freedoms}
 #'  \item{"p.value"}{The p value}
 #'  \item{"alternative"}{The alternative hypothesis}
 #'  \item{"method"}{The used method}
-#'  \item{"data.name"}{The data name}
+#'  \item{"data.name"}{The data name.}
 #' }
 #'
 #' @details
@@ -28,11 +26,11 @@
 #' skewness-kurtosis test statistic, but studentized by standard error estimates
 #' that are consistent under serial dependence of the observations. The test was
 #' proposed by \emph{Lobato, I., & Velasco, C. (2004)} and implemented by
-#' \emph{Nieto-Reyes, A., Cuesta-Albertos, J. & Gamboa, F. (2014)}
+#' \emph{Nieto-Reyes, A., Cuesta-Albertos, J. & Gamboa, F. (2014)}.
 #'
 #' @export
 #'
-#' @author Asael Alonzo Matamoros
+#' @author Asael Alonzo Matamoros and Alicia Nieto-Reyes.
 #'
 #' @seealso \code{\link{lobato.statistic}},\code{\link{epps.test}}
 #'
@@ -73,7 +71,7 @@ lobato.test = function(y, c = 1){
   }
 
   dname = deparse(substitute(y))
-  alt = paste(dname,"is not Gaussian")
+  alt = paste(dname,"does not follow a Gaussian Process")
   tstat = lobato.statistic(y, c = c)
   names(tstat) <- "lobato"
   df =  2
@@ -88,26 +86,25 @@ lobato.test = function(y, c = 1){
 }
 #'  Computes the Lobato and Velasco statistic
 #'
-#' Computes the Lobato and Velasco's statistic for a univariate stationary process.
-#' This test  proves a normality assumption in correlated data employing the
-#' skewness-kurtosis test statistic, but studentized by standard error estimates
-#' that are consistent under serial dependence of the observations
+#' Computes the Lobato and Velasco's statistic. This test  proves a normality
+#' assumption in correlated data employing the skewness-kurtosis test statistic,
+#' but studentized by standard error estimates that are consistent under serial
+#' dependence of the observations.
 #'
 #' @usage lobato.statistic(y,c = 1)
 #'
-#' @param y a numeric vector or an object of the \code{ts} class containing an univariate
-#' time series to be tested
+#' @param y a numeric vector or an object of the \code{ts} class containing a stationary time series.
 #' @param c a positive real value that identifies the total amount of values used in the
-#' cumulative sum
+#' cumulative sum.
 #'
 #' @details This function is the equivalent of \code{GestadisticoVn} of \emph{Nieto-Reyes, A.,
 #' Cuesta-Albertos, J. & Gamboa, F. (2014)}.
 #'
-#' @return A real value with the Lobato and Velasco test's statistic
+#' @return A real value with the Lobato and Velasco test's statistic.
 #'
 #' @export
 #'
-#' @author  Asael Alonzo Matamoros.
+#' @author Alicia Nieto-Reyes and Asael Alonzo Matamoros.
 #'
 #' @keywords Lobato and Velasco's test, G.statistic
 #'

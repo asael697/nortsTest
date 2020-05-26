@@ -2,13 +2,12 @@
 % Please edit documentation in R/vavra_test.R
 \name{vavra.test}
 \alias{vavra.test}
-\title{The Psaradakis and  Vavra Test for normal distribution}
+\title{The Psaradakis and  Vavra test for normality}
 \usage{
 vavra.test(y,reps = 1000,h = 100,seed = NULL)
 }
 \arguments{
-\item{y}{a numeric vector or an object of the ts class containing an univariate
-time series.}
+\item{y}{a numeric vector or an object of the \code{ts} class containing a stationary time series.}
 
 \item{reps}{an integer with the total bootstrap repetitions.}
 
@@ -18,26 +17,25 @@ time series.}
 }
 \value{
 a h.test class with the main results of the Epps hypothesis test. The
-h.test class have the following values
+h.test class have the following values:
 \itemize{
  \item{"bootstrap A"}{The sieve bootstrap A statistic}
  \item{"p.value"}{The p value}
  \item{"alternative"}{The alternative hypothesis}
  \item{"method"}{The used method}
- \item{"data.name"}{The data name}
+ \item{"data.name"}{The data name.}
 }
 }
 \description{
-Performs the Vavra distance test for normal distribution of a univariate
-process. The initial hypothesis (H0), is that Y process follows a
-normal distribution.
+Performs the Psaradakis and Vavra distance test for normality. The null hypothesis (H0),
+is that the given data follows a Gaussian process.
 }
 \details{
-The Vavra test approximates the empirical distribution function of the
-Anderson Darlings statistic, using a sieve bootstrap approximation.
-If length of the time series is greater than h, then h value changes
-to floor(h/2). The test was proposed by \emph{Psaradakis, Z. &
-Vavra, M (20.17)}.
+The Psaradakis and Vavra test approximates the empirical distribution
+function of the Anderson Darling's statistic, using a sieve bootstrap
+approximation. If the time series' length is greater than \code{h}, then \code{h}
+value changes to \code{floor(h/2)}. The test was proposed by \emph{Psaradakis,
+Z. & Vavra, M (20.17)}.
 }
 \examples{
 # Generating an stationary arma process
@@ -59,5 +57,5 @@ Bulmann, P. (1997). Sieve Bootstrap for time series. \emph{Bernoulli}.
 \code{\link{lobato.test}},\code{\link{epps.test}}
 }
 \author{
-Asael Alonzo Matamoros
+Asael Alonzo Matamoros.
 }

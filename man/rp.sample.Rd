@@ -7,44 +7,42 @@
 rp.sample(y,k = 2,pars1 = c(100,1),pars2 = c(2,7),seed = NULL)
 }
 \arguments{
-\item{y}{a numeric vector or an object of the ts class containing an univariate
-stationary time series.}
+\item{y}{a numeric vector or an object of the \code{ts} class containing a stationary time series.}
 
-\item{k}{an integer with the number of random projections to be used, by default k = 2.}
+\item{k}{an integer with the number of random projections to be used, by default \code{k = 2}.}
 
 \item{pars1}{an optional real vector with the shape parameters of the beta distribution
-used for the odd number random projection. By default, pars1 = c(100,1) where,
-shape1 = 100 and shape2 = 1.}
+used for the odd number random projection. By default, \code{pars1 = c(100,1)} where,
+\code{shape1 = 100} and \code{shape2 = 1}.}
 
 \item{pars2}{an optional real vector with the shape parameters of the beta distribution
-used for the even number random projection. By default, pars1 = c(2,7) where,
-shape1 = 2 and shape2 = 7.}
+used for the even number random projection. By default, \code{pars2 = c(2,7)} where,
+\code{shape1 = 2} and \code{shape2 = 7}.}
 
 \item{seed}{An optional \code{\link[=set.seed]{seed}} to use.}
 }
 \value{
-a list with 2 real value vectors
+A list with 2 real value vectors:
 \itemize{
  \item{"lobato"}{A vector with the Lobato and Velasco's statistics sample}
- \item{"epps"}{A vector with the Epps statistics sample}
- \item{"epps"}{The average epps' test statistics of the k projected samples}
+ \item{"epps"}{A vector with the Epps statistics sample.}
 }
 }
 \description{
 Generates a sample of test statistics using k independent random projections
-of a univariate stationary process. The first half values of the sample, are
-estimated using a Lobato and Velasco's statistic test. The last half values with a epps
+of a stationary process. The first half values of the sample, are estimated
+using a Lobato and Velasco's statistic test. The last half values with an Epps
 statistic test.
 }
 \details{
-The \code{rp.sample} function, generates k independent random projections of the process.
-A lobatos and Velasco's test is applied to the first half of the projections. And a
+The \code{rp.sample} function generates k independent random projections of the process.
+A Lobatos and Velasco's test is applied to the first half of the projections. And an
 Epps test for the other half.
 
 For generating the k random projections a beta distribution is used. By default a
-beta(shape1 = 100,shape = 1) and a beta(shape1 = 2,shape = 7) are used to generate
-the odd and even projections respectively. For using a different parameter set,
-change pars1 or pars2 values.
+\code{beta(shape1 = 100,shape = 1)} and a \code{beta(shape1 = 2,shape = 7)} are used
+to generate the odd and even projections respectively. For using a different parameter
+set, change \code{pars1} or \code{pars2} values.
 
 The test was proposed by \emph{Nieto-Reyes, A.,Cuesta-Albertos, J. & Gamboa, F. (2014)}.
 }
@@ -73,5 +71,5 @@ Lobato, I., & Velasco, C. (2004). A simple test of normality in time series.
 \code{\link{lobato.test}} \code{\link{epps.test}}
 }
 \author{
-Asael Alonzo Matamoros
+Alicia Nieto-Reyes and Asael Alonzo Matamoros
 }

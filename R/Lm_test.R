@@ -1,25 +1,24 @@
 #' The Lagrange Multiplier test for arch effect.
 #'
-#' Performs the Lagrange Multipliers test for homoscedasticity in  a univariate
-#' stationary process. The null hypothesis (H0), is that the process is homoscedastic.
+#' Performs the Lagrange Multipliers test for homoscedasticity in a stationary process.
+#' The null hypothesis (H0), is that the process is homoscedastic.
 #'
 #' @usage  Lm.test(y,lag.max = 2,alpha = 0.05)
 #'
-#' @param y a numeric vector or an object of the \code{ts} class containing an univariate
-#' time series to be tested.
+#' @param y a numeric vector or an object of the \code{ts} class containing a stationary time series.
 #' @param lag.max an integer with the number of used lags.
 #' @param alpha Level of the test, possible values range from 0.01 to 0.1. By default
-#' \code{alpha = 0.05} is used
+#' \code{alpha = 0.05} is used.
 #'
 #' @return a h.test class with the main results of the Lagrage multiplier hypothesis test.
-#' The h.test class have the following values
+#' The h.test class have the following values:
 #' \itemize{
 #'  \item{"Lm"}{The lagrange multiplier statistic}
 #'  \item{"df"}{The test degrees freedoms}
 #'  \item{"p.value"}{The p value}
 #'  \item{"alternative"}{The alternative hypothesis}
 #'  \item{"method"}{The used method}
-#'  \item{"data.name"}{The data name}
+#'  \item{"data.name"}{The data name.}
 #' }
 #'
 #' @details
@@ -31,7 +30,7 @@
 #'
 #' @export
 #'
-#' @author Asael Alonzo Matamoros
+#' @author Asael Alonzo Matamoros and A. Trapletti
 #'
 #' @seealso \code{\link{arch.test}}
 #'

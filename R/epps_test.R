@@ -1,22 +1,21 @@
-#' The Epps and Pulley Test for normal distribution
+#' The Epps and Pulley Test for normality.
 #'
-#' Performs the Epps test for normal distribution of a univariate stationary process.
-#' The null hypothesis (H0), is that the process follows a normal distribution.
+#' Performs the Epps test for normality. The null hypothesis (H0) is that the given data
+#' follows a stationary Gaussian process.
 #'
 #' @usage  epps.test(y)
 #'
-#' @param y a numeric vector or an object of the \code{ts} class containing an univariate
-#' stationary time series.
+#' @param y a numeric vector or an object of the \code{ts} class containing a stationary time series.
 #'
 #' @return a h.test class with the main results of the Epps hypothesis test. The
-#' h.test class have the following values
+#' h.test class have the following values:
 #' \itemize{
 #'  \item{"epps"}{The Epps statistic}
 #'  \item{"df"}{The test degrees freedoms}
 #'  \item{"p.value"}{The p value}
 #'  \item{"alternative"}{The alternative hypothesis}
 #'  \item{"method"}{The used method}
-#'  \item{"data.name"}{The data name}
+#'  \item{"data.name"}{The data name.}
 #' }
 #'
 #' @details
@@ -27,7 +26,7 @@
 #'
 #' @export
 #'
-#' @author Asael Alonzo Matamoros
+#' @author Asael Alonzo Matamoros and Alicia Nieto-Reyes.
 #'
 #' @seealso \code{\link{lobato.test}}
 #'
@@ -68,7 +67,7 @@ epps.test = function(y){
   }
 
   dname = deparse(substitute(y))
-  alt = paste(dname,"is not Gaussian")
+  alt = paste(dname,"does not follow a Gaussian Process")
   tstat = epps.statistic(y)
   names(tstat) <- "epps"
   df = 2
@@ -81,19 +80,21 @@ epps.test = function(y){
   class(rval) <- "htest"
   return(rval)
 }
-#' Estimates the Epps statistic for normal distribution test.
+#' Estimates the Epps statistic
 #'
 #' Estimates the Epps statistic minimizing the quadratic loss of the process'
 #' characteristic function in terms of the first two moments.
 #'
 #' @usage  epps.statistic(y)
 #'
-#' @param y a time series. Missing values are not allowed
+#' @param y a numeric vector or an object of the \code{ts} class containing a stationary time series.
 #'
-#' @details This function is the equivalent of \code{Sub} in
-#' \emph{Nieto-Reyes, A., Cuesta-Albertos, J. & Gamboa, F. (2014)}.
+#' @details This function is the equivalent of \code{Sub} in \emph{Nieto-Reyes, A.,
+#' Cuesta-Albertos, J. & Gamboa, F. (2014)}. This function uses a quadratic
+#' optimization solver implemented by \emph{Press, W.H., Teukolsky, S.A.,
+#' Vetterling, W.T. and  Flannery, B.P. (2007)}.
 #'
-#' @return a real value with the Epps test's statistic
+#' @return a real value with the Epps test's statistic.
 #'
 #' @importFrom MASS ginv
 #' @export
@@ -112,6 +113,11 @@ epps.test = function(y){
 #' Statistics & Data Analysis, Elsevier}, vol. 75(C), pages 124-141.
 #' \url{http://www.sciencedirect.com/science/article/pii/S0167947314000243}
 #' \code{doi:https://doi.org/10.1016/j.csda.2014.01.013}.
+#'
+#' Press, W.H., Teukolsky, S.A., Vetterling, W.T. and  Flannery, B.P. (2007).
+#' Numerical Recipes. The Art of Scientific Computing. \emph{Cambridge
+#' University Press}.\code{doi:10.1080/00029890.1987.12000737}
+#' \url{https://doi.org/10.1080/00029890.1987.12000737}.
 #'
 #' @examples
 #' # Generating an stationary arma process

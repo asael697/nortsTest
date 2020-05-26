@@ -7,20 +7,19 @@
 lobato.statistic(y,c = 1)
 }
 \arguments{
-\item{y}{a numeric vector or an object of the ts class containing an univariate
-time series to be tested}
+\item{y}{a numeric vector or an object of the \code{ts} class containing a stationary time series.}
 
-\item{c}{a positive real value that identifies the total amount of values that
-are going to be used in the cumulative sum}
+\item{c}{a positive real value that identifies the total amount of values used in the
+cumulative sum.}
 }
 \value{
-A real value with the Lobato and Velasco test's statistic
+A real value with the Lobato and Velasco test's statistic.
 }
 \description{
-Computes the Lobato and Velasco statistic for a univariate stationary process.
-This test  proof a normality assumptions in correlated data, employing the
-skewness-kurtosis test statistic, but studentized by standard error estimators
-that are consistent under serial dependence of the observations
+Computes the Lobato and Velasco's statistic. This test  proves a normality
+assumption in correlated data employing the skewness-kurtosis test statistic,
+but studentized by standard error estimates that are consistent under serial
+dependence of the observations.
 }
 \details{
 This function is the equivalent of \code{GestadisticoVn} of \emph{Nieto-Reyes, A.,
@@ -47,7 +46,7 @@ Statistics & Data Analysis, Elsevier}, vol. 75(C), pages 124-141.
 \code{\link{epps.statistic}}
 }
 \author{
-Asael Alonzo Matamoros.
+Alicia Nieto-Reyes and Asael Alonzo Matamoros.
 }
 \keyword{G.statistic}
 \keyword{Lobato}

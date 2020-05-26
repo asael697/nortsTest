@@ -11,14 +11,14 @@
 \alias{check_plot.HoltWinters}
 \alias{check_plot.ets}
 \alias{check_plot.forecast}
-\title{Generic function and methods for check plots residuals in time series models}
+\title{Generic function for a visual check of residuals in time series models}
 \usage{
 \method{check_plot}{ts}(y, model = " ", ...)
 }
 \arguments{
-\item{y}{a time series or numerical vector}
+\item{y}{a numeric vector or an object of the \code{ts} class containing a stationary time series.}
 
-\item{model}{A string with the model name}
+\item{model}{A string with the model name.}
 
 \item{...}{Other plotting parameters to affect the plot.}
 }
@@ -26,7 +26,7 @@
 A graph object from ggplot2
 }
 \description{
-Generic function for residuals to visualize check analysis, this methods are inspired in
+Generic function for a visual check of residuals in time series models, these methods are inspired in
 the \code{check.residuals} function provided by the \code{forecast} package.
 }
 \examples{
@@ -40,5 +40,5 @@ the \code{check.residuals} function provided by the \code{forecast} package.
 \code{check_residuals}
 }
 \author{
-Asael Alonzo Matamoros
+Mitchell O'Hara-Wild and Asael Alonzo Matamoros
 }

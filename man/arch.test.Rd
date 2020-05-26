@@ -2,12 +2,12 @@
 % Please edit documentation in R/test.R
 \name{arch.test}
 \alias{arch.test}
-\title{The ARCH effect Test function.}
+\title{The ARCH effect test function.}
 \usage{
 arch.test(y,arch="box",alpha=0.05,lag.max = 2)
 }
 \arguments{
-\item{y}{A univariate time series}
+\item{y}{a numeric vector or an object of the \code{ts} class containing a stationary time series.}
 
 \item{arch}{A character string naming the desired  test for checking stationarity. Valid values are
 \code{"box"} for the Ljung-Box, and \code{"Lm"} for the Lagrange Multiplier test. The default
@@ -23,15 +23,15 @@ a h.test class with the main results of unit root hypothesis test.
 }
 \description{
 Performs the Pormanteau Q and Lagrange Multipliers test for homoscedasticity in  a univariate
-stationary process. The initial hypothesis (H0), is that Y process is homoscedastic.
+stationary process. The null hypothesis (H0), is that the process is homoscedastic.
 }
 \details{
 Several different tests are available:
 Performs Portmanteau Q and Lagrange Multiplier tests for the null hypothesis that the residuals of
-a ARIMA model are homoscedastic. The ARCH test is based on the fact that if the residuals (defined
-as \code{e(t)}) are heteroscedastic, the squared residuals (e^2[t]) are auto correlated.
+an ARIMA model are homoscedastic. The ARCH test is based on the fact that if the residuals (defined
+as \code{e(t)}) are heteroscedastic, the squared residuals (e^2[t]) are autocorrelated.
 The first type of test is to examine whether the squares of residuals are a sequence of white noise,
-which is called Portmanteau Q test and similar to the Ljung-Box test on the squared residuals.
+which is called the Portmanteau Q test, and similar to the Ljung-Box test on the squared residuals.
 By default, \code{alpha = 0.05} is used to select the more likely hypothesis.
 }
 \examples{

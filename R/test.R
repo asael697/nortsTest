@@ -1,10 +1,10 @@
 #' The Unit root tests function
 #'
-#' Perform a unit root test to check stationarity in a linear stochastic process
+#' Perform a unit root test to check stationarity in a linear stochastic process.
 #'
 #' @usage  uroot.test(y,unit_root="adf",alpha=0.05)
 #'
-#' @param y A univariate time series
+#' @param y a numeric vector or an object of the \code{ts} class containing a stationary time series.
 #' @param unit_root A character string naming the desired unit root test for checking stationarity.
 #' Valid values are \code{"adf"} for the Augmented Dickey-Fuller, \code{"pp"} for the Phillips-Perron,
 #' \code{"kpss"} for Kwiatkowski, Phillips, Schmidt, and Shin, and \code{"box"} for the Ljung-Box. The default
@@ -24,7 +24,7 @@
 #' @importFrom stats Box.test
 #' @export
 #'
-#' @author  Asael Alonzo Matamoros
+#' @author Asael Alonzo Matamoros and A. Trapletti
 #'
 #' @seealso \code{\link{normal.test}},\code{\link{seasonal.test}}
 #'
@@ -102,20 +102,21 @@ uroot.test = function(y,unit_root = "adf",alpha = 0.05){
   }
   return(cc)
 }
-#' The goodness of fit tests for normal distribution.
+#' The normality test for stationary process
 #'
-#' Perform goodness of fit test to check Gaussian distribution in stationarity stochastic process.
+#' Perform a normality test. The null hypothesis (H0) is that the given data
+#' follows a stationary Gaussian process.
 #'
 #' @usage  normal.test(y,normality="epps",alpha=0.05)
 #'
-#' @param y A univariate time series
+#' @param y a numeric vector or an object of the \code{ts} class containing a stationary time series.
 #' @param normality A character string naming the desired test for checking gaussian distribution.
 #' Valid values are \code{"epps"} for the Epps, \code{"lobato"} for Lobato and Velasco's,\code{"vavra"} for
 #' the Psaradakis and  Vavra, \code{"rp"} for the random projections, \code{"jb"} for the Jarque and Beras,
 #' \code{"ad"} for Anderson Darling test, and \code{"shapiro"} for the Shapiro-Wilk's test. The default value
 #' is \code{"epps"} test.
 #' @param alpha Level of the test, possible values range from 0.01 to 0.1. By default \code{alpha = 0.05}
-#' is used
+#' is used.
 #'
 #' @return An h.test class with the main results of normal hypothesis test.
 #'
@@ -189,60 +190,60 @@ normal.test = function(y,normality = "epps",alpha = 0.05){
     cc = suppressWarnings(lobato.test(y))
     cc$Gaussian = cc$p.value > alpha
     if(cc$Gaussian)
-      cc$Conc = "Conclusion: y has a normal distribution"
+      cc$Conc = "Conclusion: y follows a Gaussian Process"
     else
-      cc$Conc = "Conclusion: y does not have a Gaussian distribution"
+      cc$Conc = "Conclusion: y does not follows a Gaussian Process"
   }
   else if(normality == "vavra"){
     cc = suppressWarnings(vavra.test(y))
     cc$Gaussian = cc$p.value > alpha
     if(cc$Gaussian)
-      cc$Conc = "Conclusion: y has a normal distribution"
+      cc$Conc = "Conclusion: y follows a Gaussian Process"
     else
-      cc$Conc = "Conclusion: y does not have a Gaussian distribution"
+      cc$Conc = "Conclusion: y does not follows a Gaussian Process"
   }
   else if(normality == "rp"){
     cc = suppressWarnings(rp.test(y))
     cc$Gaussian = cc$p.value > alpha
     if(cc$Gaussian)
-      cc$Conc = "Conclusion: y has a normal distribution"
+      cc$Conc = "Conclusion: y follows a Gaussian Process"
     else
-      cc$Conc = "Conclusion: y does not have a Gaussian distribution"
+      cc$Conc = "Conclusion: y does not follows a Gaussian Process"
   }
   else if(normality == "jb"){
     cc = suppressWarnings(tseries::jarque.bera.test(y))
     cc$alternative = "y is not Gaussian"
     cc$Gaussian = cc$p.value > alpha
     if(cc$Gaussian)
-      cc$Conc = "Conclusion: y has a normal distribution"
+      cc$Conc = "Conclusion: y follows a Gaussian Process"
     else
-      cc$Conc = "Conclusion: y does not have a Gaussian distribution"
+      cc$Conc = "Conclusion: y does not follows a Gaussian Process"
   }
   else if(normality == "ad"){
     cc = suppressWarnings(nortest::ad.test(y))
     cc$alternative = "y is not Gaussian"
     cc$Gaussian = cc$p.value > alpha
     if(cc$Gaussian)
-      cc$Conc = "Conclusion: y has a normal distribution"
+      cc$Conc = "Conclusion: y follows a Gaussian Process"
     else
-      cc$Conc = "Conclusion: y does not have a Gaussian distribution"
+      cc$Conc = "Conclusion: y does not follows a Gaussian Process"
   }
   else if(normality == "shapiro"){
     cc = suppressWarnings(stats::shapiro.test(y))
     cc$alternative = "y is not Gaussian"
     cc$Gaussian = cc$p.value > alpha
     if(cc$Gaussian)
-      cc$Conc = "Conclusion: y has a normal distribution"
+      cc$Conc = "Conclusion: y follows a Gaussian Process"
     else
-      cc$Conc = "Conclusion: y does not have a Gaussian distribution"
+      cc$Conc = "Conclusion: y does not follows a Gaussian Process"
   }
   else{
     cc = suppressWarnings(epps.test(y))
     cc$Gaussian = cc$p.value > alpha
     if(cc$Gaussian)
-      cc$Conc = "Conclusion: y has a normal distribution"
+      cc$Conc = "Conclusion: y follows a Gaussian Process"
     else
-      cc$Conc = "Conclusion: y does not have a Gaussian distribution"
+      cc$Conc = "Conclusion: y does not follows a Gaussian Process"
   }
   return(cc)
 }
@@ -252,7 +253,7 @@ normal.test = function(y,normality = "epps",alpha = 0.05){
 #'
 #' @usage  seasonal.test(y,seasonal="ocsb",alpha=0.05)
 #'
-#' @param y A univariate time series
+#' @param y a numeric vector or an object of the \code{ts} class containing a stationary time series.
 #' @param seasonal A character string naming the desired seasonal unit root test for checking seasonality.
 #' Valid values are \code{"ocsb"} for the Osborn, Chui, Smith, and Birchenhall, \code{"ch"} for the
 #' Canova and Hansen, and \code{"hegy"} for Hylleberg, Engle, Granger, and Yoo. The default value is
@@ -341,7 +342,7 @@ seasonal.test = function(y,seasonal = "ocsb",alpha = 0.05){
 #'
 #' @usage  arch.test(y,arch="box",alpha=0.05,lag.max = 2)
 #'
-#' @param y A univariate time series
+#' @param y a numeric vector or an object of the \code{ts} class containing a stationary time series.
 #' @param arch A character string naming the desired  test for checking stationarity. Valid values are
 #' \code{"box"} for the Ljung-Box, and \code{"Lm"} for the Lagrange Multiplier test. The default
 #' value is \code{"box"} for the Augmented Ljung-Box test.

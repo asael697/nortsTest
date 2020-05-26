@@ -2,12 +2,12 @@
 % Please edit documentation in R/test.R
 \name{normal.test}
 \alias{normal.test}
-\title{The goodness of fit tests for normal distribution.}
+\title{The normality test for stationary process}
 \usage{
 normal.test(y,normality="epps",alpha=0.05)
 }
 \arguments{
-\item{y}{A univariate time series}
+\item{y}{a numeric vector or an object of the \code{ts} class containing a stationary time series.}
 
 \item{normality}{A character string naming the desired test for checking gaussian distribution.
 Valid values are \code{"epps"} for the Epps, \code{"lobato"} for Lobato and Velasco's,\code{"vavra"} for
@@ -16,20 +16,21 @@ the Psaradakis and  Vavra, \code{"rp"} for the random projections, \code{"jb"} f
 is \code{"epps"} test.}
 
 \item{alpha}{Level of the test, possible values range from 0.01 to 0.1. By default \code{alpha = 0.05}
-is used}
+is used.}
 }
 \value{
 An h.test class with the main results of normal hypothesis test.
 }
 \description{
-Perform a goodness of fit test to check gaussian distribution in stationarity stochastic process.
+Perform a normality test. The null hypothesis (H0) is that the given data
+follows a stationary Gaussian process.
 }
 \details{
 Several different tests are available:
 \code{"lobato"}, \code{"epps"}, \code{"vavras"} and \code{"rp"} test are for testing normal
 distributions in stationary time series. \code{"jb"}, \code{"ad"}, and  \code{"shapiro"} tests
-are for random numeric vectors. In all cases, the alternative hypothesis is that \code{y} has
-a gaussian distribution. By default, \code{alpha = 0.05} is used to select the more likely
+are for numeric data. In all cases, the alternative hypothesis is that \code{y} has
+a Gaussian distribution. By default, \code{alpha = 0.05} is used to select the more likely
 hypothesis.
 }
 \examples{

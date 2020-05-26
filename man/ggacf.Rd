@@ -7,7 +7,7 @@
 ggacf(y, title = NULL)
 }
 \arguments{
-\item{y}{a numerical vector or a time series.}
+\item{y}{a numeric vector or an object of the \code{ts} class containing a stationary time series.}
 
 \item{title}{a string with the plot's title.}
 }
@@ -15,7 +15,7 @@ ggacf(y, title = NULL)
 None.
 }
 \description{
-Plot for the auto-correlation function for a univariate time series
+Plot of the auto-correlation function for a univariate time series.
 }
 \examples{
 x = rnorm(100)
@@ -23,5 +23,5 @@ ggacf(x)
 
 }
 \author{
-Asael Alonzo Matamoros
+Mitchell O'Hara-Wild and Asael Alonzo Matamoros
 }

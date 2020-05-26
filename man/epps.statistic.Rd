@@ -2,23 +2,25 @@
 % Please edit documentation in R/epps_test.R
 \name{epps.statistic}
 \alias{epps.statistic}
-\title{Estimates the Epps statistic for normal distribution test.}
+\title{Estimates the Epps statistic}
 \usage{
 epps.statistic(y)
 }
 \arguments{
-\item{y}{a time series. Missing values are not allowed}
+\item{y}{a numeric vector or an object of the \code{ts} class containing a stationary time series.}
 }
 \value{
-a real value with the Epps test's statistic
+a real value with the Epps test's statistic.
 }
 \description{
-Estimates the Epps statistic minimizing the quadratic loss of the characteristic
-function of the process in terms of the first two moments.
+Estimates the Epps statistic minimizing the quadratic loss of the process'
+characteristic function in terms of the first two moments.
 }
 \details{
-This function is the equivalent of \code{Sub} in
-\emph{Nieto-Reyes, A., Cuesta-Albertos, J. & Gamboa, F. (2014)}.
+This function is the equivalent of \code{Sub} in \emph{Nieto-Reyes, A.,
+Cuesta-Albertos, J. & Gamboa, F. (2014)}. This function uses a quadratic
+optimization solver implemented by \emph{Press, W.H., Teukolsky, S.A.,
+Vetterling, W.T. and  Flannery, B.P. (2007)}.
 }
 \examples{
 # Generating an stationary arma process
@@ -36,6 +38,11 @@ based test of Gaussianity for stationary processes. \emph{Computational
 Statistics & Data Analysis, Elsevier}, vol. 75(C), pages 124-141.
 \url{http://www.sciencedirect.com/science/article/pii/S0167947314000243}
 \code{doi:https://doi.org/10.1016/j.csda.2014.01.013}.
+
+Press, W.H., Teukolsky, S.A., Vetterling, W.T. and  Flannery, B.P. (2007).
+Numerical Recipes. The Art of Scientific Computing. \emph{Cambridge
+University Press}.\code{doi:10.1080/00029890.1987.12000737}
+\url{https://doi.org/10.1080/00029890.1987.12000737}.
 }
 \seealso{
 \code{\link{lobato.statistic}}

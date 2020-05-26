@@ -7,11 +7,11 @@
 uroot.test(y,unit_root="adf",alpha=0.05)
 }
 \arguments{
-\item{y}{A univariate time series}
+\item{y}{a numeric vector or an object of the \code{ts} class containing a stationary time series.}
 
 \item{unit_root}{A character string naming the desired unit root test for checking stationarity.
 Valid values are \code{"adf"} for the Augmented Dickey-Fuller, \code{"pp"} for the Phillips-Perron,
-\code{"kpss"} for Kwiatkowski-Phillips-Schmidt-Shin, and \code{"box"} for the Ljung-Box. The default
+\code{"kpss"} for Kwiatkowski, Phillips, Schmidt, and Shin, and \code{"box"} for the Ljung-Box. The default
 value is \code{"adf"} for the Augmented Dickey-Fuller test.}
 
 \item{alpha}{Level of the test, possible values range from 0.01 to 0.1. By default \code{alpha = 0.05}
@@ -21,13 +21,13 @@ is used}
 a h.test class with the main results of unit root hypothesis test.
 }
 \description{
-Perform a unit root test to check stationarity in a linear stochastic process
+Perform a unit root test to check stationarity in a linear stochastic process.
 }
 \details{
 Several different tests are available:
-In the  \code{kpss} test, the null hypothesis that\code{y} has a stationary root
+In the  \code{kpss} test, the null hypothesis that \code{y} has a stationary root
 against a unit-root alternative. In the two remaining tests, the null hypothesis
-is that \code{y} has a unit root against a stationary root alternative.By default,
+is that \code{y} has a unit root against a stationary root alternative. By default,
  \code{alpha = 0.05} is used to select the more likely hypothesis.
 }
 \examples{
@@ -59,7 +59,7 @@ Ljung, G. M. & Box, G. E. P. (1978). On a measure of lack of fit in time series 
 \code{\link{normal.test}},\code{\link{seasonal.test}}
 }
 \author{
-Asael Alonzo Matamoros
+Asael Alonzo Matamoros and A. Trapletti
 }
 \keyword{root}
 \keyword{series,}

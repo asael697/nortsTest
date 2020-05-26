@@ -7,8 +7,7 @@
 random.projection(y,shape1,shape2,seed = NULL)
 }
 \arguments{
-\item{y}{a numeric vector or an object of the ts class containing an univariate
-stationary time series.}
+\item{y}{a numeric vector or an object of the \code{ts} class containing a stationary time series.}
 
 \item{shape1}{an optional real value with the first shape parameters of the beta
 distribution.}
@@ -19,15 +18,15 @@ distribution.}
 \item{seed}{An optional \code{\link[=set.seed]{seed}} to use.}
 }
 \value{
-a real vector with the projected stochastic process
+a real vector with the projected stochastic process.
 }
 \description{
-Generates a random projection of an univariate stationary stochastic process. Using
+Generates a random projection of a univariate stationary stochastic process. Using
 a beta(shape1,shape2) distribution.
 }
 \details{
-Generates one random projection of an stochastic process using a beta distribution.
-For more details see: \emph{Nieto-Reyes, A.,Cuesta-Albertos, J. & Gamboa, F. (2014)}.
+Generates one random projection of a stochastic process using a beta distribution.
+For more details, see: \emph{Nieto-Reyes, A.,Cuesta-Albertos, J. & Gamboa, F. (2014)}.
 }
 \examples{
 # Generating an stationary arma process
@@ -54,5 +53,5 @@ Lobato, I., & Velasco, C. (2004). A simple test of normality in time series.
 \code{\link{lobato.test}} \code{\link{epps.test}}
 }
 \author{
-Asael Alonzo Matamoros
+Alicia Nieto-Reyes and Asael Alonzo Matamoros
 }

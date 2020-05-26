@@ -7,13 +7,13 @@
 gghist(y, title = NULL, xlab = NULL, ylab = "counts", bins, add.normal = TRUE)
 }
 \arguments{
-\item{y}{a numerical vector or a time series.}
+\item{y}{a numeric vector or an object of the \code{ts} class containing a stationary time series.}
 
 \item{title}{a string with the plot's title.}
 
 \item{xlab}{a string with the plot's x axis label. By default a NUll value}
 
-\item{ylab}{a string with the plot's y axis label. By default a counts" value}
+\item{ylab}{a string with the plot's y axis label. By default a "counts" value}
 
 \item{bins}{The number of bins to use for the histogram. Selected by default
 using the Friedman-Diaconis rule.}

@@ -7,11 +7,11 @@
 seasonal.test(y,seasonal="ocsb",alpha=0.05)
 }
 \arguments{
-\item{y}{A univariate time series}
+\item{y}{a numeric vector or an object of the \code{ts} class containing a stationary time series.}
 
 \item{seasonal}{A character string naming the desired seasonal unit root test for checking seasonality.
 Valid values are \code{"ocsb"} for the Osborn, Chui, Smith, and Birchenhall, \code{"ch"} for the
-Canova and Hansen, and \code{"hegy"} for Hylleberg, Engle, Granger and Yoo. The default value is
+Canova and Hansen, and \code{"hegy"} for Hylleberg, Engle, Granger, and Yoo. The default value is
 \code{"ocsb"} for the Osborn, Chui, Smith, and Birchenhall test.}
 
 \item{alpha}{Level of the test, possible values range from 0.01 to 0.1. By default \code{alpha = 0.05}
@@ -25,9 +25,9 @@ Perform a seasonal unit root test to check seasonality in a linear stochastic pr
 }
 \details{
 Several different tests are available:
-In the  \code{kpss} test, the null hypothesis that\code{y} has a stationary root
+In the  \code{kpss} test, the null hypothesis that \code{y} has a stationary root
 against a unit-root alternative. In the two remaining tests, the null hypothesis
-is that \code{y} has a unit root against a stationary root alternative.By default,
+is that \code{y} has a unit root against a stationary root alternative. By default,
  \code{alpha = 0.05} is used to select the more likely hypothesis.
 }
 \examples{

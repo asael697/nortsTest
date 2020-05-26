@@ -2,40 +2,38 @@
 % Please edit documentation in R/lobato_test.R
 \name{lobato.test}
 \alias{lobato.test}
-\title{The Lobato and Velasco's Test for normal distribution}
+\title{The Lobato and Velasco's Test for normality}
 \usage{
 lobato.test(y,c = 1)
 }
 \arguments{
-\item{y}{a numeric vector or an object of the ts class containing an univariate
-stationary time series.}
+\item{y}{a numeric vector or an object of the \code{ts} class containing a stationary time series.}
 
-\item{c}{a positive real value that identifies the total amount of values that
-are going to be used in the cumulative sum}
+\item{c}{a positive real value that identifies the total amount of values used in the
+cumulative sum.}
 }
 \value{
 A h.test class with the main results of the Lobato and Velasco's hypothesis test. The
-h.test class have the following values
+h.test class have the following values:
 \itemize{
  \item{"lobato"}{The Lobato and Velasco's statistic}
  \item{"df"}{The test degrees freedoms}
  \item{"p.value"}{The p value}
  \item{"alternative"}{The alternative hypothesis}
  \item{"method"}{The used method}
- \item{"data.name"}{The data name}
+ \item{"data.name"}{The data name.}
 }
 }
 \description{
-Performs the Lobato and Velasco's test for normal distribution of
-a univariate stationary process.The initial hypothesis (H0), is
-that Y process follows a normal distribution.
+Performs the Lobato and Velasco's test for normality. The null hypothesis (H0),
+is that the given data follows a Gaussian process.
 }
 \details{
-This test  proof a normality assumptions in correlated data, employing the
-skewness-kurtosis test statistic, but studentized by standard error estimators
+This test  proves a normality assumption in correlated data employing the
+skewness-kurtosis test statistic, but studentized by standard error estimates
 that are consistent under serial dependence of the observations. The test was
 proposed by \emph{Lobato, I., & Velasco, C. (2004)} and implemented by
-\emph{Nieto-Reyes, A., Cuesta-Albertos, J. & Gamboa, F. (2014)}
+\emph{Nieto-Reyes, A., Cuesta-Albertos, J. & Gamboa, F. (2014)}.
 }
 \examples{
 # Generating an stationary arma process
@@ -58,5 +56,5 @@ Statistics & Data Analysis, Elsevier}, vol. 75(C), pages 124-141.
 \code{\link{lobato.statistic}},\code{\link{epps.test}}
 }
 \author{
-Asael Alonzo Matamoros
+Asael Alonzo Matamoros and Alicia Nieto-Reyes.
 }
