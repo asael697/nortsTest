@@ -1,48 +1,49 @@
 <img src="man/figures/logo.png" width = 120 alt="nortsTest Logo"/>
 
-**nortsTest: An R package for testing normal distribution in stationary time series**
-=====================================================================================
+**nortsTest: An R Package for Assessing Normality of Stationary Process**
+======================================================================
 
-**nortsTest** is an R package for assessing normal distribution in
-numeric and time series data. The package works as an extension of the
+**nortsTest** is an R package for assessing normality of stationary
+process, it tests if a given data follows a stationary Gaussian process.
+The package works as an extension of the
 [nortest](https://cran.r-project.org/web/packages/nortest/index.html)
-package that checks Gaussian distribution assumptions on independent
-data. The four principal package’s functions are:
+package that performs normality tests in random samples (*independent
+data*). The four principal package’s functions are:
 
--   epps.tes: function that implements the [Epps
+-   epps.test() function that implements the [Epps
     test](https://projecteuclid.org/euclid.aos/1176350618),
 
--   lobato.test function that implements the [Lobato and
-    Veslasco](https://www.researchgate.net/publication/23564884),
+-   lobato.test() function that implements the [Lobato and Velasco’s
+    test](https://www.researchgate.net/publication/23564884),
 
--   vavra.test function that implements the [Psaradaki and Vavra
+-   vavra.test() function that implements the [Psaradaki and Vavra’s
     test](http://www.applied-econometrics.com),
 
--   rp.test that implements the random projections test of [Nieto-Reyes,
-    Cuesta-Albertos and
-    Gamboa](https://www.sciencedirect.com/science/article/pii/S0167947314000243?via%3Dihub).
+-   rp.test() function that implements the random projections test of
+    [Nieto-Reyes, Cuesta-Albertos and Gamboa’s
+    test](https://www.sciencedirect.com/science/article/pii/S0167947314000243?via%3Dihub).
 
 Additionally, inspired in the function *check.residuals()* of the
 [forecast package](https://www.jstatsoft.org/article/view/v027i03), we
-provide the **check\_residuals** methods and plots for checking models
-assumptions using the model estimated residuals. The function checks
-stationarity, homoscedasticity and normal distribution, presenting a
-report of the used test and conclusions.
+provide the **check\_residuals** methods for checking model’s
+assumptions using the estimated residuals. The function checks
+stationarity, homoscedasticity and normality, presenting a report of the
+used tests and conclusions.
 
-Checking normal distribution in time series
--------------------------------------------
+Checking normality assumptions
+------------------------------
 
 ``` r
 library(nortsTest)
 ```
 
-Classic hypothesis test for normality such as *Shapiro & Wilk, Anderson
+Classic hypothesis tests for normality such as *Shapiro & Wilk, Anderson
 & Darling*, or *Jarque & Bera*, do not perform well on dependent data.
 Therefore, these tests should not be used to check whether a given time
-series analysis has been drawn from a Gaussian process. As a simple
-example, we generate a stationary ARMA(1,1) model simulated using an t
-student distribution with 7 degrees of freedom, and perform the
-Anderson-Darling test from *nortest package*.
+series has been drawn from a Gaussian process. As a simple example, we
+generate a stationary ARMA(1,1) process simulated using an t student
+distribution with 7 degrees of freedom, and perform the Anderson-Darling
+test from the *nortest package*.
 
 ``` r
 x = arima.sim(100,model = list(ar = 0.32,ma = 0.25),rand.gen = rt,df = 7)
@@ -55,12 +56,11 @@ nortest::ad.test(x)
 #> A = 0.50769, p-value = 0.1954
 ```
 
-The null hypothesis is that the process follows a normal distribution,
-at *α* = 0.05 significance level the alternative hypothesis is rejected
-and wrongly concludes the process has a normal distribution. Applying
-the Lobato and Velasco’s test of our package, the initial hypothesis is
-rejected. Therefore, the process *does not* follow a normal
-distribution.
+The null hypothesis is that the data has a normal distribution and
+therefore, follows a Gaussian Process. At *α* = 0.05 significance level
+the alternative hypothesis is rejected and wrongly concludes the data
+follows a Gaussian process. Applying the Lobato and Velasco’s test of
+our package, the null hypothesis is correctly rejected.
 
 ``` r
 lobato.test(x)
@@ -69,17 +69,17 @@ lobato.test(x)
 #> 
 #> data:  x
 #> lobato = 16.864, df = 2, p-value = 0.0002177
-#> alternative hypothesis: x is not Gaussian
+#> alternative hypothesis: x does not follow a Gaussian Process
 ```
 
-Example: stationary AR(2) model
--------------------------------
+Example: stationary AR(2) process
+---------------------------------
 
-In the next example we generate a stationary AR(2) model, using an
+In the next example we generate a stationary AR(2) process, using an
 exponential distribution with rate of 5, and perform the *epps* and *rp*
-with k = 5 random projections test. With a significance level at
-*a**l**p**h**a* = 0.05, the initial hypothesis is rejected in both tests
-Therefore, the process **does not** follows a normal distribution.
+with k = 5 random projections tests. With a significance level at
+*a**l**p**h**a* = 0.05, the null hypothesis of non-normality is
+rejected.
 
 ``` r
 set.seed(298)
@@ -93,14 +93,14 @@ epps.test(x)
 #> 
 #> data:  x
 #> epps = 38.158, df = 2, p-value = 5.178e-09
-#> alternative hypothesis: x is not Gaussian
+#> alternative hypothesis: x does not follow a Gaussian Process
 rp.test(x,k = 5)
 #> 
 #>  k random projections test
 #> 
 #> data:  x
 #> k = 5, lobato = 188.771, epps = 28.385, p-value = 0.0007823
-#> alternative hypothesis: x is not Gaussian
+#> alternative hypothesis: x does not follow a Gaussian Process
 ```
 
 Checking model’s assumptions: cardox data
@@ -176,7 +176,7 @@ process. These assumptions can be checked using our *check\_residuals*
 functions.
 
 In this case, we use an Augmented Dickey-Fuller test for stationary
-assumption, and a random projections test for normal distribution.
+assumption, and a random projections test for normality.
 
 ``` r
 check_residuals(model,unit_root = "adf",normality = "rp",plot = TRUE)
@@ -201,10 +201,10 @@ check_residuals(model,unit_root = "adf",normality = "rp",plot = TRUE)
 #> 
 #> data:  y
 #> k = 2, lobato = 3.8260, epps = 1.3156, p-value = 0.3328
-#> alternative hypothesis: y is not Gaussian
+#> alternative hypothesis: y does not follow a Gaussian Process
 #> 
 #> 
-#>  Conclusion: y has a normal distribution
+#>  Conclusion: y follows a Gaussian Process
 #>  
 #>  ***************************************************
 ```
@@ -326,8 +326,7 @@ References
     a wide class of stationary process. *Journal of Econometrics and
     Statistics*. 2, 50-60.
     url:(<a href="http://www.sciencedirect.com/science/article/pii/S2452306216300296" class="uri">http://www.sciencedirect.com/science/article/pii/S2452306216300296</a>).
-    [doi:
-    https://doi.org/10.1016/j.ecosta.2016.11.005](http://www.sciencedirect.com/science/article/pii/S2452306216300296)
+    [doi:https://doi.org/10.1016/j.ecosta.2016.11.005](http://www.sciencedirect.com/science/article/pii/S2452306216300296)
 
 -   Hyndman, R. & Khandakar, Y. (2008). Automatic time series
     forecasting: the forecast package for R. *Journal of Statistical
