@@ -4,9 +4,9 @@
 \name{nortsTest-package}
 \alias{nortsTest-package}
 \alias{nortsTest}
-\title{'An R Package for Assessing Normality Stationary Process.'}
+\title{'Assessing Normality of Stationary Process.'}
 \description{
-This package is for testing normality on stationary process, it tests if a
+This package is for testing normality of stationary process, it tests if a
 given data follows a stationary Gaussian process. The package performs the
 Lobato and Velasco's, Epps, Psaradakis and  Vavra, and the random projections
 tests for stationary process. Some other diagnostics such as, unit root test

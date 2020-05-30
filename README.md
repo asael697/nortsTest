@@ -1,6 +1,6 @@
 <img src="man/figures/logo.png" width = 120 alt="nortsTest Logo"/>
 
-**nortsTest: An R Package for Assessing Normality of Stationary Process**
+**nortsTest: An R Package for Assessing Normality of Stationary ProcessA**
 ======================================================================
 
 **nortsTest** is an R package for assessing normality of stationary

@@ -1,4 +1,4 @@
-#' 'An R Package for Assessing Normality of Stationary Process.'
+#' 'Assessing Normality of Stationary Process.'
 #'
 #' @docType package
 #' @name nortsTest-package
