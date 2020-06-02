@@ -7,7 +7,7 @@
 #'
 #' @param y a numeric vector or an object of the \code{ts} class containing a stationary time series.
 #' @param reps an integer with the total bootstrap repetitions.
-#' @param h an integer with the sieve bootstrap replicates.
+#' @param h an integer with the first \code{burn-in} sieve bootstrap replicates.
 #' @param seed An optional \code{\link[=set.seed]{seed}} to use.
 #'
 #' @return a h.test class with the main results of the Epps hypothesis test. The
@@ -23,9 +23,7 @@
 #' @details
 #' The Psaradakis and Vavra test approximates the empirical distribution
 #' function of the Anderson Darling's statistic, using a sieve bootstrap
-#' approximation. If the time series' length is greater than \code{h}, then \code{h}
-#' value changes to \code{floor(h/2)}. The test was proposed by \emph{Psaradakis,
-#' Z. & Vavra, M (20.17)}.
+#' approximation. The test was proposed by \emph{Psaradakis, Z. & Vavra, M (20.17)}.
 #'
 #' @export
 #'
@@ -88,15 +86,13 @@ vavra.test = function(y,reps = 1000,h = 100,seed = NULL){
 #'
 #' @param y a numeric vector or an object of the \code{ts} class containing a stationary time series.
 #' @param reps an integer with the total bootstrap repetitions.
-#' @param h an integer with the sieve bootstrap replicates.
+#' @param h an integer with the first \code{burn-in} sieve bootstrap replicates.
 #' @param seed An optional \code{\link[=set.seed]{seed}} to use.
 #'
 #' @details
 #' The Vavra test approximates the empirical distribution function of the
 #' Anderson-Darlings statistic, using a sieve bootstrap approximation.
-#' If the time series' length is greater than h, then h value changes
-#' to \code{floor(h/2)}. The test was proposed by \emph{Psaradakis, Z. &
-#' Vavra, M (20.17)}.
+#' The test was proposed by \emph{Psaradakis, Z. & Vavra, M (20.17)}.
 #'
 #' This function is the equivalent of \code{xarsieve} of
 #' \emph{Psaradakis, Z. &  Vavra, M (20.17)}.
@@ -138,10 +134,9 @@ vavra.sample = function(y,reps = 1000,h = 100,seed = NULL){
   if (!is.null(seed))
     set.seed(seed)
 
-  n = length(y);h1 = h
-  if(n >= h) h1 = floor(h/2)
+  n = length(y)
 
-  yrep = sieve.bootstrap(y = as.numeric(y),reps = reps,seed = seed,h = h1)
+  yrep = sieve.bootstrap(y = as.numeric(y),reps = reps,seed = seed,h = h)
   adb = apply(yrep, 1,ad.statistic)
   return(adb)
 }
@@ -155,7 +150,7 @@ vavra.sample = function(y,reps = 1000,h = 100,seed = NULL){
 #' @param reps an integer with the total bootstrap repetitions.
 #' @param pmax an integer with the max considered lags for the generated \code{ar(p)} process.
 #' By default, \code{pmax = NULL}.
-#' @param h an integer with the sieve bootstrap replicates.
+#' @param h an integer with the first \code{burn-in} sieve bootstrap replicates.
 #' @param seed An optional \code{\link[=set.seed]{seed}} to use.
 #'
 #' @return A matrix or \code{reps} row and \code{n} columns, with the sieve bootstrap

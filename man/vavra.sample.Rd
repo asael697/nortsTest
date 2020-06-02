@@ -11,7 +11,7 @@ vavra.sample(y,reps = 1000,h = 100,seed = NULL)
 
 \item{reps}{an integer with the total bootstrap repetitions.}
 
-\item{h}{an integer with the sieve bootstrap replicates.}
+\item{h}{an integer with the first \code{burn-in} sieve bootstrap replicates.}
 
 \item{seed}{An optional \code{\link[=set.seed]{seed}} to use.}
 }
@@ -25,9 +25,7 @@ statistic test.
 \details{
 The Vavra test approximates the empirical distribution function of the
 Anderson-Darlings statistic, using a sieve bootstrap approximation.
-If the time series' length is greater than h, then h value changes
-to \code{floor(h/2)}. The test was proposed by \emph{Psaradakis, Z. &
-Vavra, M (20.17)}.
+The test was proposed by \emph{Psaradakis, Z. & Vavra, M (20.17)}.
 
 This function is the equivalent of \code{xarsieve} of
 \emph{Psaradakis, Z. &  Vavra, M (20.17)}.

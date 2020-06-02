@@ -14,7 +14,7 @@ sieve.bootstrap(y,reps = 1000,pmax = NULL,h = 100,seed = NULL)
 \item{pmax}{an integer with the max considered lags for the generated \code{ar(p)} process.
 By default, \code{pmax = NULL}.}
 
-\item{h}{an integer with the sieve bootstrap replicates.}
+\item{h}{an integer with the first \code{burn-in} sieve bootstrap replicates.}
 
 \item{seed}{An optional \code{\link[=set.seed]{seed}} to use.}
 }
