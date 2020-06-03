@@ -22,7 +22,8 @@
 #' The Epps test minimize the process' empirical characteristic function using a
 #' quadratic loss in terms of the process two first moments. The test was proposed
 #' by \emph{Epps, T.W. (1987)} and implemented by \emph{Nieto-Reyes, A.,
-#' Cuesta-Albertos, J. & Gamboa, F. (2014)}.
+#' Cuesta-Albertos, J. & Gamboa, F. (2014)} using the \code{amoebam()} function of
+#' \emph{Press, W.H., Teukolsky, S.A., Vetterling, W.T. and  Flannery, B.P. (2007)}.
 #'
 #' @export
 #'
@@ -40,6 +41,11 @@
 #' Statistics & Data Analysis, Elsevier}, vol. 75(C), pages 124-141.
 #' \url{http://www.sciencedirect.com/science/article/pii/S0167947314000243}
 #' \code{doi:https://doi.org/10.1016/j.csda.2014.01.013}.
+#'
+#' Press, W.H., Teukolsky, S.A., Vetterling, W.T. and  Flannery, B.P. (2007).
+#' Numerical Recipes. The Art of Scientific Computing. \emph{Cambridge
+#' University Press}.\code{doi:10.1080/00029890.1987.12000737}
+#' \url{https://doi.org/10.1080/00029890.1987.12000737}.
 #'
 #' @examples
 #' # Generating an stationary arma process

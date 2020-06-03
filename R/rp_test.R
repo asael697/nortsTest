@@ -45,7 +45,7 @@
 #'
 #' @export
 #'
-#' @author Asael Alonzo Matamoros
+#' @author Asael Alonzo Matamoros and Alicia Nieto-Reyes.
 #'
 #' @seealso \code{\link{lobato.test}} \code{\link{epps.test}}
 #'

@@ -80,5 +80,5 @@ Lobato, I., & Velasco, C. (2004). A simple test of normality in time series.
 \code{\link{lobato.test}} \code{\link{epps.test}}
 }
 \author{
-Asael Alonzo Matamoros
+Asael Alonzo Matamoros and Alicia Nieto-Reyes.
 }
