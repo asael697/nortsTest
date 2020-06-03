@@ -1,6 +1,6 @@
 <img src="man/figures/logo.png" width = 120 alt="nortsTest Logo"/>
 
-**nortsTest: An R Package for Assessing Normality of Stationary ProcessA**
+**nortsTest: An R Package for Assessing Normality of Stationary Process**
 ======================================================================
 
 **nortsTest** is an R package for assessing normality of stationary
@@ -277,7 +277,7 @@ time-series data. Most of the functions were adapted from Rob Hyndman’s
 Accepted models for residual check
 ----------------------------------
 
-Currently our check\_residuals() and check\_plot() mthods are valid for
+Currently our check\_residuals() and check\_plot() methods are valid for
 the current models and classes:
 
 -   **ts**: for uni variate time series
