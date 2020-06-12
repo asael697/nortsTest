@@ -101,7 +101,7 @@ vavra.test = function(y,reps = 1000,h = 100,seed = NULL){
 #'
 #' @export
 #'
-#' @author Marian Vavra and Asael Alonzo Matamoros.
+#' @author Asael Alonzo Matamoros.
 #'
 #' @keywords Psaradakis and  Vavra's test, bootstrap sieve, xarsieve
 #'
