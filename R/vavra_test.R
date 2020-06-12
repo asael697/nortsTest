@@ -166,7 +166,7 @@ vavra.sample = function(y,reps = 1000,h = 100,seed = NULL){
 #' @importFrom stats arima
 #' @export
 #'
-#' @author Marian Vavra and Asael Alonzo Matamoros
+#' @author Asael Alonzo Matamoros
 #'
 #' @seealso \code{\link{lobato.test}},\code{\link{epps.test}}
 #'

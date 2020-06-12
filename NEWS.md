@@ -1,6 +1,15 @@
 **Packages NEWS and Updates**
 ============
 
+
+**nortsTest 1.0.0 Date: 12/06/2020**
+----------------------------------
+
+### Fixes:
+
+- Big fix for CRAN submission.
+
+
 **nortsTest 1.0.0 Date: 09/05/2020**
 ----------------------------------
 

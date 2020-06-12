@@ -34,10 +34,9 @@
 #' \code{doi:https://doi.org/10.1016/j.csda.2014.01.013}.
 #'
 #' @examples
-#' \dontrun{
-#'  # rejection rate for a Gaussian AR(1) process with phi = 0.5 and lobatos test
-#'  rejection_rate(n = 100,phi = 0.5)
-#' }
+#' # rejection rate for a Gaussian AR(1) process with phi = 0.5 and lobatos test
+#' nortsTest:::rejection_rate(reps = 1,n = 100,phi = 0.5)
+#'
 #'
 rejection_rate = function(reps = 1000,n = 100,dist = rnorm,seed = NULL,htest = "lobato",
                           alpha = 0.05,k = 2,phi = 0.5,sd = 1,...){
@@ -101,10 +100,8 @@ rejection_rate = function(reps = 1000,n = 100,dist = rnorm,seed = NULL,htest = "
 #' \code{doi:https://doi.org/10.1016/j.csda.2014.01.013}.
 #'
 #' @examples
-#' \dontrun{
-#'  # rejection rate for a Gaussian AR(1) process with phi = 0.5 and lobatos test
-#'  rejection_table(n = 100)
-#' }
+#' # rejection rate for a Gaussian AR(1) process with phi = 0.5 and lobatos test
+#' nortsTest:::rejection_table(reps = 1,n = 100)
 #'
 rejection_table = function(reps = 1000,n = 100,phi = c(-0.4,-0.25,0.0,0.25,0.4),
                            seed = NULL,htest = "lobato",alpha = 0.05,k = 2){

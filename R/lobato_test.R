@@ -80,7 +80,7 @@ lobato.test = function(y, c = 1){
 
   rval <- list(statistic =tstat, parameter = df, p.value = pval,
                alternative = alt,
-               method = "Lobatos and Velascos test", data.name = dname)
+               method = "Lobato and Velasco's test", data.name = dname)
   class(rval) <- "htest"
   return(rval)
 }
@@ -106,7 +106,7 @@ lobato.test = function(y, c = 1){
 #'
 #' @author Alicia Nieto-Reyes and Asael Alonzo Matamoros.
 #'
-#' @keywords Lobato and Velasco's test, G.statistic
+#' @keywords Lobato and Velasco's test  G.statistic
 #'
 #' @seealso \code{\link{epps.statistic}}
 #'

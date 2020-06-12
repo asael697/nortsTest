@@ -52,4 +52,4 @@ Alicia Nieto-Reyes and Asael Alonzo Matamoros.
 \keyword{Lobato}
 \keyword{Velasco's}
 \keyword{and}
-\keyword{test,}
+\keyword{test}

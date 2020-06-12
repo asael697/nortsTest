@@ -82,7 +82,7 @@ epps.test = function(y){
 
   rval <- list(statistic =tstat, parameter = df, p.value = pval,
                  alternative = alt,
-                 method = "epps test", data.name = dname)
+                 method = "Epps test", data.name = dname)
   class(rval) <- "htest"
   return(rval)
 }

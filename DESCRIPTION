@@ -3,7 +3,9 @@ Title: Assessing Normality of Stationary Process
 Version: 1.0.0
 Authors@R: c(
   person("Asael","Alonzo Matamoros", role = c("aut", "cre"),email = "asael.alonzo@gmail.com"),
-  person("Alicia","Nieto-Reyes", role = 'aut', email = "alicia.nieto@unican.es")
+  person("Alicia","Nieto-Reyes", role = 'aut', email = "alicia.nieto@unican.es"),
+  person("Rob", "Hyndman", email="Rob.Hyndman@monash.edu", role = "ctb"),
+  person("Mitchell", "O'Hara-Wild", role = "ctb")
   )
 Description: This package is for testing normality of stationary process, it tests if a given 
     data follows a stationary Gaussian process. The package performs the Lobato and Velasco's, 
@@ -11,7 +13,7 @@ Description: This package is for testing normality of stationary process, it tes
     other diagnostics such as, unit root test for stationarity, seasonal tests for seasonality, 
     and arch effect test for volatility; are also performed. The package also offers residual 
     diagnostic for linear time series models developed in several packages.
-License: MIT + file LICENSE
+License: LGPL
 Encoding: UTF-8
 LazyData: true
 NeedsCompilation: no

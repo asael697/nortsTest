@@ -3,7 +3,7 @@
 #' Performs the random projection test for normality. The null hypothesis (H0) is that the given data
 #' follows a stationary Gaussian process, and k is the number of used random projections.
 #'
-#' @usage  rp.test(y,k = 2,FDR = FALSE,pars1 = c(100,1),pars2  = c(2,7),seed = NULL)
+#' @usage  rp.test(y,k = 64,FDR = FALSE,pars1 = c(100,1),pars2  = c(2,7),seed = NULL)
 #'
 #' @param y a numeric vector or an object of the \code{ts} class containing a stationary time series.
 #' @param k an integer with the number of random projections to be used, by default
@@ -69,7 +69,7 @@
 #' y = arima.sim(100,model = list(ar = 0.3))
 #' rp.test(y)
 #'
-rp.test = function(y,k = 2,FDR = FALSE,pars1 = c(100,1),pars2 = c(2,7),seed = NULL){
+rp.test = function(y,k = 64,FDR = FALSE,pars1 = c(100,1),pars2 = c(2,7),seed = NULL){
 
   if( !is.numeric(y) & !is(y,class2 = "ts") )
     stop("y object must be numeric or a time series")

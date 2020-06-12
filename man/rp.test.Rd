@@ -4,7 +4,7 @@
 \alias{rp.test}
 \title{The k random projections test for normality}
 \usage{
-rp.test(y,k = 2,FDR = FALSE,pars1 = c(100,1),pars2  = c(2,7),seed = NULL)
+rp.test(y,k = 64,FDR = FALSE,pars1 = c(100,1),pars2  = c(2,7),seed = NULL)
 }
 \arguments{
 \item{y}{a numeric vector or an object of the \code{ts} class containing a stationary time series.}
