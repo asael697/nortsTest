@@ -54,9 +54,3 @@ and cointegration. \emph{Journal of Econometrics} 44(1), 215-238.
 \author{
 Asael Alonzo Matamoros
 }
-\keyword{root}
-\keyword{seasonality}
-\keyword{series,}
-\keyword{test,}
-\keyword{time}
-\keyword{unit}

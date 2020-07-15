@@ -44,12 +44,9 @@ vavra.test(y)
 \references{
 Psaradakis, Z. & Vavra, M. (2017). A distance test of normality for a wide class
 of stationary process. \emph{Journal of Econometrics and Statistics}. 2, 50-60.
-\url{http://www.sciencedirect.com/science/article/pii/S2452306216300296"}.
-\code{doi: https://doi.org/10.1016/j.ecosta.2016.11.005}.
 
 Bulmann, P. (1997). Sieve Bootstrap for time series. \emph{Bernoulli}.
-3(2), 123 -148. \url{http://www.jstor.org/stable/3318584}
-\code{doi:10.2307/3318584}
+3(2), 123 -148.
 }
 \seealso{
 \code{\link{lobato.test}},\code{\link{epps.test}}

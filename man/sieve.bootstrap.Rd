@@ -27,7 +27,7 @@ The function generates a sieve bootstrap sample for a univariate stochastic proc
 }
 \details{
 simulates bootstrap samples for the stochastic process y, using a stationary
-autoregressive model of order \code{"pmax"}, \code{AR(pmax)}. If \code{pmax = NULL} (\emph{default}),
+auto-regressive model of order \code{"pmax"}, \code{AR(pmax)}. If \code{pmax = NULL} (\emph{default}),
 the function estimates the process maximum lags using an \code{AIC} as a model
 selection criteria.
 }
@@ -39,8 +39,7 @@ M = sieve.bootstrap(y)
 }
 \references{
 Bulmann, P. (1997). Sieve Bootstrap for time series. \emph{Bernoulli}.
-3(2), 123 -148. \url{http://www.jstor.org/stable/3318584}
-\code{doi:10.2307/3318584}
+3(2), 123 -148.
 }
 \seealso{
 \code{\link{lobato.test}},\code{\link{epps.test}}

@@ -53,7 +53,7 @@ Phillips, P. & Perron, P. (1988). Testing for a unit root in time series regress
 \emph{Biometrika}. 72(2), 335-346.
 
 Ljung, G. M. & Box, G. E. P. (1978). On a measure of lack of fit in time series models.
-\emph{Biometrika}. 65, 297-303. \code{doi: 10.2307/2335207}.
+\emph{Biometrika}. 65, 297-303.
 }
 \seealso{
 \code{\link{normal.test}},\code{\link{seasonal.test}}
@@ -61,9 +61,3 @@ Ljung, G. M. & Box, G. E. P. (1978). On a measure of lack of fit in time series 
 \author{
 Asael Alonzo Matamoros and A. Trapletti
 }
-\keyword{root}
-\keyword{series,}
-\keyword{stationary}
-\keyword{test,}
-\keyword{time}
-\keyword{unit}

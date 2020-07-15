@@ -68,6 +68,12 @@ The function performs a residuals analysis, it prints a unit root and seasonal t
 stationarity, and a normality test for checking  Gaussian distribution. In addition, if the plot option is
 \code{TRUE} a time plot, ACF, and histogram of the series are presented.
 }
+\examples{
+# Generating an stationary arma process
+y = arima.sim(100,model = list(ar = 0.3))
+check_residuals(y,unit_root = "adf")
+
+}
 \references{
 Dickey, D. & Fuller, W. (1979). Distribution of the Estimators for
 Autoregressive Time Series with a Unit Root. \emph{Journal of the American

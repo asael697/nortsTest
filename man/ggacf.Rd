@@ -23,5 +23,5 @@ ggacf(x)
 
 }
 \author{
-Mitchell O'Hara-Wild and Asael Alonzo Matamoros
+Asael Alonzo Matamoros
 }

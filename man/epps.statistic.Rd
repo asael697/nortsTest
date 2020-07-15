@@ -30,19 +30,15 @@ epps.statistic(y)
 }
 \references{
 Epps, T.W. (1987). Testing that a stationary time series is Gaussian. \emph{The
-Annals of Statistic}. 15(4), 1683-1698.\url{http://www.jstor.org/stable/2336512}.
-\code{doi:10.1214/aos/1176350618}
+Annals of Statistic}. 15(4), 1683-1698.
 
 Nieto-Reyes, A., Cuesta-Albertos, J. & Gamboa, F. (2014). A random-projection
 based test of Gaussianity for stationary processes. \emph{Computational
 Statistics & Data Analysis, Elsevier}, vol. 75(C), pages 124-141.
-\url{http://www.sciencedirect.com/science/article/pii/S0167947314000243}
-\code{doi:https://doi.org/10.1016/j.csda.2014.01.013}.
 
 Press, W.H., Teukolsky, S.A., Vetterling, W.T. and  Flannery, B.P. (2007).
 Numerical Recipes. The Art of Scientific Computing. \emph{Cambridge
-University Press}.\code{doi:10.1080/00029890.1987.12000737}
-\url{https://doi.org/10.1080/00029890.1987.12000737}.
+University Press}.
 }
 \seealso{
 \code{\link{lobato.statistic}}

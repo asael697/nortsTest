@@ -30,15 +30,14 @@ Generic function for a visual check of residuals in time series models, these me
 the \code{check.residuals} function provided by the \code{forecast} package.
 }
 \examples{
-\dontrun{
- y = arima.sim(100,model = list(ar = 0.3))
-  check_plot(y)
-}
+y = arima.sim(100,model = list(ar = 0.3))
+check_plot(y)
+
 
 }
 \seealso{
 \code{check_residuals}
 }
 \author{
-Mitchell O'Hara-Wild and Asael Alonzo Matamoros
+Asael Alonzo Matamoros
 }

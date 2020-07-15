@@ -5,23 +5,18 @@
 
 **nortsTest** is an R package for assessing normality of stationary
 process, it tests if a given data follows a stationary Gaussian process.
-The package works as an extension of the
-[nortest](https://cran.r-project.org/web/packages/nortest/index.html)
-package that performs normality tests in random samples (*independent
-data*). The four principal package’s functions are:
+The package works as an extension of the **nortest** package that performs 
+normality tests in random samples (*independent data*). The four principal 
+package’s functions are:
 
--   epps.test() function that implements the [Epps
-    test](https://projecteuclid.org/euclid.aos/1176350618),
+-   epps.test() function that implements the [Epps test](https://projecteuclid.org/euclid.aos/1176350618),
 
--   lobato.test() function that implements the [Lobato and Velasco’s
-    test](https://www.researchgate.net/publication/23564884),
+-   lobato.test() function that implements the [Lobato and Velasco’s test](https://www.researchgate.net/publication/23564884),
 
--   vavra.test() function that implements the [Psaradaki and Vavra’s
-    test](http://www.applied-econometrics.com),
+-   vavra.test() function that implements the [Psaradaki and Vavra’s test](http://www.applied-econometrics.com),
 
 -   rp.test() function that implements the random projections test of
-    [Nieto-Reyes, Cuesta-Albertos and Gamboa’s
-    test](https://www.sciencedirect.com/science/article/pii/S0167947314000243?via%3Dihub).
+    [Nieto-Reyes, Cuesta-Albertos and Gamboa’s test](https://www.sciencedirect.com/science/article/pii/S0167947314000243?via%3Dihub).
 
 Additionally, inspired in the function *check.residuals()* of the
 [forecast package](https://www.jstatsoft.org/article/view/v027i03), we
@@ -107,14 +102,12 @@ Checking model’s assumptions: cardox data
 -----------------------------------------
 
 As an example, we analyze the monthly mean carbon dioxide (*in ppm*)
-from the [astsa
-package](https://cran.r-project.org/web/packages/astsa/index.html),
-measured at Mauna Loa Observatory, Hawaii.from March, 1958 to November
-2018. The carbon dioxide data measured as the mole fraction in dry air,
-on Mauna Loa constitute the longest record of direct measurements of CO2
-in the atmosphere. They were started by C. David Keeling of the Scripps
-Institution of Oceanography in March of 1958 at a facility of the
-National Oceanic and Atmospheric Administration.
+from the **astsa package**, measured at Mauna Loa Observatory, Hawaii.
+from March, 1958 to November 2018. The carbon dioxide data measured as 
+the mole fraction in dry air, on Mauna Loa constitute the longest record 
+of direct measurements of CO2 in the atmosphere. They were started by C. 
+David Keeling of the Scripps Institution of Oceanography in March of 1958 
+at a facility of the National Oceanic and Atmospheric Administration.
 
 ``` r
 library(astsa)
@@ -128,8 +121,7 @@ size = 1,main = "Carbon Dioxide Levels at Mauna Loa")
 
 The time series clearly has trend and seasonal components, for analyzing
 the *cardox* data we proposed a Gaussian linear state space model. We
-use the model’s implementation from the [forecast
-package](https://github.com/robjhyndman/forecast) as follows:
+use the model’s implementation from the [forecast package](https://github.com/robjhyndman/forecast) as follows:
 
 ``` r
 library(forecast)
@@ -309,24 +301,21 @@ References
 -   Epps, T.W. (1987). Testing that a stationary time series is
     Gaussian. *The Annals of Statistic*. 15(4), 1683-1698. Url:
     (<a href="http://www.jstor.org/stable/2336512" class="uri">http://www.jstor.org/stable/2336512</a>).
-    [doi:10.1214/aos/1176350618](http://www.jstor.org/stable/2336512)
 
 -   Nieto-Reyes, A., Cuesta-Albertos, J. & Gamboa, F. (2014). A
     random-projection based test of Gaussianity for stationary
     processes. *Computational Statistics & Data Analysis, Elsevier*.
     75(C), 124-141.
     url:(<a href="http://www.sciencedirect.com/science/article/pii/S0167947314000243" class="uri">http://www.sciencedirect.com/science/article/pii/S0167947314000243</a>).
-    [doi:https://doi.org/10.1016/j.csda.2014.01.013](ttp://www.sciencedirect.com/science/article/pii/S0167947314000243)
+
 
 -   Lobato, I., & Velasco, C. (2004). A simple test of normality for
     time series. *Journal Econometric Theory*. 20(4), 671-689.
-    [doi:10.1017/S0266466604204030]().
 
 -   Psaradakis, Z. & Vavra, M. (2017). A distance test of normality for
     a wide class of stationary process. *Journal of Econometrics and
     Statistics*. 2, 50-60.
     url:(<a href="http://www.sciencedirect.com/science/article/pii/S2452306216300296" class="uri">http://www.sciencedirect.com/science/article/pii/S2452306216300296</a>).
-    [doi:https://doi.org/10.1016/j.ecosta.2016.11.005](http://www.sciencedirect.com/science/article/pii/S2452306216300296)
 
 -   Hyndman, R. & Khandakar, Y. (2008). Automatic time series
     forecasting: the forecast package for R. *Journal of Statistical

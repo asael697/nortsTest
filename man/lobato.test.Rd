@@ -44,13 +44,10 @@ lobato.test(y)
 \references{
 Lobato, I., & Velasco, C. (2004). A simple test of normality in time series.
 \emph{Journal of econometric theory}. 20(4), 671-689.
-\url{doi:10.1017/S0266466604204030}
 
 Nieto-Reyes, A., Cuesta-Albertos, J. & Gamboa, F. (2014). A random-projection
 based test of Gaussianity for stationary processes. \emph{Computational
 Statistics & Data Analysis, Elsevier}, vol. 75(C), pages 124-141.
-\url{http://www.sciencedirect.com/science/article/pii/S0167947314000243}
-\code{doi:https://doi.org/10.1016/j.csda.2014.01.013}.
 }
 \seealso{
 \code{\link{lobato.statistic}},\code{\link{epps.test}}

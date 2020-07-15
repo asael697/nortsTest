@@ -41,9 +41,7 @@
 #' \emph{Biometrika}. 72(2), 335-346.
 #'
 #' Ljung, G. M. & Box, G. E. P. (1978). On a measure of lack of fit in time series models.
-#' \emph{Biometrika}. 65, 297-303. \code{doi: 10.2307/2335207}.
-#'
-#' @keywords unit root test, time series, stationary
+#' \emph{Biometrika}. 65, 297-303.
 #'
 #' @examples
 #' #  stationary  ar process
@@ -137,32 +135,24 @@ uroot.test = function(y,unit_root = "adf",alpha = 0.05){
 #'
 #' @references
 #' Epps, T.W. (1987). Testing that a stationary time series is Gaussian. \emph{The
-#' Annals of Statistic}. 15(4), 1683-1698.\url{http://www.jstor.org/stable/2336512}.
-#' \code{doi:10.1214/aos/1176350618}
+#' Annals of Statistic}. 15(4), 1683-1698.
 #'
 #' Lobato, I., & Velasco, C. (2004). A simple test of normality in time series.
 #' \emph{Journal of econometric theory}. 20(4), 671-689.
-#' \url{doi:10.1017/S0266466604204030}
 #'
 #' Psaradakis, Z. & Vavra, M. (2017). A distance test of normality for a wide class
 #' of stationary process. \emph{Journal of Econometrics and Statistics}. 2, 50-60.
-#' \url{http://www.sciencedirect.com/science/article/pii/S2452306216300296}.
-#' \code{doi: https://doi.org/10.1016/j.ecosta.2016.11.005}.
 #'
 #' Nieto-Reyes, A., Cuesta-Albertos, J. & Gamboa, F. (2014). A random-projection
 #' based test of Gaussianity for stationary processes. \emph{Computational
 #' Statistics & Data Analysis, Elsevier}, vol. 75(C), pages 124-141.
-#' \url{http://www.sciencedirect.com/science/article/pii/S0167947314000243}
-#' \code{doi:https://doi.org/10.1016/j.csda.2014.01.013}.
 #'
 #' Patrick, R. (1982). An extension of Shapiro and Wilk's W test for
 #' normality to large samples. \emph{Journal of Applied Statistics}.
-#' 31, 115-124. \code{doi: 10.2307/2347973}.
+#' 31, 115-124.
 #'
 #' Cromwell, J. B., Labys, W. C. & Terraza, M. (1994). Univariate Tests for
 #' Time Series Models. \emph{Sage, Thousand Oaks, CA}. 20-22.
-#'
-#' @keywords time series, stationarity, normal distribution
 #'
 #' @examples
 #' #  stationary  ar process
@@ -288,8 +278,6 @@ normal.test = function(y,normality = "epps",alpha = 0.05){
 #' Hylleberg, S., Engle, R., Granger, C. & Yoo, B. (1990). Seasonal integration
 #' and cointegration. \emph{Journal of Econometrics} 44(1), 215-238.
 #'
-#' @keywords unit root test, time series, seasonality
-#'
 #' @examples
 #' #  stationary  ar process
 #' y = ts(rnorm(100),frequency = 6)
@@ -367,18 +355,13 @@ seasonal.test = function(y,seasonal = "ocsb",alpha = 0.05){
 #' @seealso \code{\link{normal.test}},\code{\link{seasonal.test}},\code{\link{uroot.test}}
 #'
 #' @references
-#' Engle, R. F. (1982). Autoregressive Conditional Heteroscedasticity
+#' Engle, R. F. (1982). Auto-regressive Conditional Heteroscedasticity
 #' with Estimates of the Variance of United Kingdom Inflation.
 #' \emph{Econometrica}. 50(4), 987-1007.
-#' \code{doi:https://doi.org/0012-9682(198207)50:4<987:ACHWEO>2.0.CO;2-3}
 #'
 #' McLeod, A. I. & W. K. Li. (1984). Diagnostic Checking ARMA Time Series
-#' Models Using Squared-Residual Autocorrelations. \emph{Journal of Time
+#' Models Using Squared-Residual Auto-correlations. \emph{Journal of Time
 #' Series Analysis.} 4, 269-273.
-#' \code{doi: https://doi.org/10.1111/j.1467-9892.1983.tb00373.x}
-#'
-#'
-#' @keywords time series, stationary, arch effect, heteroscedastic
 #'
 #' @examples
 #' #  stationary  ar process

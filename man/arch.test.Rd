@@ -41,15 +41,13 @@ arch.test(y)
 
 }
 \references{
-Engle, R. F. (1982). Autoregressive Conditional Heteroscedasticity
+Engle, R. F. (1982). Auto-regressive Conditional Heteroscedasticity
 with Estimates of the Variance of United Kingdom Inflation.
 \emph{Econometrica}. 50(4), 987-1007.
-\code{doi:https://doi.org/0012-9682(198207)50:4<987:ACHWEO>2.0.CO;2-3}
 
 McLeod, A. I. & W. K. Li. (1984). Diagnostic Checking ARMA Time Series
-Models Using Squared-Residual Autocorrelations. \emph{Journal of Time
+Models Using Squared-Residual Auto-correlations. \emph{Journal of Time
 Series Analysis.} 4, 269-273.
-\code{doi: https://doi.org/10.1111/j.1467-9892.1983.tb00373.x}
 }
 \seealso{
 \code{\link{normal.test}},\code{\link{seasonal.test}},\code{\link{uroot.test}}
@@ -57,9 +55,3 @@ Series Analysis.} 4, 269-273.
 \author{
 Asael Alonzo Matamoros
 }
-\keyword{arch}
-\keyword{effect,}
-\keyword{heteroscedastic}
-\keyword{series,}
-\keyword{stationary,}
-\keyword{time}

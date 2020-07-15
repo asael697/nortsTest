@@ -263,7 +263,7 @@ ggnorm = function(y,title = NULL,add.normal = TRUE){
 #'
 #' @return None.
 #'
-#' @author Mitchell O'Hara-Wild and Asael Alonzo Matamoros
+#' @author Asael Alonzo Matamoros
 #'
 #' @import forecast
 #' @export
@@ -329,7 +329,7 @@ check_plot<- function(y,...) {
 #'
 #' @return A graph object from ggplot2
 #'
-#' @author Mitchell O'Hara-Wild and Asael Alonzo Matamoros
+#' @author Asael Alonzo Matamoros
 #'
 #' @seealso \code{check_residuals}
 #'
@@ -338,10 +338,9 @@ check_plot<- function(y,...) {
 #' @export
 #'
 #' @examples
-#' \dontrun{
-#'  y = arima.sim(100,model = list(ar = 0.3))
-#'   check_plot(y)
-#' }
+#' y = arima.sim(100,model = list(ar = 0.3))
+#' check_plot(y)
+#'
 #'
 check_plot.ts = function(y,model = " ",...){
 

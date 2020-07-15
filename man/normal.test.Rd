@@ -48,27 +48,21 @@ normal.test(y,normality = "ad")
 }
 \references{
 Epps, T.W. (1987). Testing that a stationary time series is Gaussian. \emph{The
-Annals of Statistic}. 15(4), 1683-1698.\url{http://www.jstor.org/stable/2336512}.
-\code{doi:10.1214/aos/1176350618}
+Annals of Statistic}. 15(4), 1683-1698.
 
 Lobato, I., & Velasco, C. (2004). A simple test of normality in time series.
 \emph{Journal of econometric theory}. 20(4), 671-689.
-\url{doi:10.1017/S0266466604204030}
 
 Psaradakis, Z. & Vavra, M. (2017). A distance test of normality for a wide class
 of stationary process. \emph{Journal of Econometrics and Statistics}. 2, 50-60.
-\url{http://www.sciencedirect.com/science/article/pii/S2452306216300296}.
-\code{doi: https://doi.org/10.1016/j.ecosta.2016.11.005}.
 
 Nieto-Reyes, A., Cuesta-Albertos, J. & Gamboa, F. (2014). A random-projection
 based test of Gaussianity for stationary processes. \emph{Computational
 Statistics & Data Analysis, Elsevier}, vol. 75(C), pages 124-141.
-\url{http://www.sciencedirect.com/science/article/pii/S0167947314000243}
-\code{doi:https://doi.org/10.1016/j.csda.2014.01.013}.
 
 Patrick, R. (1982). An extension of Shapiro and Wilk's W test for
 normality to large samples. \emph{Journal of Applied Statistics}.
-31, 115-124. \code{doi: 10.2307/2347973}.
+31, 115-124.
 
 Cromwell, J. B., Labys, W. C. & Terraza, M. (1994). Univariate Tests for
 Time Series Models. \emph{Sage, Thousand Oaks, CA}. 20-22.
@@ -79,8 +73,3 @@ Time Series Models. \emph{Sage, Thousand Oaks, CA}. 20-22.
 \author{
 Asael Alonzo Matamoros
 }
-\keyword{distribution}
-\keyword{normal}
-\keyword{series,}
-\keyword{stationarity,}
-\keyword{time}

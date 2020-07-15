@@ -56,16 +56,12 @@ rp.test(y)
 Nieto-Reyes, A., Cuesta-Albertos, J. & Gamboa, F. (2014). A random-projection
 based test of Gaussianity for stationary processes. \emph{Computational
 Statistics & Data Analysis, Elsevier}, vol. 75(C), pages 124-141.
-\url{http://www.sciencedirect.com/science/article/pii/S0167947314000243}
-\code{doi:https://doi.org/10.1016/j.csda.2014.01.013}.
 
 Epps, T.W. (1987). Testing that a stationary time series is Gaussian. \emph{The
-Annals of Statistic}. 15(4), 1683-1698.\url{http://www.jstor.org/stable/2336512}.
-\code{doi:10.1214/aos/1176350618}
+Annals of Statistic}. 15(4), 1683-1698.
 
 Lobato, I., & Velasco, C. (2004). A simple test of normality in time series.
 \emph{Journal of econometric theory}. 20(4), 671-689.
-\url{doi:10.1017/S0266466604204030}
 }
 \seealso{
 \code{\link{lobato.test}} \code{\link{epps.test}}

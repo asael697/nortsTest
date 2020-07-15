@@ -30,8 +30,6 @@
 #' Nieto-Reyes, A., Cuesta-Albertos, J. & Gamboa, F. (2014). A random-projection
 #' based test of Gaussianity for stationary processes. \emph{Computational
 #' Statistics & Data Analysis, Elsevier}, vol. 75(C), pages 124-141.
-#' \url{http://www.sciencedirect.com/science/article/pii/S0167947314000243}
-#' \code{doi:https://doi.org/10.1016/j.csda.2014.01.013}.
 #'
 #' @examples
 #' # rejection rate for a Gaussian AR(1) process with phi = 0.5 and lobatos test
@@ -39,7 +37,7 @@
 #'
 #'
 rejection_rate = function(reps = 1000,n = 100,dist = rnorm,seed = NULL,htest = "lobato",
-                          alpha = 0.05,k = 2,phi = 0.5,sd = 1,...){
+                          alpha = 0.05,k = 64,phi = 0.5,sd = 1,...){
 
   if (!is.null(seed))
     set.seed(seed)
@@ -96,15 +94,13 @@ rejection_rate = function(reps = 1000,n = 100,dist = rnorm,seed = NULL,htest = "
 #' Nieto-Reyes, A., Cuesta-Albertos, J. & Gamboa, F. (2014). A random-projection
 #' based test of Gaussianity for stationary processes. \emph{Computational
 #' Statistics & Data Analysis, Elsevier}, vol. 75(C), pages 124-141.
-#' \url{http://www.sciencedirect.com/science/article/pii/S0167947314000243}
-#' \code{doi:https://doi.org/10.1016/j.csda.2014.01.013}.
 #'
 #' @examples
 #' # rejection rate for a Gaussian AR(1) process with phi = 0.5 and lobatos test
 #' nortsTest:::rejection_table(reps = 1,n = 100)
 #'
 rejection_table = function(reps = 1000,n = 100,phi = c(-0.4,-0.25,0.0,0.25,0.4),
-                           seed = NULL,htest = "lobato",alpha = 0.05,k = 2){
+                           seed = NULL,htest = "lobato",alpha = 0.05,k = 64){
 
   if (!is.null(seed))
     set.seed(seed)

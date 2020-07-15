@@ -34,12 +34,9 @@
 #' @references
 #' Psaradakis, Z. & Vavra, M. (2017). A distance test of normality for a wide class
 #' of stationary process. \emph{Journal of Econometrics and Statistics}. 2, 50-60.
-#' \url{http://www.sciencedirect.com/science/article/pii/S2452306216300296"}.
-#' \code{doi: https://doi.org/10.1016/j.ecosta.2016.11.005}.
 #'
 #' Bulmann, P. (1997). Sieve Bootstrap for time series. \emph{Bernoulli}.
-#' 3(2), 123 -148. \url{http://www.jstor.org/stable/3318584}
-#' \code{doi:10.2307/3318584}
+#' 3(2), 123 -148.
 #'
 #' @examples
 #' # Generating an stationary arma process
@@ -54,6 +51,18 @@ vavra.test = function(y,reps = 1000,h = 100,seed = NULL){
   if(NA %in% y )
     stop("The time series contains missing values")
 
+  # checking stationarity
+  cc = uroot.test(y)
+  if(!cc$stationary)
+    warning("y has a unit root, vavra.test requires stationary process")
+
+  # checking seasonality
+  if(frequency(y) > 1){
+    cc = seasonal.test(y)
+    if(cc$seasonal)
+      warning("y has a seasonal unit root, vavra.test requires stationary process")
+  }
+
   if (!is.null(seed))
     set.seed(seed)
 
@@ -61,7 +70,7 @@ vavra.test = function(y,reps = 1000,h = 100,seed = NULL){
 
   ad = vavra.sample(y = as.numeric(y),reps = reps,seed = seed,h = h)
 
-  # Aditional values
+  # Additional values
   dname = deparse(substitute(y))
   alt = paste(dname,"does not follow a Gaussian Process")
   # Bootstrap test statistic
@@ -103,19 +112,14 @@ vavra.test = function(y,reps = 1000,h = 100,seed = NULL){
 #'
 #' @author Asael Alonzo Matamoros.
 #'
-#' @keywords Psaradakis and  Vavra's test, bootstrap sieve, xarsieve
-#'
 #' @seealso \code{\link{epps.statistic}} \code{\link{lobato.statistic}}
 #'
 #' @references
 #' Psaradakis, Z. & Vavra, M. (2017). A distance test of normality for a wide class
 #' of stationary process. \emph{Journal of Econometrics and Statistics}. 2, 50-60.
-#' \url{http://www.sciencedirect.com/science/article/pii/S2452306216300296"}.
-#' \code{doi: https://doi.org/10.1016/j.ecosta.2016.11.005}.
 #'
 #' Bulmann, P. (1997). Sieve Bootstrap for time series. \emph{Bernoulli}.
-#' 3(2), 123 -148. \url{http://www.jstor.org/stable/3318584}
-#' \code{doi:10.2307/3318584}
+#' 3(2), 123 -148.
 #'
 #' @examples
 #' # Generating an stationary arma process
@@ -158,7 +162,7 @@ vavra.sample = function(y,reps = 1000,h = 100,seed = NULL){
 #'
 #' @details
 #' simulates bootstrap samples for the stochastic process y, using a stationary
-#' autoregressive model of order \code{"pmax"}, \code{AR(pmax)}. If \code{pmax = NULL} (\emph{default}),
+#' auto-regressive model of order \code{"pmax"}, \code{AR(pmax)}. If \code{pmax = NULL} (\emph{default}),
 #' the function estimates the process maximum lags using an \code{AIC} as a model
 #' selection criteria.
 #'
@@ -172,8 +176,7 @@ vavra.sample = function(y,reps = 1000,h = 100,seed = NULL){
 #'
 #' @references
 #' Bulmann, P. (1997). Sieve Bootstrap for time series. \emph{Bernoulli}.
-#' 3(2), 123 -148. \url{http://www.jstor.org/stable/3318584}
-#' \code{doi:10.2307/3318584}
+#' 3(2), 123 -148.
 #'
 #' @examples
 #' # Generating an stationary arma process

@@ -65,6 +65,10 @@ check_residuals<- function(y,...) {
 #' order of integration for consumption. \emph{Oxford Bulletin of Economics
 #' and Statistics}. 50(4), 361-377.
 #'
+#' @examples
+#' # Generating an stationary arma process
+#' y = arima.sim(100,model = list(ar = 0.3))
+#' check_residuals(y,unit_root = "adf")
 #'
 check_residuals.ts = function(y,normality = "epps",
                               unit_root = NULL,
