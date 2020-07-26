@@ -3,13 +3,13 @@
 #' Performs the random projection test for normality. The null hypothesis (H0) is that the given data
 #' follows a stationary Gaussian process, and k is the number of used random projections.
 #'
-#' @usage  rp.test(y,k = 64,FDR = FALSE,pars1 = c(100,1),pars2  = c(2,7),seed = NULL)
+#' @usage  rp.test(y,k = 64,FDR = TRUE,pars1 = c(100,1),pars2  = c(2,7),seed = NULL)
 #'
 #' @param y a numeric vector or an object of the \code{ts} class containing a stationary time series.
 #' @param k an integer with the number of random projections to be used, by default
 #' \code{k = 2}.
 #' @param FDR a logical value for mixing the p-values using a dependent False discovery
-#' rate method. By default \code{FDR = FALSE}.
+#' rate method. By default \code{FDR = TRUE}.
 #' @param pars1 an optional real vector with the shape parameters of the beta distribution
 #' used for the odd number random projection. By default, \code{pars1 = c(100,1)} where,
 #' \code{shape1 = 100} and \code{shape2 = 1}.
@@ -65,7 +65,7 @@
 #' y = arima.sim(100,model = list(ar = 0.3))
 #' rp.test(y)
 #'
-rp.test = function(y,k = 64,FDR = FALSE,pars1 = c(100,1),pars2 = c(2,7),seed = NULL){
+rp.test = function(y,k = 64,FDR = TRUE,pars1 = c(100,1),pars2 = c(2,7),seed = NULL){
 
   if( !is.numeric(y) & !is(y,class2 = "ts") )
     stop("y object must be numeric or a time series")
@@ -91,16 +91,8 @@ rp.test = function(y,k = 64,FDR = FALSE,pars1 = c(100,1),pars2 = c(2,7),seed = N
   rps = rp.sample(as.numeric(y),k = k,seed = seed,pars1 = pars1,pars2 = pars2)
 
   if(FDR){
-    rate = 0;Cs = sum(1/(1:k))
-    cc = qchisq( 1-.05*(1:k)/(k*Cs), 2)
-
-    F1 = sort( c(rps$lobato,rps$epps), decreasing = TRUE)
-    for (j in k:1){
-      if(F1[j] >= cc[j])
-        rate = rate+1;
-      break;
-    }
-    F1 = 1-(rate/k)
+    F1 = pchisq(q = c(rps$lobato,rps$epps),df = 2,lower.tail = FALSE)
+    F1 = p.adjust(F1,method = "fdr")[1]
   }
   else{
     F1 = pchisq(q = c(rps$lobato,rps$epps),df = 2,lower.tail = FALSE)

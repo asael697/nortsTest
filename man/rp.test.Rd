@@ -4,7 +4,7 @@
 \alias{rp.test}
 \title{The k random projections test for normality}
 \usage{
-rp.test(y,k = 64,FDR = FALSE,pars1 = c(100,1),pars2  = c(2,7),seed = NULL)
+rp.test(y,k = 64,FDR = TRUE,pars1 = c(100,1),pars2  = c(2,7),seed = NULL)
 }
 \arguments{
 \item{y}{a numeric vector or an object of the \code{ts} class containing a stationary time series.}
@@ -13,7 +13,7 @@ rp.test(y,k = 64,FDR = FALSE,pars1 = c(100,1),pars2  = c(2,7),seed = NULL)
 \code{k = 2}.}
 
 \item{FDR}{a logical value for mixing the p-values using a dependent False discovery
-rate method. By default \code{FDR = FALSE}.}
+rate method. By default \code{FDR = TRUE}.}
 
 \item{pars1}{an optional real vector with the shape parameters of the beta distribution
 used for the odd number random projection. By default, \code{pars1 = c(100,1)} where,

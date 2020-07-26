@@ -1,6 +1,13 @@
 **Packages NEWS and Updates**
 ============
 
+**nortsTest 1.0.1 Date: 15/09/2020**
+----------------------------------
+
+### Changes:
+
+- rp.test(y,k = 64,FDR = TRUE,pars1 = c(100,1),pars2  = c(2,7),seed = NULL)
+
 **nortsTest 1.0.0 Date: 08/07/2020**
 ----------------------------------
 
