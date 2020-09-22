@@ -46,6 +46,7 @@ rejection_rate = function(reps = 1000,n = 100,dist = rnorm,seed = NULL,htest = "
 
   for(i in 1:reps){
     x = stats::arima.sim(n=n,n.start = 500,list(ar = phi),rand.gen = dist,...)
+
     if(htest == "vavra"){
       pvalues[i] = vavra.test(x,reps = 100,h = 50)$p.value
     }
