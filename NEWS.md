@@ -1,8 +1,12 @@
 **Packages NEWS and Updates**
 ============
 
-**nortsTest 1.0.1 Date: 15/09/2020**
+**nortsTest 1.0.1 Date: 22/09/2020**
 ----------------------------------
+
+### Features:
+
+- Add GPL-2 license.
 
 ### Changes:
 

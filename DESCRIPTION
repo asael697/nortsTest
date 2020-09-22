@@ -1,6 +1,7 @@
 Package: nortsTest
 Title: Assessing Normality of Stationary Process
-Version: 1.0.0
+Version: 1.0.1
+Date: 2020-10-09
 Authors@R: c(
   person("Asael","Alonzo Matamoros", role = c("aut", "cre"),email = "asael.alonzo@gmail.com"),
   person("Alicia","Nieto-Reyes", role = 'aut', email = "alicia.nieto@unican.es"),
@@ -14,7 +15,7 @@ Description: Despite that several tests for normality in stationary processes ha
    random projections tests for stationary process. Some other diagnostics such as, unit root test for 
    stationarity, seasonal tests for seasonality, and arch effect test for volatility; are also performed. 
    The package also offers residual diagnostic for linear time series models developed in several packages.
-License: LGPL
+License: GPL-2
 Encoding: UTF-8
 LazyData: true
 NeedsCompilation: no
