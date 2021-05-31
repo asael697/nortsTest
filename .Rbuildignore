@@ -1,4 +1,2 @@
-^nortsTest\.Rproj$
+^.*\.Rproj$
 ^\.Rproj\.user$
-^cran-comments\.md$
-^CRAN-RELEASE$

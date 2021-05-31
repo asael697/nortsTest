@@ -1,7 +1,7 @@
 **Packages NEWS and Updates**
 ============
 
-**nortsTest 1.0.1 Date: 22/09/2020**
+**nortsTest 1.0.1 Date: 31/05/2021**
 ----------------------------------
 
 ### Features:
@@ -10,14 +10,19 @@
 
 ### Changes:
 
-- rp.test(y,k = 64,FDR = TRUE,pars1 = c(100,1),pars2  = c(2,7),seed = NULL)
+- False discovery rate set as default for the random projections test
+
+### Fixes:
+
+- Bug fix for the False discovery rate.
+
 
 **nortsTest 1.0.0 Date: 08/07/2020**
 ----------------------------------
 
 ### Fixes:
 
-- Big fix for CRAN submission.
+- Bug fix for CRAN submission.
 
 
 **nortsTest 1.0.0 Date: 12/06/2020**
@@ -25,7 +30,7 @@
 
 ### Fixes:
 
-- Big fix for CRAN submission.
+- Bug fix for CRAN submission.
 
 
 **nortsTest 1.0.0 Date: 09/05/2020**
