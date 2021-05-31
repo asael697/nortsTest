@@ -89,13 +89,13 @@ rp.test = function(y,k = 64,FDR = TRUE,pars1 = c(100,1),pars2 = c(2,7),seed = NU
     set.seed(seed)
 
   rps = rp.sample(as.numeric(y),k = k,seed = seed,pars1 = pars1,pars2 = pars2)
+  F1 = pchisq(q = c(rps$lobato,rps$epps),df = 2,lower.tail = FALSE)
 
   if(FDR){
-    F1 = pchisq(q = c(rps$lobato,rps$epps),df = 2,lower.tail = FALSE)
-    F1 = p.adjust(F1,method = "fdr")[1]
+    s1 = 1/(1:k)
+    F1 = k*sum(s1)*min(F1/s1)
   }
   else{
-    F1 = pchisq(q = c(rps$lobato,rps$epps),df = 2,lower.tail = FALSE)
     F1 = mean(F1)
   }
 
