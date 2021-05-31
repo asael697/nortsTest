@@ -92,8 +92,7 @@ rp.test = function(y,k = 64,FDR = TRUE,pars1 = c(100,1),pars2 = c(2,7),seed = NU
   F1 = pchisq(q = c(rps$lobato,rps$epps),df = 2,lower.tail = FALSE)
 
   if(FDR){
-    s1 = 1/(1:k)
-    F1 = k*sum(s1)*min(F1/s1)
+    F1 = min(p.adjust(F1,method = "fdr"))
   }
   else{
     F1 = mean(F1)
