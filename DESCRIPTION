@@ -17,7 +17,6 @@ Description: Despite that several tests for normality in stationary processes ha
    The package also offers residual diagnostic for linear time series models developed in several packages.
 License: GPL-2
 Encoding: UTF-8
-LazyData: true
 NeedsCompilation: no
 RoxygenNote: 7.1.1
 Depends: 
