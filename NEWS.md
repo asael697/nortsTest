@@ -1,7 +1,7 @@
 **Packages NEWS and Updates**
 ============
 
-**nortsTest 1.0.1 Date: 31/05/2021**
+**nortsTest 1.0.1 Date: 17/06/2021**
 ----------------------------------
 
 ### Features:
@@ -11,6 +11,10 @@
 ### Changes:
 
 - False discovery rate set as default for the random projections test
+
+- Change "NA %in$ y" to "anyNA(y)"
+
+- use match.args() function for more flexibility
 
 ### Fixes:
 
