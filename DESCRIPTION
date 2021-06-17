@@ -32,5 +32,7 @@ Imports:
     uroot,
     MASS,
     zoo
+Suggests:
+  ggfortify   
 URL: https://github.com/asael697/nortsTest
 BugReports: https://github.com/asael697/nortsTest/issues
