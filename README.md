@@ -11,15 +11,15 @@ package’s functions are:
 
 -   epps.test() function that implements the [Epps test](https://projecteuclid.org/euclid.aos/1176350618),
 
--   lobato.test() function that implements the [Lobato and Velasco’s test](https://www.researchgate.net/publication/23564884),
+-   lobato.test() function that implements the Lobato and Velasco’s test,
 
 -   vavra.test() function that implements the [Psaradaki and Vavra’s test](http://www.applied-econometrics.com),
 
 -   rp.test() function that implements the random projections test of
-    [Nieto-Reyes, Cuesta-Albertos and Gamboa’s test](https://www.sciencedirect.com/science/article/pii/S0167947314000243?via%3Dihub).
+    Nieto-Reyes, Cuesta-Albertos and Gamboa’s test.
 
 Additionally, inspired in the function *check.residuals()* of the
-[forecast package](https://www.jstatsoft.org/article/view/v027i03), we
+[forecast package](https://github.com/robjhyndman/forecast), we
 provide the **check\_residuals** methods for checking model’s
 assumptions using the estimated residuals. The function checks
 stationarity, homoscedasticity and normality, presenting a report of the
@@ -299,15 +299,12 @@ References
 ----------
 
 -   Epps, T.W. (1987). Testing that a stationary time series is
-    Gaussian. *The Annals of Statistic*. 15(4), 1683-1698. Url:
-    (<a href="http://www.jstor.org/stable/2336512" class="uri">http://www.jstor.org/stable/2336512</a>).
+    Gaussian. *The Annals of Statistic*. 15(4), 1683-1698.
 
 -   Nieto-Reyes, A., Cuesta-Albertos, J. & Gamboa, F. (2014). A
     random-projection based test of Gaussianity for stationary
     processes. *Computational Statistics & Data Analysis, Elsevier*.
     75(C), 124-141.
-    url:(<a href="http://www.sciencedirect.com/science/article/pii/S0167947314000243" class="uri">http://www.sciencedirect.com/science/article/pii/S0167947314000243</a>).
-
 
 -   Lobato, I., & Velasco, C. (2004). A simple test of normality for
     time series. *Journal Econometric Theory*. 20(4), 671-689.
@@ -315,9 +312,7 @@ References
 -   Psaradakis, Z. & Vavra, M. (2017). A distance test of normality for
     a wide class of stationary process. *Journal of Econometrics and
     Statistics*. 2, 50-60.
-    url:(<a href="http://www.sciencedirect.com/science/article/pii/S2452306216300296" class="uri">http://www.sciencedirect.com/science/article/pii/S2452306216300296</a>).
 
 -   Hyndman, R. & Khandakar, Y. (2008). Automatic time series
     forecasting: the forecast package for R. *Journal of Statistical
-    Software*. 26(3), 1-22. Url:
-    (<a href="http://www.jstatsoft.org/article/view/v027i03" class="uri">http://www.jstatsoft.org/article/view/v027i03</a>).
+    Software*. 26(3), 1-22.
