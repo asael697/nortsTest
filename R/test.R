@@ -57,7 +57,7 @@ uroot.test = function(y,unit_root = "adf",alpha = 0.05){
   if( !is.numeric(y) & !is(y,class2 = "ts") )
     stop("y object must be numeric or a time series")
 
-  if(NA %in% y )
+  if( anyNA(y) )
     stop("The time series contains missing values")
 
   if(unit_root == "kpss"){
@@ -172,7 +172,7 @@ normal.test = function(y,normality = "epps",alpha = 0.05){
   if( !is.numeric(y) & !is(y,class2 = "ts") )
     stop("y object must be numeric or a time series")
 
-  if(NA %in% y )
+  if( anyNA(y) )
     stop("The time series contains missing values")
 
   if(normality == "lobato"){
@@ -288,7 +288,7 @@ seasonal.test = function(y,seasonal = "ocsb",alpha = 0.05){
   if( !is.numeric(y) & !is(y,class2 = "ts") )
     stop("y object must be numeric or a time series")
 
-  if(NA %in% y )
+  if( anyNA(y) )
     stop("The time series contains missing values")
 
   if(seasonal == "ch"){
@@ -373,7 +373,7 @@ arch.test = function(y,arch = "box",alpha = 0.05,lag.max = 2){
   if( !is.numeric(y) & !is(y,class2 = "ts") )
     stop("y object must be numeric or a time series")
 
-  if(NA %in% y )
+  if( anyNA(y) )
     stop("The time series contains missing values")
 
   if(arch == "Lm"){

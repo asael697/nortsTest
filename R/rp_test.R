@@ -70,7 +70,7 @@ rp.test = function(y,k = 64,FDR = TRUE,pars1 = c(100,1),pars2 = c(2,7),seed = NU
   if( !is.numeric(y) & !is(y,class2 = "ts") )
     stop("y object must be numeric or a time series")
 
-  if(NA %in% y )
+  if( anyNA(y) )
     stop("The time series contains missing values")
 
   # checking stationarity
@@ -181,7 +181,7 @@ rp.sample = function(y,k = 2,pars1 = c(100,1),pars2 = c(2,7),seed = NULL){
   if( !is.numeric(y) & !is(y,class2 = "ts") )
     stop("y object must be numeric or a time series")
 
-  if(NA %in% y )
+  if( anyNA(y) )
     stop("The time series contains missing values")
 
   if (!is.null(seed))
@@ -255,7 +255,7 @@ random.projection = function(y,shape1,shape2,seed = NULL){
   if( !is.numeric(y) & !is(y,class2 = "ts") )
     stop("y object must be numeric or a time series")
 
-  if(NA %in% y )
+  if( anyNA(y) )
     stop("The time series contains missing values")
 
   if (!is.null(seed))

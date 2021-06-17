@@ -53,7 +53,7 @@ epps.test = function(y){
   if( !is.numeric(y) & !is(y,class2 = "ts") )
     stop("y object must be numeric or a time series")
 
-  if(NA %in% y )
+  if( anyNA(y) )
     stop("The time series contains missing values")
 
   # checking stationarity

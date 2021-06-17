@@ -125,6 +125,5 @@ rejection_table = function(reps = 1000,n = 100,phi = c(-0.4,-0.25,0.0,0.25,0.4),
   #beta(7,1)
   for(i in 1:nphi) df[5,i] = rejection_rate(reps = reps,n=n,phi = phi[i],dist = rbeta,shape1 = 7,shape2 = 1,
                                          htest = htest,alpha = alpha,k = k,seed = seed)
-
   return(df)
 }

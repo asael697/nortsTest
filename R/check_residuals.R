@@ -79,7 +79,7 @@ check_residuals.ts = function(y,normality = "epps",
   if( !is(y,class2 = "ts") )
     stop("The object y is not a time series")
 
-  if(NA %in% y )
+  if( anyNA(y) )
     stop("The time series contains missing values")
 
   # Unit root test

@@ -52,7 +52,7 @@ lobato.test = function(y, c = 1){
   if( !is.numeric(y) & !is(y,class2 = "ts") )
     stop("y object must be numeric or a time series")
 
-  if(NA %in% y )
+  if( anyNA(y) )
     stop("The time series contains missing values")
 
   # checking stationarity
@@ -123,7 +123,7 @@ lobato.statistic = function(y,c = 1){
   if( !is.numeric(y) & !is(y,class2 = "ts") )
     stop("y object must be numeric or a time series")
 
-  if(NA %in% y )
+  if( anyNA(y) )
     stop("The time series contains missing values")
 
   # Identifiying the process sample statistics

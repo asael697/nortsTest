@@ -48,7 +48,7 @@ vavra.test = function(y,reps = 1000,h = 100,seed = NULL){
   if( !is.numeric(y) & !is(y,class2 = "ts") )
     stop("y object must be numeric or a time series")
 
-  if(NA %in% y )
+  if( anyNA(y) )
     stop("The time series contains missing values")
 
   # checking stationarity
@@ -132,7 +132,7 @@ vavra.sample = function(y,reps = 1000,h = 100,seed = NULL){
   if( !is.numeric(y) & !is(y,class2 = "ts") )
     stop("y object must be numeric or a time series")
 
-  if(NA %in% y )
+  if( anyNA(y) )
     stop("The time series contains missing values")
 
   if (!is.null(seed))
@@ -188,7 +188,7 @@ sieve.bootstrap = function(y,reps = 1000,pmax = NULL,h = 100,seed = NULL){
   if( !is.numeric(y) & !is(y,class2 = "ts") )
     stop("y object must be numeric or a time series")
 
-  if(NA %in% y )
+  if( anyNA(y) )
     stop("The time series contains missing values")
 
   if (!is.null(seed))
