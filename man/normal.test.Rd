@@ -4,7 +4,8 @@
 \alias{normal.test}
 \title{The normality test for stationary process}
 \usage{
-normal.test(y,normality="epps",alpha=0.05)
+normal.test(y,normality = c("epps","lobato","vavra","rp","jb","ad","shapiro"),
+                    alpha = 0.05)
 }
 \arguments{
 \item{y}{a numeric vector or an object of the \code{ts} class containing a stationary time series.}

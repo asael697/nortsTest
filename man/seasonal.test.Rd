@@ -4,7 +4,7 @@
 \alias{seasonal.test}
 \title{The Seasonal unit root tests function}
 \usage{
-seasonal.test(y,seasonal="ocsb",alpha=0.05)
+seasonal.test(y,seasonal = c("ocsb","ch","hegy"),alpha = 0.05)
 }
 \arguments{
 \item{y}{a numeric vector or an object of the \code{ts} class containing a stationary time series.}

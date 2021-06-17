@@ -2,7 +2,7 @@
 #'
 #' Perform a unit root test to check stationarity in a linear stochastic process.
 #'
-#' @usage  uroot.test(y,unit_root="adf",alpha=0.05)
+#' @usage  uroot.test(y,unit_root = c("adf","kpss","pp","box"),alpha = 0.05)
 #'
 #' @param y a numeric vector or an object of the \code{ts} class containing a stationary time series.
 #' @param unit_root A character string naming the desired unit root test for checking stationarity.
@@ -52,13 +52,15 @@
 #' y = cumsum(y)
 #' uroot.test(y,unit_root = "pp")
 #'
-uroot.test = function(y,unit_root = "adf",alpha = 0.05){
+uroot.test = function(y,unit_root = c("adf","kpss","pp","box"),alpha = 0.05){
 
   if( !is.numeric(y) & !is(y,class2 = "ts") )
     stop("y object must be numeric or a time series")
 
   if( anyNA(y) )
     stop("The time series contains missing values")
+
+  unit_root = match.arg(unit_root)
 
   if(unit_root == "kpss"){
     cc = suppressWarnings(tseries::kpss.test(y))
@@ -105,7 +107,8 @@ uroot.test = function(y,unit_root = "adf",alpha = 0.05){
 #' Perform a normality test. The null hypothesis (H0) is that the given data
 #' follows a stationary Gaussian process.
 #'
-#' @usage  normal.test(y,normality="epps",alpha=0.05)
+#' @usage  normal.test(y,normality = c("epps","lobato","vavra","rp","jb","ad","shapiro"),
+#'                     alpha = 0.05)
 #'
 #' @param y a numeric vector or an object of the \code{ts} class containing a stationary time series.
 #' @param normality A character string naming the desired test for checking normality. Valid values are
@@ -167,13 +170,16 @@ uroot.test = function(y,unit_root = "adf",alpha = 0.05){
 #' y = rexp(100)
 #' normal.test(y,normality = "ad")
 #'
-normal.test = function(y,normality = "epps",alpha = 0.05){
+normal.test = function(y,normality = c("epps","lobato","vavra","rp","jb","ad","shapiro"),
+                       alpha = 0.05){
 
   if( !is.numeric(y) & !is(y,class2 = "ts") )
     stop("y object must be numeric or a time series")
 
   if( anyNA(y) )
     stop("The time series contains missing values")
+
+  normality = match.arg(normality)
 
   if(normality == "lobato"){
     cc = suppressWarnings(lobato.test(y))
@@ -240,7 +246,7 @@ normal.test = function(y,normality = "epps",alpha = 0.05){
 #'
 #' Perform a seasonal unit root test to check seasonality in a linear stochastic process
 #'
-#' @usage  seasonal.test(y,seasonal="ocsb",alpha=0.05)
+#' @usage  seasonal.test(y,seasonal = c("ocsb","ch","hegy"),alpha = 0.05)
 #'
 #' @param y a numeric vector or an object of the \code{ts} class containing a stationary time series.
 #' @param seasonal A character string naming the desired seasonal unit root test for checking seasonality.
@@ -283,13 +289,15 @@ normal.test = function(y,normality = "epps",alpha = 0.05){
 #' y = ts(rnorm(100),frequency = 6)
 #' seasonal.test(y)
 #'
-seasonal.test = function(y,seasonal = "ocsb",alpha = 0.05){
+seasonal.test = function(y,seasonal = c("ocsb","ch","hegy"),alpha = 0.05){
 
   if( !is.numeric(y) & !is(y,class2 = "ts") )
     stop("y object must be numeric or a time series")
 
   if( anyNA(y) )
     stop("The time series contains missing values")
+
+  seasonal = match.arg(seasonal)
 
   if(seasonal == "ch"){
     cc = suppressWarnings(uroot::ch.test(y))
@@ -327,7 +335,7 @@ seasonal.test = function(y,seasonal = "ocsb",alpha = 0.05){
 #' Performs the Pormanteau Q and Lagrange Multipliers test for homoscedasticity in  a univariate
 #' stationary process. The null hypothesis (H0), is that the process is homoscedastic.
 #'
-#' @usage  arch.test(y,arch="box",alpha=0.05,lag.max = 2)
+#' @usage  arch.test(y,arch = c("box","Lm"),alpha = 0.05,lag.max = 2)
 #'
 #' @param y a numeric vector or an object of the \code{ts} class containing a stationary time series.
 #' @param arch A character string naming the desired  test for checking stationarity. Valid values are
@@ -368,13 +376,15 @@ seasonal.test = function(y,seasonal = "ocsb",alpha = 0.05){
 #' y = arima.sim(100,model = list(ar = 0.3))
 #' arch.test(y)
 #'
-arch.test = function(y,arch = "box",alpha = 0.05,lag.max = 2){
+arch.test = function(y,arch = c("box","Lm"),alpha = 0.05,lag.max = 2){
 
   if( !is.numeric(y) & !is(y,class2 = "ts") )
     stop("y object must be numeric or a time series")
 
   if( anyNA(y) )
     stop("The time series contains missing values")
+
+  arch = match.arg(arch)
 
   if(arch == "Lm"){
     cc = suppressWarnings(Lm.test(y,lag.max = lag.max,alpha = alpha))

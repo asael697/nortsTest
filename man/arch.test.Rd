@@ -4,7 +4,7 @@
 \alias{arch.test}
 \title{The ARCH effect test function.}
 \usage{
-arch.test(y,arch="box",alpha=0.05,lag.max = 2)
+arch.test(y,arch = c("box","Lm"),alpha = 0.05,lag.max = 2)
 }
 \arguments{
 \item{y}{a numeric vector or an object of the \code{ts} class containing a stationary time series.}

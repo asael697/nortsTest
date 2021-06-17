@@ -4,7 +4,7 @@
 \alias{uroot.test}
 \title{The Unit root tests function}
 \usage{
-uroot.test(y,unit_root="adf",alpha=0.05)
+uroot.test(y,unit_root = c("adf","kpss","pp","box"),alpha = 0.05)
 }
 \arguments{
 \item{y}{a numeric vector or an object of the \code{ts} class containing a stationary time series.}
