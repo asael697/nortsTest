@@ -1,6 +1,6 @@
 Package: nortsTest
 Title: Assessing Normality of Stationary Process
-Version: 1.0.1
+Version: 1.0.2
 Date: 2021-06-17
 Authors@R: c(
   person("Asael","Alonzo Matamoros", role = c("aut", "cre"),email = "asael.alonzo@gmail.com"),

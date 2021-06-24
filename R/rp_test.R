@@ -33,8 +33,8 @@
 #' @details
 #' The random projection test generates k independent random projections of the process.
 #' A Lobato and Velasco's test are applied to the first half of the projections, and an
-#' Epps test for the other half. By default, a Monte Carlo p-value estimate is used for
-#' mixing the tests. A False discovery rate can be used for mixing by setting \code{FDR = TRUE}.
+#' Epps test for the other half. Then, a False discovery rate is used for mixing the
+#' obtained p.values
 #'
 #' For generating the k random projections a beta distribution is used. By default a
 #' \code{beta(shape1 = 100,shape = 1)} and a \code{beta(shape1 = 2,shape = 7)} are used
