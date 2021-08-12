@@ -4,13 +4,13 @@
 \alias{rp.test}
 \title{The k random projections test for normality}
 \usage{
-rp.test(y,k = 64,FDR = TRUE,pars1 = c(100,1),pars2  = c(2,7),seed = NULL)
+rp.test(y,k = 16,FDR = TRUE,pars1 = c(100,1),pars2  = c(2,7),seed = NULL)
 }
 \arguments{
 \item{y}{a numeric vector or an object of the \code{ts} class containing a stationary time series.}
 
 \item{k}{an integer with the number of random projections to be used, by default
-\code{k = 2}.}
+\code{k = 16}.}
 
 \item{FDR}{a logical value for mixing the p-values using a dependent False discovery
 rate method. By default \code{FDR = TRUE}.}

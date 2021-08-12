@@ -4,12 +4,12 @@
 \alias{rp.sample}
 \title{Generates a test statistics sample of random projections}
 \usage{
-rp.sample(y,k = 2,pars1 = c(100,1),pars2 = c(2,7),seed = NULL)
+rp.sample(y,k = 16,pars1 = c(100,1),pars2 = c(2,7),seed = NULL)
 }
 \arguments{
 \item{y}{a numeric vector or an object of the \code{ts} class containing a stationary time series.}
 
-\item{k}{an integer with the number of random projections to be used, by default \code{k = 2}.}
+\item{k}{an integer with the number of random projections to be used, by default \code{k = 16}.}
 
 \item{pars1}{an optional real vector with the shape parameters of the beta distribution
 used for the odd number random projection. By default, \code{pars1 = c(100,1)} where,
