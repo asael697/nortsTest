@@ -13,7 +13,8 @@ rp.test(y,k = 16,FDR = TRUE,pars1 = c(100,1),pars2  = c(2,7),seed = NULL)
 \code{k = 16}.}
 
 \item{FDR}{a logical value for mixing the p-values using a dependent False discovery
-rate method. By default \code{FDR = TRUE}.}
+rate method. If \code{FDR =TRUE}, then the p-values are mixed using a False discovery Rate method,
+on the contrary it applies the Benjamin and Yekuteli (2001) procedure.  By default \code{FDR = TRUE}.}
 
 \item{pars1}{an optional real vector with the shape parameters of the beta distribution
 used for the odd number random projection. By default, \code{pars1 = c(100,1)} where,

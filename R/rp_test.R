@@ -9,7 +9,8 @@
 #' @param k an integer with the number of random projections to be used, by default
 #' \code{k = 16}.
 #' @param FDR a logical value for mixing the p-values using a dependent False discovery
-#' rate method. By default \code{FDR = TRUE}.
+#' rate method. If \code{FDR =TRUE}, then the p-values are mixed using a False discovery Rate method,
+#' on the contrary it applies the Benjamin and Yekuteli (2001) procedure.  By default \code{FDR = TRUE}.
 #' @param pars1 an optional real vector with the shape parameters of the beta distribution
 #' used for the odd number random projection. By default, \code{pars1 = c(100,1)} where,
 #' \code{shape1 = 100} and \code{shape2 = 1}.
