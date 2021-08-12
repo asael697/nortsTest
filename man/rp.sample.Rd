@@ -49,7 +49,7 @@ The test was proposed by \emph{Nieto-Reyes, A.,Cuesta-Albertos, J. & Gamboa, F. 
 \examples{
 # Generating an stationary arma process
 y = arima.sim(100,model = list(ar = 0.3))
-rp.test(y)
+rp.test(y,k = 4)
 
 }
 \references{

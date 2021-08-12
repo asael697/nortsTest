@@ -64,7 +64,7 @@
 #' @examples
 #' # Generating an stationary arma process
 #' y = arima.sim(100,model = list(ar = 0.3))
-#' rp.test(y)
+#' rp.test(y,k = 4)
 #'
 rp.test = function(y,k = 16,FDR = TRUE,pars1 = c(100,1),pars2 = c(2,7),seed = NULL){
 
@@ -173,7 +173,7 @@ rp.test = function(y,k = 16,FDR = TRUE,pars1 = c(100,1),pars2 = c(2,7),seed = NU
 #' @examples
 #' # Generating an stationary arma process
 #' y = arima.sim(100,model = list(ar = 0.3))
-#' rp.test(y)
+#' rp.test(y,k = 4)
 #'
 rp.sample = function(y,k = 16,pars1 = c(100,1),pars2 = c(2,7),seed = NULL){
 
