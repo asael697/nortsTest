@@ -18,7 +18,7 @@ package’s functions are:
 -   `rp.test()` function that implements the random projections test of
     Nieto-Reyes, Cuesta-Albertos and Gamboa’s test.
 
-Additionally, inspired in the function `check.residuals()` of the
+Additionally, inspired in the function `checkresiduals()` of the
 [forecast package](https://github.com/robjhyndman/forecast), we
 provide the `check_residuals` methods for checking model’s
 assumptions using the estimated residuals. The function checks
