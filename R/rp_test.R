@@ -10,7 +10,7 @@
 #' \code{k = 16}.
 #' @param FDR a logical value for mixing the p-values using a dependent False discovery
 #' rate method. If \code{FDR =TRUE}, then the p-values are mixed using a False discovery Rate method,
-#' on the contrary it applies the Benjamin and Yekuteli (2001) procedure.  By default \code{FDR = TRUE}.
+#' on the contrary it applies the Benjamin and Yekuteli (2001) procedure. By default \code{FDR = TRUE}.
 #' @param pars1 an optional real vector with the shape parameters of the beta distribution
 #' used for the odd number random projection. By default, \code{pars1 = c(100,1)} where,
 #' \code{shape1 = 100} and \code{shape2 = 1}.
@@ -19,16 +19,15 @@
 #' \code{shape1 = 2} and \code{shape2 = 7}.
 #' @param seed An optional \code{\link[=set.seed]{seed}} to use.
 #'
-#' @return a h.test class with the main results of the Epps hypothesis test. The
-#' h.test class have the following values:
+#' @return A list with class \code{h.test] containing the following components:
 #' \itemize{
-#'  \item{"k"}{The number of used projections}
-#'  \item{"lobato"}{The average Lobato and Velasco's test statistics of the k projected samples}
-#'  \item{"epps"}{The average Epps test statistics of the k projected samples}
-#'  \item{"p.value"}{The mixed p value}
-#'  \item{"alternative"}{The alternative hypothesis}
-#'  \item{"method"}{The used method: rp.test}
-#'  \item{"data.name"}{The data name.}
+#'  \item{lobato }{The average Lobato and Velasco's test statistics of the k projected samples}
+#'  \item{epps }{The average Epps test statistics of the k projected samples}
+#'  \item{k }{The number of projections}
+#'  \item{p.value }{the mixed p-value for the test.}
+#'  \item{alternative }{The alternative hypothesis}
+#'  \item{method }{The character string \dQuote{k random projections test}.}
+#'  \item{data.name }{a character string giving the name(s) of the data.}
 #' }
 #'
 #' @details
