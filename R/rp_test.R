@@ -19,15 +19,15 @@
 #' \code{shape1 = 2} and \code{shape2 = 7}.
 #' @param seed An optional \code{\link[=set.seed]{seed}} to use.
 #'
-#' @return A list with class \code{h.test] containing the following components:
+#' @return A list with class \code{"h.test"} containing the following components:
 #' \itemize{
-#'  \item{lobato }{The average Lobato and Velasco's test statistics of the k projected samples}
-#'  \item{epps }{The average Epps test statistics of the k projected samples}
-#'  \item{k }{The number of projections}
-#'  \item{p.value }{the mixed p-value for the test.}
-#'  \item{alternative }{The alternative hypothesis}
-#'  \item{method }{The character string \dQuote{k random projections test}.}
-#'  \item{data.name }{a character string giving the name(s) of the data.}
+#'  \item{statistic}{ A vector with the average Lobato and Velasco's and average Epps test
+#'  statistics of the k projected samples.}
+#'  \item{parameter}{The number of projections.}
+#'  \item{p.value}{the mixed p-value for the test.}
+#'  \item{alternative}{The alternative hypothesis}
+#'  \item{method}{The character string \dQuote{k random projections test}.}
+#'  \item{data.name}{a character string giving the name(s) of the data.}
 #' }
 #'
 #' @details
@@ -108,9 +108,12 @@ rp.test = function(y,k = 16,FDR = TRUE,pars1 = c(100,1),pars2 = c(2,7),seed = NU
   names(parameters) = c("lobato","epps")
 
   #htest class
-  rval <- list(statistic = stat,parameters = parameters, p.value = F1,
+  rval <- list(statistic = stat,
+               parameter = parameters,
+               p.value = F1,
                alternative = alt,
-               method = "k random projections test", data.name = dname)
+               method = "k random projections test",
+               data.name = dname)
   class(rval) <- "htest"
 
   return(rval)
