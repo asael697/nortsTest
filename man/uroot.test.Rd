@@ -20,12 +20,12 @@ is used}
 \value{
 A list with class \code{"h.test"} containing the following components:
 \itemize{
- \item{statistic}{the test statistic.}
- \item{parameter}{the test degrees freedoms.}
- \item{p.value}{the p-value for the test.}
- \item{alternative}{the alternative hypothesis.}
- \item{method}{the character string with the test name.}
- \item{data.name}{a character string giving the name of the data.}
+ \item{statistic }{the test statistic.}
+ \item{parameter }{the test degrees freedoms.}
+ \item{p.value }{the p-value for the test.}
+ \item{alternative }{the alternative hypothesis.}
+ \item{method }{the character string with the test name.}
+ \item{data.name }{a character string giving the name of the data.}
 }
 }
 \description{

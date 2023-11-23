@@ -2,7 +2,7 @@
 #'
 #' Perform a unit root test to check stationary in a linear stochastic process.
 #'
-#' @usage  uroot.test(y,unit_root = c("adf","kpss","pp","box"),alpha = 0.05)
+#' @usage uroot.test(y,unit_root = c("adf","kpss","pp","box"),alpha = 0.05)
 #'
 #' @param y a numeric vector or an object of the \code{ts} class containing a stationary time series.
 #' @param unit_root A character string naming the desired unit root test for checking stationary.
@@ -147,9 +147,9 @@ uroot.test = function(y,unit_root = c("adf","kpss","pp","box"),alpha = 0.05){
 #' @importFrom nortest ad.test
 #' @export
 #'
-#' @author  Asael Alonzo Matamoros
+#' @author Asael Alonzo Matamoros
 #'
-#' @seealso \code{\link{uroot.test}},\code{\link{seasonal.test}}
+#' @seealso \code{\link{uroot.test}}, \code{\link{seasonal.test}}
 #'
 #' @references
 #' Epps, T.W. (1987). Testing that a stationary time series is Gaussian. \emph{The
@@ -261,7 +261,7 @@ normal.test = function(y,normality = c("epps","lobato","vavra","rp","jb","ad","s
 #'
 #' Perform a seasonal unit root test to check seasonality in a linear stochastic process
 #'
-#' @usage  seasonal.test(y,seasonal = c("ocsb","ch","hegy"),alpha = 0.05)
+#' @usage seasonal.test(y,seasonal = c("ocsb","ch","hegy"),alpha = 0.05)
 #'
 #' @param y a numeric vector or an object of the \code{ts} class containing a stationary time series.
 #' @param seasonal A character string naming the desired seasonal unit root test for checking seasonality.
@@ -291,9 +291,9 @@ normal.test = function(y,normality = c("epps","lobato","vavra","rp","jb","ad","s
 #' @importFrom forecast ocsb.test
 #' @export
 #'
-#' @author  Asael Alonzo Matamoros
+#' @author Asael Alonzo Matamoros
 #'
-#' @seealso \code{\link{normal.test}},\code{\link{uroot.test}}
+#' @seealso \code{\link{normal.test}}, \code{\link{uroot.test}}
 #'
 #' @references
 #' Osborn, D., Chui, A., Smith, J., & Birchenhall, C. (1988). Seasonality and the
@@ -358,7 +358,7 @@ seasonal.test = function(y,seasonal = c("ocsb","ch","hegy"),alpha = 0.05){
 #' Performs the Pormanteau Q and Lagrange Multipliers test for homoscedasticity in  a univariate
 #' stationary process. The null hypothesis (H0), is that the process is homoscedastic.
 #'
-#' @usage  arch.test(y,arch = c("box","Lm"),alpha = 0.05,lag.max = 2)
+#' @usage arch.test(y,arch = c("box","Lm"),alpha = 0.05,lag.max = 2)
 #'
 #' @param y a numeric vector or an object of the \code{ts} class containing a stationary time series.
 #' @param arch A character string naming the desired  test for checking stationarity. Valid values are
@@ -368,7 +368,15 @@ seasonal.test = function(y,seasonal = c("ocsb","ch","hegy"),alpha = 0.05){
 #' @param alpha Level of the test, possible values range from 0.01 to 0.1. By default \code{alpha = 0.05}
 #' is used
 #'
-#' @return a h.test class with the main results of unit root hypothesis test.
+#' @return A list with class \code{"h.test"} containing the following components:
+#' \itemize{
+#'  \item{statistic }{the test statistic.}
+#'  \item{parameter }{the test degrees freedoms.}
+#'  \item{p.value }{the p-value for the test.}
+#'  \item{alternative }{the alternative hypothesis.}
+#'  \item{method }{the character string with the test name.}
+#'  \item{data.name }{a character string giving the name of the data.}
+#' }
 #'
 #' @details Several different tests are available:
 #' Performs Portmanteau Q and Lagrange Multiplier tests for the null hypothesis that the residuals of
@@ -381,9 +389,9 @@ seasonal.test = function(y,seasonal = c("ocsb","ch","hegy"),alpha = 0.05){
 #' @importFrom stats Box.test
 #' @export
 #'
-#' @author  Asael Alonzo Matamoros
+#' @author Asael Alonzo Matamoros
 #'
-#' @seealso \code{\link{normal.test}},\code{\link{seasonal.test}},\code{\link{uroot.test}}
+#' @seealso \code{\link{normal.test}}, \code{\link{seasonal.test}}, \code{\link{uroot.test}}
 #'
 #' @references
 #' Engle, R. F. (1982). Auto-regressive Conditional Heteroscedasticity
