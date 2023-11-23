@@ -12,12 +12,12 @@
 #'
 #' @return A list with class \code{"h.test"} containing the following components:
 #' \itemize{
-#'  \item{statistic}{the Lagrange multiplier statistic.}
-#'  \item{parameter}{the test degrees freedoms.}
-#'  \item{p.value}{the p value.}
-#'  \item{alternative}{the alternative hypothesis.}
-#'  \item{method}{the character string \dQuote{Lagrange Multiplier test}.}
-#'  \item{data.name}{a character string giving the name of the data.}
+#'  \item{statistic }{the Lagrange multiplier statistic.}
+#'  \item{parameter }{the test degrees freedoms.}
+#'  \item{p.value }{the p value.}
+#'  \item{alternative }{the alternative hypothesis.}
+#'  \item{method }{the character string \dQuote{Lagrange Multiplier test}.}
+#'  \item{data.name }{a character string giving the name of the data.}
 #' }
 #'
 #' @details

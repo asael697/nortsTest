@@ -20,13 +20,13 @@
 #'
 #' @return A list with class \code{"h.test"} containing the following components:
 #' \itemize{
-#'  \item{statistic}{a vector with the average Lobato and Velasco's and average Epps test
+#'  \item{statistic }{a vector with the average Lobato and Velasco's and average Epps test
 #'  statistics of the k projected samples.}
-#'  \item{parameter}{the number of projections.}
-#'  \item{p.value}{the mixed p-value for the test.}
-#'  \item{alternative}{the alternative hypothesis.}
-#'  \item{method}{the character string \dQuote{k random projections test}.}
-#'  \item{data.name}{a character string giving the name of the data.}
+#'  \item{parameter }{the number of projections.}
+#'  \item{p.value }{the mixed p-value for the test.}
+#'  \item{alternative }{the alternative hypothesis.}
+#'  \item{method }{the character string \dQuote{k random projections test}.}
+#'  \item{data.name }{a character string giving the name of the data.}
 #' }
 #'
 #' @details

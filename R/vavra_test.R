@@ -12,11 +12,11 @@
 #'
 #' @return A list with class \code{"h.test"} containing the following components:
 #' \itemize{
-#'  \item{statistic}{the sieve bootstrap A statistic.}
-#'  \item{p.value}{the p value for the test.}
-#'  \item{alternative}{the alternative hypothesis.}
-#'  \item{method}{the character string \dQuote{Psaradakis and Vavra test}.}
-#'  \item{data.name}{a character string giving the name of the data.}
+#'  \item{statistic }{the sieve bootstrap A statistic.}
+#'  \item{p.value }{the p value for the test.}
+#'  \item{alternative }{the alternative hypothesis.}
+#'  \item{method }{the character string \dQuote{Psaradakis and Vavra test}.}
+#'  \item{data.name }{a character string giving the name of the data.}
 #' }
 #'
 #' @details

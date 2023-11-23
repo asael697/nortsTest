@@ -9,12 +9,12 @@
 #'
 #' @return A list with class \code{"h.test"} containing the following components:
 #' \itemize{
-#'  \item{statistic}{the Epps statistic.}
-#'  \item{parameter}{the test degrees freedoms.}
-#'  \item{p.value}{the p value.}
-#'  \item{alternative}{the alternative hypothesis.}
-#'  \item{method}{the character string \dQuote{Epps test}.}
-#'  \item{data.name}{a character string giving the name of the data.}
+#'  \item{statistic }{the Epps statistic.}
+#'  \item{parameter }{the test degrees freedoms.}
+#'  \item{p.value }{the p value.}
+#'  \item{alternative }{the alternative hypothesis.}
+#'  \item{method }{the character string \dQuote{Epps test}.}
+#'  \item{data.name }{a character string giving the name of the data.}
 #' }
 #'
 #' @details
