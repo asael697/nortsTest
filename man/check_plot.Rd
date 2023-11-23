@@ -11,7 +11,7 @@
 \alias{check_plot.HoltWinters}
 \alias{check_plot.ets}
 \alias{check_plot.forecast}
-\title{Generic function for a visual check of residuals in time series models}
+\title{Generic function for a visual check of residuals in time series models.}
 \usage{
 \method{check_plot}{ts}(y, model = " ", ...)
 }
@@ -23,7 +23,7 @@
 \item{...}{Other plotting parameters to affect the plot.}
 }
 \value{
-A graph object from ggplot2
+A graph object from ggplot2.
 }
 \description{
 Generic function for a visual check of residuals in time series models, these methods are inspired in
@@ -39,5 +39,5 @@ check_plot(y)
 \code{check_residuals}
 }
 \author{
-Asael Alonzo Matamoros
+Asael Alonzo Matamoros.
 }

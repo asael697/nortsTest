@@ -2,7 +2,7 @@
 % Please edit documentation in R/autoplot.R
 \name{gghist}
 \alias{gghist}
-\title{Histogram with optional normal density functions}
+\title{Histogram with optional normal density functions.}
 \usage{
 gghist(y, title = NULL, xlab = NULL, ylab = "counts", bins, add.normal = TRUE)
 }
@@ -11,14 +11,14 @@ gghist(y, title = NULL, xlab = NULL, ylab = "counts", bins, add.normal = TRUE)
 
 \item{title}{a string with the plot's title.}
 
-\item{xlab}{a string with the plot's x axis label. By default a NUll value}
+\item{xlab}{a string with the plot's x axis label. By default a NUll value.}
 
-\item{ylab}{a string with the plot's y axis label. By default a "counts" value}
+\item{ylab}{a string with the plot's y axis label. By default a "counts" value.}
 
-\item{bins}{The number of bins to use for the histogram. Selected by default
+\item{bins}{the number of bins to use for the histogram. Selected by default
 using the Friedman-Diaconis rule.}
 
-\item{add.normal}{A boolean value. Add a normal density function for comparison,
+\item{add.normal}{a boolean value. Add a normal density function for comparison,
 by default \code{add.normal = TRUE}.}
 }
 \value{

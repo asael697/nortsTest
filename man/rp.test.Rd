@@ -2,19 +2,18 @@
 % Please edit documentation in R/rp_test.R
 \name{rp.test}
 \alias{rp.test}
-\title{The k random projections test for normality}
+\title{The k random projections test for normality.}
 \usage{
 rp.test(y,k = 16,FDR = TRUE,pars1 = c(100,1),pars2  = c(2,7),seed = NULL)
 }
 \arguments{
 \item{y}{a numeric vector or an object of the \code{ts} class containing a stationary time series.}
 
-\item{k}{an integer with the number of random projections to be used, by default
-\code{k = 16}.}
+\item{k}{an integer with the number of random projections to be used, by default \code{k = 16}.}
 
 \item{FDR}{a logical value for mixing the p-values using a dependent False discovery
 rate method. If \code{FDR =TRUE}, then the p-values are mixed using a False discovery Rate method,
-on the contrary it applies the Benjamin and Yekuteli (2001) procedure.  By default \code{FDR = TRUE}.}
+on the contrary it applies the Benjamin and Yekuteli (2001) procedure. By default \code{FDR = TRUE}.}
 
 \item{pars1}{an optional real vector with the shape parameters of the beta distribution
 used for the odd number random projection. By default, \code{pars1 = c(100,1)} where,
@@ -27,16 +26,15 @@ used for the even number random projection. By default, \code{pars2 = c(2,7)} wh
 \item{seed}{An optional \code{\link[=set.seed]{seed}} to use.}
 }
 \value{
-a h.test class with the main results of the Epps hypothesis test. The
-h.test class have the following values:
+A list with class \code{"h.test"} containing the following components:
 \itemize{
- \item{"k"}{The number of used projections}
- \item{"lobato"}{The average Lobato and Velasco's test statistics of the k projected samples}
- \item{"epps"}{The average Epps test statistics of the k projected samples}
- \item{"p.value"}{The mixed p value}
- \item{"alternative"}{The alternative hypothesis}
- \item{"method"}{The used method: rp.test}
- \item{"data.name"}{The data name.}
+ \item{statistic}{a vector with the average Lobato and Velasco's and average Epps test
+ statistics of the k projected samples.}
+ \item{parameter}{the number of projections.}
+ \item{p.value}{the mixed p-value for the test.}
+ \item{alternative}{the alternative hypothesis.}
+ \item{method}{the character string \dQuote{k random projections test}.}
+ \item{data.name}{a character string giving the name of the data.}
 }
 }
 \description{

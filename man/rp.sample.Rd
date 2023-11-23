@@ -2,7 +2,7 @@
 % Please edit documentation in R/rp_test.R
 \name{rp.sample}
 \alias{rp.sample}
-\title{Generates a test statistics sample of random projections}
+\title{Generates a test statistics sample of random projections.}
 \usage{
 rp.sample(y,k = 16,pars1 = c(100,1),pars2 = c(2,7),seed = NULL)
 }
@@ -24,8 +24,8 @@ used for the even number random projection. By default, \code{pars2 = c(2,7)} wh
 \value{
 A list with 2 real value vectors:
 \itemize{
- \item{"lobato"}{A vector with the Lobato and Velasco's statistics sample}
- \item{"epps"}{A vector with the Epps statistics sample.}
+ \item{lobato}{A vector with the Lobato and Velasco's statistics sample.}
+ \item{epps}{A vector with the Epps statistics sample.}
 }
 }
 \description{

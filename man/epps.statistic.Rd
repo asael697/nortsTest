@@ -2,7 +2,7 @@
 % Please edit documentation in R/epps_test.R
 \name{epps.statistic}
 \alias{epps.statistic}
-\title{Estimates the Epps statistic}
+\title{Estimates the Epps statistic.}
 \usage{
 epps.statistic(y)
 }

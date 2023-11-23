@@ -2,7 +2,7 @@
 % Please edit documentation in R/autoplot.R
 \name{ggacf}
 \alias{ggacf}
-\title{\code{acf} plot}
+\title{\code{acf} plot.}
 \usage{
 ggacf(y, title = NULL)
 }

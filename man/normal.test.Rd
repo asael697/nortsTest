@@ -16,22 +16,28 @@ and  Vavra, \code{"rp"} for the random projections, \code{"jb"} for the Jarque a
 for Anderson Darling test, and \code{"shapiro"} for the Shapiro-Wilk's test. The default value is
 \code{"epps"} test.}
 
-\item{alpha}{Level of the test, possible values range from 0.01 to 0.1. By default \code{alpha = 0.05}
-is used.}
+\item{alpha}{Level of the test, possible values range from 0.01 to 0.1. By default \code{alpha = 0.05}}
 }
 \value{
 An h.test class with the main results of normal hypothesis test.
+
+A list with class \code{"h.test"} containing the following components:
+\itemize{
+ \item{statistic}{the test statistic.}
+ \item{parameter}{the test degrees freedoms.}
+ \item{p.value}{the p-value for the test.}
+ \item{alternative}{the alternative hypothesis.}
+ \item{method}{the character string with the test name.}
+ \item{data.name}{a character string giving the name of the data.}
 }
-\description{
-Perform a normality test. The null hypothesis (H0) is that the given data
-follows a stationary Gaussian process.
-}
-\details{
-Several different tests are available:
 \code{"lobato"}, \code{"epps"}, \code{"vavras"} and \code{"rp"} test are for testing normality
 in stationary process. \code{"jb"}, \code{"ad"}, and  \code{"shapiro"} tests are for numeric data.
 In all cases, the alternative hypothesis is that \code{y} follows a Gaussian process. By default,
 \code{alpha = 0.05} is used to select the more likely hypothesis.
+}
+\description{
+Perform a normality test. The null hypothesis (H0) is that the given data
+follows a stationary Gaussian process.
 }
 \examples{
 #  stationary  ar process

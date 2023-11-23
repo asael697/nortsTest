@@ -10,15 +10,14 @@ epps.test(y)
 \item{y}{a numeric vector or an object of the \code{ts} class containing a stationary time series.}
 }
 \value{
-a h.test class with the main results of the Epps hypothesis test. The
-h.test class have the following values:
+A list with class \code{"h.test"} containing the following components:
 \itemize{
- \item{"epps"}{The Epps statistic}
- \item{"df"}{The test degrees freedoms}
- \item{"p.value"}{The p value}
- \item{"alternative"}{The alternative hypothesis}
- \item{"method"}{The used method}
- \item{"data.name"}{The data name.}
+ \item{statistic}{the Epps statistic.}
+ \item{parameter}{the test degrees freedoms.}
+ \item{p.value}{the p value.}
+ \item{alternative}{the alternative hypothesis.}
+ \item{method}{the character string \dQuote{Epps test}.}
+ \item{data.name}{a character string giving the name of the data.}
 }
 }
 \description{
