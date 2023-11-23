@@ -3,19 +3,18 @@
 #' Performs the Epps test for normality. The null hypothesis (H0) is that the given data
 #' follows a stationary Gaussian process.
 #'
-#' @usage  epps.test(y)
+#' @usage epps.test(y)
 #'
 #' @param y a numeric vector or an object of the \code{ts} class containing a stationary time series.
 #'
-#' @return a h.test class with the main results of the Epps hypothesis test. The
-#' h.test class have the following values:
+#' @return A list with class \code{"h.test"} containing the following components:
 #' \itemize{
-#'  \item{"epps"}{The Epps statistic}
-#'  \item{"df"}{The test degrees freedoms}
-#'  \item{"p.value"}{The p value}
-#'  \item{"alternative"}{The alternative hypothesis}
-#'  \item{"method"}{The used method}
-#'  \item{"data.name"}{The data name.}
+#'  \item{statistic}{the Epps statistic.}
+#'  \item{parameter}{the test degrees freedoms.}
+#'  \item{p.value}{the p value.}
+#'  \item{alternative}{the alternative hypothesis.}
+#'  \item{method}{the character string \dQuote{Epps test}.}
+#'  \item{data.name}{a character string giving the name of the data.}
 #' }
 #'
 #' @details
@@ -82,12 +81,12 @@ epps.test = function(y){
   class(rval) <- "htest"
   return(rval)
 }
-#' Estimates the Epps statistic
+#' Estimates the Epps statistic.
 #'
 #' Estimates the Epps statistic minimizing the quadratic loss of the process'
 #' characteristic function in terms of the first two moments.
 #'
-#' @usage  epps.statistic(y)
+#' @usage epps.statistic(y)
 #'
 #' @param y a numeric vector or an object of the \code{ts} class containing a stationary time series.
 #'

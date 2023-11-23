@@ -1,13 +1,12 @@
-#' The k random projections test for normality
+#' The k random projections test for normality.
 #'
 #' Performs the random projection test for normality. The null hypothesis (H0) is that the given data
 #' follows a stationary Gaussian process, and k is the number of used random projections.
 #'
-#' @usage  rp.test(y,k = 16,FDR = TRUE,pars1 = c(100,1),pars2  = c(2,7),seed = NULL)
+#' @usage rp.test(y,k = 16,FDR = TRUE,pars1 = c(100,1),pars2  = c(2,7),seed = NULL)
 #'
 #' @param y a numeric vector or an object of the \code{ts} class containing a stationary time series.
-#' @param k an integer with the number of random projections to be used, by default
-#' \code{k = 16}.
+#' @param k an integer with the number of random projections to be used, by default \code{k = 16}.
 #' @param FDR a logical value for mixing the p-values using a dependent False discovery
 #' rate method. If \code{FDR =TRUE}, then the p-values are mixed using a False discovery Rate method,
 #' on the contrary it applies the Benjamin and Yekuteli (2001) procedure. By default \code{FDR = TRUE}.
@@ -21,13 +20,13 @@
 #'
 #' @return A list with class \code{"h.test"} containing the following components:
 #' \itemize{
-#'  \item{statistic}{ A vector with the average Lobato and Velasco's and average Epps test
+#'  \item{statistic}{a vector with the average Lobato and Velasco's and average Epps test
 #'  statistics of the k projected samples.}
-#'  \item{parameter}{The number of projections.}
+#'  \item{parameter}{the number of projections.}
 #'  \item{p.value}{the mixed p-value for the test.}
-#'  \item{alternative}{The alternative hypothesis}
-#'  \item{method}{The character string \dQuote{k random projections test}.}
-#'  \item{data.name}{a character string giving the name(s) of the data.}
+#'  \item{alternative}{the alternative hypothesis.}
+#'  \item{method}{the character string \dQuote{k random projections test}.}
+#'  \item{data.name}{a character string giving the name of the data.}
 #' }
 #'
 #' @details
@@ -114,18 +113,19 @@ rp.test = function(y,k = 16,FDR = TRUE,pars1 = c(100,1),pars2 = c(2,7),seed = NU
                alternative = alt,
                method = "k random projections test",
                data.name = dname)
+
   class(rval) <- "htest"
 
   return(rval)
 }
-#' Generates a test statistics sample of random projections
+#' Generates a test statistics sample of random projections.
 #'
 #' Generates a sample of test statistics using k independent random projections
 #' of a stationary process. The first half values of the sample, are estimated
 #' using a Lobato and Velasco's statistic test. The last half values with an Epps
 #' statistic test.
 #'
-#' @usage  rp.sample(y,k = 16,pars1 = c(100,1),pars2 = c(2,7),seed = NULL)
+#' @usage rp.sample(y,k = 16,pars1 = c(100,1),pars2 = c(2,7),seed = NULL)
 #'
 #' @param y a numeric vector or an object of the \code{ts} class containing a stationary time series.
 #' @param k an integer with the number of random projections to be used, by default \code{k = 16}.
@@ -139,8 +139,8 @@ rp.test = function(y,k = 16,FDR = TRUE,pars1 = c(100,1),pars2 = c(2,7),seed = NU
 #'
 #' @return A list with 2 real value vectors:
 #' \itemize{
-#'  \item{"lobato"}{A vector with the Lobato and Velasco's statistics sample}
-#'  \item{"epps"}{A vector with the Epps statistics sample.}
+#'  \item{lobato}{A vector with the Lobato and Velasco's statistics sample.}
+#'  \item{epps}{A vector with the Epps statistics sample.}
 #' }
 #'
 #' @details
@@ -207,12 +207,12 @@ rp.sample = function(y,k = 16,pars1 = c(100,1),pars2 = c(2,7),seed = NULL){
 
   return(rp.sample)
 }
-#' Generate a random projection
+#' Generate a random projection.
 #'
 #' Generates a random projection of a univariate stationary stochastic process. Using
 #' a beta(shape1,shape2) distribution.
 #'
-#' @usage  random.projection(y,shape1,shape2,seed = NULL)
+#' @usage random.projection(y,shape1,shape2,seed = NULL)
 #'
 #' @param y a numeric vector or an object of the \code{ts} class containing a stationary time series.
 #' @param shape1 an optional real value with the first shape parameters of the beta
@@ -229,7 +229,7 @@ rp.sample = function(y,k = 16,pars1 = c(100,1),pars2 = c(2,7),seed = NULL){
 #'
 #' @export
 #'
-#' @author Alicia Nieto-Reyes and Asael Alonzo Matamoros
+#' @author Alicia Nieto-Reyes and Asael Alonzo Matamoros.
 #'
 #' @seealso \code{\link{lobato.test}} \code{\link{epps.test}}
 #'
