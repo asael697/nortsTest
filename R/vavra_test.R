@@ -217,20 +217,15 @@ sieve.bootstrap = function(y,reps = 1000,pmax = NULL,h = 100,seed = NULL){
 
   N = n + h
   sig = sd(mod$residuals)/sqrt(n-2*p-1)
-  yrep = matrix(0,nrow = reps,ncol = n)
 
-  for(i in 1:reps){
-    yb = y[n:(n-p)]
-    for(j in (p+1):N){
-      e = rnorm(1,mean = 0,sd = sig)
-      yb[j] = sum(phi[1:(p-1)]*yb[(j-p+1):(j-1)]) + phi[p] + e
-    }
-    yrep[i,] = yb[(h+1):N]
+  sieve.step <- function(h) {
+    N = n + h
+    ar_boot <- arima.sim(n = N,model = list(ar = phi,sd = sig))
+    return(as.vector(ar_boot[(h+1):N]))
   }
-  row.names(yrep) = paste0("repetition",1:reps)
-  colnames(yrep)  = paste0("observation",1:n)
 
-  return(yrep)
+  for_err <- replicate(reps, sieve.step(h))
+  return(t(for_err))
 }
 #' Anderson-Darling statistic
 #'
