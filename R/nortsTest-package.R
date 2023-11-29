@@ -22,7 +22,6 @@
 #'
 #' @import methods ggplot2 gridExtra forecast nortest stats tseries uroot MASS
 #'
-#'
 #' @references
 #' Epps, T.W. (1987). Testing that a stationary time series is Gaussian. \emph{The
 #' Annals of Statistic}. 15(4), 1683-1698.\url{https://projecteuclid.org/euclid.aos/1176350618}.
