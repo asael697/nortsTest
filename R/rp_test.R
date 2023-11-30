@@ -189,19 +189,16 @@ rp.sample = function(y,k = 16,pars1 = c(100,1),pars2 = c(2,7),seed = NULL){
   if(k <= 1)
     k = 1
 
-  n = length(y);T1 = NULL;T2 = NULL
+  n = length(y);
 
-  for(j in 1:k){
-    yh1 = random.projection(as.numeric(y),shape1 = pars1[1],shape2 = pars1[2])
-    yh2 = random.projection(as.numeric(y),shape1 = pars2[1],shape2 = pars2[2])
-
-    T1 = c(T1,lobato.statistic(yh1) )
-    T1 = c(T1,lobato.statistic(yh2) )
-
-    T2 = c(T2,epps.statistic(yh1) )
-    T2 = c(T2,epps.statistic(yh2) )
+  get_stats = function(pars){
+    yh = random.projection(as.numeric(y),shape1 = pars[1],shape2 = pars[2])
+    c(lobato.statistic(yh),epps.statistic(yh))
   }
-  rp.sample = list(lobato = T1,epps = T2)
+
+  x = cbind(replicate(k, get_stats(pars1)),replicate(k, get_stats(pars2)))
+
+  rp.sample = list(lobato = x[1,],epps = x[2,])
 
   return(rp.sample)
 }
@@ -273,11 +270,9 @@ random.projection = function(y,shape1,shape2,seed = NULL){
   }
   H[C] = sqrt(ch)/(n-C); h = H[C:n]; k = length(h);
 
-  for (j in 1:(k-1))
-    yp[j] = sum(y[1:j]*h[(k-j+1):k])
+  yp[1:(k-1)] = sapply(1:(k-1), function(j) sum(y[1:j]*h[(k-j+1):k]))
 
-  for (j in k:n)
-    yp[j] = sum(y[(j-k+1):j]*h)
+  yp[k:n] = sapply(k:n, function(j) sum(y[(j-k+1):j]*h))
 
   return(yp)
 }
