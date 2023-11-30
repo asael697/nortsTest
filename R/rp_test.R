@@ -191,14 +191,20 @@ rp.sample = function(y,k = 16,pars1 = c(100,1),pars2 = c(2,7),seed = NULL){
 
   n = length(y);
 
-  get_stats = function(pars){
-    yh = random.projection(as.numeric(y),shape1 = pars[1],shape2 = pars[2])
-    c(lobato.statistic(yh),epps.statistic(yh))
-  }
+  x1 = parallel::mclapply(1:k, FUN = function(i){
+    yh = random.projection(as.numeric(y),shape1 = pars1[1],shape2 = pars1[2])
+    c(i,lobato.statistic(yh),epps.statistic(yh))
+  })
 
-  x = cbind(replicate(k, get_stats(pars1)),replicate(k, get_stats(pars2)))
+  x2 = parallel::mclapply(1:k, FUN = function(i){
+    yh = random.projection(as.numeric(y),shape1 = pars2[1],shape2 = pars2[2])
+    c(i,lobato.statistic(yh),epps.statistic(yh))
+  })
 
-  rp.sample = list(lobato = x[1,],epps = x[2,])
+  x = rbind(matrix(unlist(x1),ncol = 3,byrow = TRUE),
+            matrix(unlist(x1),ncol = 3,byrow = TRUE))
+
+  rp.sample = list(lobato = x[,2],epps = x[,3])
 
   return(rp.sample)
 }
