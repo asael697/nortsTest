@@ -225,14 +225,15 @@ sieve.bootstrap = function(y,reps = 1000,pmax = NULL,h = 100,seed = NULL){
   N = n + h
   sig = sd(mod$residuals)/sqrt(n-2*p-1)
 
-  sieve.step <- function(h) {
+  x <- parallel::mclapply(1:reps, FUN = function(i){
     N = n + h
     ar_boot <- arima.sim(n = N,model = list(ar = phi,sd = sig))
-    return(as.vector(ar_boot[(h+1):N]))
-  }
+    c(i,as.vector(ar_boot[(h+1):N]))
+  })
 
-  for_err <- replicate(reps, sieve.step(h))
-  return(t(for_err))
+  for_err <-matrix(unlist(x),ncol = n+1,byrow = TRUE)
+
+  return(for_err[,-1])
 }
 #' Anderson-Darling statistic
 #'
