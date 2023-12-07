@@ -6,6 +6,12 @@ test_that("Vavra's statistic", {
   expect_equal(mean(ht), 0.4242066, tolerance = 0.3)
 })
 
+test_that("sieve_bootstrap",{
+  ht = nortsTest::sieve.bootstrap(y)
+  expect_equal(ncol(ht), length(y))
+  expect_equal(nrow(ht), 1000)
+})
+
 test_that("Lobato's statistic", {
   ht = nortsTest::lobato.statistic(y)
   expect_equal(ht, 1.3353, tolerance = 0.3)
@@ -22,4 +28,12 @@ test_that("Random Projections' statistics", {
   expect_equal(ht$lobato, 1.146889, tolerance = 0.3)
   #check computations are less than 2.5s
   expect_equal(ht$epps, 2.219923, tolerance = 0.3)
+})
+
+test_that("Random Projections' samples", {
+  ht = nortsTest::rp.sample(y)
+  # check the test choose the right hypothesis when using a Gaussian ARMA
+  expect_equal(length(ht$lobato), 32)
+  #check computations are less than 2.5s
+  expect_equal(length(ht$epps), 32)
 })

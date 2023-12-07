@@ -189,19 +189,22 @@ rp.sample = function(y,k = 16,pars1 = c(100,1),pars2 = c(2,7),seed = NULL){
   if(k <= 1)
     k = 1
 
-  n = length(y);T1 = NULL;T2 = NULL
+  n = length(y);
 
-  for(j in 1:k){
-    yh1 = random.projection(as.numeric(y),shape1 = pars1[1],shape2 = pars1[2])
-    yh2 = random.projection(as.numeric(y),shape1 = pars2[1],shape2 = pars2[2])
+  x1 = parallel::mclapply(1:k, FUN = function(i){
+    yh = random.projection(as.numeric(y),shape1 = pars1[1],shape2 = pars1[2])
+    c(i,lobato.statistic(yh),epps.statistic(yh))
+  })
 
-    T1 = c(T1,lobato.statistic(yh1) )
-    T1 = c(T1,lobato.statistic(yh2) )
+  x2 = parallel::mclapply(1:k, FUN = function(i){
+    yh = random.projection(as.numeric(y),shape1 = pars2[1],shape2 = pars2[2])
+    c(i,lobato.statistic(yh),epps.statistic(yh))
+  })
 
-    T2 = c(T2,epps.statistic(yh1) )
-    T2 = c(T2,epps.statistic(yh2) )
-  }
-  rp.sample = list(lobato = T1,epps = T2)
+  x = rbind(matrix(unlist(x1),ncol = 3,byrow = TRUE),
+            matrix(unlist(x1),ncol = 3,byrow = TRUE))
+
+  rp.sample = list(lobato = x[,2],epps = x[,3])
 
   return(rp.sample)
 }
@@ -273,11 +276,9 @@ random.projection = function(y,shape1,shape2,seed = NULL){
   }
   H[C] = sqrt(ch)/(n-C); h = H[C:n]; k = length(h);
 
-  for (j in 1:(k-1))
-    yp[j] = sum(y[1:j]*h[(k-j+1):k])
+  yp[1:(k-1)] = sapply(1:(k-1), function(j) sum(y[1:j]*h[(k-j+1):k]))
 
-  for (j in k:n)
-    yp[j] = sum(y[(j-k+1):j]*h)
+  yp[k:n] = sapply(k:n, function(j) sum(y[(j-k+1):j]*h))
 
   return(yp)
 }

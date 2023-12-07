@@ -200,32 +200,40 @@ sieve.bootstrap = function(y,reps = 1000,pmax = NULL,h = 100,seed = NULL){
     mod = forecast::auto.arima(y,d = 0,D = 0,max.p = pmax,
                                allowmean = TRUE,max.q = 0,
                                max.P = 0,max.Q = 0)
-    p = length(mod$coef)
+    p = length(mod$model$phi)
+    phi = mod$model$phi
   }
   else{
-    if(floor(log(n)^2)> pmax)
-      p = pmax
-    else
-      p = 1
+    p = ifelse(floor(log(n)^2) > pmax, pmax, floor(log(n)^2))
+
+    mod = forecast::auto.arima(y,d = 0,D = 0,max.p = pmax,
+                                 allowmean = TRUE,max.q = 0,
+                                 max.P = 0,max.Q = 0)
+
+    p = length(mod$model$phi)
+    phi = mod$model$phi
   }
 
-  if(p <= 0) p = 1
+  if(p <= 0){
+    p = 1
+    mod = stats::arima(y,order = c(p,0,0))
 
-  mod = stats::arima(y,order = c(p,0,0),include.mean = TRUE)
-  phi = mod$coef
-  p = length(phi)
+    p = length(mod$model$phi)
+    phi = mod$model$phi
+  }
 
   N = n + h
   sig = sd(mod$residuals)/sqrt(n-2*p-1)
 
-  sieve.step <- function(h) {
+  x <- parallel::mclapply(1:reps, FUN = function(i){
     N = n + h
     ar_boot <- arima.sim(n = N,model = list(ar = phi,sd = sig))
-    return(as.vector(ar_boot[(h+1):N]))
-  }
+    c(i,as.vector(ar_boot[(h+1):N]))
+  })
 
-  for_err <- replicate(reps, sieve.step(h))
-  return(t(for_err))
+  for_err <-matrix(unlist(x),ncol = n+1,byrow = TRUE)
+
+  return(for_err[,-1])
 }
 #' Anderson-Darling statistic
 #'
