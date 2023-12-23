@@ -15,8 +15,8 @@
 #'  \item{statistic }{the Lagrange multiplier statistic.}
 #'  \item{parameter }{the test degrees freedoms.}
 #'  \item{p.value }{the p value.}
-#'  \item{alternative }{the alternative hypothesis.}
-#'  \item{method }{the character string \dQuote{Lagrange Multiplier test}.}
+#'  \item{alternative }{a character string describing the alternative hypothesis.}
+#'  \item{method }{a character string \dQuote{Lagrange Multiplier test}.}
 #'  \item{data.name }{a character string giving the name of the data.}
 #' }
 #'
