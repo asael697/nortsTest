@@ -4,10 +4,12 @@
 \alias{epps.test}
 \title{The Epps and Pulley Test for normality.}
 \usage{
-epps.test(y)
+epps.test(y, lambda = c(1,2))
 }
 \arguments{
 \item{y}{a numeric vector or an object of the \code{ts} class containing a stationary time series.}
+
+\item{lambda}{a numeric vector for evaluating the characteristic function.}
 }
 \value{
 A list with class \code{"h.test"} containing the following components:
@@ -15,8 +17,8 @@ A list with class \code{"h.test"} containing the following components:
  \item{statistic }{the Epps statistic.}
  \item{parameter }{the test degrees freedoms.}
  \item{p.value }{the p value.}
- \item{alternative }{the alternative hypothesis.}
- \item{method }{the character string \dQuote{Epps test}.}
+ \item{alternative }{a character string describing the alternative hypothesis.}
+ \item{method }{a character string \dQuote{Epps test}.}
  \item{data.name }{a character string giving the name of the data.}
 }
 }

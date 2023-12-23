@@ -24,8 +24,8 @@
 #'  statistics of the k projected samples.}
 #'  \item{parameter }{the number of projections.}
 #'  \item{p.value }{the mixed p-value for the test.}
-#'  \item{alternative }{the alternative hypothesis.}
-#'  \item{method }{the character string \dQuote{k random projections test}.}
+#'  \item{alternative }{a character string describing the alternative hypothesis.}
+#'  \item{method }{a character string \dQuote{k random projections test}.}
 #'  \item{data.name }{a character string giving the name of the data.}
 #' }
 #'
