@@ -1,10 +1,12 @@
 **Packages NEWS and Updates**
 ============
 
-**nortsTest 1.1.0 Date: 23/11/2023**
+**nortsTest 1.1.1 Date: 23/12/2023**
 ----------------------------------
 
 ### Features:
+- Add initial values as an argument to the Epps and Pulley test.
+- Refactor the `epps.statistic()` using less `for` loops. 
 - Speed up `vavra.test()` and `rp.test()` by replacing for loops with parallel vectorized 
   computation.
 
