@@ -3,9 +3,10 @@
 #' Performs the Epps test for normality. The null hypothesis (H0) is that the given data
 #' follows a stationary Gaussian process.
 #'
-#' @usage epps.test(y)
+#' @usage epps.test(y, lambda = c(1,2))
 #'
 #' @param y a numeric vector or an object of the \code{ts} class containing a stationary time series.
+#' @param lambda a numeric vector for evaluating the characteristic function.
 #'
 #' @return A list with class \code{"h.test"} containing the following components:
 #' \itemize{
@@ -47,7 +48,7 @@
 #' y = arima.sim(100,model = list(ar = 0.3))
 #' epps.test(y)
 #'
-epps.test = function(y){
+epps.test = function(y, lambda = c(1,2)){
 
   if( !is.numeric(y) & !is(y,class2 = "ts") )
     stop("y object must be numeric or a time series")
@@ -69,7 +70,7 @@ epps.test = function(y){
 
   dname = deparse(substitute(y))
   alt = paste(dname,"does not follow a Gaussian Process")
-  tstat = epps.statistic(y)
+  tstat = epps.statistic(y, lambda = lambda)
   names(tstat) <- "epps"
   df = 2
   names(df) <- "df"
@@ -86,9 +87,10 @@ epps.test = function(y){
 #' Estimates the Epps statistic minimizing the quadratic loss of the process'
 #' characteristic function in terms of the first two moments.
 #'
-#' @usage epps.statistic(y)
+#' @usage epps.statistic(y, lambda = c(1,2))
 #'
 #' @param y a numeric vector or an object of the \code{ts} class containing a stationary time series.
+#' @param lambda a numeric vector for evaluating the characteristic function.
 #'
 #' @details This function is the equivalent of \code{Sub} in \emph{Nieto-Reyes, A.,
 #' Cuesta-Albertos, J. & Gamboa, F. (2014)}. This function uses a quadratic
@@ -121,60 +123,49 @@ epps.test = function(y){
 #' y = arima.sim(100,model = list(ar = 0.3))
 #' epps.statistic(y)
 #'
-epps.statistic =  function(y){
-  n = length(y);dN=4;N = 2
-  deviSt = sd(y)*(n-1)/n
-  lambda = c(1,2)/deviSt
+epps.statistic =  function(y, lambda = c(1, 2)){
+  n = length(y);
+  N = 2*length(lambda);
   rn = floor(n^.4)
-  gmatrix = matrix(0,n,dN)
-  for (i in 1:n) {
-    ly = lambda*y[i];
-    co = cos(ly);
-    si = sin(ly);
 
-    for (j in 1:N) gmatrix[i,((j*2)-1):(j*2)] = c(co[j], si[j]);
-  }
-  gn = apply(gmatrix, 2, mean)
-  dpifcero = matrix(0,dN,dN)
-  de2 = matrix(0,dN,dN)
+  lambda_std = lambda/sd(y)
 
-  for (j in 1:n) {
-    zj = gmatrix[j,]-gn;
-    dpifcero = dpifcero+(cbind(zj) %*% zj)
-  }
-  for (r in 1:rn) {
-    de1 = matrix(0,dN,dN)
-    for (j in 1:(n-r)) de1 = de1+(cbind(gmatrix[j,]-gn) %*% (gmatrix[j+r,]-gn))
-    de2 = de2+de1*(1-r/rn)
-  }
+  gm = t(lambda_std %*% t(y))
+  gm = rbind(cos(gm), sin(gm))
+  gm = matrix(gm, nrow = n, ncol = N)
 
-  dpifcero = (dpifcero+2*de2)/n;
-  Gm = MASS::ginv(dpifcero);
-  me = mean(y); sts = deviSt/sqrt(n); ts2 = sqrt(2/n); Va = deviSt^2;
-  P  = matrix(c(me-sts,me+sts,me,Va*(1-ts2),Va*(1-ts2),Va*(1+ts2)),nrow=3,ncol=2)
-  Y  = cbind(rep(0,3))
+  gn = apply(gm, 2, mean)
 
-  for (i in 1:3) Y[i] = Quadratic(P[i,],gn,lambda,Gm,N,dN)
+  z = gm - matrix(gn, nrow = n, ncol = N, byrow = TRUE)
+  Gm = MASS::ginv(cov(z));
 
-  return(amoebam(P,Y,n,gn,lambda,Gm,N,dN))
+  me = mean(y); sts = sd(y)/sqrt(n); ts2 = sqrt(2/n); Va = sd(y)^2;
+  P  = matrix(c(me-sts, me+sts, me, Va*(1-ts2), Va*(1-ts2), Va*(1+ts2)),
+              nrow = 3, ncol = 2)
+  Y  = cbind(rep(0, 3))
+
+  for (i in 1:3) Y[i] = Quadratic(P[i,], gn, lambda_std, Gm)
+
+  return(amoebam(P, Y, n, gn, lambda_std, Gm))
 }
 #'
 #' @noRd
 #'
-Quadratic = function(m, gn, lambda, Gm, N, dN){
-  mu = m[1]; sigma = m[2];
-  ml = mu*lambda
-  e = exp(-sigma*(lambda^2)/2)
-  re = e*cos(ml); im = e*sin(ml); gms = rep(0,dN);
-  for (j in 1:N) { j2 = j*2; gms[(j2-1):j2] = c(re[j], im[j]); }
-  g = gn-gms
-  q = (g %*% Gm %*% cbind(g))
-  return(q[1,1])
+Quadratic = function(par, gn, lambda, Gm){
+  N = 2*length(lambda);
+  ml = par[1]*lambda
+  e = exp(-par[2]*(lambda)^2/2)
+
+  g0 = rbind(e*cos(ml),e*sin(ml))
+  g0 = as.numeric(g0)
+
+  target = (gn - g0) %*% Gm %*% cbind(gn - g0)
+  as.numeric(target)
 }
 #'
 #' @noRd
 #'
-amoebam = function(P,Y,n,gn,lambda,Gm,N,dN){
+amoebam = function(P, Y, n, gn, lambda, Gm){
   NDIM = 2; FTOL = .0001; NMAX = 20; ALPHA = 1;
   BETA = 0.5; GAMMA = 2; ITMAX = 500; PR = rep(0,NMAX);
   PRR = rep(0,NMAX); MPTS = NDIM+1; ITER = 0; IXXX = 1;
@@ -196,10 +187,10 @@ amoebam = function(P,Y,n,gn,lambda,Gm,N,dN){
       PBAR[J] = PBAR[J]/NDIM
       PR[J] = (1.+ALPHA)*PBAR[J]-ALPHA*P[IHI,J]
     }
-    YPR = Quadratic(PR,gn,lambda,Gm,N,dN)
+    YPR = Quadratic(PR,gn,lambda,Gm)
     if (YPR<=Y[ILO]){
       for (J in 1:NDIM) { PRR[J] = GAMMA*PR[J]+(1.-GAMMA)*PBAR[J] }
-      YPRR = Quadratic(PRR,gn,lambda,Gm,N,dN)
+      YPRR = Quadratic(PRR,gn,lambda,Gm)
       if (YPRR < Y[ILO]){
         for (J in 1:NDIM) { P[IHI,J] = PRR[J] }
         Y[IHI] = YPRR
@@ -214,7 +205,7 @@ amoebam = function(P,Y,n,gn,lambda,Gm,N,dN){
         Y[IHI] = YPR
       }
       for (J in 1:NDIM) { PRR[J] = BETA*P[IHI,J]+(1.-BETA)*PBAR[J] }
-      YPRR = Quadratic(PRR,gn,lambda,Gm,N,dN)
+      YPRR = Quadratic(PRR,gn,lambda,Gm)
       if(YPRR<Y[IHI]){
         for (J in 1:NDIM) { P[IHI,J] = PRR[J] }
         Y[IHI] = YPRR
@@ -225,7 +216,7 @@ amoebam = function(P,Y,n,gn,lambda,Gm,N,dN){
             for (J in 1:NDIM) {
               PR[J] = 0.5*(P[I,J]+P[ILO,J]); P[I,J] = PR[J];
             }
-            Y[I] = Quadratic(PR,gn,lambda,Gm,N,dN)
+            Y[I] = Quadratic(PR,gn,lambda,Gm)
           }
         }
       }
