@@ -4,7 +4,7 @@
 \alias{autoplot.ts}
 \alias{autoplot.numeric}
 \alias{fortify.ts}
-\title{Automatically create a ggplot for time series objects}
+\title{Automatically create a ggplot for time series objects.}
 \usage{
 \method{autoplot}{ts}(
   object,
@@ -44,14 +44,14 @@ with the functionality of \link{geom_forecast}.}
 specified, colour is set to FALSE). If FALSE, each series will be assigned a
 colour.}
 
-\item{colour}{If TRUE, the time series will be assigned a colour aesthetic}
+\item{colour}{If TRUE, the time series will be assigned a colour aesthetic.}
 
 \item{...}{Other plotting parameters to affect the plot.}
 
 \item{model}{Object of class \dQuote{\code{ts}} to be converted to
 \dQuote{\code{data.frame}}.}
 
-\item{data}{Not used (required for \link{fortify} method)}
+\item{data}{Not used (required for \link{fortify} method).}
 }
 \value{
 None. Function produces a ggplot2 graph.

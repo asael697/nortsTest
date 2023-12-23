@@ -4,13 +4,13 @@
 \name{nortsTest-package}
 \alias{nortsTest-package}
 \alias{nortsTest}
-\title{'Assessing Normality of Stationary Process.'}
+\title{'Assessing Normality of a Stationary Process.'}
 \description{
 Despite that several tests for normality in stationary processes have been proposed
 in the literature, consistent implementations of these tests in programming languages
 are limited. Four normality test are implemented. The Lobato and Velasco's, Epps,
 Psaradakis and  Vavra, and the random projections tests for stationary process.
-Some other diagnostics such as, unit root test for stationarity, seasonal tests for
+Some other diagnostics such as, unit root test for stationary, seasonal tests for
 seasonality, and arch effect test for volatility; are also performed. The package also
 offers residual diagnostic for linear time series models developed in several packages.
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/vavra_test.R
 \name{sieve.bootstrap}
 \alias{sieve.bootstrap}
-\title{Generates a sieve bootstrap sample}
+\title{Generates a sieve bootstrap sample.}
 \usage{
 sieve.bootstrap(y,reps = 1000,pmax = NULL,h = 100,seed = NULL)
 }
@@ -42,8 +42,8 @@ Bulmann, P. (1997). Sieve Bootstrap for time series. \emph{Bernoulli}.
 3(2), 123 -148.
 }
 \seealso{
-\code{\link{lobato.test}},\code{\link{epps.test}}
+\code{\link{lobato.test}},\code{\link{epps.test}}.
 }
 \author{
-Asael Alonzo Matamoros
+Asael Alonzo Matamoros.
 }

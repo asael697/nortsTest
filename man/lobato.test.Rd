@@ -2,7 +2,7 @@
 % Please edit documentation in R/lobato_test.R
 \name{lobato.test}
 \alias{lobato.test}
-\title{The Lobato and Velasco's Test for normality}
+\title{The Lobato and Velasco's Test for normality.}
 \usage{
 lobato.test(y,c = 1)
 }
@@ -13,15 +13,14 @@ lobato.test(y,c = 1)
 cumulative sum.}
 }
 \value{
-A h.test class with the main results of the Lobato and Velasco's hypothesis test. The
-h.test class have the following values:
+A list with class \code{"h.test"} containing the following components:
 \itemize{
- \item{"lobato"}{The Lobato and Velasco's statistic}
- \item{"df"}{The test degrees freedoms}
- \item{"p.value"}{The p value}
- \item{"alternative"}{The alternative hypothesis}
- \item{"method"}{The used method}
- \item{"data.name"}{The data name.}
+ \item{statistic }{the Lobato and Velasco's statistic.}
+ \item{parameter }{the test degrees freedoms.}
+ \item{p.value }{the p-value for the test.}
+ \item{alternative }{the alternative hypothesis.}
+ \item{method }{the character string \dQuote{Lobato and Velasco's test}.}
+ \item{data.name }{a character string giving the name of the data.}
 }
 }
 \description{

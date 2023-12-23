@@ -1,23 +1,22 @@
-#' The Psaradakis and  Vavra test for normality
+#' The Psaradakis and  Vavra test for normality.
 #'
 #' Performs the Psaradakis and Vavra distance test for normality. The null hypothesis (H0),
 #' is that the given data follows a Gaussian process.
 #'
-#' @usage  vavra.test(y,reps = 1000,h = 100,seed = NULL)
+#' @usage vavra.test(y,reps = 1000,h = 100,seed = NULL)
 #'
 #' @param y a numeric vector or an object of the \code{ts} class containing a stationary time series.
 #' @param reps an integer with the total bootstrap repetitions.
 #' @param h an integer with the first \code{burn-in} sieve bootstrap replicates.
 #' @param seed An optional \code{\link[=set.seed]{seed}} to use.
 #'
-#' @return a h.test class with the main results of the Epps hypothesis test. The
-#' h.test class have the following values:
+#' @return A list with class \code{"h.test"} containing the following components:
 #' \itemize{
-#'  \item{"bootstrap A"}{The sieve bootstrap A statistic}
-#'  \item{"p.value"}{The p value}
-#'  \item{"alternative"}{The alternative hypothesis}
-#'  \item{"method"}{The used method}
-#'  \item{"data.name"}{The data name.}
+#'  \item{statistic }{the sieve bootstrap A statistic.}
+#'  \item{p.value }{the p value for the test.}
+#'  \item{alternative }{the alternative hypothesis.}
+#'  \item{method }{the character string \dQuote{Psaradakis and Vavra test}.}
+#'  \item{data.name }{a character string giving the name of the data.}
 #' }
 #'
 #' @details
@@ -80,9 +79,11 @@ vavra.test = function(y,reps = 1000,h = 100,seed = NULL){
   # Bootstrap p.value
   pval = mean(ad > ad0)
 
-  rval = list(statistic =tstat, p.value = pval,
+  rval = list(statistic = tstat,
+              p.value = pval,
               alternative = alt,
-              method = "Psaradakis-Vavra test", data.name = dname)
+              method = "Psaradakis-Vavra test",
+              data.name = dname)
   class(rval) = "htest"
   return(rval)
 }
@@ -144,11 +145,11 @@ vavra.sample = function(y,reps = 1000,h = 100,seed = NULL){
   adb = apply(yrep, 1,ad.statistic)
   return(adb)
 }
-#' Generates a sieve bootstrap sample
+#' Generates a sieve bootstrap sample.
 #'
 #' The function generates a sieve bootstrap sample for a univariate stochastic process.
 #'
-#' @usage  sieve.bootstrap(y,reps = 1000,pmax = NULL,h = 100,seed = NULL)
+#' @usage sieve.bootstrap(y,reps = 1000,pmax = NULL,h = 100,seed = NULL)
 #'
 #' @param y a numeric vector or an object of the \code{ts} class containing a stationary time series.
 #' @param reps an integer with the total bootstrap repetitions.
@@ -170,9 +171,9 @@ vavra.sample = function(y,reps = 1000,h = 100,seed = NULL){
 #' @importFrom stats arima
 #' @export
 #'
-#' @author Asael Alonzo Matamoros
+#' @author Asael Alonzo Matamoros.
 #'
-#' @seealso \code{\link{lobato.test}},\code{\link{epps.test}}
+#' @seealso \code{\link{lobato.test}},\code{\link{epps.test}}.
 #'
 #' @references
 #' Bulmann, P. (1997). Sieve Bootstrap for time series. \emph{Bernoulli}.

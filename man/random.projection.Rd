@@ -2,7 +2,7 @@
 % Please edit documentation in R/rp_test.R
 \name{random.projection}
 \alias{random.projection}
-\title{Generate a random projection}
+\title{Generate a random projection.}
 \usage{
 random.projection(y,shape1,shape2,seed = NULL)
 }
@@ -49,5 +49,5 @@ Lobato, I., & Velasco, C. (2004). A simple test of normality in time series.
 \code{\link{lobato.test}} \code{\link{epps.test}}
 }
 \author{
-Alicia Nieto-Reyes and Asael Alonzo Matamoros
+Alicia Nieto-Reyes and Asael Alonzo Matamoros.
 }

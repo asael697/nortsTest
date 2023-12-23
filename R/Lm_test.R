@@ -3,22 +3,21 @@
 #' Performs the Lagrange Multipliers test for homoscedasticity in a stationary process.
 #' The null hypothesis (H0), is that the process is homoscedastic.
 #'
-#' @usage  Lm.test(y,lag.max = 2,alpha = 0.05)
+#' @usage Lm.test(y,lag.max = 2,alpha = 0.05)
 #'
 #' @param y a numeric vector or an object of the \code{ts} class containing a stationary time series.
 #' @param lag.max an integer with the number of used lags.
 #' @param alpha Level of the test, possible values range from 0.01 to 0.1. By default
 #' \code{alpha = 0.05} is used.
 #'
-#' @return a h.test class with the main results of the Lagrage multiplier hypothesis test.
-#' The h.test class have the following values:
+#' @return A list with class \code{"h.test"} containing the following components:
 #' \itemize{
-#'  \item{"Lm"}{The lagrange multiplier statistic}
-#'  \item{"df"}{The test degrees freedoms}
-#'  \item{"p.value"}{The p value}
-#'  \item{"alternative"}{The alternative hypothesis}
-#'  \item{"method"}{The used method}
-#'  \item{"data.name"}{The data name.}
+#'  \item{statistic }{the Lagrange multiplier statistic.}
+#'  \item{parameter }{the test degrees freedoms.}
+#'  \item{p.value }{the p value.}
+#'  \item{alternative }{the alternative hypothesis.}
+#'  \item{method }{the character string \dQuote{Lagrange Multiplier test}.}
+#'  \item{data.name }{a character string giving the name of the data.}
 #' }
 #'
 #' @details
@@ -30,7 +29,7 @@
 #'
 #' @export
 #'
-#' @author A. Trapletti and Asael Alonzo Matamoros
+#' @author A. Trapletti and Asael Alonzo Matamoros.
 #'
 #' @seealso \code{\link{arch.test}}
 #'

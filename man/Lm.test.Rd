@@ -15,15 +15,14 @@ Lm.test(y,lag.max = 2,alpha = 0.05)
 \code{alpha = 0.05} is used.}
 }
 \value{
-a h.test class with the main results of the Lagrage multiplier hypothesis test.
-The h.test class have the following values:
+A list with class \code{"h.test"} containing the following components:
 \itemize{
- \item{"Lm"}{The lagrange multiplier statistic}
- \item{"df"}{The test degrees freedoms}
- \item{"p.value"}{The p value}
- \item{"alternative"}{The alternative hypothesis}
- \item{"method"}{The used method}
- \item{"data.name"}{The data name.}
+ \item{statistic }{the Lagrange multiplier statistic.}
+ \item{parameter }{the test degrees freedoms.}
+ \item{p.value }{the p value.}
+ \item{alternative }{the alternative hypothesis.}
+ \item{method }{the character string \dQuote{Lagrange Multiplier test}.}
+ \item{data.name }{a character string giving the name of the data.}
 }
 }
 \description{
@@ -56,5 +55,5 @@ Series Analysis.} 4, 269-273.
 \code{\link{arch.test}}
 }
 \author{
-A. Trapletti and Asael Alonzo Matamoros
+A. Trapletti and Asael Alonzo Matamoros.
 }

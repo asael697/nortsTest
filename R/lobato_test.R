@@ -1,23 +1,22 @@
-#' The Lobato and Velasco's Test for normality
+#' The Lobato and Velasco's Test for normality.
 #'
 #' Performs the Lobato and Velasco's test for normality. The null hypothesis (H0),
 #' is that the given data follows a Gaussian process.
 #'
-#' @usage  lobato.test(y,c = 1)
+#' @usage lobato.test(y,c = 1)
 #'
 #' @param y a numeric vector or an object of the \code{ts} class containing a stationary time series.
 #' @param c a positive real value that identifies the total amount of values used in the
 #' cumulative sum.
 #'
-#' @return A h.test class with the main results of the Lobato and Velasco's hypothesis test. The
-#' h.test class have the following values:
+#' @return A list with class \code{"h.test"} containing the following components:
 #' \itemize{
-#'  \item{"lobato"}{The Lobato and Velasco's statistic}
-#'  \item{"df"}{The test degrees freedoms}
-#'  \item{"p.value"}{The p value}
-#'  \item{"alternative"}{The alternative hypothesis}
-#'  \item{"method"}{The used method}
-#'  \item{"data.name"}{The data name.}
+#'  \item{statistic }{the Lobato and Velasco's statistic.}
+#'  \item{parameter }{the test degrees freedoms.}
+#'  \item{p.value }{the p-value for the test.}
+#'  \item{alternative }{the alternative hypothesis.}
+#'  \item{method }{the character string \dQuote{Lobato and Velasco's test}.}
+#'  \item{data.name }{a character string giving the name of the data.}
 #' }
 #'
 #' @details
@@ -73,15 +72,19 @@ lobato.test = function(y, c = 1){
   names(tstat) <- "lobato"
   df =  2
   names(df) <- "df"
-  pval = pchisq(q = tstat,df =df,lower.tail = FALSE)
+  pval = pchisq(q = tstat,df = df,lower.tail = FALSE)
 
-  rval <- list(statistic =tstat, parameter = df, p.value = pval,
+  rval <- list(statistic = tstat,
+               parameter = df,
+               p.value = pval,
                alternative = alt,
-               method = "Lobato and Velasco's test", data.name = dname)
+               method = "Lobato and Velasco's test",
+               data.name = dname)
+
   class(rval) <- "htest"
   return(rval)
 }
-#'  Computes the Lobato and Velasco statistic
+#'  Computes the Lobato and Velasco statistic.
 #'
 #' Computes the Lobato and Velasco's statistic. This test  proves a normality
 #' assumption in correlated data employing the skewness-kurtosis test statistic,

@@ -1,0 +1,37 @@
+## Referee report of "nortsTest: An R Package for Assessing Normality of Stationary Processes".
+
+- **Id**: 2022-186
+
+## General
+
+This paper presents a some elementary background on stochastic processes to set notation and continues with a brief literature review of normality tests for stationary processes. The contribution is the implementation and wrapping of a variety of such techniques into an R package {nortsTest} which enables easy use. Some tests are new implementations (eg epps.test()) whilst others are wrapper interfaces to implementations in other packages (eg seasonal.test()).
+
+I think this package represents a valuable contribution to the R community.
+
+
+
+## Detailed comments
+
+- p.10, last para: The authors state that "As expected, rejection rates are around 0.05 when the data is drawn making use of the standard normal distribution". However, the Random Projections test seems to have much lower rejection rates indicating that the test seems poorly calibrated to the null: can the authors explain the apparent discrepancy under just this test? In particular, note that even for the closest value of 0.027 (n=250, \phi=-0.25) a binomial confidence interval for rejection rate would be (0.0178,0.0390) meaning that none of the experiments under the null appear to be satisfactory in this particular test. This seems particularly important to investigate given the claim that this test is an "upgrade" versus others.
+
+- The future work section alludes to improving the performance of some of the functions in the package, but there is no discussion in the paper of any performance constraints.  I think a small additional subsection briefly outlining the performance characteristics of the different testing approaches would be beneficial.
+
+Minor/Typos:
+
+- p.3, last para: Many of the stated standard tests (KS, Anderson Darling, Shapiro-Wilk etc) are available in base R or add on packages and it would be good to reference their availability (this is partially done in the conclusion without naming the approriate function names, but may be better presented earlier and more completely).
+
+- p.3, last para: "There are no results, however, showing that the above tests are consistent in the context of stationary processes, case in which the independence assumption is violated."  I think this should say "in which case the".
+
+
+
+## Code
+
+On the whole the code is appropriately implemented and it is good to see standard R practices followed where appropriate (eg returning objects of class htest for results of hypothesis tests).
+
+One comment on code in the paper:
+
+- p.4, para 2 & p.15, top: `dependencies=T` ... use of `T` is not considered good practice, since this is a variable which can be overridden in a user's environment, whereas `TRUE` is a reserved keyword. Please replace `T` with `TRUE` throughout.
+
+One comment on documentation in the package:
+
+- Some of the "Value" sections of documentation (eg epps.test(), Lm.test(), lobato.test(), ...) have incorrect formatting (compare for example to t.test() in base) and others (eg normal.test(), seasonal.test(), ...) are incomplete and don't have the full explanation of the returned value.

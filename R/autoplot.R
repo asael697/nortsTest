@@ -1,4 +1,4 @@
-#' Automatically create a ggplot for time series objects
+#' Automatically create a ggplot for time series objects.
 #'
 #' \code{autoplot} takes an object of type \code{ts} or \code{mts} and creates
 #' a ggplot object suitable for usage with \code{stat_forecast}.
@@ -15,10 +15,10 @@
 #' @param facets If TRUE, multiple time series will be faceted (and unless
 #' specified, colour is set to FALSE). If FALSE, each series will be assigned a
 #' colour.
-#' @param colour If TRUE, the time series will be assigned a colour aesthetic
+#' @param colour If TRUE, the time series will be assigned a colour aesthetic.
 #' @param model Object of class \dQuote{\code{ts}} to be converted to
 #' \dQuote{\code{data.frame}}.
-#' @param data Not used (required for \link{fortify} method)
+#' @param data Not used (required for \link{fortify} method).
 #' @param ... Other plotting parameters to affect the plot.
 #'
 #'
@@ -151,18 +151,18 @@ ggtsbreaks <- function(x) {
   # Make x axis contain only whole numbers (e.g., years)
   return(unique(round(pretty(floor(x[1]):ceiling(x[2])))))
 }
-#' Histogram with optional normal density functions
+#' Histogram with optional normal density functions.
 #'
 #' Plots a histogram and density estimates using ggplot.
 #'
 #'
 #' @param y a numeric vector or an object of the \code{ts} class containing a stationary time series.
 #' @param title a string with the plot's title.
-#' @param xlab a string with the plot's x axis label. By default a NUll value
-#' @param ylab a string with the plot's y axis label. By default a "counts" value
-#' @param add.normal A boolean value. Add a normal density function for comparison,
+#' @param xlab a string with the plot's x axis label. By default a NUll value.
+#' @param ylab a string with the plot's y axis label. By default a "counts" value.
+#' @param add.normal a boolean value. Add a normal density function for comparison,
 #' by default \code{add.normal = TRUE}.
-#' @param bins The number of bins to use for the histogram. Selected by default
+#' @param bins the number of bins to use for the histogram. Selected by default
 #' using the Friedman-Diaconis rule.
 #'
 #' @return None.
@@ -254,7 +254,7 @@ ggnorm = function(y,title = NULL,add.normal = TRUE){
 
   return(p)
 }
-#' \code{acf} plot
+#' \code{acf} plot.
 #'
 #' Plot of the auto-correlation function for a univariate time series.
 #'
@@ -312,8 +312,7 @@ ggpacf = function(y,title = NULL){
 check_plot<- function(y,...) {
   UseMethod("check_plot")
 }
-#' Generic function for a visual check of residuals in time series models
-#'
+#' Generic function for a visual check of residuals in time series models.
 #'
 #' Generic function for a visual check of residuals in time series models, these methods are inspired in
 #' the \code{check.residuals} function provided by the \code{forecast} package.
@@ -327,9 +326,9 @@ check_plot<- function(y,...) {
 #' @param model A string with the model name.
 #' @param ... Other plotting parameters to affect the plot.
 #'
-#' @return A graph object from ggplot2
+#' @return A graph object from ggplot2.
 #'
-#' @author Asael Alonzo Matamoros
+#' @author Asael Alonzo Matamoros.
 #'
 #' @seealso \code{check_residuals}
 #'

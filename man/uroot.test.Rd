@@ -2,14 +2,14 @@
 % Please edit documentation in R/test.R
 \name{uroot.test}
 \alias{uroot.test}
-\title{The Unit root tests function}
+\title{The Unit root tests function.}
 \usage{
 uroot.test(y,unit_root = c("adf","kpss","pp","box"),alpha = 0.05)
 }
 \arguments{
 \item{y}{a numeric vector or an object of the \code{ts} class containing a stationary time series.}
 
-\item{unit_root}{A character string naming the desired unit root test for checking stationarity.
+\item{unit_root}{A character string naming the desired unit root test for checking stationary.
 Valid values are \code{"adf"} for the Augmented Dickey-Fuller, \code{"pp"} for the Phillips-Perron,
 \code{"kpss"} for Kwiatkowski, Phillips, Schmidt, and Shin, and \code{"box"} for the Ljung-Box. The default
 value is \code{"adf"} for the Augmented Dickey-Fuller test.}
@@ -18,10 +18,18 @@ value is \code{"adf"} for the Augmented Dickey-Fuller test.}
 is used}
 }
 \value{
-a h.test class with the main results of unit root hypothesis test.
+A list with class \code{"h.test"} containing the following components:
+\itemize{
+ \item{statistic }{the test statistic.}
+ \item{parameter }{the test degrees freedoms.}
+ \item{p.value }{the p-value for the test.}
+ \item{alternative }{the alternative hypothesis.}
+ \item{method }{the character string with the test name.}
+ \item{data.name }{a character string giving the name of the data.}
+}
 }
 \description{
-Perform a unit root test to check stationarity in a linear stochastic process.
+Perform a unit root test to check stationary in a linear stochastic process.
 }
 \details{
 Several different tests are available:
@@ -59,5 +67,5 @@ Ljung, G. M. & Box, G. E. P. (1978). On a measure of lack of fit in time series 
 \code{\link{normal.test}},\code{\link{seasonal.test}}
 }
 \author{
-Asael Alonzo Matamoros and A. Trapletti
+Asael Alonzo Matamoros and A. Trapletti.
 }

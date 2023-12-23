@@ -1,4 +1,4 @@
-#' 'Assessing Normality of Stationary Process.'
+#' 'Assessing Normality of a Stationary Process.'
 #'
 #' @docType package
 #' @name nortsTest-package
@@ -9,7 +9,7 @@
 #' in the literature, consistent implementations of these tests in programming languages
 #' are limited. Four normality test are implemented. The Lobato and Velasco's, Epps,
 #' Psaradakis and  Vavra, and the random projections tests for stationary process.
-#' Some other diagnostics such as, unit root test for stationarity, seasonal tests for
+#' Some other diagnostics such as, unit root test for stationary, seasonal tests for
 #' seasonality, and arch effect test for volatility; are also performed. The package also
 #' offers residual diagnostic for linear time series models developed in several packages.
 #'

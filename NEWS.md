@@ -1,6 +1,22 @@
 **Packages NEWS and Updates**
 ============
 
+**nortsTest 1.1.0 Date: 23/11/2023**
+----------------------------------
+
+### Features:
+
+### Fixes:
+- Update documentation for `Lobato`, `RP`, `Epps`, and `Vavra` tests. Better description 
+  to the return value, having a similar formatting to the `t.test()` function. 
+- Update documentation for `normal.test`, `seasonal.test`, and `uroot.test`. Better description 
+  to the return value, having a similar formatting to the `t.test()` function.
+
+### Changes:
+
+----------------------------------
+
+
 **nortsTest 1.0.3 Date: 12/06/2021**
 ----------------------------------
 

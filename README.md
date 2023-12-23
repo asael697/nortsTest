@@ -3,24 +3,24 @@
 **nortsTest: An R Package for Assessing Normality of Stationary Process**
 ======================================================================
 
-**nortsTest** is an R package for assessing normality of stationary
-process, it tests if a given data follows a stationary Gaussian process.
-The package works as an extension of the **nortest** package that performs 
+`nortsTest` is an `R` package for assessing normality of stationary
+processes, it tests if a given data follows a stationary Gaussian process.
+The package works as an extension of the `nortest` package that performs 
 normality tests in random samples (*independent data*). The four principal 
 package’s functions are:
 
--   epps.test() function that implements the [Epps test](https://projecteuclid.org/euclid.aos/1176350618),
+-   `epps.test()` function that implements the [Epps test](https://projecteuclid.org/euclid.aos/1176350618),
 
--   lobato.test() function that implements the Lobato and Velasco’s test,
+-   `lobato.test()` function that implements the Lobato and Velasco’s test,
 
--   vavra.test() function that implements the [Psaradaki and Vavra’s test](http://www.applied-econometrics.com),
+-   `vavra.test()` function that implements the [Psaradaki and Vavra’s test](http://www.applied-econometrics.com),
 
--   rp.test() function that implements the random projections test of
+-   `rp.test()` function that implements the random projections test of
     Nieto-Reyes, Cuesta-Albertos and Gamboa’s test.
 
-Additionally, inspired in the function *check.residuals()* of the
+Additionally, inspired in the function `checkresiduals()` of the
 [forecast package](https://github.com/robjhyndman/forecast), we
-provide the **check\_residuals** methods for checking model’s
+provide the `check_residuals` methods for checking model’s
 assumptions using the estimated residuals. The function checks
 stationarity, homoscedasticity and normality, presenting a report of the
 used tests and conclusions.
@@ -32,13 +32,13 @@ Checking normality assumptions
 library(nortsTest)
 ```
 
-Classic hypothesis tests for normality such as *Shapiro & Wilk, Anderson
-& Darling*, or *Jarque & Bera*, do not perform well on dependent data.
+Classic hypothesis tests for normality such as Shapiro & Wilk, Anderson
+& Darling, or Jarque & Bera, do not perform well on dependent data.
 Therefore, these tests should not be used to check whether a given time
 series has been drawn from a Gaussian process. As a simple example, we
 generate a stationary ARMA(1,1) process simulated using an t student
 distribution with 7 degrees of freedom, and perform the Anderson-Darling
-test from the *nortest package*.
+test from the `nortest` package.
 
 ``` r
 x = arima.sim(100,model = list(ar = 0.32,ma = 0.25),rand.gen = rt,df = 7)
@@ -52,7 +52,7 @@ nortest::ad.test(x)
 ```
 
 The null hypothesis is that the data has a normal distribution and
-therefore, follows a Gaussian Process. At *α* = 0.05 significance level
+therefore, follows a Gaussian Process. At $\alpha=0.05$ significance level
 the alternative hypothesis is rejected and wrongly concludes the data
 follows a Gaussian process. Applying the Lobato and Velasco’s test of
 our package, the null hypothesis is correctly rejected.
@@ -71,9 +71,9 @@ Example: stationary AR(2) process
 ---------------------------------
 
 In the next example we generate a stationary AR(2) process, using an
-exponential distribution with rate of 5, and perform the *epps* and *rp*
-with k = 5 random projections tests. With a significance level at
-*a**l**p**h**a* = 0.05, the null hypothesis of non-normality is
+exponential distribution with rate of 5, and perform the *Epps* and *RP*
+with `k = 5` random projections tests. With a significance level at
+$\alpha=0.05$, the null hypothesis of non-normality is
 rejected.
 
 ``` r
@@ -98,11 +98,11 @@ rp.test(x,k = 5)
 #> alternative hypothesis: x does not follow a Gaussian Process
 ```
 
-Checking model’s assumptions: cardox data
+Checking model’s assumptions: `cardox` data
 -----------------------------------------
 
 As an example, we analyze the monthly mean carbon dioxide (*in ppm*)
-from the **astsa package**, measured at Mauna Loa Observatory, Hawaii.
+from the `astsa` package, measured at Mauna Loa Observatory, Hawaii.
 from March, 1958 to November 2018. The carbon dioxide data measured as 
 the mole fraction in dry air, on Mauna Loa constitute the longest record 
 of direct measurements of CO2 in the atmosphere. They were started by C. 
@@ -161,10 +161,10 @@ summary(model)
 #> Training set 0.07275949
 ```
 
-The best fitted model is a *multiplicative level, additive trend and
-seasonality* state space model. If the model’s assumptions are
+The best fitted model is a *multiplicative level*, *additive trend* and
+*seasonality* state space model. If the model’s assumptions are
 satisfied, then the model’s errors behave like a Gaussian stationary
-process. These assumptions can be checked using our *check\_residuals*
+process. These assumptions can be checked using our `check_residuals`
 functions.
 
 In this case, we use an Augmented Dickey-Fuller test for stationary
@@ -203,8 +203,7 @@ check_residuals(model,unit_root = "adf",normality = "rp",plot = TRUE)
 
 <img src="man/figures/unnamed-chunk-7-1.png" width="60%" style="display: block; margin: auto;" />
 
-Now that all the model’s assumptions are checked, the model is accepted
-and can be used to forecast.
+After all the model’s assumptions are checked, the model can be used to forecast.
 
 ``` r
 autoplot(forecast(model,h = 12),include = 100,xlab = "years",ylab = " CO2 (ppm)",
@@ -213,7 +212,7 @@ autoplot(forecast(model,h = 12),include = 100,xlab = "years",ylab = " CO2 (ppm)"
 
 <img src="man/figures/unnamed-chunk-8-1.png" width="60%" style="display: block; margin: auto;" />
 
-How to install nortsTest?
+How to install `nortsTest`?
 -------------------------
 
 The current development version can be downloaded from GitHub via
@@ -227,23 +226,23 @@ remotes::install_github("asael697/nortsTest",dependencies = TRUE)
 Additional test functions
 -------------------------
 
-The **nortsTest** package offers additional functions for descriptive
+The `nortsTest` package offers additional functions for descriptive
 analysis in univariate time series.
 
--   *uroot.test*: performs unit root test for checking stationary in
+-   `uroot.test`: performs unit root test for checking stationary in
     linear time series. The Ljung-Box, Augmented Dickey-Fuller,
-    Phillips-Perron and Kpps tests can be selected with the *unit\_root*
+    Phillips-Perron and Kpps tests can be selected with the `unit_root`
     option parameter.
 
--   *seasonal.test*: performs seasonal unit root test for stationary in
-    seasonal time series. The hegy, ch and ocsb tests are available with
+-   `seasonal.test`: performs seasonal unit root test for stationary in
+    seasonal time series. The `hegy`, `ch` and `ocsb` tests are available with
     the seasonal option parameter.
 
--   *arch.test*: for checking the ARCH effect in time series. The
+-   `arch.test`: for checking the ARCH effect in time series. The
     Ljung-Box and Lagrange Multiplier tests can be selected from the
-    *arch* option parameter.
+    `arch` option parameter.
 
--   *normal.test*: for normal distribution check in time series and
+-   `normal.test`: for normal distribution check in time series and
     random samples. The tests presented above can be chosen for
     stationary time series. For random samples (*independent data*), the
     Anderson & Darling, Shapiro & Wilks, and Jarque-Bera tests are
@@ -253,47 +252,47 @@ For visual diagnostic, we offer ggplot2 methods for numeric and
 time-series data. Most of the functions were adapted from Rob Hyndman’s
 [forecast package](https://github.com/robjhyndman/forecast).
 
--   *autoplot*: For plotting time series objects (*ts class*).
+-   `autoplot`: For plotting time series objects (`ts` class*).
 
--   *gghist*: histograms for numeric and univariate time series.
+-   `gghist`: histograms for numeric and univariate time series.
 
--   *ggnorm*: quantile-quantile plot for numeric and univariate time
+-   `ggnorm`: quantile-quantile plot for numeric and univariate time
     series.
 
--   *ggacf & ggpacf*: partial and auto correlation functions plots for
+-   `ggacf` & `ggpacf`: partial and auto correlation functions plots for
     numeric and univariate time series.
 
--   *check\_plot*: summary diagnostic plot for univariate starionary
+-   `check_plot`: summary diagnostic plot for univariate starionary
     time series.
 
 Accepted models for residual check
 ----------------------------------
 
-Currently our check\_residuals() and check\_plot() methods are valid for
+Currently our `check_residuals()` and `check_plot()` methods are valid for
 the current models and classes:
 
--   **ts**: for uni variate time series
+-   `ts`: for univariate time series
 
--   **numeric**: for numeric vectors
+-   `numeric`: for numeric vectors
 
--   **arima0**: from the stats package
+-   `arima0`: from the `stats` package
 
--   **Arima**: from the forecast package
+-   `Arima`: from the `forecast` package
 
--   **fGARCH**: from the fGarch package
+-   `fGARCH`: from the `fGarch` package
 
--   **lm**: from the stats package
+-   `lm`: from the `stats` package
 
--   **glm**: from the stats package
+-   `glm`: from the `stats` package
 
--   **Holt and Winters**: from the stats and forecast package
+-   `Holt` and `Winters`: from the `stats` and `forecast` package
 
--   **ets**: from the forecast package
+-   `ets`: from the forecast package
 
--   **forecast methods**: from the forecast package.
+-   `forecast methods`: from the `forecast` package.
 
 For overloading more functions, methods or packages, please make a pull
-request or send a mail to: asael\_am@hotmail.com
+request or send a mail to: `asael_am@hotmail.com`.
 
 References
 ----------

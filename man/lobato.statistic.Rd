@@ -2,7 +2,7 @@
 % Please edit documentation in R/lobato_test.R
 \name{lobato.statistic}
 \alias{lobato.statistic}
-\title{Computes the Lobato and Velasco statistic}
+\title{Computes the Lobato and Velasco statistic.}
 \usage{
 lobato.statistic(y,c = 1)
 }
