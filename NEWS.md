@@ -5,12 +5,14 @@
 ----------------------------------
 
 ### Features:
+- Speed up `vavra.test()` and `rp.test()` by replacing for loops with parallel vectorized 
+  computation.
 
 ### Fixes:
 - Update documentation for `Lobato`, `RP`, `Epps`, and `Vavra` tests. Better description 
   to the return value, having a similar formatting to the `t.test()` function. 
-- Update documentation for `normal.test`, `seasonal.test`, and `uroot.test`. Better description 
-  to the return value, having a similar formatting to the `t.test()` function.
+- Update documentation for `normal.test`, `seasonal.test`, and `uroot.test`. Better 
+  description to the return value, having a similar formatting to the `t.test()` function.
 
 ### Changes:
 
