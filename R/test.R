@@ -185,7 +185,7 @@ uroot.test = function(y,unit_root = c("adf","kpss","pp","box"),alpha = 0.05){
 #' y = rexp(100)
 #' normal.test(y,normality = "ad")
 #'
-normal.test = function(y,normality = c("epps","lobato","vavra","rp","jb","ad","shapiro"),
+normal.test = function(y, normality = c("epps","lobato","vavra","rp","jb","ad","shapiro"),
                        alpha = 0.05){
 
   if( !is.numeric(y) & !is(y,class2 = "ts") )
