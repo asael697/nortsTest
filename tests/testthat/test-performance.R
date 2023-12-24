@@ -19,6 +19,20 @@ test_that("Bootstrap Jarque Beras' test performance lower than 10s", {
   expect_equal(end < 10, TRUE)
 })
 
+test_that("Bootstrap Shapiro's test performance lower than 10s", {
+  start = Sys.time()
+  ht = nortsTest::shapiro_bootstrap.test(y)
+  end = Sys.time() - start
+  expect_equal(end < 10, TRUE)
+})
+
+test_that("Bootstrap Cramer Von Mises' test performance lower than 10s", {
+  start = Sys.time()
+  ht = nortsTest::cvm_bootstrap.test(y)
+  end = Sys.time() - start
+  expect_equal(end < 10, TRUE)
+})
+
 test_that("Lobato's test performance lower than 10s", {
   start = Sys.time()
   ht = nortsTest::lobato.test(y)
