@@ -51,6 +51,10 @@ vavra.test(y)
 
 }
 \references{
+Psaradakis, Z. and Vávra, M. (2020) Normality tests for dependent
+data: large-sample and bootstrap approaches. Communications in
+\emph{Statistics-Simulation and Computation 49 (2)}. ISSN 0361-0918.
+
 Psaradakis, Z. & Vavra, M. (2017). A distance test of normality for a wide class
 of stationary process. \emph{Journal of Econometrics and Statistics}. 2, 50-60.
 
