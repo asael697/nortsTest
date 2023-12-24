@@ -102,6 +102,7 @@ lobato.test = function(y, c = 1){
 #'
 #' @return A real value with the Lobato and Velasco test's statistic.
 #'
+#' @importFrom stats arima
 #' @export
 #'
 #' @author Alicia Nieto-Reyes and Asael Alonzo Matamoros.
@@ -136,19 +137,10 @@ lobato.statistic = function(y,c = 1){
   mu3 = sum((y-mu1)^3)/n
   mu4 = sum((y-mu1)^4)/n
 
-  hn  = ceiling(c*sqrt(n)-1)
-  gamma = rep(0,hn)
-
-  for (j in 1:hn) {
-    if( n-j > 0 ){
-      yt = y[1:(n-j)]
-      gamma[j] = sum((yt-mu1)*(y[(1+j):n]-mu1))/n
-      if(is.na(gamma[j])) gamma[j] = 0
-    }
-    else gamma[j] = 0
-  }
-  hnm = hn+1; gat =  rep(0,hn)
-  for (j in 1:hn) gat[j] = gamma[hnm-j]
+  hn = ceiling(c*sqrt(n)-1)
+  a = stats::acf(y,lag.max = hn,plot = FALSE)
+  gamma = as.numeric(a$acf)[2:hn]
+  gat = rev(gamma)
 
   F3 = abs(2*sum(gamma*(gamma+gat)^2)+mu2^3)
   F4 = abs(2*sum(gamma*(gamma+gat)^3)+mu2^4)
