@@ -237,7 +237,7 @@ shapiro_bootstrap.test = function(y, reps = 1000, h = 100, seed = NULL){
 
   # Additional values
   dname = deparse(substitute(y))
-  alt = paste(dname,"follows a Gaussian Process")
+  alt = paste(dname,"does not follow a Gaussian Process")
   # Bootstrap test statistic
   tstat = mean(ad)
   names(tstat) = paste("bootstrap","Shapiro", sep = "-")
