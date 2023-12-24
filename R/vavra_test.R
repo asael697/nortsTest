@@ -39,6 +39,10 @@
 #' @seealso \code{\link{lobato.test}},\code{\link{epps.test}}
 #'
 #' @references
+#' Psaradakis, Z. and Vávra, M. (2020) Normality tests for dependent
+#' data: large-sample and bootstrap approaches. Communications in
+#' \emph{Statistics-Simulation and Computation 49 (2)}. ISSN 0361-0918.
+#'
 #' Psaradakis, Z. & Vavra, M. (2017). A distance test of normality for a wide class
 #' of stationary process. \emph{Journal of Econometrics and Statistics}. 2, 50-60.
 #'
@@ -78,14 +82,19 @@ vavra.test = function(y, normality = c("ad","lobato","jb","cvm","shapiro","epps"
 
   ad0 = norm.stat(y, normality = normality, c = c, lambda = lambda)
 
-  ad = vavra.sample(y = as.numeric(y),reps = reps,seed = seed,h = h)
+  ad = vavra.sample(y = as.numeric(y), normality = normality,
+                    reps = reps,seed = seed,h = h)
 
   # Additional values
   dname = deparse(substitute(y))
   alt = paste(dname,"does not follow a Gaussian Process")
   # Bootstrap test statistic
   tstat = mean(ad)
-  names(tstat) = "bootstrap A"
+  names(tstat) = paste("bootstrap",normality,sep = "-")
+
+  mtd =ifelse(normality == "ad",
+              "Psaradakis-Vavra test",
+              paste("Sieve-Bootstrap",normality,"test"))
 
   # Bootstrap p.value
   pval = mean(ad > ad0)
@@ -93,7 +102,7 @@ vavra.test = function(y, normality = c("ad","lobato","jb","cvm","shapiro","epps"
   rval = list(statistic = tstat,
               p.value = pval,
               alternative = alt,
-              method = "Psaradakis-Vavra test",
+              method = mtd,
               data.name = dname)
   class(rval) = "htest"
   return(rval)
@@ -134,6 +143,10 @@ vavra.test = function(y, normality = c("ad","lobato","jb","cvm","shapiro","epps"
 #' @seealso \code{\link{epps.statistic}} \code{\link{lobato.statistic}}
 #'
 #' @references
+#' Psaradakis, Z. and Vávra, M. (2020) Normality tests for dependent
+#' data: large-sample and bootstrap approaches. Communications in
+#' \emph{Statistics-Simulation and Computation 49 (2)}. ISSN 0361-0918.
+#'
 #' Psaradakis, Z. & Vavra, M. (2017). A distance test of normality for a wide class
 #' of stationary process. \emph{Journal of Econometrics and Statistics}. 2, 50-60.
 #'
