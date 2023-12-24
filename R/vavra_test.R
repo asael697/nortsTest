@@ -12,7 +12,6 @@
 #' Beras, \code{"ad"} for Anderson Darling test,\code{"cvm"} for the Cramer Von Mises' test, and
 #' \code{"shapiro"} for the Shapiro-Wilk's test. The default value is \code{"ad"} test.
 #' @param reps an integer with the total bootstrap repetitions.
-#' @param reps an integer with the total bootstrap repetitions.
 #' @param h an integer with the first \code{burn-in} sieve bootstrap replicates.
 #' @param seed An optional \code{\link[=set.seed]{seed}} to use.
 #' @param c a positive real value used as argument for the Lobato's test.
