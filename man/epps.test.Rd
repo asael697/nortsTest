@@ -7,7 +7,8 @@
 epps.test(y, lambda = c(1,2))
 }
 \arguments{
-\item{y}{a numeric vector or an object of the \code{ts} class containing a stationary time series.}
+\item{y}{a numeric vector or an object of the \code{ts} class containing a stationary
+time series.}
 
 \item{lambda}{a numeric vector for evaluating the characteristic function.}
 }
