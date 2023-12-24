@@ -1,16 +1,19 @@
 #' The Psaradakis and  Vavra test for normality.
 #'
-#' Performs the Psaradakis and Vavra distance test for normality. The null hypothesis (H0),
-#' is that the given data follows a Gaussian process.
+#' Performs the Psaradakis and Vavra distance test for normality. The null
+#' hypothesis (H0), is that the given data follows a Gaussian process.
 #'
 #' @usage vavra.test(y, normality = c("ad","lobato","jb","cvm","shapiro","epps"),
 #'                   reps = 1000, h = 100, seed = NULL, c = 1, lambda = c(1,2))
 #'
-#' @param y a numeric vector or an object of the \code{ts} class containing a stationary time series.
-#' @param normality A character string naming the desired test for checking normality. Valid values are
-#' \code{"epps"} for the Epps, \code{"lobato"} for Lobato and Velasco's, \code{"jb"} for the Jarque and
-#' Beras, \code{"ad"} for Anderson Darling test,\code{"cvm"} for the Cramer Von Mises' test, and
-#' \code{"shapiro"} for the Shapiro-Wilk's test. The default value is \code{"ad"} test.
+#' @param y a numeric vector or an object of the \code{ts} class containing a
+#' stationary time series.
+#' @param normality A character string naming the desired test for checking
+#' normality. Valid values are \code{"epps"} for the Epps, \code{"lobato"} for
+#' Lobato and Velasco's, \code{"jb"} for the Jarque and Beras, \code{"ad"} for
+#' Anderson Darling test,\code{"cvm"} for the Cramer Von Mises' test, and
+#' \code{"shapiro"} for the Shapiro-Wilk's test. The default value is \code{"ad"}
+#' test.
 #' @param reps an integer with the total bootstrap repetitions.
 #' @param h an integer with the first \code{burn-in} sieve bootstrap replicates.
 #' @param seed An optional \code{\link[=set.seed]{seed}} to use.
@@ -29,7 +32,8 @@
 #' @details
 #' The Psaradakis and Vavra test approximates the empirical distribution
 #' function of the Anderson Darling's statistic, using a sieve bootstrap
-#' approximation. The test was proposed by \emph{Psaradakis, Z. & Vavra, M (20.17)}.
+#' approximation. The test was proposed by \emph{Psaradakis, Z. & Vavra, M.
+#' (20.17)}.
 #'
 #' @export
 #'
@@ -179,25 +183,27 @@ vavra.sample = function(y, normality = c("ad","lobato","jb","cvm","shapiro","epp
 }
 #' Generates a sieve bootstrap sample.
 #'
-#' The function generates a sieve bootstrap sample for a univariate stochastic process.
+#' The function generates a sieve bootstrap sample for a univariate linear
+#' stochastic process.
 #'
 #' @usage sieve.bootstrap(y,reps = 1000,pmax = NULL,h = 100,seed = NULL)
 #'
-#' @param y a numeric vector or an object of the \code{ts} class containing a stationary time series.
+#' @param y a numeric vector or an object of the \code{ts} class containing a
+#' stationary time series.
 #' @param reps an integer with the total bootstrap repetitions.
-#' @param pmax an integer with the max considered lags for the generated \code{ar(p)} process.
-#' By default, \code{pmax = NULL}.
+#' @param pmax an integer with the max considered lags for the generated
+#' \code{ar(p)} process. By default, \code{pmax = NULL}.
 #' @param h an integer with the first \code{burn-in} sieve bootstrap replicates.
 #' @param seed An optional \code{\link[=set.seed]{seed}} to use.
 #'
-#' @return A matrix or \code{reps} row and \code{n} columns, with the sieve bootstrap
-#' sample and \code{n} the time series length.
+#' @return A matrix or \code{reps} row and \code{n} columns, with the sieve
+#' bootstrap sample and \code{n} the time series length.
 #'
 #' @details
 #' simulates bootstrap samples for the stochastic process y, using a stationary
-#' auto-regressive model of order \code{"pmax"}, \code{AR(pmax)}. If \code{pmax = NULL} (\emph{default}),
-#' the function estimates the process maximum lags using an \code{AIC} as a model
-#' selection criteria.
+#' auto-regressive model of order \code{"pmax"}, \code{AR(pmax)}. If
+#' \code{pmax = NULL} (\emph{default}), the function estimates the process maximum
+#' lags using an \code{AIC} as a model selection criteria.
 #'
 #' @importFrom forecast auto.arima
 #' @importFrom stats arima
