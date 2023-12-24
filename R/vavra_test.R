@@ -1,14 +1,23 @@
 #' The Psaradakis and  Vavra test for normality.
 #'
-#' Performs the Psaradakis and Vavra distance test for normality. The null hypothesis (H0),
-#' is that the given data follows a Gaussian process.
+#' Performs the Psaradakis and Vavra distance test for normality. The null
+#' hypothesis (H0), is that the given data follows a Gaussian process.
 #'
-#' @usage vavra.test(y,reps = 1000,h = 100,seed = NULL)
+#' @usage vavra.test(y, normality = c("ad","lobato","jb","cvm","epps"),
+#'                   reps = 1000, h = 100, seed = NULL, c = 1, lambda = c(1,2))
 #'
-#' @param y a numeric vector or an object of the \code{ts} class containing a stationary time series.
+#' @param y a numeric vector or an object of the \code{ts} class containing a
+#' stationary time series.
+#' @param normality A character string naming the desired test for checking
+#' normality. Valid values are \code{"epps"} for the Epps, \code{"lobato"} for
+#' Lobato and Velasco's, \code{"jb"} for the Jarque and Beras, \code{"ad"} for
+#' Anderson Darling test, and \code{"cvm"} for the Cramer Von Mises' test.
+#' The default value is \code{"ad"} test.
 #' @param reps an integer with the total bootstrap repetitions.
 #' @param h an integer with the first \code{burn-in} sieve bootstrap replicates.
 #' @param seed An optional \code{\link[=set.seed]{seed}} to use.
+#' @param c a positive real value used as argument for the Lobato's test.
+#' @param lambda a numeric vector used as argument for the Epps's test.
 #'
 #' @return A list with class \code{"h.test"} containing the following components:
 #' \itemize{
@@ -22,7 +31,8 @@
 #' @details
 #' The Psaradakis and Vavra test approximates the empirical distribution
 #' function of the Anderson Darling's statistic, using a sieve bootstrap
-#' approximation. The test was proposed by \emph{Psaradakis, Z. & Vavra, M (20.17)}.
+#' approximation. The test was proposed by \emph{Psaradakis, Z. & Vavra, M.
+#' (20.17)}.
 #'
 #' @export
 #'
@@ -31,6 +41,10 @@
 #' @seealso \code{\link{lobato.test}},\code{\link{epps.test}}
 #'
 #' @references
+#' Psaradakis, Z. and Vávra, M. (2020) Normality tests for dependent
+#' data: large-sample and bootstrap approaches. Communications in
+#' \emph{Statistics-Simulation and Computation 49 (2)}. ISSN 0361-0918.
+#'
 #' Psaradakis, Z. & Vavra, M. (2017). A distance test of normality for a wide class
 #' of stationary process. \emph{Journal of Econometrics and Statistics}. 2, 50-60.
 #'
@@ -42,7 +56,8 @@
 #' y = arima.sim(100,model = list(ar = 0.3))
 #' vavra.test(y)
 #'
-vavra.test = function(y,reps = 1000,h = 100,seed = NULL){
+vavra.test = function(y, normality = c("ad","lobato","jb","cvm","epps"),
+                      reps = 1000, h = 100, seed = NULL, c = 1, lambda = c(1,2)){
 
   if( !is.numeric(y) & !is(y,class2 = "ts") )
     stop("y object must be numeric or a time series")
@@ -65,16 +80,23 @@ vavra.test = function(y,reps = 1000,h = 100,seed = NULL){
   if (!is.null(seed))
     set.seed(seed)
 
-  ad0 = ad.statistic(y)
+  normality = match.arg(normality)
 
-  ad = vavra.sample(y = as.numeric(y),reps = reps,seed = seed,h = h)
+  ad0 = norm.stat(y, normality = normality, c = c, lambda = lambda)
+
+  ad = vavra.sample(y = as.numeric(y), normality = normality,
+                    reps = reps,seed = seed,h = h)
 
   # Additional values
   dname = deparse(substitute(y))
   alt = paste(dname,"does not follow a Gaussian Process")
   # Bootstrap test statistic
   tstat = mean(ad)
-  names(tstat) = "bootstrap A"
+  names(tstat) = paste("bootstrap",normality,sep = "-")
+
+  mtd =ifelse(normality == "ad",
+              "Psaradakis-Vavra test",
+              paste("Sieve-Bootstrap",normality,"test"))
 
   # Bootstrap p.value
   pval = mean(ad > ad0)
@@ -82,7 +104,7 @@ vavra.test = function(y,reps = 1000,h = 100,seed = NULL){
   rval = list(statistic = tstat,
               p.value = pval,
               alternative = alt,
-              method = "Psaradakis-Vavra test",
+              method = mtd,
               data.name = dname)
   class(rval) = "htest"
   return(rval)
@@ -92,12 +114,21 @@ vavra.test = function(y,reps = 1000,h = 100,seed = NULL){
 #' Generates a sieve bootstrap sample of the Anderson-Darling
 #' statistic test.
 #'
-#' @usage vavra.sample(y,reps = 1000,h = 100,seed = NULL)
+#' @usage vavra.sample(y, normality = c("ad","lobato","jb","cvm","shapiro","epps"),
+#'                     reps = 1000, h = 100, seed = NULL, c = 1, lambda = c(1,2))
 #'
-#' @param y a numeric vector or an object of the \code{ts} class containing a stationary time series.
+#' @param y a numeric vector or an object of the \code{ts} class containing a stationary
+#' time series.
+#' @param normality A character string naming the desired test for checking normality.
+#' Valid values are \code{"epps"} for the Epps, \code{"lobato"} for Lobato and Velasco's,
+#' \code{"jb"} for the Jarque and Beras, \code{"ad"} for Anderson Darling test,\code{"cvm"}
+#' for the Cramer Von Mises' test, and \code{"shapiro"} for the Shapiro's test.
+#' The default value is \code{"ad"} test.
 #' @param reps an integer with the total bootstrap repetitions.
 #' @param h an integer with the first \code{burn-in} sieve bootstrap replicates.
 #' @param seed An optional \code{\link[=set.seed]{seed}} to use.
+#' @param c a positive real value used as argument for the Lobato's test.
+#' @param lambda a numeric vector used as argument for the Epps's test.
 #'
 #' @details
 #' The Vavra test approximates the empirical distribution function of the
@@ -116,6 +147,10 @@ vavra.test = function(y,reps = 1000,h = 100,seed = NULL){
 #' @seealso \code{\link{epps.statistic}} \code{\link{lobato.statistic}}
 #'
 #' @references
+#' Psaradakis, Z. and Vávra, M. (2020) Normality tests for dependent
+#' data: large-sample and bootstrap approaches. Communications in
+#' \emph{Statistics-Simulation and Computation 49 (2)}. ISSN 0361-0918.
+#'
 #' Psaradakis, Z. & Vavra, M. (2017). A distance test of normality for a wide class
 #' of stationary process. \emph{Journal of Econometrics and Statistics}. 2, 50-60.
 #'
@@ -128,7 +163,8 @@ vavra.test = function(y,reps = 1000,h = 100,seed = NULL){
 #' adbs = vavra.sample(y)
 #' mean(adbs)
 #'
-vavra.sample = function(y,reps = 1000,h = 100,seed = NULL){
+vavra.sample = function(y, normality = c("ad","lobato","jb","cvm","shapiro","epps"),
+                        reps = 1000, h = 100, seed = NULL, c = 1, lambda = c(1,2)){
 
   if( !is.numeric(y) & !is(y,class2 = "ts") )
     stop("y object must be numeric or a time series")
@@ -139,33 +175,36 @@ vavra.sample = function(y,reps = 1000,h = 100,seed = NULL){
   if (!is.null(seed))
     set.seed(seed)
 
+  normality = match.arg(normality)
   n = length(y)
 
   yrep = sieve.bootstrap(y = as.numeric(y),reps = reps,seed = seed,h = h)
-  adb = apply(yrep, 1,ad.statistic)
+  adb = apply(yrep, 1, norm.stat, normality = normality, c = c, lambda = lambda)
   return(adb)
 }
 #' Generates a sieve bootstrap sample.
 #'
-#' The function generates a sieve bootstrap sample for a univariate stochastic process.
+#' The function generates a sieve bootstrap sample for a univariate linear
+#' stochastic process.
 #'
 #' @usage sieve.bootstrap(y,reps = 1000,pmax = NULL,h = 100,seed = NULL)
 #'
-#' @param y a numeric vector or an object of the \code{ts} class containing a stationary time series.
+#' @param y a numeric vector or an object of the \code{ts} class containing a
+#' stationary time series.
 #' @param reps an integer with the total bootstrap repetitions.
-#' @param pmax an integer with the max considered lags for the generated \code{ar(p)} process.
-#' By default, \code{pmax = NULL}.
+#' @param pmax an integer with the max considered lags for the generated
+#' \code{ar(p)} process. By default, \code{pmax = NULL}.
 #' @param h an integer with the first \code{burn-in} sieve bootstrap replicates.
 #' @param seed An optional \code{\link[=set.seed]{seed}} to use.
 #'
-#' @return A matrix or \code{reps} row and \code{n} columns, with the sieve bootstrap
-#' sample and \code{n} the time series length.
+#' @return A matrix or \code{reps} row and \code{n} columns, with the sieve
+#' bootstrap sample and \code{n} the time series length.
 #'
 #' @details
 #' simulates bootstrap samples for the stochastic process y, using a stationary
-#' auto-regressive model of order \code{"pmax"}, \code{AR(pmax)}. If \code{pmax = NULL} (\emph{default}),
-#' the function estimates the process maximum lags using an \code{AIC} as a model
-#' selection criteria.
+#' auto-regressive model of order \code{"pmax"}, \code{AR(pmax)}. If
+#' \code{pmax = NULL} (\emph{default}), the function estimates the process maximum
+#' lags using an \code{AIC} as a model selection criteria.
 #'
 #' @importFrom forecast auto.arima
 #' @importFrom stats arima
@@ -236,13 +275,37 @@ sieve.bootstrap = function(y,reps = 1000,pmax = NULL,h = 100,seed = NULL){
 
   return(for_err[,-1])
 }
-#' Anderson-Darling statistic
+#' Normality statistics
 #'
-#' @importFrom  nortest ad.test
+#' @importFrom tseries jarque.bera.test
+#' @importFrom stats shapiro.test
+#' @importFrom nortest ad.test
+#' @importFrom nortest cvm.test
 #' @noRd
 #'
-ad.statistic = function(y){
-  m = nortest::ad.test(y)$statistic
-  names(m) = NULL
-  return(m)
+norm.stat = function(y, normality = c("ad","lobato","jb","cvm","shapiro","epps"),
+                     c = 1, lambda = c(1, 2)){
+
+  normality = match.arg(normality)
+
+  if(normality == "ad"){
+    cc = suppressWarnings(nortest::ad.test(y)$statistic)
+  }
+  else if(normality == "lobato"){
+    cc = suppressWarnings(lobato.statistic(y,c = c))
+  }
+  else if(normality == "jb"){
+    cc = suppressWarnings(tseries::jarque.bera.test(y)$statistic)
+  }
+  else if(normality == "cvm"){
+    cc = suppressWarnings(nortest::cvm.test(y)$statistic)
+  }
+  else if(normality == "shapiro"){
+    cc = suppressWarnings(stats::shapiro.test(y)$statistic)
+  }
+  else{
+    cc = suppressWarnings(epps.statistic(y,lambda = lambda))
+  }
+
+  return(cc)
 }

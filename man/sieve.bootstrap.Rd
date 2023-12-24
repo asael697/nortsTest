@@ -7,29 +7,31 @@
 sieve.bootstrap(y,reps = 1000,pmax = NULL,h = 100,seed = NULL)
 }
 \arguments{
-\item{y}{a numeric vector or an object of the \code{ts} class containing a stationary time series.}
+\item{y}{a numeric vector or an object of the \code{ts} class containing a
+stationary time series.}
 
 \item{reps}{an integer with the total bootstrap repetitions.}
 
-\item{pmax}{an integer with the max considered lags for the generated \code{ar(p)} process.
-By default, \code{pmax = NULL}.}
+\item{pmax}{an integer with the max considered lags for the generated
+\code{ar(p)} process. By default, \code{pmax = NULL}.}
 
 \item{h}{an integer with the first \code{burn-in} sieve bootstrap replicates.}
 
 \item{seed}{An optional \code{\link[=set.seed]{seed}} to use.}
 }
 \value{
-A matrix or \code{reps} row and \code{n} columns, with the sieve bootstrap
-sample and \code{n} the time series length.
+A matrix or \code{reps} row and \code{n} columns, with the sieve
+bootstrap sample and \code{n} the time series length.
 }
 \description{
-The function generates a sieve bootstrap sample for a univariate stochastic process.
+The function generates a sieve bootstrap sample for a univariate linear
+stochastic process.
 }
 \details{
 simulates bootstrap samples for the stochastic process y, using a stationary
-auto-regressive model of order \code{"pmax"}, \code{AR(pmax)}. If \code{pmax = NULL} (\emph{default}),
-the function estimates the process maximum lags using an \code{AIC} as a model
-selection criteria.
+auto-regressive model of order \code{"pmax"}, \code{AR(pmax)}. If
+\code{pmax = NULL} (\emph{default}), the function estimates the process maximum
+lags using an \code{AIC} as a model selection criteria.
 }
 \examples{
 # Generating an stationary arma process

@@ -297,21 +297,26 @@ request or send a mail to: `asael_am@hotmail.com`.
 References
 ----------
 
--   Epps, T.W. (1987). Testing that a stationary time series is
-    Gaussian. *The Annals of Statistic*. 15(4), 1683-1698.
-
--   Nieto-Reyes, A., Cuesta-Albertos, J. & Gamboa, F. (2014). A
-    random-projection based test of Gaussianity for stationary
-    processes. *Computational Statistics & Data Analysis, Elsevier*.
-    75(C), 124-141.
-
--   Lobato, I., & Velasco, C. (2004). A simple test of normality for
-    time series. *Journal Econometric Theory*. 20(4), 671-689.
+-   Psaradakis, Z. and Vávra, M. (2020) Normality tests for dependent
+    data: large-sample and bootstrap approaches. Communications in
+    *Statistics-Simulation and Computation*. 49 (2), ISSN 0361-0918.
 
 -   Psaradakis, Z. & Vavra, M. (2017). A distance test of normality for
     a wide class of stationary process. *Journal of Econometrics and
     Statistics*. 2, 50-60.
-
+    
+-   Nieto-Reyes, A., Cuesta-Albertos, J. & Gamboa, F. (2014). A
+    random-projection based test of Gaussianity for stationary
+    processes. *Computational Statistics & Data Analysis, Elsevier*.
+    75(C), 124-141.
+    
 -   Hyndman, R. & Khandakar, Y. (2008). Automatic time series
     forecasting: the forecast package for R. *Journal of Statistical
     Software*. 26(3), 1-22.
+
+-   Lobato, I., & Velasco, C. (2004). A simple test of normality for
+    time series. *Journal Econometric Theory*. 20(4), 671-689.
+
+-   Epps, T.W. (1987). Testing that a stationary time series is
+    Gaussian. *The Annals of Statistic*. 15(4), 1683-1698.
+
