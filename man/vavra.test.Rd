@@ -4,16 +4,26 @@
 \alias{vavra.test}
 \title{The Psaradakis and  Vavra test for normality.}
 \usage{
-vavra.test(y,reps = 1000,h = 100,seed = NULL)
+vavra.test(y, normality = c("ad","lobato","jb","cvm","shapiro","epps"),
+                  reps = 1000, h = 100, seed = NULL, c = 1, lambda = c(1,2))
 }
 \arguments{
 \item{y}{a numeric vector or an object of the \code{ts} class containing a stationary time series.}
+
+\item{normality}{A character string naming the desired test for checking normality. Valid values are
+\code{"epps"} for the Epps, \code{"lobato"} for Lobato and Velasco's, \code{"jb"} for the Jarque and
+Beras, \code{"ad"} for Anderson Darling test,\code{"cvm"} for the Cramer Von Mises' test, and
+\code{"shapiro"} for the Shapiro-Wilk's test. The default value is \code{"ad"} test.}
 
 \item{reps}{an integer with the total bootstrap repetitions.}
 
 \item{h}{an integer with the first \code{burn-in} sieve bootstrap replicates.}
 
 \item{seed}{An optional \code{\link[=set.seed]{seed}} to use.}
+
+\item{c}{a positive real value used as argument for the Lobato's test.}
+
+\item{lambda}{a numeric vector used as argument for the Epps's test.}
 }
 \value{
 A list with class \code{"h.test"} containing the following components:
