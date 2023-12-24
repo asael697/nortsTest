@@ -4,7 +4,7 @@
 \alias{vavra.test}
 \title{The Psaradakis and  Vavra test for normality.}
 \usage{
-vavra.test(y, normality = c("ad","lobato","jb","cvm","shapiro","epps"),
+vavra.test(y, normality = c("ad","lobato","jb","cvm","epps"),
                   reps = 1000, h = 100, seed = NULL, c = 1, lambda = c(1,2))
 }
 \arguments{
@@ -14,9 +14,8 @@ stationary time series.}
 \item{normality}{A character string naming the desired test for checking
 normality. Valid values are \code{"epps"} for the Epps, \code{"lobato"} for
 Lobato and Velasco's, \code{"jb"} for the Jarque and Beras, \code{"ad"} for
-Anderson Darling test,\code{"cvm"} for the Cramer Von Mises' test, and
-\code{"shapiro"} for the Shapiro-Wilk's test. The default value is \code{"ad"}
-test.}
+Anderson Darling test, and \code{"cvm"} for the Cramer Von Mises' test.
+The default value is \code{"ad"} test.}
 
 \item{reps}{an integer with the total bootstrap repetitions.}
 
