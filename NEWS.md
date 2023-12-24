@@ -20,13 +20,13 @@
   description to the return value, having a similar formatting to the `t.test()` function.
 
 ### Changes:
+- Use Hochberg's False discovery rate method as default to mix p.values, when applying the `rp.test()`. 
 - Refactor the `lobato.statistic()` using less `for` loops.
 - Refactor the `epps.statistic()` using less `for` loops. 
 - Speed up `vavra.test()` and `rp.test()` by replacing for loops with parallel vectorized 
   computation.
 
 ----------------------------------
-
 
 **nortsTest 1.0.3 Date: 12/06/2021**
 ----------------------------------

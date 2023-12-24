@@ -1,27 +1,32 @@
 #' The k random projections test for normality.
 #'
-#' Performs the random projection test for normality. The null hypothesis (H0) is that the given data
-#' follows a stationary Gaussian process, and k is the number of used random projections.
+#' Performs the random projection test for normality. The null hypothesis (H0)
+#' is that the given data follows a stationary Gaussian process, and k is the
+#' number of used random projections.
 #'
-#' @usage rp.test(y,k = 16,FDR = TRUE,pars1 = c(100,1),pars2  = c(2,7),seed = NULL)
+#' @usage rp.test(y, k = 1, FDR = TRUE, pars1 = c(100,1), pars2  = c(2,7),
+#'                seed = NULL)
 #'
-#' @param y a numeric vector or an object of the \code{ts} class containing a stationary time series.
-#' @param k an integer with the number of random projections to be used, by default \code{k = 16}.
-#' @param FDR a logical value for mixing the p-values using a dependent False discovery
-#' rate method. If \code{FDR =TRUE}, then the p-values are mixed using a False discovery Rate method,
-#' on the contrary it applies the Benjamin and Yekuteli (2001) procedure. By default \code{FDR = TRUE}.
-#' @param pars1 an optional real vector with the shape parameters of the beta distribution
-#' used for the odd number random projection. By default, \code{pars1 = c(100,1)} where,
-#' \code{shape1 = 100} and \code{shape2 = 1}.
-#' @param pars2 an optional real vector with the shape parameters of the beta distribution
-#' used for the even number random projection. By default, \code{pars2 = c(2,7)} where,
-#' \code{shape1 = 2} and \code{shape2 = 7}.
+#' @param y a numeric vector or an object of the \code{ts} class containing a
+#' stationary time series.
+#' @param k an integer with the number of random projections to be used, by
+#' default \code{k = 1}.
+#' @param FDR a logical value for mixing the p-values using a dependent False
+#' discovery rate method. If \code{FDR =TRUE}, then the p-values are mixed using
+#' Hochberg's False discovery Rate method, on the contrary it applies the
+#' Benjamin and Yekuteli (2001) procedure. By default \code{FDR = TRUE}.
+#' @param pars1 an optional real vector with the shape parameters of the beta
+#' distribution used for the odd number random projection. By default,
+#' \code{pars1 = c(100,1)} where, \code{shape1 = 100} and \code{shape2 = 1}.
+#' @param pars2 an optional real vector with the shape parameters of the beta
+#' distribution used for the even number random projection. By default,
+#' \code{pars2 = c(2,7)} where, \code{shape1 = 2} and \code{shape2 = 7}.
 #' @param seed An optional \code{\link[=set.seed]{seed}} to use.
 #'
 #' @return A list with class \code{"h.test"} containing the following components:
 #' \itemize{
-#'  \item{statistic }{a vector with the average Lobato and Velasco's and average Epps test
-#'  statistics of the k projected samples.}
+#'  \item{statistic }{a vector with the average Lobato and Velasco's and average
+#'  Epps test statistics of the k projected samples.}
 #'  \item{parameter }{the number of projections.}
 #'  \item{p.value }{the mixed p-value for the test.}
 #'  \item{alternative }{a character string describing the alternative hypothesis.}
@@ -30,17 +35,18 @@
 #' }
 #'
 #' @details
-#' The random projection test generates k independent random projections of the process.
-#' A Lobato and Velasco's test are applied to the first half of the projections, and an
-#' Epps test for the other half. Then, a False discovery rate is used for mixing the
-#' obtained p.values
+#' The random projection test generates k independent random projections of the
+#' process. A Lobato and Velasco's test are applied to the first half of the
+#' projections, and an Epps test for the other half. Then, the p.values get mixed
+#' using False discovery rate procedures.
 #'
-#' For generating the k random projections a beta distribution is used. By default a
-#' \code{beta(shape1 = 100,shape = 1)} and a \code{beta(shape1 = 2,shape = 7)} are used
-#' to generate the odd and even projections respectively. For using a different parameter
-#' set, change \code{pars1} or \code{pars2}.
+#' A the k random projections a beta distribution is used. By default a
+#' \code{beta(shape1 = 100,shape = 1)} and a \code{beta(shape1 = 2,shape = 7)}
+#' are used to generate the odd and even projections respectively. For using a
+#' different parameter set, change \code{pars1} or \code{pars2} vectors.
 #'
-#' The test was proposed by \emph{Nieto-Reyes, A.,Cuesta-Albertos, J. & Gamboa, F. (2014)}.
+#' The test was proposed by \emph{Nieto-Reyes, A.,Cuesta-Albertos, J. &
+#' Gamboa, F. (2014)}.
 #'
 #' @export
 #'
@@ -64,7 +70,7 @@
 #' y = arima.sim(100,model = list(ar = 0.3))
 #' rp.test(y,k = 4)
 #'
-rp.test = function(y,k = 16,FDR = TRUE,pars1 = c(100,1),pars2 = c(2,7),seed = NULL){
+rp.test = function(y, k = 1, FDR = TRUE, pars1 = c(100,1), pars2 = c(2,7), seed = NULL){
 
   if( !is.numeric(y) & !is(y,class2 = "ts") )
     stop("y object must be numeric or a time series")
@@ -127,14 +133,16 @@ rp.test = function(y,k = 16,FDR = TRUE,pars1 = c(100,1),pars2 = c(2,7),seed = NU
 #'
 #' @usage rp.sample(y,k = 16,pars1 = c(100,1),pars2 = c(2,7),seed = NULL)
 #'
-#' @param y a numeric vector or an object of the \code{ts} class containing a stationary time series.
-#' @param k an integer with the number of random projections to be used, by default \code{k = 16}.
-#' @param pars1 an optional real vector with the shape parameters of the beta distribution
-#' used for the odd number random projection. By default, \code{pars1 = c(100,1)} where,
-#' \code{shape1 = 100} and \code{shape2 = 1}.
-#' @param pars2 an optional real vector with the shape parameters of the beta distribution
-#' used for the even number random projection. By default, \code{pars2 = c(2,7)} where,
-#'\code{shape1 = 2} and \code{shape2 = 7}.
+#' @param y a numeric vector or an object of the \code{ts} class containing a
+#' stationary time series.
+#' @param k an integer with the number of random projections to be used, by default
+#' \code{k = 1}.
+#' @param pars1 an optional real vector with the shape parameters of the beta
+#' distribution used for the odd number random projection. By default,
+#' \code{pars1 = c(100,1)} where, \code{shape1 = 100} and \code{shape2 = 1}.
+#' @param pars2 an optional real vector with the shape parameters of the beta
+#' distribution used for the even number random projection. By default,
+#' \code{pars2 = c(2,7)} where, \code{shape1 = 2} and \code{shape2 = 7}.
 #' @param seed An optional \code{\link[=set.seed]{seed}} to use.
 #'
 #' @return A list with 2 real value vectors:
@@ -144,16 +152,17 @@ rp.test = function(y,k = 16,FDR = TRUE,pars1 = c(100,1),pars2 = c(2,7),seed = NU
 #' }
 #'
 #' @details
-#' The \code{rp.sample} function generates k independent random projections of the process.
-#' A Lobatos and Velasco's test is applied to the first half of the projections. And an
-#' Epps test for the other half.
+#' The \code{rp.sample} function generates k independent random projections of
+#' the process. A Lobatos and Velasco's test is applied to the first half of the
+#' projections. And an Epps test for the other half.
 #'
-#' For generating the k random projections a beta distribution is used. By default a
-#' \code{beta(shape1 = 100,shape = 1)} and a \code{beta(shape1 = 2,shape = 7)} are used
-#' to generate the odd and even projections respectively. For using a different parameter
-#' set, change \code{pars1} or \code{pars2} values.
+#' For generating the k random projections a beta distribution is used. By default
+#' a \code{beta(shape1 = 100,shape = 1)} and a \code{beta(shape1 = 2,shape = 7)}
+#' are used to generate the odd and even projections respectively. For using a
+#' different parameter set, change \code{pars1} or \code{pars2} values.
 #'
-#' The test was proposed by \emph{Nieto-Reyes, A.,Cuesta-Albertos, J. & Gamboa, F. (2014)}.
+#' The test was proposed by \emph{Nieto-Reyes, A.,Cuesta-Albertos, J. &
+#' Gamboa, F. (2014)}.
 #'
 #' @export
 #'
