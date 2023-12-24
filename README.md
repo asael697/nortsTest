@@ -11,12 +11,27 @@ package’s functions are:
 
 -   `epps.test()` function that implements the [Epps test](https://projecteuclid.org/euclid.aos/1176350618),
 
--   `lobato.test()` function that implements the Lobato and Velasco’s test,
+-  `epps-bootstrap.test()` function that implements the  [Epps test](https://projecteuclid.org/euclid.aos/1176350618), approximating the 
+p-values using a sieve-bootstrap procedure.
 
--   `vavra.test()` function that implements the [Psaradaki and Vavra’s test](http://www.applied-econometrics.com),
+-  `lobato.test()` function that implements the Lobato and Velasco’s test,
 
--   `rp.test()` function that implements the random projections test of
-    Nieto-Reyes, Cuesta-Albertos and Gamboa’s test.
+- `lobato-bootstrap.test()` function that implements the Lobato and Velasco’s 
+test, approximating the p-values using a sieve-bootstrap procedure.
+
+- `rp.test()` function that implements the random projections test of
+    Nieto-Reyes, Cuesta-Albertos and Gamboa’s test,
+    
+- `vavra.test()` function that implements the [Psaradaki and Vavra’s test](http://www.applied-econometrics.com),
+
+-  `jb-bootstrap.test()` function that implements the  Jarque and Bera test, 
+approximating the p-values using a sieve-bootstrap procedure,
+
+-  `shapiro-bootstrap.test()` function that implements the  Shapiro test, 
+approximating the p-values using a sieve-bootstrap procedure,
+
+-  `cvm-bootstrap.test()` function that implements the Cramer Von Mises test, 
+approximating the p-values using a sieve-bootstrap procedure.
 
 Additionally, inspired in the function `checkresiduals()` of the
 [forecast package](https://github.com/robjhyndman/forecast), we

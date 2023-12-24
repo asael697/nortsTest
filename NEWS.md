@@ -6,6 +6,12 @@
 
 ### Features:
 - Add initial values as an argument to the Epps and Pulley test.
+- Add the `lobato-bootstrap.test()`.
+- Add the `epps-bootstrap.test()`.
+- Add the `jb-bootstrap.test()`.
+- Add the `shapiro-bootstrap.test()`.
+- Add the `cvm-bootstrap.test()`.
+- Add unit testing for a better debug practices.
 
 ### Fixes:
 - Update documentation for `Lobato`, `RP`, `Epps`, and `Vavra` tests. Better description 
@@ -14,12 +20,13 @@
   description to the return value, having a similar formatting to the `t.test()` function.
 
 ### Changes:
+- Use Hochberg's False discovery rate method as default to mix p.values, when applying the `rp.test()`. 
+- Refactor the `lobato.statistic()` using less `for` loops.
 - Refactor the `epps.statistic()` using less `for` loops. 
 - Speed up `vavra.test()` and `rp.test()` by replacing for loops with parallel vectorized 
   computation.
 
 ----------------------------------
-
 
 **nortsTest 1.0.3 Date: 12/06/2021**
 ----------------------------------

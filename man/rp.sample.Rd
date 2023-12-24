@@ -7,17 +7,19 @@
 rp.sample(y,k = 16,pars1 = c(100,1),pars2 = c(2,7),seed = NULL)
 }
 \arguments{
-\item{y}{a numeric vector or an object of the \code{ts} class containing a stationary time series.}
+\item{y}{a numeric vector or an object of the \code{ts} class containing a
+stationary time series.}
 
-\item{k}{an integer with the number of random projections to be used, by default \code{k = 16}.}
+\item{k}{an integer with the number of random projections to be used, by default
+\code{k = 1}.}
 
-\item{pars1}{an optional real vector with the shape parameters of the beta distribution
-used for the odd number random projection. By default, \code{pars1 = c(100,1)} where,
-\code{shape1 = 100} and \code{shape2 = 1}.}
+\item{pars1}{an optional real vector with the shape parameters of the beta
+distribution used for the odd number random projection. By default,
+\code{pars1 = c(100,1)} where, \code{shape1 = 100} and \code{shape2 = 1}.}
 
-\item{pars2}{an optional real vector with the shape parameters of the beta distribution
-used for the even number random projection. By default, \code{pars2 = c(2,7)} where,
-\code{shape1 = 2} and \code{shape2 = 7}.}
+\item{pars2}{an optional real vector with the shape parameters of the beta
+distribution used for the even number random projection. By default,
+\code{pars2 = c(2,7)} where, \code{shape1 = 2} and \code{shape2 = 7}.}
 
 \item{seed}{An optional \code{\link[=set.seed]{seed}} to use.}
 }
@@ -35,16 +37,17 @@ using a Lobato and Velasco's statistic test. The last half values with an Epps
 statistic test.
 }
 \details{
-The \code{rp.sample} function generates k independent random projections of the process.
-A Lobatos and Velasco's test is applied to the first half of the projections. And an
-Epps test for the other half.
+The \code{rp.sample} function generates k independent random projections of
+the process. A Lobatos and Velasco's test is applied to the first half of the
+projections. And an Epps test for the other half.
 
-For generating the k random projections a beta distribution is used. By default a
-\code{beta(shape1 = 100,shape = 1)} and a \code{beta(shape1 = 2,shape = 7)} are used
-to generate the odd and even projections respectively. For using a different parameter
-set, change \code{pars1} or \code{pars2} values.
+For generating the k random projections a beta distribution is used. By default
+a \code{beta(shape1 = 100,shape = 1)} and a \code{beta(shape1 = 2,shape = 7)}
+are used to generate the odd and even projections respectively. For using a
+different parameter set, change \code{pars1} or \code{pars2} values.
 
-The test was proposed by \emph{Nieto-Reyes, A.,Cuesta-Albertos, J. & Gamboa, F. (2014)}.
+The test was proposed by \emph{Nieto-Reyes, A.,Cuesta-Albertos, J. &
+Gamboa, F. (2014)}.
 }
 \examples{
 # Generating an stationary arma process
