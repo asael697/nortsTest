@@ -9,7 +9,7 @@ The package works as an extension of the `nortest` package that performs
 normality tests in random samples (*independent data*). The package's principal 
 functions are:
 
--   `elbouc.test()` function that computes the bivariate [El Bouch et al. test](https://www.sciencedirect.com/science/article/abs/pii/S0165168422002444),
+-   `elbouch.test()` function that computes the bivariate [El Bouch et al. test](https://www.sciencedirect.com/science/article/abs/pii/S0165168422002444),
 
 -   `epps.test()` function that implements the [Epps test](https://projecteuclid.org/euclid.aos/1176350618),
 
@@ -113,6 +113,30 @@ rp.test(x,k = 5)
 #> data:  x
 #> k = 5, lobato = 188.771, epps = 28.385, p-value = 0.0007823
 #> alternative hypothesis: x does not follow a Gaussian Process
+```
+
+Example: stationary VAR(1) process
+---------------------------------
+
+In the next example we generate a stationary VAR(1) process of dimension `p = 2`,
+using two independent Gaussian AR(1) processes, and perform the *El Bouch's*
+test. With a significance level of $\alpha = 0.05$, the alternative hypothesis of 
+non-normality is rejected.
+
+``` r
+set.seed(298)
+# Simulating the VAR(2) process
+x1 = arima.sim(250, model = list(ar =c (0.2)))
+x2 = arima.sim(250, model = list(ar =c (0.3)))
+#
+# test
+elbouch.test(y = x1, x = x2)
+#> 
+#> 	El Bouch, Michel & Comon's test
+#>
+#> data:  w = (y, x)
+#> Z = 0.1438, p-value = 0.4428
+#> alternative hypothesis: w = (y, x) does not follow a Gaussian Process
 ```
 
 Checking model’s assumptions: `cardox` data
