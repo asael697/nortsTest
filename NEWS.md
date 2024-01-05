@@ -6,12 +6,14 @@
 
 ### Features:
 - Add initial values as an argument to the Epps and Pulley test.
+= Add the bivariate `elbouch.test()`.
 - Add the `lobato-bootstrap.test()`.
 - Add the `epps-bootstrap.test()`.
 - Add the `jb-bootstrap.test()`.
 - Add the `shapiro-bootstrap.test()`.
 - Add the `cvm-bootstrap.test()`.
 - Add unit testing for a better debug practices.
+
 
 ### Fixes:
 - Update documentation for `Lobato`, `RP`, `Epps`, and `Vavra` tests. Better description 

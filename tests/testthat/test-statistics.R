@@ -1,5 +1,5 @@
 set.seed(169721)
-y = arima.sim(n = 1000,model = list(ar = 0.3,ma = 0.2),)
+y = arima.sim(n = 1000, model = list(ar = 0.3, ma = 0.2))
 
 test_that("Vavra's statistic", {
   ht = nortsTest::vavra.sample(y)
@@ -36,4 +36,23 @@ test_that("Random Projections' samples", {
   expect_equal(length(ht$lobato), 32)
   #check computations are less than 2.5s
   expect_equal(length(ht$epps), 32)
+})
+
+set.seed(169721)
+n = 3000
+y = rnorm(n)
+x = rnorm(n)
+
+test_that("2-D El Bouch's statistics", {
+  ht = nortsTest::elbouch.statistic(y, x)
+  expect_equal(ht[1], 8 * (n - 1) / (n + 1), tolerance = 0.5)
+  expect_equal(ht[2], 64/n, tolerance = 0.5)
+  expect_equal(ht[3] < 1, TRUE)
+})
+
+test_that("1-D El Bouch's statistics", {
+  ht = nortsTest::elbouch.statistic(y)
+  expect_equal(ht[1], 3 * (n - 1) / (n + 1), tolerance = 0.5)
+  expect_equal(ht[2], 24/n, tolerance = 0.5)
+  expect_equal(ht[3] < 1, TRUE)
 })

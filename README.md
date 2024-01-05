@@ -6,8 +6,10 @@
 `nortsTest` is an `R` package for assessing normality of stationary
 processes, it tests if a given data follows a stationary Gaussian process.
 The package works as an extension of the `nortest` package that performs 
-normality tests in random samples (*independent data*). The four principal 
-package’s functions are:
+normality tests in random samples (*independent data*). The package's principal 
+functions are:
+
+-   `elbouch.test()` function that computes the bivariate [El Bouch et al. test](https://www.sciencedirect.com/science/article/abs/pii/S0165168422002444),
 
 -   `epps.test()` function that implements the [Epps test](https://projecteuclid.org/euclid.aos/1176350618),
 
@@ -67,10 +69,10 @@ nortest::ad.test(x)
 ```
 
 The null hypothesis is that the data has a normal distribution and
-therefore, follows a Gaussian Process. At $\alpha=0.05$ significance level
-the alternative hypothesis is rejected and wrongly concludes the data
-follows a Gaussian process. Applying the Lobato and Velasco’s test of
-our package, the null hypothesis is correctly rejected.
+therefore, follows a Gaussian Process. At $\alpha = 0.05$ significance 
+level the alternative hypothesis is rejected and wrongly concludes the 
+data follows a Gaussian process. Applying the Lobato and Velasco’s test 
+of our package, the null hypothesis is correctly rejected.
 
 ``` r
 lobato.test(x)
@@ -111,6 +113,30 @@ rp.test(x,k = 5)
 #> data:  x
 #> k = 5, lobato = 188.771, epps = 28.385, p-value = 0.0007823
 #> alternative hypothesis: x does not follow a Gaussian Process
+```
+
+Example: stationary VAR(1) process
+---------------------------------
+
+In the next example we generate a stationary VAR(1) process of dimension `p = 2`,
+using two independent Gaussian AR(1) processes, and perform the *El Bouch's*
+test. With a significance level of $\alpha = 0.05$, the alternative hypothesis of 
+non-normality is rejected.
+
+``` r
+set.seed(298)
+# Simulating the VAR(2) process
+x1 = arima.sim(250, model = list(ar =c (0.2)))
+x2 = arima.sim(250, model = list(ar =c (0.3)))
+#
+# test
+elbouch.test(y = x1, x = x2)
+#> 
+#> 	El Bouch, Michel & Comon's test
+#>
+#> data:  w = (y, x)
+#> Z = 0.1438, p-value = 0.4428
+#> alternative hypothesis: w = (y, x) does not follow a Gaussian Process
 ```
 
 Checking model’s assumptions: `cardox` data
@@ -311,6 +337,10 @@ request or send a mail to: `asael_am@hotmail.com`.
 
 References
 ----------
+
+-  El Bouch, S., Michel, O. & Comon, P.  (2022). A normality test for 
+   Multivariate dependent samples. *Journal of Signal Processing*. 
+   Volume 201.
 
 -   Psaradakis, Z. and Vávra, M. (2020) Normality tests for dependent
     data: large-sample and bootstrap approaches. Communications in

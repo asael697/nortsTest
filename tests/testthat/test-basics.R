@@ -95,6 +95,30 @@ test_that("Random Projections' test works for GPs", {
   expect_equal(end < 2.5, TRUE)
 })
 
+test_that("El Bouch' test works for GPs", {
+  start = Sys.time()
+  ht = nortsTest::elbouch.test(y)
+  end = Sys.time() - start
+  # check the test choose the right hypothesis when using a Gaussian ARMA
+  expect_equal(unname(ht$p.value >= 0.05), TRUE)
+  #check computations are less than 2.5s
+  expect_equal(end < 2.5, TRUE)
+})
+
+set.seed(169721)
+y = rnorm(200)
+x = rnorm(200)
+
+test_that("El Bouch' test works for GPs", {
+  start = Sys.time()
+  ht = nortsTest::elbouch.test(y, x)
+  end = Sys.time() - start
+  # check the test choose the right hypothesis when using a Gaussian ARMA
+  expect_equal(unname(ht$p.value >= 0.05), TRUE)
+  #check computations are less than 2.5s
+  expect_equal(end < 2.5, TRUE)
+})
+
 ################################################################
 #. NON Gaussian  ARMA
 ################################################################
@@ -188,6 +212,30 @@ test_that("Random Projections' test works for non GPs", {
   ht = nortsTest::rp.test(y,k = 16)
   end = Sys.time() - start
   # check the test choose the right hypothesis when using a gamma ARMA
+  expect_equal(unname(ht$p.value < 0.05), TRUE)
+  #check computations are less than 2.5s
+  expect_equal(end < 2.5, TRUE)
+})
+
+test_that("El Bouch' test works for non GPs", {
+  start = Sys.time()
+  ht = nortsTest::elbouch.test(y)
+  end = Sys.time() - start
+  # check the test choose the right hypothesis when using a gamma ARMA
+  expect_equal(unname(ht$p.value < 0.05), TRUE)
+  #check computations are less than 2.5s
+  expect_equal(end < 2.5, TRUE)
+})
+
+set.seed(169721)
+y = rgamma(200, shape = 2)
+x = rgamma(200, shape = 3)
+
+test_that("El Bouch' test works for non GPs", {
+  start = Sys.time()
+  ht = nortsTest::elbouch.test(y, x)
+  end = Sys.time() - start
+  # check the test choose the right hypothesis when using a Gaussian ARMA
   expect_equal(unname(ht$p.value < 0.05), TRUE)
   #check computations are less than 2.5s
   expect_equal(end < 2.5, TRUE)
