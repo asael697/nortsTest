@@ -17,9 +17,9 @@
 #' }
 #'
 #' @details This function computes El Bouch, et al. (2022) test for normality of
-#' bivariate dependent samples, if x is NULL the test computes the univariate counterpart.
-#' This test is a correction of Mardia's, (1970) multivariate skewness and kurtosis test
-#' for multivariate samples.
+#' bivariate dependent samples. If x is set to NULL, the test computes the univariate
+#' counterpart. This test is a correction of Mardia's, (1970) multivariate skewness
+#' and kurtosis test for multivariate samples.
 #'
 #' @export
 #'
