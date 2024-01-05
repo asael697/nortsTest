@@ -17,7 +17,7 @@
 #' }
 #'
 #' @details This function computes El Bouch, et al. (2022) test for normality of
-#' bivariate dependent samples. If x is set to NULL, the test computes the univariate
+#' bivariate dependent samples. If `x` is set to `NULL`, the test computes the univariate
 #' counterpart. This test is a correction of Mardia's, (1970) multivariate skewness
 #' and kurtosis test for multivariate samples.
 #'
@@ -119,10 +119,10 @@ elbouch.test <- function(y, x = NULL){
 #' @param y a numeric vector or an object of the \code{ts} class containing a stationary time series.
 #' @param x a numeric vector or an object of the \code{ts} class containing a stationary time series.
 #'
-#' @details This function computes Mardias' standarized z = (B - E_B)/ sd_B statistic
+#' @details This function computes Mardias' standarized `z = (B - E_B)/ sd_B` statistic
 #' corrected by El Bouch, et al. (2022) for stationary p-dimensional time series. Where:
-#' B is the square of a quadratic form of the proces c(y,x); E_B and sd_B are the
-#' estimator's expected value and standard error respectively and p = 1,2.
+#' `B` is the square of a quadratic form of the proces `c(y, x)`; `E_B` and `sd_B` are the
+#' estimator's expected value and standard error respectively and `p = 1, 2`.
 #'
 #' @return a real value with El Bouch test's statistic.
 #'
