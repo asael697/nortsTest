@@ -19,7 +19,7 @@ Computes the El Bouch, Michel, & Comon's z test statistic for normality of
 a univariate or bivariate time series.
 }
 \details{
-This function computes Mardias' standarized z = (B - E_B)/ sd_B statistic 
+This function computes Mardias' standarized z = (B - E_B)/ sd_B statistic
 corrected by El Bouch, et al. (2022) for stationary p-dimensional time series. Where:
 B is the square of a quadratic form of the proces c(y,x); E_B and sd_B are the
 estimator's expected value and standard error respectively and p = 1,2.
@@ -36,10 +36,10 @@ elbouch.statistic(y = y, x = x)
 
 }
 \references{
-El Bouch, S., Michel, O. & Comon, P.  (2022). A normality test for Multivariate dependent 
+El Bouch, S., Michel, O. & Comon, P.  (2022). A normality test for Multivariate dependent
 samples. \emph{Journal of Signal Processing}. Volume 201.
 
-Mardia, K. (1970). Measures of multivariate skewness and kurtosis with applications. 
+Mardia, K. (1970). Measures of multivariate skewness and kurtosis with applications.
 \emph{Biometrika}, 57 519-530
 
 Lobato, I., & Velasco, C. (2004). A simple test of normality in time series.
