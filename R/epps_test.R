@@ -203,7 +203,7 @@ epps.statistic =  function(y, lambda = c(1, 2)){
 #' y = arima.sim(300, model = list(ar = 0.3))
 #' epps_bootstrap.test(y, reps = 1000)
 #'
-epps_bootstrap.test = function(y, lambda = c(1, 2), reps = 1000, h = 100,
+epps_bootstrap.test = function(y, lambda = c(1, 2), reps = 500, h = 100,
                                seed = NULL){
 
   if( !is.numeric(y) & !is(y,class2 = "ts") )
