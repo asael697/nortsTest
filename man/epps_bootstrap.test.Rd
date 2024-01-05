@@ -4,7 +4,7 @@
 \alias{epps_bootstrap.test}
 \title{The Sieve Bootstrap Epps and Pulley test for normality.}
 \usage{
-epps_bootstrap.test(y, lambda = c(1,2), reps = 1000, h = 100, seed = NULL)
+epps_bootstrap.test(y, lambda = c(1,2), reps = 500, h = 100, seed = NULL)
 }
 \arguments{
 \item{y}{a numeric vector or an object of the \code{ts} class containing a stationary

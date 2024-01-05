@@ -155,7 +155,7 @@ epps.statistic =  function(y, lambda = c(1, 2)){
 #' time series using a sieve Bootstrap procedure. The null hypothesis (H0),
 #' is that the given data follows a Gaussian process.
 #'
-#' @usage epps_bootstrap.test(y, lambda = c(1,2), reps = 1000, h = 100, seed = NULL)
+#' @usage epps_bootstrap.test(y, lambda = c(1,2), reps = 500, h = 100, seed = NULL)
 #'
 #' @param y a numeric vector or an object of the \code{ts} class containing a stationary
 #' time series.
