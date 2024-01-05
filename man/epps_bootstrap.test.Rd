@@ -41,7 +41,7 @@ and Vávra, M. (2020)}.
 }
 \examples{
 # Generating an stationary arma process
-y = arima.sim(1000,model = list(ar = 0.3))
+y = arima.sim(300, model = list(ar = 0.3))
 epps_bootstrap.test(y, reps = 1000)
 
 }

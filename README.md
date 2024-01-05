@@ -6,8 +6,10 @@
 `nortsTest` is an `R` package for assessing normality of stationary
 processes, it tests if a given data follows a stationary Gaussian process.
 The package works as an extension of the `nortest` package that performs 
-normality tests in random samples (*independent data*). The four principal 
-package’s functions are:
+normality tests in random samples (*independent data*). The package's principal 
+functions are:
+
+-   `elbouc.test()` function that computes the bivariate [El Bouch et al. test](https://www.sciencedirect.com/science/article/abs/pii/S0165168422002444),
 
 -   `epps.test()` function that implements the [Epps test](https://projecteuclid.org/euclid.aos/1176350618),
 
@@ -67,10 +69,10 @@ nortest::ad.test(x)
 ```
 
 The null hypothesis is that the data has a normal distribution and
-therefore, follows a Gaussian Process. At $\alpha=0.05$ significance level
-the alternative hypothesis is rejected and wrongly concludes the data
-follows a Gaussian process. Applying the Lobato and Velasco’s test of
-our package, the null hypothesis is correctly rejected.
+therefore, follows a Gaussian Process. At $\alpha = 0.05$ significance 
+level the alternative hypothesis is rejected and wrongly concludes the 
+data follows a Gaussian process. Applying the Lobato and Velasco’s test 
+of our package, the null hypothesis is correctly rejected.
 
 ``` r
 lobato.test(x)
@@ -311,6 +313,10 @@ request or send a mail to: `asael_am@hotmail.com`.
 
 References
 ----------
+
+-  El Bouch, S., Michel, O. & Comon, P.  (2022). A normality test for 
+   Multivariate dependent samples. *Journal of Signal Processing*. 
+   Volume 201.
 
 -   Psaradakis, Z. and Vávra, M. (2020) Normality tests for dependent
     data: large-sample and bootstrap approaches. Communications in

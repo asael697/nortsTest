@@ -200,7 +200,7 @@ epps.statistic =  function(y, lambda = c(1, 2)){
 #'
 #' @examples
 #' # Generating an stationary arma process
-#' y = arima.sim(1000,model = list(ar = 0.3))
+#' y = arima.sim(300, model = list(ar = 0.3))
 #' epps_bootstrap.test(y, reps = 1000)
 #'
 epps_bootstrap.test = function(y, lambda = c(1, 2), reps = 1000, h = 100,
