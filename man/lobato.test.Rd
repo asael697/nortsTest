@@ -24,8 +24,8 @@ A list with class \code{"h.test"} containing the following components:
 }
 }
 \description{
-Performs the Lobato and Velasco's test for normality. The null hypothesis (H0),
-is that the given data follows a Gaussian process.
+Performs the exact Lobato and Velasco's test for normality. Computes the p-value using the
+asymptotic Gamma Distribution
 }
 \details{
 This test  proves a normality assumption in correlated data employing the

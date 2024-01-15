@@ -27,9 +27,8 @@ A list with class \code{"h.test"} containing the following components:
 }
 }
 \description{
-Performs the Jarque Bera test approximating the p-value
-using Psaradakis and Vavra's procedure. The null
-hypothesis (H0), is that the given data follows a Gaussian process.
+Performs the approximated Jarque Bera test of normality for univariate time series.
+Computes the p-value using Psaradakis and Vavra's (2020) sieve bootstrap procedure.
 }
 \details{
 Employs Jarque Beras' skewness-kurtosis test approximating the p-value using
@@ -53,7 +52,7 @@ J. B. Cromwell, W. C. Labys and M. Terraza (1994): Univariate Tests for Time
 Series Models, Sage, Thousand Oaks, CA, pages 20–22.
 }
 \seealso{
-\code{\link{vavra.test}},\code{\link{sieve.bootstrap}}
+\code{\link{vavra.test}}, \code{\link{sieve.bootstrap}}
 }
 \author{
 Asael Alonzo Matamoros.

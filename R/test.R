@@ -2,7 +2,7 @@
 #'
 #' Perform a unit root test to check stationary in a linear stochastic process.
 #'
-#' @usage uroot.test(y,unit_root = c("adf","kpss","pp","box"),alpha = 0.05)
+#' @usage uroot.test(y, unit_root = c("adf","kpss","pp","box"), alpha = 0.05)
 #'
 #' @param y a numeric vector or an object of the \code{ts} class containing a stationary time series.
 #' @param unit_root A character string naming the desired unit root test for checking stationary.
@@ -34,7 +34,7 @@
 #'
 #' @author Asael Alonzo Matamoros and A. Trapletti.
 #'
-#' @seealso \code{\link{normal.test}},\code{\link{seasonal.test}}
+#' @seealso \code{\link{normal.test}}, \code{\link{seasonal.test}}
 #'
 #' @references
 #' Dickey, D. & Fuller, W. (1979). Distribution of the Estimators for
@@ -58,9 +58,9 @@
 #'
 #' # a random walk process
 #' y = cumsum(y)
-#' uroot.test(y,unit_root = "pp")
+#' uroot.test(y, unit_root = "pp")
 #'
-uroot.test = function(y,unit_root = c("adf","kpss","pp","box"),alpha = 0.05){
+uroot.test = function(y, unit_root = c("adf","kpss","pp","box"), alpha = 0.05){
 
   if( !is.numeric(y) & !is(y,class2 = "ts") )
     stop("y object must be numeric or a time series")
@@ -115,7 +115,7 @@ uroot.test = function(y,unit_root = c("adf","kpss","pp","box"),alpha = 0.05){
 #' Perform a normality test. The null hypothesis (H0) is that the given data
 #' follows a stationary Gaussian process.
 #'
-#' @usage normal.test(y,normality = c("epps","lobato","vavra","rp","jb","ad","shapiro"),
+#' @usage normal.test(y, normality = c("epps","lobato","vavra","rp","jb","ad","shapiro"),
 #'                     alpha = 0.05)
 #'
 #' @param y a numeric vector or an object of the \code{ts} class containing a stationary time series.
@@ -174,16 +174,16 @@ uroot.test = function(y,unit_root = c("adf","kpss","pp","box"),alpha = 0.05){
 #'
 #' @examples
 #' #  stationary  ar process
-#' y = arima.sim(100,model = list(ar = 0.3))
+#' y = arima.sim(100, model = list(ar = 0.3))
 #' normal.test(y) # epps test
 #'
 #' # normal random sample
 #' y = rnorm(100)
-#' normal.test(y,normality = "shapiro")
+#' normal.test(y, normality = "shapiro")
 #'
 #' # exponential random sample
 #' y = rexp(100)
-#' normal.test(y,normality = "ad")
+#' normal.test(y, normality = "ad")
 #'
 normal.test = function(y, normality = c("epps","lobato","vavra","rp","jb","ad","shapiro"),
                        alpha = 0.05){
@@ -261,7 +261,7 @@ normal.test = function(y, normality = c("epps","lobato","vavra","rp","jb","ad","
 #'
 #' Perform a seasonal unit root test to check seasonality in a linear stochastic process
 #'
-#' @usage seasonal.test(y,seasonal = c("ocsb","ch","hegy"),alpha = 0.05)
+#' @usage seasonal.test(y, seasonal = c("ocsb","ch","hegy"), alpha = 0.05)
 #'
 #' @param y a numeric vector or an object of the \code{ts} class containing a stationary time series.
 #' @param seasonal A character string naming the desired seasonal unit root test for checking seasonality.
@@ -312,7 +312,7 @@ normal.test = function(y, normality = c("epps","lobato","vavra","rp","jb","ad","
 #' y = ts(rnorm(100),frequency = 6)
 #' seasonal.test(y)
 #'
-seasonal.test = function(y,seasonal = c("ocsb","ch","hegy"),alpha = 0.05){
+seasonal.test = function(y, seasonal = c("ocsb","ch","hegy"), alpha = 0.05){
 
   if( !is.numeric(y) & !is(y,class2 = "ts") )
     stop("y object must be numeric or a time series")
@@ -358,7 +358,7 @@ seasonal.test = function(y,seasonal = c("ocsb","ch","hegy"),alpha = 0.05){
 #' Performs the Pormanteau Q and Lagrange Multipliers test for homoscedasticity in  a univariate
 #' stationary process. The null hypothesis (H0), is that the process is homoscedastic.
 #'
-#' @usage arch.test(y,arch = c("box","Lm"),alpha = 0.05,lag.max = 2)
+#' @usage arch.test(y, arch = c("box","Lm"), alpha = 0.05, lag.max = 2)
 #'
 #' @param y a numeric vector or an object of the \code{ts} class containing a stationary time series.
 #' @param arch A character string naming the desired  test for checking stationarity. Valid values are
@@ -407,7 +407,7 @@ seasonal.test = function(y,seasonal = c("ocsb","ch","hegy"),alpha = 0.05){
 #' y = arima.sim(100,model = list(ar = 0.3))
 #' arch.test(y)
 #'
-arch.test = function(y,arch = c("box","Lm"),alpha = 0.05,lag.max = 2){
+arch.test = function(y, arch = c("box","Lm"), alpha = 0.05, lag.max = 2){
 
   if( !is.numeric(y) & !is(y,class2 = "ts") )
     stop("y object must be numeric or a time series")

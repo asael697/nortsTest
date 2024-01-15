@@ -58,7 +58,7 @@ Epps, T.W. (1987). Testing that a stationary time series is Gaussian. \emph{The
 Annals of Statistic}. 15(4), 1683-1698.
 }
 \seealso{
-\code{\link{lobato.statistic}},\code{\link{epps.test}}
+\code{\link{lobato.statistic}}, \code{\link{epps.test}}
 }
 \author{
 Asael Alonzo Matamoros and Alicia Nieto-Reyes.

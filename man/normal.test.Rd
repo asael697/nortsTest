@@ -4,7 +4,7 @@
 \alias{normal.test}
 \title{The normality test for stationary process}
 \usage{
-normal.test(y,normality = c("epps","lobato","vavra","rp","jb","ad","shapiro"),
+normal.test(y, normality = c("epps","lobato","vavra","rp","jb","ad","shapiro"),
                     alpha = 0.05)
 }
 \arguments{
@@ -41,16 +41,16 @@ follows a stationary Gaussian process.
 }
 \examples{
 #  stationary  ar process
-y = arima.sim(100,model = list(ar = 0.3))
+y = arima.sim(100, model = list(ar = 0.3))
 normal.test(y) # epps test
 
 # normal random sample
 y = rnorm(100)
-normal.test(y,normality = "shapiro")
+normal.test(y, normality = "shapiro")
 
 # exponential random sample
 y = rexp(100)
-normal.test(y,normality = "ad")
+normal.test(y, normality = "ad")
 
 }
 \references{

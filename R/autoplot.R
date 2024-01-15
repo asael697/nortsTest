@@ -223,7 +223,6 @@ gghist = function(y,title = NULL,xlab = NULL,ylab = "counts",bins,add.normal = T
 #'
 #' Plot the quantile-quantile plot and quantile-quantile line using ggplot.
 #'
-#'
 #' @param y a numeric vector or an object of the \code{ts} class containing a stationary time series.
 #' @param add.normal Add a normal density function for comparison.
 #' @param title a string with the plot's title.

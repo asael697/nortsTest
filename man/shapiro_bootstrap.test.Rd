@@ -27,9 +27,8 @@ A list with class \code{"h.test"} containing the following components:
 }
 }
 \description{
-Performs the Shapiro test approximating the p-value
-using Psaradakis and Vavra's procedure. The null
-hypothesis (H0), is that the given data follows a Gaussian process.
+Performs the approximated Shapiro test for normality for univariate time series.
+Computes the p-value using Psaradakis and Vavra's (2020) sieve bootstrap procedure.
 }
 \details{
 Employs the Shapiro test approximating the p-value using
@@ -54,7 +53,7 @@ normality to large samples. \emph{Applied Statistics}, 31, 115–124.
 doi:10.2307/2347973.
 }
 \seealso{
-\code{\link{vavra.test}},\code{\link{sieve.bootstrap}}
+\code{\link{vavra.test}}, \code{\link{sieve.bootstrap}}
 }
 \author{
 Asael Alonzo Matamoros.

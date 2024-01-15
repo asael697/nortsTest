@@ -13,7 +13,7 @@
 #' default \code{k = 1}.
 #' @param FDR a logical value for mixing the p-values using a dependent False
 #' discovery rate method. If \code{FDR =TRUE}, then the p-values are mixed using
-#' Hochberg's False discovery Rate method, on the contrary it applies the
+#' Hochberg's (1988) False discovery Rate method, on the contrary it applies the
 #' Benjamin and Yekuteli (2001) procedure. By default \code{FDR = TRUE}.
 #' @param pars1 an optional real vector with the shape parameters of the beta
 #' distribution used for the odd number random projection. By default,
@@ -27,7 +27,6 @@
 #' \itemize{
 #'  \item{statistic }{a vector with the average Lobato and Velasco's and average
 #'  Epps test statistics of the k projected samples.}
-#'  \item{parameter }{the number of projections.}
 #'  \item{p.value }{the mixed p-value for the test.}
 #'  \item{alternative }{a character string describing the alternative hypothesis.}
 #'  \item{method }{a character string \dQuote{k random projections test}.}
@@ -35,15 +34,19 @@
 #' }
 #'
 #' @details
-#' The random projection test generates k independent random projections of the
-#' process. A Lobato and Velasco's test are applied to the first half of the
-#' projections, and an Epps test for the other half. Then, the p.values get mixed
-#' using False discovery rate procedures.
+#' The random projection test generates 2k independent random projections of the
+#' process. Applies both Lobato and Velasco's, and Epps statistics to the first k
+#' projections obtained using the \code{pars1} argument. Repeats the procedure for
+#' the later k projections obtained by the \code{pars2} argument. Finally, it returns
+#' a list with two vectors which contain the 4k statistics. The fist vector contains
+#' the Lobato statistics obtained from the 2*k projections, and the second one contains
+#' the Epps statistics obtained from the same 2*k projections.
 #'
-#' A the k random projections a beta distribution is used. By default a
-#' \code{beta(shape1 = 100,shape = 1)} and a \code{beta(shape1 = 2,shape = 7)}
-#' are used to generate the odd and even projections respectively. For using a
-#' different parameter set, change \code{pars1} or \code{pars2} vectors.
+#' The function uses beta distributions for generating the 2*k random projections.
+#' By default, uses a \code{beta(shape1 = 100,shape = 1)} distribution contained in
+#' \code{pars1} argument to generate the first k projections. For the later
+#' k projections the functions uses a \code{beta(shape1 = 2,shape = 7)}
+#' distribution contained in \code{pars2} argument.
 #'
 #' The test was proposed by \emph{Nieto-Reyes, A.,Cuesta-Albertos, J. &
 #' Gamboa, F. (2014)}.
@@ -52,18 +55,25 @@
 #'
 #' @author Asael Alonzo Matamoros and Alicia Nieto-Reyes.
 #'
-#' @seealso \code{\link{lobato.test}} \code{\link{epps.test}}
+#' @seealso \code{\link{lobato.test}}, \code{\link{epps.test}}
 #'
 #' @references
 #' Nieto-Reyes, A., Cuesta-Albertos, J. & Gamboa, F. (2014). A random-projection
 #' based test of Gaussianity for stationary processes. \emph{Computational
 #' Statistics & Data Analysis, Elsevier}, vol. 75(C), pages 124-141.
 #'
-#' Epps, T.W. (1987). Testing that a stationary time series is Gaussian. \emph{The
-#' Annals of Statistic}. 15(4), 1683-1698.
-#'
 #' Lobato, I., & Velasco, C. (2004). A simple test of normality in time series.
 #' \emph{Journal of econometric theory}. 20(4), 671-689.
+#'
+#' Benjamini, Y., and Yekutieli, D. (2001). The control of the false discovery rate in
+#' multiple testing under dependency. \emph{Annals of Statistics}. 29, 1165–1188.
+#' doi:10.1214/aos/1013699998.
+#'
+#' Hochberg, Y. (1988). A sharper Bonferroni procedure for multiple tests of significance.
+#' \emph{Biometrika}. 75, 800–803. doi:10.2307/2336325.
+#'
+#' Epps, T.W. (1987). Testing that a stationary time series is Gaussian. \emph{The
+#' Annals of Statistic}. 15(4), 1683-1698.
 #'
 #' @examples
 #' # Generating an stationary arma process
@@ -114,7 +124,6 @@ rp.test = function(y, k = 1, FDR = TRUE, pars1 = c(100,1), pars2 = c(2,7), seed 
 
   #htest class
   rval <- list(statistic = stat,
-               parameter = parameters,
                p.value = F1,
                alternative = alt,
                method = "k random projections test",
@@ -126,10 +135,8 @@ rp.test = function(y, k = 1, FDR = TRUE, pars1 = c(100,1), pars2 = c(2,7), seed 
 }
 #' Generates a test statistics sample of random projections.
 #'
-#' Generates a sample of test statistics using k independent random projections
-#' of a stationary process. The first half values of the sample, are estimated
-#' using a Lobato and Velasco's statistic test. The last half values with an Epps
-#' statistic test.
+#' Generates a 4*k sample of test statistics  projecting the stationary process
+#' using the k random projections procedure.
 #'
 #' @usage rp.sample(y,k = 16,pars1 = c(100,1),pars2 = c(2,7),seed = NULL)
 #'
@@ -152,14 +159,18 @@ rp.test = function(y, k = 1, FDR = TRUE, pars1 = c(100,1), pars2 = c(2,7), seed 
 #' }
 #'
 #' @details
-#' The \code{rp.sample} function generates k independent random projections of
-#' the process. A Lobatos and Velasco's test is applied to the first half of the
-#' projections. And an Epps test for the other half.
+#' The \code{rp.sample} function generates 4*k independent tests statistics by
+#' projecting the time series using 2*k stick-breaking processes. First, the function
+#' samples a stick breaking process using \code{pars1} argument. Then, projects
+#' the time series using the sampled stick process. Later, applies both the Lobato
+#' and Velasco's, and the Epps statistics to the obtained projection. Finally, repeat
+#' the first three steps using \code{pars2} argument instead.
 #'
-#' For generating the k random projections a beta distribution is used. By default
-#' a \code{beta(shape1 = 100,shape = 1)} and a \code{beta(shape1 = 2,shape = 7)}
-#' are used to generate the odd and even projections respectively. For using a
-#' different parameter set, change \code{pars1} or \code{pars2} values.
+#' The function uses beta distributions for generating the 2*k random projections.
+#' By default, uses a \code{beta(shape1 = 100,shape = 1)} distribution contained in
+#' \code{pars1} argument to generate the first k projections. For the later
+#' k projections the functions uses a \code{beta(shape1 = 2,shape = 7)}
+#' distribution contained in \code{pars2} argument.
 #'
 #' The test was proposed by \emph{Nieto-Reyes, A.,Cuesta-Albertos, J. &
 #' Gamboa, F. (2014)}.
@@ -168,7 +179,7 @@ rp.test = function(y, k = 1, FDR = TRUE, pars1 = c(100,1), pars2 = c(2,7), seed 
 #'
 #' @author Alicia Nieto-Reyes and Asael Alonzo Matamoros
 #'
-#' @seealso \code{\link{lobato.test}} \code{\link{epps.test}}
+#' @seealso \code{\link{lobato.test}}, \code{\link{epps.test}}
 #'
 #' @references
 #' Nieto-Reyes, A., Cuesta-Albertos, J. & Gamboa, F. (2014). A random-projection

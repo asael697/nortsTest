@@ -1,8 +1,7 @@
 #' The Sieve Bootstrap Jarque-Bera test for normality.
 #'
-#' Performs the Jarque Bera test approximating the p-value
-#' using Psaradakis and Vavra's procedure. The null
-#' hypothesis (H0), is that the given data follows a Gaussian process.
+#' Performs the approximated Jarque Bera test of normality for univariate time series.
+#' Computes the p-value using Psaradakis and Vavra's (2020) sieve bootstrap procedure.
 #'
 #' @usage jb_bootstrap.test(y, reps = 1000, h = 100, seed = NULL)
 #'
@@ -29,7 +28,7 @@
 #'
 #' @author Asael Alonzo Matamoros.
 #'
-#' @seealso \code{\link{vavra.test}},\code{\link{sieve.bootstrap}}
+#' @seealso \code{\link{vavra.test}}, \code{\link{sieve.bootstrap}}
 #'
 #' @references
 #' Psaradakis, Z. and Vávra, M. (2020) Normality tests for dependent
@@ -79,9 +78,8 @@ jb_bootstrap.test = function(y, reps = 1000, h = 100, seed = NULL){
 }
 #' The Sieve Bootstrap Cramer Von Mises test for normality.
 #'
-#' Performs the Cramer Von Mises test approximating the p-value
-#' using Psaradakis and Vavra's procedure. The null
-#' hypothesis (H0), is that the given data follows a Gaussian process.
+#' Performs the approximated Cramer Von Mises test of normality for univariate time series.
+#' Computes the p-value using Psaradakis and Vavra's (2020) sieve bootstrap procedure.
 #'
 #' @usage cvm_bootstrap.test(y, reps = 1000, h = 100, seed = NULL)
 #'
@@ -108,7 +106,7 @@ jb_bootstrap.test = function(y, reps = 1000, h = 100, seed = NULL){
 #'
 #' @author Asael Alonzo Matamoros.
 #'
-#' @seealso \code{\link{vavra.test}},\code{\link{sieve.bootstrap}}
+#' @seealso \code{\link{vavra.test}}, \code{\link{sieve.bootstrap}}
 #'
 #' @references
 #' Psaradakis, Z. and Vávra, M. (2020) Normality tests for dependent
@@ -159,9 +157,8 @@ cvm_bootstrap.test = function(y, reps = 1000, h = 100, seed = NULL){
 }
 #' The Sieve Bootstrap Shapiro test for normality.
 #'
-#' Performs the Shapiro test approximating the p-value
-#' using Psaradakis and Vavra's procedure. The null
-#' hypothesis (H0), is that the given data follows a Gaussian process.
+#' Performs the approximated Shapiro test for normality for univariate time series.
+#' Computes the p-value using Psaradakis and Vavra's (2020) sieve bootstrap procedure.
 #'
 #' @usage shapiro_bootstrap.test(y, reps = 1000, h = 100, seed = NULL)
 #'
@@ -188,7 +185,7 @@ cvm_bootstrap.test = function(y, reps = 1000, h = 100, seed = NULL){
 #'
 #' @author Asael Alonzo Matamoros.
 #'
-#' @seealso \code{\link{vavra.test}},\code{\link{sieve.bootstrap}}
+#' @seealso \code{\link{vavra.test}}, \code{\link{sieve.bootstrap}}
 #'
 #' @references
 #' Psaradakis, Z. and Vávra, M. (2020) Normality tests for dependent

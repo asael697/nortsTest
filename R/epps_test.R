@@ -184,7 +184,7 @@ epps.statistic =  function(y, lambda = c(1, 2)){
 #'
 #' @author Asael Alonzo Matamoros and Alicia Nieto-Reyes.
 #'
-#' @seealso \code{\link{lobato.statistic}},\code{\link{epps.test}}
+#' @seealso \code{\link{lobato.statistic}}, \code{\link{epps.test}}
 #'
 #' @references
 #' Psaradakis, Z. and Vávra, M. (2020) Normality tests for dependent

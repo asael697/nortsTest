@@ -27,9 +27,8 @@ A list with class \code{"h.test"} containing the following components:
 }
 }
 \description{
-Performs the Cramer Von Mises test approximating the p-value
-using Psaradakis and Vavra's procedure. The null
-hypothesis (H0), is that the given data follows a Gaussian process.
+Performs the approximated Cramer Von Mises test of normality for univariate time series.
+Computes the p-value using Psaradakis and Vavra's (2020) sieve bootstrap procedure.
 }
 \details{
 Employs Cramer Von Mises test approximating the p-value using
@@ -54,7 +53,7 @@ R.B. and Stephens, M.A., eds.: Goodness-of-Fit Techniques. Marcel Dekker,
 New York.
 }
 \seealso{
-\code{\link{vavra.test}},\code{\link{sieve.bootstrap}}
+\code{\link{vavra.test}}, \code{\link{sieve.bootstrap}}
 }
 \author{
 Asael Alonzo Matamoros.
