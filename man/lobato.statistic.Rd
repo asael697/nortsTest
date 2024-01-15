@@ -4,7 +4,7 @@
 \alias{lobato.statistic}
 \title{Computes the Lobato and Velasco statistic.}
 \usage{
-lobato.statistic(y,c = 1)
+lobato.statistic(y, c = 1)
 }
 \arguments{
 \item{y}{a numeric vector or an object of the \code{ts} class containing a stationary time series.}

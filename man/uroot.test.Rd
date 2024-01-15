@@ -4,7 +4,7 @@
 \alias{uroot.test}
 \title{The Unit root tests function.}
 \usage{
-uroot.test(y,unit_root = c("adf","kpss","pp","box"),alpha = 0.05)
+uroot.test(y, unit_root = c("adf","kpss","pp","box"), alpha = 0.05)
 }
 \arguments{
 \item{y}{a numeric vector or an object of the \code{ts} class containing a stationary time series.}
@@ -45,7 +45,7 @@ uroot.test(y)
 
 # a random walk process
 y = cumsum(y)
-uroot.test(y,unit_root = "pp")
+uroot.test(y, unit_root = "pp")
 
 }
 \references{
@@ -64,7 +64,7 @@ Ljung, G. M. & Box, G. E. P. (1978). On a measure of lack of fit in time series 
 \emph{Biometrika}. 65, 297-303.
 }
 \seealso{
-\code{\link{normal.test}},\code{\link{seasonal.test}}
+\code{\link{normal.test}}, \code{\link{seasonal.test}}
 }
 \author{
 Asael Alonzo Matamoros and A. Trapletti.

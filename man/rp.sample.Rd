@@ -31,20 +31,22 @@ A list with 2 real value vectors:
 }
 }
 \description{
-Generates a sample of test statistics using k independent random projections
-of a stationary process. The first half values of the sample, are estimated
-using a Lobato and Velasco's statistic test. The last half values with an Epps
-statistic test.
+Generates a 4*k sample of test statistics  projecting the stationary process
+using the k random projections procedure.
 }
 \details{
-The \code{rp.sample} function generates k independent random projections of
-the process. A Lobatos and Velasco's test is applied to the first half of the
-projections. And an Epps test for the other half.
+The \code{rp.sample} function generates 4*k independent tests statistics by
+projecting the time series using 2*k stick-breaking processes. First, the function
+samples a stick breaking process using \code{pars1} argument. Then, projects
+the time series using the sampled stick process. Later, applies both the Lobato
+and Velasco's, and the Epps statistics to the obtained projection. Finally, repeat
+the first three steps using \code{pars2} argument instead.
 
-For generating the k random projections a beta distribution is used. By default
-a \code{beta(shape1 = 100,shape = 1)} and a \code{beta(shape1 = 2,shape = 7)}
-are used to generate the odd and even projections respectively. For using a
-different parameter set, change \code{pars1} or \code{pars2} values.
+The function uses beta distributions for generating the 2*k random projections.
+By default, uses a \code{beta(shape1 = 100,shape = 1)} distribution contained in
+\code{pars1} argument to generate the first k projections. For the later
+k projections the functions uses a \code{beta(shape1 = 2,shape = 7)}
+distribution contained in \code{pars2} argument.
 
 The test was proposed by \emph{Nieto-Reyes, A.,Cuesta-Albertos, J. &
 Gamboa, F. (2014)}.
@@ -67,7 +69,7 @@ Lobato, I., & Velasco, C. (2004). A simple test of normality in time series.
 \emph{Journal of econometric theory}. 20(4), 671-689.
 }
 \seealso{
-\code{\link{lobato.test}} \code{\link{epps.test}}
+\code{\link{lobato.test}}, \code{\link{epps.test}}
 }
 \author{
 Alicia Nieto-Reyes and Asael Alonzo Matamoros

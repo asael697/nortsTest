@@ -1,7 +1,7 @@
 #' The Lobato and Velasco's Test for normality.
 #'
-#' Performs the Lobato and Velasco's test for normality. The null hypothesis (H0),
-#' is that the given data follows a Gaussian process.
+#' Performs the exact Lobato and Velasco's test for normality. Computes the p-value using the
+#' asymptotic Gamma Distribution
 #'
 #' @usage lobato.test(y,c = 1)
 #'
@@ -91,7 +91,7 @@ lobato.test = function(y, c = 1){
 #' but studentized by standard error estimates that are consistent under serial
 #' dependence of the observations.
 #'
-#' @usage lobato.statistic(y,c = 1)
+#' @usage lobato.statistic(y, c = 1)
 #'
 #' @param y a numeric vector or an object of the \code{ts} class containing a stationary time series.
 #' @param c a positive real value that identifies the total amount of values used in the
@@ -122,7 +122,7 @@ lobato.test = function(y, c = 1){
 #' y = arima.sim(100,model = list(ar = 0.3))
 #' lobato.statistic(y,3)
 #'
-lobato.statistic = function(y,c = 1){
+lobato.statistic = function(y, c = 1){
 
   if( !is.numeric(y) & !is(y,class2 = "ts") )
     stop("y object must be numeric or a time series")
@@ -151,9 +151,8 @@ lobato.statistic = function(y,c = 1){
 
 #' The Sieve Bootstrap Lobato and Velasco's Test for normality.
 #'
-#' Performs the Lobato and Velasco's test for normality approximating the linear
-#' time series using a sieve Bootstrap procedure. The null hypothesis (H0),
-#' is that the given data follows a Gaussian process.
+#' Performs the approximated Lobato and Velasco's test of normality for univariate time series.
+#' Computes the p-value using Psaradakis and Vavra's (2020) sieve bootstrap procedure.
 #'
 #' @usage lobato_bootstrap.test(y, c = 1, reps = 1000, h = 100, seed = NULL)
 #'

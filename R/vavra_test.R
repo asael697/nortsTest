@@ -38,7 +38,7 @@
 #'
 #' @author Asael Alonzo Matamoros.
 #'
-#' @seealso \code{\link{lobato.test}},\code{\link{epps.test}}
+#' @seealso \code{\link{lobato.test}}, \code{\link{epps.test}}
 #'
 #' @references
 #' Psaradakis, Z. and Vávra, M. (2020) Normality tests for dependent
@@ -144,7 +144,7 @@ vavra.test = function(y, normality = c("ad","lobato","jb","cvm","epps"),
 #'
 #' @author Asael Alonzo Matamoros.
 #'
-#' @seealso \code{\link{epps.statistic}} \code{\link{lobato.statistic}}
+#' @seealso \code{\link{epps.statistic}}, \code{\link{lobato.statistic}}
 #'
 #' @references
 #' Psaradakis, Z. and Vávra, M. (2020) Normality tests for dependent
@@ -212,7 +212,7 @@ vavra.sample = function(y, normality = c("ad","lobato","jb","cvm","shapiro","epp
 #'
 #' @author Asael Alonzo Matamoros.
 #'
-#' @seealso \code{\link{lobato.test}},\code{\link{epps.test}}.
+#' @seealso \code{\link{lobato.test}}, \code{\link{epps.test}}.
 #'
 #' @references
 #' Bulmann, P. (1997). Sieve Bootstrap for time series. \emph{Bernoulli}.

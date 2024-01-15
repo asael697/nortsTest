@@ -61,7 +61,7 @@ Bulmann, P. (1997). Sieve Bootstrap for time series. \emph{Bernoulli}.
 3(2), 123 -148.
 }
 \seealso{
-\code{\link{epps.statistic}} \code{\link{lobato.statistic}}
+\code{\link{epps.statistic}}, \code{\link{lobato.statistic}}
 }
 \author{
 Asael Alonzo Matamoros.

@@ -119,10 +119,11 @@ elbouch.test <- function(y, x = NULL){
 #' @param y a numeric vector or an object of the \code{ts} class containing a stationary time series.
 #' @param x a numeric vector or an object of the \code{ts} class containing a stationary time series.
 #'
-#' @details This function computes Mardias' standarized `z = (B - E_B)/ sd_B` statistic
-#' corrected by El Bouch, et al. (2022) for stationary p-dimensional time series. Where:
-#' `B` is the square of a quadratic form of the proces `c(y, x)`; `E_B` and `sd_B` are the
-#' estimator's expected value and standard error respectively and `p = 1, 2`.
+#' @details This function computes Mardias' standardized `z = (B - E_B)/ sd_B` statistic
+#' corrected by El Bouch, et al. (2022) for stationary bivariate time series. Where:
+#' `B` is the square of a quadratic form of the process `c(y, x)`; `E_B` and `sd_B` are
+#' the estimator's expected value and standard error respectively.  If `x` is set to
+#' `NULL`, the test computes the univariate counterpart.
 #'
 #' @return a real value with El Bouch test's statistic.
 #'
@@ -143,7 +144,7 @@ elbouch.test <- function(y, x = NULL){
 #' \emph{Journal of econometric theory}. 20(4), 671-689.
 #'
 #' @examples
-#' # Genere an univariate stationary arma process
+#' # Genere an univariate stationary ARMA process
 #' y = arima.sim(100,model = list(ar = 0.3))
 #' elbouch.statistic(y)
 #'
