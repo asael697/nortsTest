@@ -1,7 +1,7 @@
 **Packages NEWS and Updates**
 ============
 
-**nortsTest 1.1.0 Date: 23/12/2023**
+**nortsTest 1.1.0 Date: 16/01/2024**
 ----------------------------------
 
 ### Features:
