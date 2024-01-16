@@ -8,13 +8,11 @@
 #' @param x a numeric vector or an object of the \code{ts} class containing a stationary time series.
 #'
 #' @return A list with class \code{"h.test"} containing the following components:
-#' \itemize{
 #'  \item{statistic:}{the El Bouch Z statistic.}
 #'  \item{p.value:}{the p value for the test.}
 #'  \item{alternative:}{a character string describing the alternative hypothesis.}
 #'  \item{method:}{a character string \dQuote{El Bouch, Michel & Comon's test}.}
 #'  \item{data.name:}{a character string giving the name of the data.}
-#' }
 #'
 #' @details This function computes El Bouch, et al. (2022) test for normality of
 #' bivariate dependent samples. If `x` is set to `NULL`, the test computes the univariate

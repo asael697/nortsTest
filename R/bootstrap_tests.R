@@ -12,13 +12,11 @@
 #' @param seed An optional \code{\link[=set.seed]{seed}} to use.
 #'
 #' @return A list with class \code{"h.test"} containing the following components:
-#' \itemize{
 #'  \item{statistic:}{the sieve bootstrap Jarque Bera's statistic.}
 #'  \item{p.value:}{the p value for the test.}
 #'  \item{alternative:}{a character string describing the alternative hypothesis.}
 #'  \item{method:}{a character string \dQuote{Sieve-Bootstrap Jarque Bera's test}.}
 #'  \item{data.name:}{a character string giving the name of the data.}
-#' }
 #'
 #' @details
 #' Employs Jarque Bera skewness-kurtosis test approximating the p-value using
@@ -90,13 +88,11 @@ jb_bootstrap.test = function(y, reps = 1000, h = 100, seed = NULL){
 #' @param seed An optional \code{\link[=set.seed]{seed}} to use.
 #'
 #' @return A list with class \code{"h.test"} containing the following components:
-#' \itemize{
 #'  \item{statistic:}{the sieve bootstrap Cramer Von Mises' statistic.}
 #'  \item{p.value:}{the p value for the test.}
 #'  \item{alternative:}{a character string describing the alternative hypothesis.}
 #'  \item{method:}{a character string \dQuote{Sieve-Bootstrap Cramer Von Mises' test}.}
 #'  \item{data.name:}{a character string giving the name of the data.}
-#' }
 #'
 #' @details
 #' Employs Cramer Von Mises test approximating the p-value using
@@ -169,13 +165,11 @@ cvm_bootstrap.test = function(y, reps = 1000, h = 100, seed = NULL){
 #' @param seed An optional \code{\link[=set.seed]{seed}} to use.
 #'
 #' @return A list with class \code{"h.test"} containing the following components:
-#' \itemize{
 #'  \item{statistic:}{the sieve bootstrap Shapiro's statistic.}
 #'  \item{p.value:}{the p value for the test.}
 #'  \item{alternative:}{a character string describing the alternative hypothesis.}
 #'  \item{method:}{a character string \dQuote{Sieve-Bootstrap Shapiro's test}.}
 #'  \item{data.name:}{a character string giving the name of the data.}
-#' }
 #'
 #' @details
 #' Employs the Shapiro test approximating the p-value using

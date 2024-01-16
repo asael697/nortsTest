@@ -10,14 +10,12 @@
 #' cumulative sum.
 #'
 #' @return A list with class \code{"h.test"} containing the following components:
-#' \itemize{
 #'  \item{statistic:}{the Lobato and Velasco's statistic.}
 #'  \item{parameter:}{the test degrees freedoms.}
 #'  \item{p.value:}{the p-value for the test.}
 #'  \item{alternative:}{a character string describing the alternative hypothesis.}
 #'  \item{method:}{a character string \dQuote{Lobato and Velasco's test}.}
 #'  \item{data.name:}{a character string giving the name of the data.}
-#' }
 #'
 #' @details
 #'
@@ -166,13 +164,11 @@ lobato.statistic = function(y, c = 1){
 #' @param seed An optional \code{\link[=set.seed]{seed}} to use.
 #'
 #' @return A list with class \code{"h.test"} containing the following components:
-#' \itemize{
 #'  \item{statistic:}{the sieve bootstrap Lobato  n Velasco's statistic.}
 #'  \item{p.value:}{the p value for the test.}
 #'  \item{alternative:}{a character string describing the alternative hypothesis.}
 #'  \item{method:}{a character string \dQuote{Sieve-Bootstrap Lobato's test}.}
 #'  \item{data.name:}{a character string giving the name of the data.}
-#' }
 #'
 #' @details
 #' This test proves a normality assumption in correlated data employing the

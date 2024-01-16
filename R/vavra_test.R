@@ -20,13 +20,11 @@
 #' @param lambda a numeric vector used as argument for the Epps's test.
 #'
 #' @return A list with class \code{"h.test"} containing the following components:
-#' \itemize{
 #'  \item{statistic:}{the sieve bootstrap A statistic.}
 #'  \item{p.value:}{the p value for the test.}
 #'  \item{alternative:}{a character string describing the alternative hypothesis.}
 #'  \item{method:}{a character string \dQuote{Psaradakis and Vávra test}.}
 #'  \item{data.name:}{a character string giving the name of the data.}
-#' }
 #'
 #' @details
 #' The Psaradakis and Vávra test approximates the empirical distribution

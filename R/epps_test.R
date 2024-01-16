@@ -12,14 +12,12 @@
 #' are `c(1,2)`, another plausible option is to select random values.
 #'
 #' @return A list with class \code{"h.test"} containing the following components:
-#' \itemize{
 #'  \item{statistic:}{the Epps statistic.}
 #'  \item{parameter:}{the test degrees freedoms.}
 #'  \item{p.value:}{the p value.}
 #'  \item{alternative:}{a character string describing the alternative hypothesis.}
 #'  \item{method:}{a character string \dQuote{Epps test}.}
 #'  \item{data.name:}{a character string giving the name of the data.}
-#' }
 #'
 #' @details
 #' The Epps test minimize the process' empirical characteristic function using a
@@ -180,13 +178,11 @@ epps.statistic =  function(y, lambda = c(1, 2)){
 #' @param seed An optional \code{\link[=set.seed]{seed}} to use.
 #'
 #' @return A list with class \code{"h.test"} containing the following components:
-#' \itemize{
 #'  \item{statistic:}{the sieve bootstrap Epps and Pulley's statistic.}
 #'  \item{p.value:}{the p value for the test.}
 #'  \item{alternative:}{a character string describing the alternative hypothesis.}
 #'  \item{method:}{a character string \dQuote{Sieve-Bootstrap Epps' test}.}
 #'  \item{data.name:}{a character string giving the name of the data.}
-#' }
 #'
 #' @details
 #' The Epps test minimize the process' empirical characteristic function using a

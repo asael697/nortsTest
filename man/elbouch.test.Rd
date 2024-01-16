@@ -13,13 +13,11 @@ elbouch.test(y, x = NULL)
 }
 \value{
 A list with class \code{"h.test"} containing the following components:
-\itemize{
  \item{statistic:}{the El Bouch Z statistic.}
  \item{p.value:}{the p value for the test.}
  \item{alternative:}{a character string describing the alternative hypothesis.}
  \item{method:}{a character string \dQuote{El Bouch, Michel & Comon's test}.}
  \item{data.name:}{a character string giving the name of the data.}
-}
 }
 \description{
 Computes the El Bouch, Michel, & Comon's  test for normality of a bivariate dependent samples.

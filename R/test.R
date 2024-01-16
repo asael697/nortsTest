@@ -10,17 +10,15 @@
 #' \code{"kpss"} for Kwiatkowski, Phillips, Schmidt, and Shin, and \code{"box"} for the Ljung-Box. The default
 #' value is \code{"adf"} for the Augmented Dickey-Fuller test.
 #' @param alpha Level of the test, possible values range from 0.01 to 0.1. By default \code{alpha = 0.05}
-#' is used
+#' is used.
 #'
 #' @return A list with class \code{"h.test"} containing the following components:
-#' \itemize{
 #'  \item{statistic:}{the test statistic.}
 #'  \item{parameter:}{the test degrees freedoms.}
 #'  \item{p.value:}{the p-value for the test.}
 #'  \item{alternative:}{a character string describing the alternative hypothesis.}
 #'  \item{method:}{a character string with the test name.}
 #'  \item{data.name:}{a character string giving the name of the data.}
-#' }
 #'
 #' @details Several different tests are available:
 #' In the  \code{kpss} test, the null hypothesis that \code{y} has a stationary root
@@ -126,17 +124,15 @@ uroot.test = function(y, unit_root = c("adf","kpss","pp","box"), alpha = 0.05){
 #' \code{"epps"} test.
 #' @param alpha Level of the test, possible values range from 0.01 to 0.1. By default \code{alpha = 0.05}
 #'
-#' @return An h.test class with the main results of normal hypothesis test.
-#'
 #' @return A list with class \code{"h.test"} containing the following components:
-#' \itemize{
 #'  \item{statistic:}{the test statistic.}
 #'  \item{parameter:}{the test degrees freedoms.}
 #'  \item{p.value:}{the p-value for the test.}
 #'  \item{alternative:}{a character string describing the alternative hypothesis.}
 #'  \item{method:}{a character string with the test name.}
 #'  \item{data.name:}{a character string giving the name of the data.}
-#' }
+#'
+#' @details
 #' \code{"lobato"}, \code{"epps"}, \code{"vavras"} and \code{"rp"} test are for testing normality
 #' in stationary process. \code{"jb"}, \code{"ad"}, and  \code{"shapiro"} tests are for numeric data.
 #' In all cases, the alternative hypothesis is that \code{y} follows a Gaussian process. By default,
@@ -272,14 +268,12 @@ normal.test = function(y, normality = c("epps","lobato","vavra","rp","jb","ad","
 #' is used
 #'
 #' @return A list with class \code{"h.test"} containing the following components:
-#' \itemize{
 #'  \item{statistic:}{the test statistic.}
 #'  \item{parameter:}{the test degrees freedoms.}
 #'  \item{p.value:}{the p-value for the test.}
 #'  \item{alternative:}{a character string describing the alternative hypothesis.}
 #'  \item{method:}{a character string with the test name.}
 #'  \item{data.name:}{a character string giving the name of the data.}
-#' }
 #'
 #' @details Several different tests are available:
 #' In the  \code{kpss} test, the null hypothesis that \code{y} has a stationary root
@@ -369,14 +363,12 @@ seasonal.test = function(y, seasonal = c("ocsb","ch","hegy"), alpha = 0.05){
 #' is used
 #'
 #' @return A list with class \code{"h.test"} containing the following components:
-#' \itemize{
 #'  \item{statistic:}{the test statistic.}
 #'  \item{parameter:}{the test degrees freedoms.}
 #'  \item{p.value:}{the p-value for the test.}
 #'  \item{alternative:}{a character string describing the alternative hypothesis.}
 #'  \item{method:}{a character string with the test name.}
 #'  \item{data.name:}{a character string giving the name of the data.}
-#' }
 #'
 #' @details Several different tests are available:
 #' Performs Portmanteau Q and Lagrange Multiplier tests for the null hypothesis that the residuals of

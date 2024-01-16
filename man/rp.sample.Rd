@@ -26,10 +26,8 @@ distribution used to compute the last `k` random projections. By default,
 }
 \value{
 A list with 2 real value vectors:
-\itemize{
  \item{lobato:}{A vector with the Lobato and Velasco's statistics sample.}
  \item{epps:}{A vector with the Epps statistics sample.}
-}
 }
 \description{
 Generates a 4k sample of test statistics  projecting the stationary process
@@ -37,10 +35,10 @@ using the random projections procedure.
 }
 \details{
 The \code{rp.sample} function generates `4k` tests statistics by projecting
-the time series using 2k stickbreaking processes. First, the function samples
-a stick breaking process using \code{pars1} argument. Then, projects the time
-series using the sampled stick process. Later, applies both the Lobato and
-Velasco's, and the Epps statistics to the obtained projection. Analogously,
+the time series using `2k` stick breaking processes. First, the function
+samples a stick breaking process using \code{pars1} argument. Then, projects
+the time series using the sampled stick process. Later, applies both the Lobato
+and Velasco's, and the Epps statistics to the obtained projection. Analogously,
 the function performs the three steps using also \code{pars2} argument
 
 The function uses beta distributions for generating the `2k` random projections.
@@ -49,8 +47,7 @@ in \code{pars1} argument to generate the first `k` projections. For the later
 `k` projections the functions uses a \code{beta(shape1 = 2,shape = 7)} distribution
 contained in \code{pars2} argument.
 
-The test was proposed by \emph{Nieto-Reyes, A.,Cuesta-Albertos, J. &
-Gamboa, F. (2014)}.
+The test was proposed by \emph{Nieto-Reyes, A.,Cuesta-Albertos, J. & Gamboa, F. (2014)}.
 }
 \examples{
 # Generating an stationary ARMA process

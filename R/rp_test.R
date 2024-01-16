@@ -151,17 +151,15 @@ rp.test = function(y, k = 1, FDR = TRUE, pars1 = c(100,1), pars2 = c(2,7), seed 
 #' @param seed An optional \code{\link[=set.seed]{seed}} to use.
 #'
 #' @return A list with 2 real value vectors:
-#' \itemize{
 #'  \item{lobato:}{A vector with the Lobato and Velasco's statistics sample.}
 #'  \item{epps:}{A vector with the Epps statistics sample.}
-#' }
 #'
 #' @details
 #' The \code{rp.sample} function generates `4k` tests statistics by projecting
-#' the time series using 2k stickbreaking processes. First, the function samples
-#' a stick breaking process using \code{pars1} argument. Then, projects the time
-#' series using the sampled stick process. Later, applies both the Lobato and
-#' Velasco's, and the Epps statistics to the obtained projection. Analogously,
+#' the time series using `2k` stick breaking processes. First, the function
+#' samples a stick breaking process using \code{pars1} argument. Then, projects
+#' the time series using the sampled stick process. Later, applies both the Lobato
+#' and Velasco's, and the Epps statistics to the obtained projection. Analogously,
 #' the function performs the three steps using also \code{pars2} argument
 #'
 #' The function uses beta distributions for generating the `2k` random projections.
@@ -170,8 +168,7 @@ rp.test = function(y, k = 1, FDR = TRUE, pars1 = c(100,1), pars2 = c(2,7), seed 
 #' `k` projections the functions uses a \code{beta(shape1 = 2,shape = 7)} distribution
 #' contained in \code{pars2} argument.
 #'
-#' The test was proposed by \emph{Nieto-Reyes, A.,Cuesta-Albertos, J. &
-#' Gamboa, F. (2014)}.
+#' The test was proposed by \emph{Nieto-Reyes, A.,Cuesta-Albertos, J. & Gamboa, F. (2014)}.
 #'
 #' @export
 #'
