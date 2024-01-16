@@ -12,7 +12,7 @@ normal.test(y, normality = c("epps","lobato","vavra","rp","jb","ad","shapiro"),
 
 \item{normality}{A character string naming the desired test for checking normality. Valid values are
 \code{"epps"} for the Epps, \code{"lobato"} for Lobato and Velasco's,\code{"vavra"} for the Psaradakis
-and  Vavra, \code{"rp"} for the random projections, \code{"jb"} for the Jarque and Beras, \code{"ad"}
+and  Vávra, \code{"rp"} for the random projections, \code{"jb"} for the Jarque and Beras, \code{"ad"}
 for Anderson Darling test, and \code{"shapiro"} for the Shapiro-Wilk's test. The default value is
 \code{"epps"} test.}
 
@@ -60,7 +60,7 @@ Annals of Statistic}. 15(4), 1683-1698.
 Lobato, I., & Velasco, C. (2004). A simple test of normality in time series.
 \emph{Journal of econometric theory}. 20(4), 671-689.
 
-Psaradakis, Z. & Vavra, M. (2017). A distance test of normality for a wide class
+Psaradakis, Z. & Vávra, M. (2017). A distance test of normality for a wide class
 of stationary process. \emph{Journal of Econometrics and Statistics}. 2, 50-60.
 
 Nieto-Reyes, A., Cuesta-Albertos, J. & Gamboa, F. (2014). A random-projection

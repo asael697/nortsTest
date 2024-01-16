@@ -2,7 +2,7 @@
 % Please edit documentation in R/vavra_test.R
 \name{vavra.sample}
 \alias{vavra.sample}
-\title{vavra test's sieve Bootstrap sample for Anderson Darling statistic}
+\title{Vávra test's sieve Bootstrap sample for Anderson Darling statistic}
 \usage{
 vavra.sample(y, normality = c("ad","lobato","jb","cvm","shapiro","epps"),
                     reps = 1000, h = 100, seed = NULL, c = 1, lambda = c(1,2))
@@ -35,12 +35,12 @@ Generates a sieve bootstrap sample of the Anderson-Darling
 statistic test.
 }
 \details{
-The Vavra test approximates the empirical distribution function of the
+The Vávra test approximates the empirical distribution function of the
 Anderson-Darlings statistic, using a sieve bootstrap approximation.
-The test was proposed by \emph{Psaradakis, Z. & Vavra, M (20.17)}.
+The test was proposed by \emph{Psaradakis, Z. & Vávra, M (20.17)}.
 
 This function is the equivalent of \code{xarsieve} of
-\emph{Psaradakis, Z. &  Vavra, M (20.17)}.
+\emph{Psaradakis, Z. &  Vávra, M (20.17)}.
 }
 \examples{
 # Generating an stationary arma process
@@ -54,7 +54,7 @@ Psaradakis, Z. and Vávra, M. (2020) Normality tests for dependent
 data: large-sample and bootstrap approaches. Communications in
 \emph{Statistics-Simulation and Computation 49 (2)}. ISSN 0361-0918.
 
-Psaradakis, Z. & Vavra, M. (2017). A distance test of normality for a wide class
+Psaradakis, Z. & Vávra, M. (2017). A distance test of normality for a wide class
 of stationary process. \emph{Journal of Econometrics and Statistics}. 2, 50-60.
 
 Bulmann, P. (1997). Sieve Bootstrap for time series. \emph{Bernoulli}.

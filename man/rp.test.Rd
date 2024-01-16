@@ -17,7 +17,7 @@ argument generates the first `k` projections, and `pars2` generates the later
 
 \item{FDR}{a logical value for mixing the p-values using a dependent False
 discovery rate method. If \code{FDR =TRUE}, then the p-values are mixed using
-Benjamin and Yekuteli (2001) False discovery Rate method, on the contrary it
+Benjamin and Yekutieli (2001) False discovery Rate method, on the contrary it
 applies the Hochberg's (1988) procedure. By default \code{FDR = TRUE}.}
 
 \item{pars1}{an optional real vector with the shape parameters of the beta
@@ -52,7 +52,7 @@ using the \code{pars1} argument. Repeats the procedure for the later k projectio
 obtained by the \code{pars2} argument. Computes the 4k p.values using an asymptotic
 chi-square distribution with two degrees of freedom. Finally, mixes the p.values
 using a false discover rate procedure. By default, mixes the p.values using
-Benjamin and Yekuteli's (2001) method.
+Benjamin and Yekutieli's (2001) method.
 
 The function uses beta distributions for generating the 2k random projections.
 By default, uses a \code{beta(shape1 = 100,shape = 1)} distribution contained

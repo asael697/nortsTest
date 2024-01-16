@@ -34,7 +34,7 @@
 \item{series}{Identifies the time series with a colour, which integrates well
 with the functionality of \link{geom_forecast}.}
 
-\item{xlab}{a string with the plot's x axis label. By default a NUll value.}
+\item{xlab}{a string with the plot's x axis label. By default a NULL value.}
 
 \item{ylab}{a string with the plot's y axis label. By default a counts" value.}
 
