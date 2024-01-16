@@ -28,7 +28,7 @@
 #' \itemize{
 #'  \item{statistic }{an integer value with the amount of projections.}
 #'  \item{parameter }{ a text that specifies the p.value mixing FDR method.}
-#'  \item{p.value }{the mixed p-value for the test.}
+#'  \item{p.value }{the FDR mixed p-value for the test.}
 #'  \item{alternative }{a character string describing the alternative hypothesis.}
 #'  \item{method }{a character string \dQuote{k random projections test}.}
 #'  \item{data.name }{a character string giving the name of the data.}
@@ -104,13 +104,13 @@ rp.test = function(y, k = 1, FDR = TRUE, pars1 = c(100,1), pars2 = c(2,7), seed 
   if (!is.null(seed))
     set.seed(seed)
 
-  rps = rp.sample(as.numeric(y),k = k,seed = seed,pars1 = pars1,pars2 = pars2)
-  F1 = pchisq(q = c(rps$lobato,rps$epps),df = 2,lower.tail = FALSE)
+  rps = rp.sample(as.numeric(y), k = k, seed = seed, pars1 = pars1, pars2 = pars2)
+  F1 = pchisq(q = c(rps$lobato, rps$epps), df = 2, lower.tail = FALSE)
 
   if(FDR)
-    F1 = min(p.adjust(F1,method = "fdr"))
+    F1 = min(p.adjust(F1, method = "BY"))
   else
-    F1 = min(p.adjust(F1,method = "BY"))
+    F1 = min(p.adjust(F1, method = "BH"))
 
   dname = deparse(substitute(y))
   alt = paste(dname,"does not follow a Gaussian Process")
@@ -118,7 +118,7 @@ rp.test = function(y, k = 1, FDR = TRUE, pars1 = c(100,1), pars2 = c(2,7), seed 
   names(stat) = "k"
 
   # tests parameters
-  parameters  = ifelse(FDR,"Hocheberg","Benjamini & Yekutieli")
+  parameters  = ifelse(FDR, "Benjamini & Hocheberg","Benjamini & Yekutieli")
   names(parameters) = "p.value adjust"
   names(F1) = "fdr.value"
 
