@@ -3,3 +3,6 @@
 .RData
 .Ruserdata
 .DS_Store
+.Rbuildignore
+cran-comments.md
+CRAN-SUBMISSION
