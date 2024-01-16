@@ -14,8 +14,8 @@
 #' generates the later `k` projections. By default, \code{k = 1}.
 #' @param FDR a logical value for mixing the p-values using a dependent False
 #' discovery rate method. If \code{FDR =TRUE}, then the p-values are mixed using
-#' Hochberg's (1988) False discovery Rate method, on the contrary it applies the
-#' Benjamin and Yekuteli (2001) procedure. By default \code{FDR = TRUE}.
+#' Benjamin and Yekuteli (2001) False discovery Rate method, on the contrary it
+#' applies the Hochberg's (1988) procedure. By default \code{FDR = TRUE}.
 #' @param pars1 an optional real vector with the shape parameters of the beta
 #' distribution used for the odd number random projection. By default,
 #' \code{pars1 = c(100,1)} where, \code{shape1 = 100} and \code{shape2 = 1}.
@@ -110,7 +110,7 @@ rp.test = function(y, k = 1, FDR = TRUE, pars1 = c(100,1), pars2 = c(2,7), seed 
   if(FDR)
     F1 = min(p.adjust(F1, method = "BY"))
   else
-    F1 = min(p.adjust(F1, method = "BH"))
+    F1 = min(p.adjust(F1, method = "hochberg"))
 
   dname = deparse(substitute(y))
   alt = paste(dname,"does not follow a Gaussian Process")
@@ -118,7 +118,7 @@ rp.test = function(y, k = 1, FDR = TRUE, pars1 = c(100,1), pars2 = c(2,7), seed 
   names(stat) = "k"
 
   # tests parameters
-  parameters  = ifelse(FDR, "Benjamini & Hocheberg","Benjamini & Yekutieli")
+  parameters  = ifelse(FDR, "Benjamini & Yekutieli", "Hocheberg")
   names(parameters) = "p.value adjust"
   names(F1) = "fdr.value"
 

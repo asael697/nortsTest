@@ -17,8 +17,8 @@ generates the later `k` projections. By default, \code{k = 1}.}
 
 \item{FDR}{a logical value for mixing the p-values using a dependent False
 discovery rate method. If \code{FDR =TRUE}, then the p-values are mixed using
-Hochberg's (1988) False discovery Rate method, on the contrary it applies the
-Benjamin and Yekuteli (2001) procedure. By default \code{FDR = TRUE}.}
+Benjamin and Yekuteli (2001) False discovery Rate method, on the contrary it
+applies the Hochberg's (1988) procedure. By default \code{FDR = TRUE}.}
 
 \item{pars1}{an optional real vector with the shape parameters of the beta
 distribution used for the odd number random projection. By default,
