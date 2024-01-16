@@ -11,8 +11,9 @@ rp.test(y, k = 1, FDR = TRUE, pars1 = c(100,1), pars2  = c(2,7),
 \item{y}{a numeric vector or an object of the \code{ts} class containing a
 stationary time series.}
 
-\item{k}{an integer with the number of random projections to be used, by
-default \code{k = 1}.}
+\item{k}{an integer with the number of random projections to be used for every
+test. The `pars1` argument generates the first `k` projections, and `pars2`
+generates the later `k` projections. By default, \code{k = 1}.}
 
 \item{FDR}{a logical value for mixing the p-values using a dependent False
 discovery rate method. If \code{FDR =TRUE}, then the p-values are mixed using
@@ -32,8 +33,8 @@ distribution used for the even number random projection. By default,
 \value{
 A list with class \code{"h.test"} containing the following components:
 \itemize{
- \item{statistic }{a vector with the average Lobato and Velasco's and average
- Epps test statistics of the k projected samples.}
+ \item{statistic }{an integer value with the amount of projections.}
+ \item{parameter }{ a text that specifies the p.value mixing FDR method.}
  \item{p.value }{the mixed p-value for the test.}
  \item{alternative }{a character string describing the alternative hypothesis.}
  \item{method }{a character string \dQuote{k random projections test}.}
@@ -46,15 +47,15 @@ is that the given data follows a stationary Gaussian process, and k is the
 number of used random projections.
 }
 \details{
-The random projection test generates 2k independent random projections of the
-process. Applies both Lobato and Velasco's, and Epps statistics to the first k
+The random projection test generates 2k independent random projections of `y`.
+Applies both Lobato and Velasco's, and Epps statistics to the first k
 projections obtained using the \code{pars1} argument. Repeats the procedure for
 the later k projections obtained by the \code{pars2} argument. Finally, it returns
 a list with two vectors which contain the 4k statistics. The fist vector contains
-the Lobato statistics obtained from the 2*k projections, and the second one contains
-the Epps statistics obtained from the same 2*k projections.
+the Lobato statistics obtained from the 2k projections, and the second one contains
+the Epps statistics obtained from the same 2k projections.
 
-The function uses beta distributions for generating the 2*k random projections.
+The function uses beta distributions for generating the 2k random projections.
 By default, uses a \code{beta(shape1 = 100,shape = 1)} distribution contained in
 \code{pars1} argument to generate the first k projections. For the later
 k projections the functions uses a \code{beta(shape1 = 2,shape = 7)}
@@ -66,7 +67,7 @@ Gamboa, F. (2014)}.
 \examples{
 # Generating an stationary arma process
 y = arima.sim(100,model = list(ar = 0.3))
-rp.test(y,k = 4)
+rp.test(y)
 
 }
 \references{

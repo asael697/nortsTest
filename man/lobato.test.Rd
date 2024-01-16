@@ -2,7 +2,7 @@
 % Please edit documentation in R/lobato_test.R
 \name{lobato.test}
 \alias{lobato.test}
-\title{The Lobato and Velasco's Test for normality.}
+\title{The exact Lobato and Velasco's Test for normality.}
 \usage{
 lobato.test(y,c = 1)
 }
@@ -24,8 +24,8 @@ A list with class \code{"h.test"} containing the following components:
 }
 }
 \description{
-Performs the exact Lobato and Velasco's test for normality. Computes the p-value using the
-asymptotic Gamma Distribution
+Performs the exact Lobato and Velasco's test of normality for univariate time series.
+Computes the p-value using the asymptotic Gamma Distribution.
 }
 \details{
 This test  proves a normality assumption in correlated data employing the

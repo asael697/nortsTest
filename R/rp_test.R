@@ -9,8 +9,9 @@
 #'
 #' @param y a numeric vector or an object of the \code{ts} class containing a
 #' stationary time series.
-#' @param k an integer with the number of random projections to be used, by
-#' default \code{k = 1}.
+#' @param k an integer with the number of random projections to be used for every
+#' test. The `pars1` argument generates the first `k` projections, and `pars2`
+#' generates the later `k` projections. By default, \code{k = 1}.
 #' @param FDR a logical value for mixing the p-values using a dependent False
 #' discovery rate method. If \code{FDR =TRUE}, then the p-values are mixed using
 #' Hochberg's (1988) False discovery Rate method, on the contrary it applies the
@@ -25,8 +26,8 @@
 #'
 #' @return A list with class \code{"h.test"} containing the following components:
 #' \itemize{
-#'  \item{statistic }{a vector with the average Lobato and Velasco's and average
-#'  Epps test statistics of the k projected samples.}
+#'  \item{statistic }{an integer value with the amount of projections.}
+#'  \item{parameter }{ a text that specifies the p.value mixing FDR method.}
 #'  \item{p.value }{the mixed p-value for the test.}
 #'  \item{alternative }{a character string describing the alternative hypothesis.}
 #'  \item{method }{a character string \dQuote{k random projections test}.}
@@ -34,15 +35,15 @@
 #' }
 #'
 #' @details
-#' The random projection test generates 2k independent random projections of the
-#' process. Applies both Lobato and Velasco's, and Epps statistics to the first k
+#' The random projection test generates 2k independent random projections of `y`.
+#' Applies both Lobato and Velasco's, and Epps statistics to the first k
 #' projections obtained using the \code{pars1} argument. Repeats the procedure for
 #' the later k projections obtained by the \code{pars2} argument. Finally, it returns
 #' a list with two vectors which contain the 4k statistics. The fist vector contains
-#' the Lobato statistics obtained from the 2*k projections, and the second one contains
-#' the Epps statistics obtained from the same 2*k projections.
+#' the Lobato statistics obtained from the 2k projections, and the second one contains
+#' the Epps statistics obtained from the same 2k projections.
 #'
-#' The function uses beta distributions for generating the 2*k random projections.
+#' The function uses beta distributions for generating the 2k random projections.
 #' By default, uses a \code{beta(shape1 = 100,shape = 1)} distribution contained in
 #' \code{pars1} argument to generate the first k projections. For the later
 #' k projections the functions uses a \code{beta(shape1 = 2,shape = 7)}
@@ -78,7 +79,7 @@
 #' @examples
 #' # Generating an stationary arma process
 #' y = arima.sim(100,model = list(ar = 0.3))
-#' rp.test(y,k = 4)
+#' rp.test(y)
 #'
 rp.test = function(y, k = 1, FDR = TRUE, pars1 = c(100,1), pars2 = c(2,7), seed = NULL){
 
@@ -117,16 +118,16 @@ rp.test = function(y, k = 1, FDR = TRUE, pars1 = c(100,1), pars2 = c(2,7), seed 
   names(stat) = "k"
 
   # tests parameters
-  lobato.stat = ifelse(is.null(rps$lobato),0,mean(rps$lobato))
-  epps.stat   = ifelse(is.null(rps$epps),0,mean(rps$epps))
-  parameters  = c(lobato.stat,epps.stat)
-  names(parameters) = c("lobato","epps")
+  parameters  = ifelse(FDR,"Hocheberg","Benjamini & Yekutieli")
+  names(parameters) = "p.value adjust"
+  names(F1) = "fdr.value"
 
   #htest class
   rval <- list(statistic = stat,
+               parameter = parameters,
                p.value = F1,
                alternative = alt,
-               method = "k random projections test",
+               method = "k random projections test.",
                data.name = dname)
 
   class(rval) <- "htest"
@@ -135,15 +136,16 @@ rp.test = function(y, k = 1, FDR = TRUE, pars1 = c(100,1), pars2 = c(2,7), seed 
 }
 #' Generates a test statistics sample of random projections.
 #'
-#' Generates a 4*k sample of test statistics  projecting the stationary process
+#' Generates a 4k sample of test statistics  projecting the stationary process
 #' using the k random projections procedure.
 #'
-#' @usage rp.sample(y,k = 16,pars1 = c(100,1),pars2 = c(2,7),seed = NULL)
+#' @usage rp.sample(y, k = 1, pars1 = c(100,1), pars2 = c(2,7), seed = NULL)
 #'
 #' @param y a numeric vector or an object of the \code{ts} class containing a
 #' stationary time series.
-#' @param k an integer with the number of random projections to be used, by default
-#' \code{k = 1}.
+#' @param k an integer with the number of random projections to be used for every
+#' test. The `pars1` argument generates the first `k` projections, and `pars2`
+#' generates the later `k` projections. By default, \code{k = 1}.
 #' @param pars1 an optional real vector with the shape parameters of the beta
 #' distribution used for the odd number random projection. By default,
 #' \code{pars1 = c(100,1)} where, \code{shape1 = 100} and \code{shape2 = 1}.
@@ -159,14 +161,14 @@ rp.test = function(y, k = 1, FDR = TRUE, pars1 = c(100,1), pars2 = c(2,7), seed 
 #' }
 #'
 #' @details
-#' The \code{rp.sample} function generates 4*k independent tests statistics by
-#' projecting the time series using 2*k stick-breaking processes. First, the function
+#' The \code{rp.sample} function generates 4k independent tests statistics by
+#' projecting the time series using 2k stick-breaking processes. First, the function
 #' samples a stick breaking process using \code{pars1} argument. Then, projects
 #' the time series using the sampled stick process. Later, applies both the Lobato
 #' and Velasco's, and the Epps statistics to the obtained projection. Finally, repeat
 #' the first three steps using \code{pars2} argument instead.
 #'
-#' The function uses beta distributions for generating the 2*k random projections.
+#' The function uses beta distributions for generating the 2k random projections.
 #' By default, uses a \code{beta(shape1 = 100,shape = 1)} distribution contained in
 #' \code{pars1} argument to generate the first k projections. For the later
 #' k projections the functions uses a \code{beta(shape1 = 2,shape = 7)}
@@ -195,9 +197,9 @@ rp.test = function(y, k = 1, FDR = TRUE, pars1 = c(100,1), pars2 = c(2,7), seed 
 #' @examples
 #' # Generating an stationary arma process
 #' y = arima.sim(100,model = list(ar = 0.3))
-#' rp.test(y,k = 4)
+#' rp.test(y)
 #'
-rp.sample = function(y,k = 16,pars1 = c(100,1),pars2 = c(2,7),seed = NULL){
+rp.sample = function(y, k = 1, pars1 = c(100,1), pars2 = c(2,7), seed = NULL){
 
   if( !is.numeric(y) & !is(y,class2 = "ts") )
     stop("y object must be numeric or a time series")

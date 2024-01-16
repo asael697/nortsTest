@@ -9,7 +9,9 @@ epps.statistic(y, lambda = c(1,2))
 \arguments{
 \item{y}{a numeric vector or an object of the \code{ts} class containing a stationary time series.}
 
-\item{lambda}{a numeric vector for evaluating the characteristic function.}
+\item{lambda}{a numeric vector for evaluating the characteristic function. This values
+could be selected by the user for a better test performance. By default, the values
+are `c(1,2)`, another plausible option is to select random values.}
 }
 \value{
 a real value with the Epps test's statistic.
@@ -19,6 +21,11 @@ Estimates the Epps statistic minimizing the quadratic loss of the process'
 characteristic function in terms of the first two moments.
 }
 \details{
+The Epps test minimize the process' empirical characteristic function using a
+quadratic loss in terms of the process two first moments. \emph{Nieto-Reyes, A.,
+Cuesta-Albertos, J. & Gamboa, F. (2014)} upgrade the test implementation by
+allowing the option of evaluating the characteristic function with random values.
+
 This function is the equivalent of \code{Sub} in \emph{Nieto-Reyes, A.,
 Cuesta-Albertos, J. & Gamboa, F. (2014)}. This function uses a quadratic
 optimization solver implemented by \emph{Press, W.H., Teukolsky, S.A.,

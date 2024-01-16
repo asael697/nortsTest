@@ -1,13 +1,15 @@
-#' The Epps and Pulley Test for normality.
+#' The exact Epps and Pulley Test for normality.
 #'
-#' Performs the Epps test for normality. The null hypothesis (H0) is that the given data
-#' follows a stationary Gaussian process.
+#' Performs the exact Epps test of normality for univariate time series.
+#' Computes the p-value using the asymptotic Gamma Distribution.
 #'
 #' @usage epps.test(y, lambda = c(1,2))
 #'
 #' @param y a numeric vector or an object of the \code{ts} class containing a stationary
 #' time series.
-#' @param lambda a numeric vector for evaluating the characteristic function.
+#' @param lambda a numeric vector for evaluating the characteristic function. This values
+#' could be selected by the user for a better test performance. By default, the values
+#' are `c(1,2)`, another plausible option is to select random values.
 #'
 #' @return A list with class \code{"h.test"} containing the following components:
 #' \itemize{
@@ -21,10 +23,11 @@
 #'
 #' @details
 #' The Epps test minimize the process' empirical characteristic function using a
-#' quadratic loss in terms of the process two first moments. The test was proposed
-#' by \emph{Epps, T.W. (1987)} and implemented by \emph{Nieto-Reyes, A.,
-#' Cuesta-Albertos, J. & Gamboa, F. (2014)} using the \code{amoebam()} function of
-#' \emph{Press, W.H., Teukolsky, S.A., Vetterling, W.T. and  Flannery, B.P. (2007)}.
+#' quadratic loss in terms of the process two first moments.  \emph{Nieto-Reyes, A.,
+#' Cuesta-Albertos, J. & Gamboa, F. (2014)} upgrade the test implementation by
+#' allowing the option of evaluating the characteristic function with random values.
+#' The \code{amoebam()} function of \emph{Press, W.H., Teukolsky, S.A., Vetterling,
+#' W.T. and  Flannery, B.P. (2007)}, performs the optimal search.
 #'
 #' @export
 #'
@@ -48,6 +51,10 @@
 #' # Generating an stationary arma process
 #' y = arima.sim(100,model = list(ar = 0.3))
 #' epps.test(y)
+#'
+#'# Epps tests with random lambda values
+#' y = arima.sim(100,model = list(ar = c(0.3,0.2)))
+#' epps.test(y, lambda = rnorm(2,mean = 1,sd = 0.1))
 #'
 epps.test = function(y, lambda = c(1,2)){
 
@@ -91,9 +98,17 @@ epps.test = function(y, lambda = c(1,2)){
 #' @usage epps.statistic(y, lambda = c(1,2))
 #'
 #' @param y a numeric vector or an object of the \code{ts} class containing a stationary time series.
-#' @param lambda a numeric vector for evaluating the characteristic function.
+#' @param lambda a numeric vector for evaluating the characteristic function. This values
+#' could be selected by the user for a better test performance. By default, the values
+#' are `c(1,2)`, another plausible option is to select random values.
 #'
-#' @details This function is the equivalent of \code{Sub} in \emph{Nieto-Reyes, A.,
+#' @details
+#' The Epps test minimize the process' empirical characteristic function using a
+#' quadratic loss in terms of the process two first moments. \emph{Nieto-Reyes, A.,
+#' Cuesta-Albertos, J. & Gamboa, F. (2014)} upgrade the test implementation by
+#' allowing the option of evaluating the characteristic function with random values.
+#'
+#' This function is the equivalent of \code{Sub} in \emph{Nieto-Reyes, A.,
 #' Cuesta-Albertos, J. & Gamboa, F. (2014)}. This function uses a quadratic
 #' optimization solver implemented by \emph{Press, W.H., Teukolsky, S.A.,
 #' Vetterling, W.T. and  Flannery, B.P. (2007)}.
@@ -151,9 +166,8 @@ epps.statistic =  function(y, lambda = c(1, 2)){
 }
 #' The Sieve Bootstrap Epps and Pulley test for normality.
 #'
-#' Performs the Epps and Pulley's test for normality approximating the linear
-#' time series using a sieve Bootstrap procedure. The null hypothesis (H0),
-#' is that the given data follows a Gaussian process.
+#' Performs the approximated Epps and Pulley's test of normality for univariate time series.
+#' Computes the p-value using Psaradakis and Vavra's (2020) sieve bootstrap procedure.
 #'
 #' @usage epps_bootstrap.test(y, lambda = c(1,2), reps = 500, h = 100, seed = NULL)
 #'

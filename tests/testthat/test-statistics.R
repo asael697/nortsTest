@@ -33,9 +33,9 @@ test_that("Random Projections' statistics", {
 test_that("Random Projections' samples", {
   ht = nortsTest::rp.sample(y)
   # check the test choose the right hypothesis when using a Gaussian ARMA
-  expect_equal(length(ht$lobato), 32)
+  expect_equal(length(ht$lobato), 2)
   #check computations are less than 2.5s
-  expect_equal(length(ht$epps), 32)
+  expect_equal(length(ht$epps), 2)
 })
 
 set.seed(169721)

@@ -29,9 +29,8 @@ A list with class \code{"h.test"} containing the following components:
 }
 }
 \description{
-Performs the Epps and Pulley's test for normality approximating the linear
-time series using a sieve Bootstrap procedure. The null hypothesis (H0),
-is that the given data follows a Gaussian process.
+Performs the approximated Epps and Pulley's test of normality for univariate time series.
+Computes the p-value using Psaradakis and Vavra's (2020) sieve bootstrap procedure.
 }
 \details{
 The Epps test minimize the process' empirical characteristic function using a

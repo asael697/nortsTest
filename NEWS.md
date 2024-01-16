@@ -20,6 +20,8 @@
   to the return value, having a similar formatting to the `t.test()` function. 
 - Update documentation for `normal.test`, `seasonal.test`, and `uroot.test`. Better 
   description to the return value, having a similar formatting to the `t.test()` function.
+- Fix the htest's print method for the random projections test. The function does not print
+  the average Epps and Lobato's statistics.
 
 ### Changes:
 - Use Hochberg's False discovery rate method as default to mix p.values, when applying the `rp.test()`. 
