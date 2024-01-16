@@ -1,6 +1,6 @@
-#' The Psaradakis and  Vavra test for normality.
+#' The Psaradakis and  Vávra test for normality.
 #'
-#' Performs the Psaradakis and Vavra distance test for normality. The null
+#' Performs the Psaradakis and Vávra distance test for normality. The null
 #' hypothesis (H0), is that the given data follows a Gaussian process.
 #'
 #' @usage vavra.test(y, normality = c("ad","lobato","jb","cvm","epps"),
@@ -24,14 +24,14 @@
 #'  \item{statistic:}{the sieve bootstrap A statistic.}
 #'  \item{p.value:}{the p value for the test.}
 #'  \item{alternative:}{a character string describing the alternative hypothesis.}
-#'  \item{method:}{a character string \dQuote{Psaradakis and Vavra test}.}
+#'  \item{method:}{a character string \dQuote{Psaradakis and Vávra test}.}
 #'  \item{data.name:}{a character string giving the name of the data.}
 #' }
 #'
 #' @details
-#' The Psaradakis and Vavra test approximates the empirical distribution
+#' The Psaradakis and Vávra test approximates the empirical distribution
 #' function of the Anderson Darling's statistic, using a sieve bootstrap
-#' approximation. The test was proposed by \emph{Psaradakis, Z. & Vavra, M.
+#' approximation. The test was proposed by \emph{Psaradakis, Z. & Vávra, M.
 #' (20.17)}.
 #'
 #' @export
@@ -45,7 +45,7 @@
 #' data: large-sample and bootstrap approaches. Communications in
 #' \emph{Statistics-Simulation and Computation 49 (2)}. ISSN 0361-0918.
 #'
-#' Psaradakis, Z. & Vavra, M. (2017). A distance test of normality for a wide class
+#' Psaradakis, Z. & Vávra, M. (2017). A distance test of normality for a wide class
 #' of stationary process. \emph{Journal of Econometrics and Statistics}. 2, 50-60.
 #'
 #' Bulmann, P. (1997). Sieve Bootstrap for time series. \emph{Bernoulli}.
@@ -95,7 +95,7 @@ vavra.test = function(y, normality = c("ad","lobato","jb","cvm","epps"),
   names(tstat) = paste("bootstrap",normality,sep = "-")
 
   mtd =ifelse(normality == "ad",
-              "Psaradakis-Vavra test",
+              "Psaradakis-Vávra test",
               paste("Sieve-Bootstrap",normality,"test"))
 
   # Bootstrap p.value
@@ -109,7 +109,7 @@ vavra.test = function(y, normality = c("ad","lobato","jb","cvm","epps"),
   class(rval) = "htest"
   return(rval)
 }
-#' vavra test's sieve Bootstrap sample for Anderson Darling statistic
+#' Vávra test's sieve Bootstrap sample for Anderson Darling statistic
 #'
 #' Generates a sieve bootstrap sample of the Anderson-Darling
 #' statistic test.
@@ -131,12 +131,12 @@ vavra.test = function(y, normality = c("ad","lobato","jb","cvm","epps"),
 #' @param lambda a numeric vector used as argument for the Epps's test.
 #'
 #' @details
-#' The Vavra test approximates the empirical distribution function of the
+#' The Vávra test approximates the empirical distribution function of the
 #' Anderson-Darlings statistic, using a sieve bootstrap approximation.
-#' The test was proposed by \emph{Psaradakis, Z. & Vavra, M (20.17)}.
+#' The test was proposed by \emph{Psaradakis, Z. & Vávra, M (20.17)}.
 #'
 #' This function is the equivalent of \code{xarsieve} of
-#' \emph{Psaradakis, Z. &  Vavra, M (20.17)}.
+#' \emph{Psaradakis, Z. &  Vávra, M (20.17)}.
 #'
 #' @return A numeric array with the Anderson Darling sieve bootstrap sample
 #'
@@ -151,7 +151,7 @@ vavra.test = function(y, normality = c("ad","lobato","jb","cvm","epps"),
 #' data: large-sample and bootstrap approaches. Communications in
 #' \emph{Statistics-Simulation and Computation 49 (2)}. ISSN 0361-0918.
 #'
-#' Psaradakis, Z. & Vavra, M. (2017). A distance test of normality for a wide class
+#' Psaradakis, Z. & Vávra, M. (2017). A distance test of normality for a wide class
 #' of stationary process. \emph{Journal of Econometrics and Statistics}. 2, 50-60.
 #'
 #' Bulmann, P. (1997). Sieve Bootstrap for time series. \emph{Bernoulli}.

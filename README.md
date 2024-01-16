@@ -16,15 +16,15 @@ functions are:
 -  `epps-bootstrap.test()` function that implements the  [Epps test](https://projecteuclid.org/euclid.aos/1176350618), approximating the 
 p-values using a sieve-bootstrap procedure.
 
--  `lobato.test()` function that implements the Lobato and Velasco’s test,
+-  `lobato.test()` function that implements the Lobato and Velasco's test,
 
-- `lobato-bootstrap.test()` function that implements the Lobato and Velasco’s 
+- `lobato-bootstrap.test()` function that implements the Lobato and Velasco's 
 test, approximating the p-values using a sieve-bootstrap procedure.
 
 - `rp.test()` function that implements the random projections test of
     Nieto-Reyes, Cuesta-Albertos and Gamboa’s test,
     
-- `vavra.test()` function that implements the [Psaradaki and Vavra’s test](http://www.applied-econometrics.com),
+- `vavra.test()` function that implements the [Psaradakis and Vávra’s test](http://www.applied-econometrics.com),
 
 -  `jb-bootstrap.test()` function that implements the  Jarque and Bera test, 
 approximating the p-values using a sieve-bootstrap procedure,
@@ -71,7 +71,7 @@ nortest::ad.test(x)
 The null hypothesis is that the data has a normal distribution and
 therefore, follows a Gaussian Process. At $\alpha = 0.05$ significance 
 level the alternative hypothesis is rejected and wrongly concludes the 
-data follows a Gaussian process. Applying the Lobato and Velasco’s test 
+data follows a Gaussian process. Applying the Lobato and Velasco's test 
 of our package, the null hypothesis is correctly rejected.
 
 ``` r
@@ -286,7 +286,7 @@ analysis in univariate time series.
 -   `normal.test`: for normal distribution check in time series and
     random samples. The tests presented above can be chosen for
     stationary time series. For random samples (*independent data*), the
-    Anderson & Darling, Shapiro & Wilks, and Jarque-Bera tests are
+    Anderson & Darling, Shapiro & Wilk's, and Jarque-Bera tests are
     available with the normality option parameter.
 
 For visual diagnostic, we offer ggplot2 methods for numeric and
@@ -303,7 +303,7 @@ time-series data. Most of the functions were adapted from Rob Hyndman’s
 -   `ggacf` & `ggpacf`: partial and auto correlation functions plots for
     numeric and univariate time series.
 
--   `check_plot`: summary diagnostic plot for univariate starionary
+-   `check_plot`: summary diagnostic plot for univariate stationary
     time series.
 
 Accepted models for residual check
@@ -346,7 +346,7 @@ References
     data: large-sample and bootstrap approaches. Communications in
     *Statistics-Simulation and Computation*. 49 (2), ISSN 0361-0918.
 
--   Psaradakis, Z. & Vavra, M. (2017). A distance test of normality for
+-   Psaradakis, Z. & Vávra, M. (2017). A distance test of normality for
     a wide class of stationary process. *Journal of Econometrics and
     Statistics*. 2, 50-60.
     

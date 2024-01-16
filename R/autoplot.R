@@ -9,7 +9,7 @@
 #' @param object Object of class \dQuote{\code{ts}} or \dQuote{\code{mts}}.
 #' @param series Identifies the time series with a colour, which integrates well
 #' with the functionality of \link{geom_forecast}.
-#' @param xlab a string with the plot's x axis label. By default a NUll value.
+#' @param xlab a string with the plot's x axis label. By default a NULL value.
 #' @param ylab a string with the plot's y axis label. By default a counts" value.
 #' @param main a string with the plot's title.
 #' @param facets If TRUE, multiple time series will be faceted (and unless
@@ -158,7 +158,7 @@ ggtsbreaks <- function(x) {
 #'
 #' @param y a numeric vector or an object of the \code{ts} class containing a stationary time series.
 #' @param title a string with the plot's title.
-#' @param xlab a string with the plot's x axis label. By default a NUll value.
+#' @param xlab a string with the plot's x axis label. By default a NULL value.
 #' @param ylab a string with the plot's y axis label. By default a "counts" value.
 #' @param add.normal a boolean value. Add a normal density function for comparison,
 #' by default \code{add.normal = TRUE}.

@@ -121,7 +121,7 @@ uroot.test = function(y, unit_root = c("adf","kpss","pp","box"), alpha = 0.05){
 #' @param y a numeric vector or an object of the \code{ts} class containing a stationary time series.
 #' @param normality A character string naming the desired test for checking normality. Valid values are
 #' \code{"epps"} for the Epps, \code{"lobato"} for Lobato and Velasco's,\code{"vavra"} for the Psaradakis
-#' and  Vavra, \code{"rp"} for the random projections, \code{"jb"} for the Jarque and Beras, \code{"ad"}
+#' and  Vávra, \code{"rp"} for the random projections, \code{"jb"} for the Jarque and Beras, \code{"ad"}
 #' for Anderson Darling test, and \code{"shapiro"} for the Shapiro-Wilk's test. The default value is
 #' \code{"epps"} test.
 #' @param alpha Level of the test, possible values range from 0.01 to 0.1. By default \code{alpha = 0.05}
@@ -158,7 +158,7 @@ uroot.test = function(y, unit_root = c("adf","kpss","pp","box"), alpha = 0.05){
 #' Lobato, I., & Velasco, C. (2004). A simple test of normality in time series.
 #' \emph{Journal of econometric theory}. 20(4), 671-689.
 #'
-#' Psaradakis, Z. & Vavra, M. (2017). A distance test of normality for a wide class
+#' Psaradakis, Z. & Vávra, M. (2017). A distance test of normality for a wide class
 #' of stationary process. \emph{Journal of Econometrics and Statistics}. 2, 50-60.
 #'
 #' Nieto-Reyes, A., Cuesta-Albertos, J. & Gamboa, F. (2014). A random-projection
