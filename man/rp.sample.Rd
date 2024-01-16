@@ -53,9 +53,9 @@ The test was proposed by \emph{Nieto-Reyes, A.,Cuesta-Albertos, J. &
 Gamboa, F. (2014)}.
 }
 \examples{
-# Generating an stationary arma process
+# Generating an stationary ARMA process
 y = arima.sim(100,model = list(ar = 0.3))
-rp.test(y)
+rp.sample(y)
 
 }
 \references{

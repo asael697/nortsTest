@@ -17,12 +17,12 @@
 #' @details
 #' We present several functions for testing the hypothesis of normality in
 #' univariate stationary processes, the \code{epps.test}, \code{lobato.test},
-#' \code{rp.test}, \code{lobato-bootstrap.test}, \code{elbouch.test},
-#' \code{epps-bootstrap.test}, and \code{varvra.test}. Additionally, the
-#' \code{elbouch.test} function performs a bivariate normality test when the user
-#' provides a second time series. For model diagnostics, we provide functions
-#' for unit root, seasonality  and ARCH effects tests for stationary, and other
-#' methods for visual checks using the \pkg{ggplot2} and \pkg{forecast} packages.
+#' \code{rp.test}, \code{lobato-bootstrap.test}, \code{epps-bootstrap.test},
+#' \code{elbouch.test}, and \code{varvra.test}. Additionally, the \code{elbouch.test}
+#' function performs a bivariate normality test when the user provides a second
+#' time series. For model diagnostics, we provide functions for unit root, seasonality
+#' and ARCH effects tests for stationary, and other methods for visual checks using the
+#' \pkg{ggplot2} and \pkg{forecast} packages.
 #'
 #' @import methods ggplot2 gridExtra forecast nortest stats tseries uroot MASS
 #'

@@ -195,9 +195,9 @@ rp.test = function(y, k = 1, FDR = TRUE, pars1 = c(100,1), pars2 = c(2,7), seed 
 #' \emph{Journal of econometric theory}. 20(4), 671-689.
 #'
 #' @examples
-#' # Generating an stationary arma process
+#' # Generating an stationary ARMA process
 #' y = arima.sim(100,model = list(ar = 0.3))
-#' rp.test(y)
+#' rp.sample(y)
 #'
 rp.sample = function(y, k = 1, pars1 = c(100,1), pars2 = c(2,7), seed = NULL){
 
