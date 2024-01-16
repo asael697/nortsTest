@@ -58,7 +58,7 @@ check_residuals<- function(y,...) {
 #' Statistical Association}. 74, 427-431.
 #'
 #' Epps, T.W. (1987). Testing that a stationary time series is Gaussian. \emph{The
-#' Annals of Statistic}. 15(4), 1683-1698.\url{http://www.jstor.org/stable/2336512}.
+#' Annals of Statistic}. 15(4), 1683-1698.http://www.jstor.org/stable/2336512.
 #' \code{doi:10.1214/aos/1176350618}
 #'
 #' Osborn, D., Chui, A., Smith, J., & Birchenhall, C. (1988). Seasonality and the

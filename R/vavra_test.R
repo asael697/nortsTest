@@ -95,7 +95,7 @@ vavra.test = function(y, normality = c("ad","lobato","jb","cvm","epps"),
   names(tstat) = paste("bootstrap",normality,sep = "-")
 
   mtd =ifelse(normality == "ad",
-              "Psaradakis-Vávra test",
+              "Psaradakis-Vavra test",
               paste("Sieve-Bootstrap",normality,"test"))
 
   # Bootstrap p.value
