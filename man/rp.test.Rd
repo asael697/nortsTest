@@ -35,7 +35,7 @@ A list with class \code{"h.test"} containing the following components:
 \itemize{
  \item{statistic }{an integer value with the amount of projections.}
  \item{parameter }{ a text that specifies the p.value mixing FDR method.}
- \item{p.value }{the mixed p-value for the test.}
+ \item{p.value }{the FDR mixed p-value for the test.}
  \item{alternative }{a character string describing the alternative hypothesis.}
  \item{method }{a character string \dQuote{k random projections test}.}
  \item{data.name }{a character string giving the name of the data.}
