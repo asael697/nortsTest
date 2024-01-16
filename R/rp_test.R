@@ -8,48 +8,45 @@
 #'
 #' @param y a numeric vector or an object of the \code{ts} class containing a
 #' stationary time series.
-#' @param k an integer of random projections used for every test. The `pars1`
-#' argument generates the first `k` projections, and `pars2` generates the later
-#' `k` projections. By default, \code{k = 1}.
-#' @param FDR a logical value for mixing the p-values using a dependent False
-#' discovery rate method. If \code{FDR =TRUE}, then the p-values are mixed using
-#' Benjamin and Yekutieli (2001) False discovery Rate method, on the contrary it
-#' applies the Hochberg's (1988) procedure. By default \code{FDR = TRUE}.
+#' @param k an integer that determines the `2k` random projections are used for
+#' every type of test. The `pars1` argument generates the first `k` projections,
+#' and `pars2` generates the later `k` projections. By default, \code{k = 1}.
+#' @param FDR a logical value for mixing the p.values using a False discovery
+#' rate method. If \code{FDR = TRUE}, then the p.values are mixed using Benjamin
+#' and Yekutieli (2001) False discovery Rate method for dependent procedures, on
+#' the contrary, it applies Benjamini and Hochberg (1995) procedure.
+#' By default, \code{FDR = TRUE}.
 #' @param pars1 an optional real vector with the shape parameters of the beta
-#' distribution used to compute the first random projections. By default,
+#' distribution used for the first `k` random projections By default,
 #' \code{pars1 = c(100,1)} where, \code{shape1 = 100} and \code{shape2 = 1}.
 #' @param pars2 an optional real vector with the shape parameters of the beta
-#' distribution used to compute the later random projections. By default,
+#' distribution used to compute the last `k` random projections. By default,
 #' \code{pars2 = c(2,7)} where, \code{shape1 = 2} and \code{shape2 = 7}.
 #' @param seed An optional \code{\link[=set.seed]{seed}} to use.
 #'
 #' @return A list with class \code{"h.test"} containing the following components:
-#' \itemize{
 #'  \item{statistic:}{an integer value with the amount of projections per test.}
 #'  \item{parameter:}{a text that specifies the p.value mixing FDR method.}
 #'  \item{p.value:}{the FDR mixed p-value for the test.}
 #'  \item{alternative:}{a character string describing the alternative hypothesis.}
 #'  \item{method:}{a character string \dQuote{k random projections test}.}
 #'  \item{data.name:}{a character string giving the name of the data.}
-#' }
 #'
 #' @details
-#' The random projection test generates 2k random projections of `y`. Applies both
-#' Lobato and Velasco's, and Epps statistics to the first k projections obtained
-#' using the \code{pars1} argument. Repeats the procedure for the later k projections
-#' obtained by the \code{pars2} argument. Computes the 4k p.values using an asymptotic
-#' chi-square distribution with two degrees of freedom. Finally, mixes the p.values
-#' using a false discover rate procedure. By default, mixes the p.values using
-#' Benjamin and Yekutieli's (2001) method.
+#' The random projection test generates `2k` random projections of `y`. Applies
+#' both Lobato and Velasco’s, and Epps statistics to each of the `2k` random
+#' projections. Computes the `4k` p.values using an asymptotic chi-square distribution
+#' with two degrees of freedom. Finally, mixes the p.values using a false discover
+#' rate procedure. By default, mixes the p.values using Benjamin and Yekutieli’s (2001)
+#' method.
 #'
-#' The function uses beta distributions for generating the 2k random projections.
+#' The function uses beta distributions for generating the `2k` random projections.
 #' By default, uses a \code{beta(shape1 = 100,shape = 1)} distribution contained
-#' in \code{pars1} argument to generate the first k projections. For the later k
-#' projections the functions uses a \code{beta(shape1 = 2,shape = 7)} distribution
+#' in \code{pars1} argument to generate the first `k` projections. For the later
+#' `k` projections the functions uses a \code{beta(shape1 = 2,shape = 7)} distribution
 #' contained in \code{pars2} argument.
 #'
-#' The test was proposed by \emph{Nieto-Reyes, A.,Cuesta-Albertos, J. &
-#' Gamboa, F. (2014)}.
+#' The test was proposed by \emph{Nieto-Reyes, A.,Cuesta-Albertos, J. & Gamboa, F. (2014)}.
 #'
 #' @export
 #'
@@ -109,7 +106,7 @@ rp.test = function(y, k = 1, FDR = TRUE, pars1 = c(100,1), pars2 = c(2,7), seed 
   if(FDR)
     F1 = min(p.adjust(F1, method = "BY"))
   else
-    F1 = min(p.adjust(F1, method = "hochberg"))
+    F1 = min(p.adjust(F1, method = "BH"))
 
   dname = deparse(substitute(y))
   alt = paste(dname,"does not follow a Gaussian Process")
@@ -117,7 +114,7 @@ rp.test = function(y, k = 1, FDR = TRUE, pars1 = c(100,1), pars2 = c(2,7), seed 
   names(stat) = "k"
 
   # tests parameters
-  parameters  = ifelse(FDR, "Benjamini & Yekutieli", "Hocheberg")
+  parameters  = ifelse(FDR, "Benjamini & Yekutieli", "Benjamini & Hocheberg")
   names(parameters) = "p.value adjust"
   names(F1) = "fdr.value"
 
@@ -142,14 +139,14 @@ rp.test = function(y, k = 1, FDR = TRUE, pars1 = c(100,1), pars2 = c(2,7), seed 
 #'
 #' @param y a numeric vector or an object of the \code{ts} class containing a
 #' stationary time series.
-#' @param k an integer of random projections used for every test. The `pars1`
-#' argument generates the first `k` projections, and `pars2` generates the later
-#' `k` projections. By default, \code{k = 1}.
+#' @param k an integer that determines the `2k` random projections are used for
+#' every type of test. The `pars1` argument generates the first `k` projections,
+#' and `pars2` generates the later `k` projections. By default, \code{k = 1}.
 #' @param pars1 an optional real vector with the shape parameters of the beta
-#' distribution used for the first random projections. By default,
+#' distribution used for the first `k` random projections By default,
 #' \code{pars1 = c(100,1)} where, \code{shape1 = 100} and \code{shape2 = 1}.
 #' @param pars2 an optional real vector with the shape parameters of the beta
-#' distribution used for the last random projections. By default,
+#' distribution used to compute the last `k` random projections. By default,
 #' \code{pars2 = c(2,7)} where, \code{shape1 = 2} and \code{shape2 = 7}.
 #' @param seed An optional \code{\link[=set.seed]{seed}} to use.
 #'
@@ -160,18 +157,18 @@ rp.test = function(y, k = 1, FDR = TRUE, pars1 = c(100,1), pars2 = c(2,7), seed 
 #' }
 #'
 #' @details
-#' The \code{rp.sample} function generates 4k tests statistics by projecting the
-#' time series using 2k stick-breaking processes. First, the function samples a
-#' stick breaking process using \code{pars1} argument. Then, projects the time
+#' The \code{rp.sample} function generates `4k` tests statistics by projecting
+#' the time series using 2k stickbreaking processes. First, the function samples
+#' a stick breaking process using \code{pars1} argument. Then, projects the time
 #' series using the sampled stick process. Later, applies both the Lobato and
-#' Velasco's, and the Epps statistics to the obtained projection. Finally, repeats
-#' the three steps using \code{pars2} argument instead.
+#' Velasco's, and the Epps statistics to the obtained projection. Analogously,
+#' the function performs the three steps using also \code{pars2} argument
 #'
-#' The function uses beta distributions for generating the 2k random projections.
-#' By default, uses a \code{beta(shape1 = 100,shape = 1)} distribution contained in
-#' \code{pars1} argument to generate the first k projections. For the later
-#' k projections the functions uses a \code{beta(shape1 = 2,shape = 7)}
-#' distribution contained in \code{pars2} argument.
+#' The function uses beta distributions for generating the `2k` random projections.
+#' By default, uses a \code{beta(shape1 = 100,shape = 1)} distribution contained
+#' in \code{pars1} argument to generate the first `k` projections. For the later
+#' `k` projections the functions uses a \code{beta(shape1 = 2,shape = 7)} distribution
+#' contained in \code{pars2} argument.
 #'
 #' The test was proposed by \emph{Nieto-Reyes, A.,Cuesta-Albertos, J. &
 #' Gamboa, F. (2014)}.
