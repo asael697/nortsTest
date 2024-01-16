@@ -25,12 +25,12 @@
 #'
 #' @return A list with class \code{"h.test"} containing the following components:
 #' \itemize{
-#'  \item{statistic }{an integer value with the amount of projections per test.}
-#'  \item{parameter }{a text that specifies the p.value mixing FDR method.}
-#'  \item{p.value }{the FDR mixed p-value for the test.}
-#'  \item{alternative }{a character string describing the alternative hypothesis.}
-#'  \item{method }{a character string \dQuote{k random projections test}.}
-#'  \item{data.name }{a character string giving the name of the data.}
+#'  \item{statistic:}{an integer value with the amount of projections per test.}
+#'  \item{parameter:}{a text that specifies the p.value mixing FDR method.}
+#'  \item{p.value:}{the FDR mixed p-value for the test.}
+#'  \item{alternative:}{a character string describing the alternative hypothesis.}
+#'  \item{method:}{a character string \dQuote{k random projections test}.}
+#'  \item{data.name:}{a character string giving the name of the data.}
 #' }
 #'
 #' @details
@@ -155,8 +155,8 @@ rp.test = function(y, k = 1, FDR = TRUE, pars1 = c(100,1), pars2 = c(2,7), seed 
 #'
 #' @return A list with 2 real value vectors:
 #' \itemize{
-#'  \item{lobato}{A vector with the Lobato and Velasco's statistics sample.}
-#'  \item{epps}{A vector with the Epps statistics sample.}
+#'  \item{lobato:}{A vector with the Lobato and Velasco's statistics sample.}
+#'  \item{epps:}{A vector with the Epps statistics sample.}
 #' }
 #'
 #' @details

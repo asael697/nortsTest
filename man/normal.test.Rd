@@ -23,12 +23,12 @@ An h.test class with the main results of normal hypothesis test.
 
 A list with class \code{"h.test"} containing the following components:
 \itemize{
- \item{statistic }{the test statistic.}
- \item{parameter }{the test degrees freedoms.}
- \item{p.value }{the p-value for the test.}
- \item{alternative }{a character string describing the alternative hypothesis.}
- \item{method }{a character string with the test name.}
- \item{data.name }{a character string giving the name of the data.}
+ \item{statistic:}{the test statistic.}
+ \item{parameter:}{the test degrees freedoms.}
+ \item{p.value:}{the p-value for the test.}
+ \item{alternative:}{a character string describing the alternative hypothesis.}
+ \item{method:}{a character string with the test name.}
+ \item{data.name:}{a character string giving the name of the data.}
 }
 \code{"lobato"}, \code{"epps"}, \code{"vavras"} and \code{"rp"} test are for testing normality
 in stationary process. \code{"jb"}, \code{"ad"}, and  \code{"shapiro"} tests are for numeric data.

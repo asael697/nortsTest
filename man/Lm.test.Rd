@@ -17,12 +17,12 @@ Lm.test(y,lag.max = 2,alpha = 0.05)
 \value{
 A list with class \code{"h.test"} containing the following components:
 \itemize{
- \item{statistic }{the Lagrange multiplier statistic.}
- \item{parameter }{the test degrees freedoms.}
- \item{p.value }{the p value.}
- \item{alternative }{a character string describing the alternative hypothesis.}
- \item{method }{a character string \dQuote{Lagrange Multiplier test}.}
- \item{data.name }{a character string giving the name of the data.}
+ \item{statistic:}{the Lagrange multiplier statistic.}
+ \item{parameter:}{the test degrees freedoms.}
+ \item{p.value:}{the p value.}
+ \item{alternative:}{a character string describing the alternative hypothesis.}
+ \item{method:}{a character string \dQuote{Lagrange Multiplier test}.}
+ \item{data.name:}{a character string giving the name of the data.}
 }
 }
 \description{

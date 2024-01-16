@@ -27,8 +27,8 @@ distribution used for the last random projections. By default,
 \value{
 A list with 2 real value vectors:
 \itemize{
- \item{lobato}{A vector with the Lobato and Velasco's statistics sample.}
- \item{epps}{A vector with the Epps statistics sample.}
+ \item{lobato:}{A vector with the Lobato and Velasco's statistics sample.}
+ \item{epps:}{A vector with the Epps statistics sample.}
 }
 }
 \description{
