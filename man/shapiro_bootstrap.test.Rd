@@ -50,7 +50,7 @@ Bulmann, P. (1997). Sieve Bootstrap for time series. \emph{Bernoulli}.
 
 Patrick Royston (1982). An extension of Shapiro and Wilk's W test for
 normality to large samples. \emph{Applied Statistics}, 31, 115–124.
-doi:10.2307/2347973.
+Doi:10.2307/2347973.
 }
 \seealso{
 \code{\link{vavra.test}}, \code{\link{sieve.bootstrap}}

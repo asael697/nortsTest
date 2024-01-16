@@ -19,7 +19,7 @@ check_residuals<- function(y,...) {
 #' \code{fGarch}, or a time series (assumed to be residuals).
 #' @param normality A character string naming the desired test for checking gaussian distribution.
 #' Valid values are \code{"epps"} for the Epps, \code{"lobato"} for Lobato and Velasco's,\code{"vavras"} for
-#' the Psaradakis and  Vávra, \code{"rp"} for the random projections, \code{"jb"} for the Jarque and Beras,
+#' the Psaradakis and  Vávra, \code{"rp"} for the random projections, \code{"jb"} for the Jarque and Bera,
 #' \code{"ad"} for Anderson Darling test, and \code{"shapiro"} for the Shapiro-Wilk's test. The default value
 #' is \code{"epps"} test.
 #' @param unit_root A character string naming the desired unit root test for checking stationarity.

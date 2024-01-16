@@ -19,7 +19,7 @@ Computes the El Bouch, Michel, & Comon's z test statistic for normality of
 a univariate or bivariate time series.
 }
 \details{
-This function computes Mardias' standardized `z = (B - E_B)/ sd_B` statistic
+This function computes Mardia's standardized `z = (B - E_B)/ sd_B` statistic
 corrected by El Bouch, et al. (2022) for stationary bivariate time series. Where:
 `B` is the square of a quadratic form of the process `c(y, x)`; `E_B` and `sd_B` are
 the estimator's expected value and standard error respectively.  If `x` is set to

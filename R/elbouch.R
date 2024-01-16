@@ -119,7 +119,7 @@ elbouch.test <- function(y, x = NULL){
 #' @param y a numeric vector or an object of the \code{ts} class containing a stationary time series.
 #' @param x a numeric vector or an object of the \code{ts} class containing a stationary time series.
 #'
-#' @details This function computes Mardias' standardized `z = (B - E_B)/ sd_B` statistic
+#' @details This function computes Mardia's standardized `z = (B - E_B)/ sd_B` statistic
 #' corrected by El Bouch, et al. (2022) for stationary bivariate time series. Where:
 #' `B` is the square of a quadratic form of the process `c(y, x)`; `E_B` and `sd_B` are
 #' the estimator's expected value and standard error respectively.  If `x` is set to

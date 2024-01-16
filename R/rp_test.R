@@ -67,10 +67,10 @@
 #'
 #' Benjamini, Y., and Yekutieli, D. (2001). The control of the false discovery rate in
 #' multiple testing under dependency. \emph{Annals of Statistics}. 29, 1165–1188.
-#' doi:10.1214/aos/1013699998.
+#' Doi:10.1214/aos/1013699998.
 #'
 #' Hochberg, Y. (1988). A sharper Bonferroni procedure for multiple tests of significance.
-#' \emph{Biometrika}. 75, 800–803. doi:10.2307/2336325.
+#' \emph{Biometrika}. 75, 800–803. Doi:10.2307/2336325.
 #'
 #' Epps, T.W. (1987). Testing that a stationary time series is Gaussian. \emph{The
 #' Annals of Statistic}. 15(4), 1683-1698.

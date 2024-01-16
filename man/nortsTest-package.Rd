@@ -9,7 +9,7 @@
 Despite that several tests for normality in stationary processes have been proposed
 in the literature, consistent implementations of these tests in programming languages
 are limited.Seven normality test are implemented. The asymptotic Lobato and Velasco's,
-asymptotic Epps, Psaradakis and  Vavra, Lobato and Velasco's sieve bootstrap approximation,
+asymptotic Epps, Psaradakis and  Vávra, Lobato and Velasco's sieve bootstrap approximation,
 El bouch et al., Epps sieve bootstrap approximation and the random projections tests
 for univariate stationary process. Some other diagnostics such as, unit root test for
 stationarity, seasonal tests for seasonality, and arch effect test for volatility; are
@@ -35,7 +35,7 @@ Lobato, I., & Velasco, C. (2004). A simple test of normality in time series.
 \emph{Journal of econometric theory}. 20(4), 671-689.
 \code{doi:https://doi.org/10.1017/S0266466604204030}.
 
-Psaradakis, Z. & Vavra, M. (2017). A distance test of normality for a wide class
+Psaradakis, Z. & Vávra, M. (2017). A distance test of normality for a wide class
 of stationary process. \emph{Journal of Econometrics and Statistics}. 2, 50-60.
 \code{doi:https://doi.org/10.1016/j.ecosta.2016.11.005}
 

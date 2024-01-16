@@ -13,15 +13,15 @@
 #'
 #' @return A list with class \code{"h.test"} containing the following components:
 #' \itemize{
-#'  \item{statistic:}{the sieve bootstrap Jarque Beras' statistic.}
+#'  \item{statistic:}{the sieve bootstrap Jarque Bera's statistic.}
 #'  \item{p.value:}{the p value for the test.}
 #'  \item{alternative:}{a character string describing the alternative hypothesis.}
-#'  \item{method:}{a character string \dQuote{Sieve-Bootstrap Jarque Beras' test}.}
+#'  \item{method:}{a character string \dQuote{Sieve-Bootstrap Jarque Bera's test}.}
 #'  \item{data.name:}{a character string giving the name of the data.}
 #' }
 #'
 #' @details
-#' Employs Jarque Beras' skewness-kurtosis test approximating the p-value using
+#' Employs Jarque Bera skewness-kurtosis test approximating the p-value using
 #' a sieve-bootstrap procedure, \emph{Psaradakis, Z. and Vávra, M. (2020)}.
 #'
 #' @export
@@ -197,7 +197,7 @@ cvm_bootstrap.test = function(y, reps = 1000, h = 100, seed = NULL){
 #'
 #' Patrick Royston (1982). An extension of Shapiro and Wilk's W test for
 #' normality to large samples. \emph{Applied Statistics}, 31, 115–124.
-#' doi:10.2307/2347973.
+#' Doi:10.2307/2347973.
 #'
 #' @examples
 #' # Generating an stationary arma process

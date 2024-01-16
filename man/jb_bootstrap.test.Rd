@@ -19,10 +19,10 @@ stationary time series.}
 \value{
 A list with class \code{"h.test"} containing the following components:
 \itemize{
- \item{statistic:}{the sieve bootstrap Jarque Beras' statistic.}
+ \item{statistic:}{the sieve bootstrap Jarque Bera's statistic.}
  \item{p.value:}{the p value for the test.}
  \item{alternative:}{a character string describing the alternative hypothesis.}
- \item{method:}{a character string \dQuote{Sieve-Bootstrap Jarque Beras' test}.}
+ \item{method:}{a character string \dQuote{Sieve-Bootstrap Jarque Bera's test}.}
  \item{data.name:}{a character string giving the name of the data.}
 }
 }
@@ -31,7 +31,7 @@ Performs the approximated Jarque Bera test of normality for univariate time seri
 Computes the p-value using Psaradakis and Vavra's (2020) sieve bootstrap procedure.
 }
 \details{
-Employs Jarque Beras' skewness-kurtosis test approximating the p-value using
+Employs Jarque Bera skewness-kurtosis test approximating the p-value using
 a sieve-bootstrap procedure, \emph{Psaradakis, Z. and Vávra, M. (2020)}.
 }
 \examples{

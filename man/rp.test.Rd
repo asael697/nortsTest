@@ -17,7 +17,7 @@ argument generates the first `k` projections, and `pars2` generates the later
 
 \item{FDR}{a logical value for mixing the p-values using a dependent False
 discovery rate method. If \code{FDR =TRUE}, then the p-values are mixed using
-Benjamin and Yekuteli (2001) False discovery Rate method, on the contrary it
+Benjamin and Yekutieli (2001) False discovery Rate method, on the contrary it
 applies the Hochberg's (1988) procedure. By default \code{FDR = TRUE}.}
 
 \item{pars1}{an optional real vector with the shape parameters of the beta
@@ -52,7 +52,7 @@ using the \code{pars1} argument. Repeats the procedure for the later k projectio
 obtained by the \code{pars2} argument. Computes the 4k p.values using an asymptotic
 chi-square distribution with two degrees of freedom. Finally, mixes the p.values
 using a false discover rate procedure. By default, mixes the p.values using
-Benjamin and Yekuteli's (2001) method.
+Benjamin and Yekutieli's (2001) method.
 
 The function uses beta distributions for generating the 2k random projections.
 By default, uses a \code{beta(shape1 = 100,shape = 1)} distribution contained
@@ -79,10 +79,10 @@ Lobato, I., & Velasco, C. (2004). A simple test of normality in time series.
 
 Benjamini, Y., and Yekutieli, D. (2001). The control of the false discovery rate in
 multiple testing under dependency. \emph{Annals of Statistics}. 29, 1165–1188.
-doi:10.1214/aos/1013699998.
+Doi:10.1214/aos/1013699998.
 
 Hochberg, Y. (1988). A sharper Bonferroni procedure for multiple tests of significance.
-\emph{Biometrika}. 75, 800–803. doi:10.2307/2336325.
+\emph{Biometrika}. 75, 800–803. Doi:10.2307/2336325.
 
 Epps, T.W. (1987). Testing that a stationary time series is Gaussian. \emph{The
 Annals of Statistic}. 15(4), 1683-1698.
