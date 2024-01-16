@@ -9,13 +9,7 @@ Authors@R: c(
   person("Mitchell", "O'Hara-Wild", role = "ctb"),
    person("Trapletti", "A.", role = "ctb")
   )
-Description: Despite that several tests for normality in stationary processes have been proposed in the literature, 
-consistent implementations of these tests in programming languages are limited. Seven normality test are implemented. 
-The exact Lobato & Velasco's, exact Epps, Psaradakis and  Vavra, Lobato & Velasco's and Epps sieve bootstrap approximations, 
-El bouch et al., and the random projections tests for univariate stationary process. Some other diagnostics such as, 
-unit root test for  stationarity, seasonal tests for seasonality, and arch effect test for volatility; are also performed. 
-Additionally, the El bouch test performs normality tests for bivariate time series. The package also offers residual diagnostic 
-for linear time series models developed in several packages.
+Description: Despite that several tests for normality in stationary processes have been proposed in the literature, consistent implementations of these tests in programming languages are limited. Seven normality test are implemented. The exact Lobato & Velasco's, exact Epps, Psaradakis and  Vavra, Lobato & Velasco's and Epps sieve bootstrap approximations, El bouch et al., and the random projections tests for univariate stationary process. Some other diagnostics such as, unit root test for  stationarity, seasonal tests for seasonality, and arch effect test for volatility; are also performed. Additionally, the El bouch test performs normality tests for bivariate time series. The package also offers residual diagnostic for linear time series models developed in several packages.
 License: GPL-2
 Encoding: UTF-8
 NeedsCompilation: no
