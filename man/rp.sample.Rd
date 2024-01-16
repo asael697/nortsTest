@@ -10,16 +10,16 @@ rp.sample(y, k = 1, pars1 = c(100,1), pars2 = c(2,7), seed = NULL)
 \item{y}{a numeric vector or an object of the \code{ts} class containing a
 stationary time series.}
 
-\item{k}{an integer with the number of random projections to be used for every
-test. The `pars1` argument generates the first `k` projections, and `pars2`
-generates the later `k` projections. By default, \code{k = 1}.}
+\item{k}{an integer of random projections used for every test. The `pars1`
+argument generates the first `k` projections, and `pars2` generates the later
+`k` projections. By default, \code{k = 1}.}
 
 \item{pars1}{an optional real vector with the shape parameters of the beta
-distribution used for the odd number random projection. By default,
+distribution used for the first random projections. By default,
 \code{pars1 = c(100,1)} where, \code{shape1 = 100} and \code{shape2 = 1}.}
 
 \item{pars2}{an optional real vector with the shape parameters of the beta
-distribution used for the even number random projection. By default,
+distribution used for the last random projections. By default,
 \code{pars2 = c(2,7)} where, \code{shape1 = 2} and \code{shape2 = 7}.}
 
 \item{seed}{An optional \code{\link[=set.seed]{seed}} to use.}
@@ -33,15 +33,15 @@ A list with 2 real value vectors:
 }
 \description{
 Generates a 4k sample of test statistics  projecting the stationary process
-using the k random projections procedure.
+using the random projections procedure.
 }
 \details{
-The \code{rp.sample} function generates 4k independent tests statistics by
-projecting the time series using 2k stick-breaking processes. First, the function
-samples a stick breaking process using \code{pars1} argument. Then, projects
-the time series using the sampled stick process. Later, applies both the Lobato
-and Velasco's, and the Epps statistics to the obtained projection. Finally, repeat
-the first three steps using \code{pars2} argument instead.
+The \code{rp.sample} function generates 4k tests statistics by projecting the
+time series using 2k stick-breaking processes. First, the function samples a
+stick breaking process using \code{pars1} argument. Then, projects the time
+series using the sampled stick process. Later, applies both the Lobato and
+Velasco's, and the Epps statistics to the obtained projection. Finally, repeats
+the three steps using \code{pars2} argument instead.
 
 The function uses beta distributions for generating the 2k random projections.
 By default, uses a \code{beta(shape1 = 100,shape = 1)} distribution contained in

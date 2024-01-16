@@ -2,7 +2,7 @@
 % Please edit documentation in R/epps_test.R
 \name{epps.test}
 \alias{epps.test}
-\title{The exact Epps and Pulley Test for normality.}
+\title{The asymptotic Epps and Pulley Test for normality.}
 \usage{
 epps.test(y, lambda = c(1,2))
 }
@@ -26,7 +26,7 @@ A list with class \code{"h.test"} containing the following components:
 }
 }
 \description{
-Performs the exact Epps test of normality for univariate time series.
+Performs the asymptotic Epps test of normality for univariate time series.
 Computes the p-value using the asymptotic Gamma Distribution.
 }
 \details{

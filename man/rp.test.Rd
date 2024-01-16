@@ -11,9 +11,9 @@ rp.test(y, k = 1, FDR = TRUE, pars1 = c(100,1), pars2  = c(2,7),
 \item{y}{a numeric vector or an object of the \code{ts} class containing a
 stationary time series.}
 
-\item{k}{an integer with the number of random projections to be used for every
-test. The `pars1` argument generates the first `k` projections, and `pars2`
-generates the later `k` projections. By default, \code{k = 1}.}
+\item{k}{an integer of random projections used for every test. The `pars1`
+argument generates the first `k` projections, and `pars2` generates the later
+`k` projections. By default, \code{k = 1}.}
 
 \item{FDR}{a logical value for mixing the p-values using a dependent False
 discovery rate method. If \code{FDR =TRUE}, then the p-values are mixed using
@@ -21,11 +21,11 @@ Benjamin and Yekuteli (2001) False discovery Rate method, on the contrary it
 applies the Hochberg's (1988) procedure. By default \code{FDR = TRUE}.}
 
 \item{pars1}{an optional real vector with the shape parameters of the beta
-distribution used for the odd number random projection. By default,
+distribution used to compute the first random projections. By default,
 \code{pars1 = c(100,1)} where, \code{shape1 = 100} and \code{shape2 = 1}.}
 
 \item{pars2}{an optional real vector with the shape parameters of the beta
-distribution used for the even number random projection. By default,
+distribution used to compute the later random projections. By default,
 \code{pars2 = c(2,7)} where, \code{shape1 = 2} and \code{shape2 = 7}.}
 
 \item{seed}{An optional \code{\link[=set.seed]{seed}} to use.}
@@ -33,8 +33,8 @@ distribution used for the even number random projection. By default,
 \value{
 A list with class \code{"h.test"} containing the following components:
 \itemize{
- \item{statistic }{an integer value with the amount of projections.}
- \item{parameter }{ a text that specifies the p.value mixing FDR method.}
+ \item{statistic }{an integer value with the amount of projections per test.}
+ \item{parameter }{a text that specifies the p.value mixing FDR method.}
  \item{p.value }{the FDR mixed p-value for the test.}
  \item{alternative }{a character string describing the alternative hypothesis.}
  \item{method }{a character string \dQuote{k random projections test}.}
@@ -43,23 +43,22 @@ A list with class \code{"h.test"} containing the following components:
 }
 \description{
 Performs the random projection test for normality. The null hypothesis (H0)
-is that the given data follows a stationary Gaussian process, and k is the
-number of used random projections.
+is that the given data follows a stationary Gaussian process.
 }
 \details{
-The random projection test generates 2k independent random projections of `y`.
-Applies both Lobato and Velasco's, and Epps statistics to the first k
-projections obtained using the \code{pars1} argument. Repeats the procedure for
-the later k projections obtained by the \code{pars2} argument. Finally, it returns
-a list with two vectors which contain the 4k statistics. The fist vector contains
-the Lobato statistics obtained from the 2k projections, and the second one contains
-the Epps statistics obtained from the same 2k projections.
+The random projection test generates 2k random projections of `y`. Applies both
+Lobato and Velasco's, and Epps statistics to the first k projections obtained
+using the \code{pars1} argument. Repeats the procedure for the later k projections
+obtained by the \code{pars2} argument. Computes the 4k p.values using an asymptotic
+chi-square distribution with two degrees of freedom. Finally, mixes the p.values
+using a false discover rate procedure. By default, mixes the p.values using
+Benjamin and Yekuteli's (2001) method.
 
 The function uses beta distributions for generating the 2k random projections.
-By default, uses a \code{beta(shape1 = 100,shape = 1)} distribution contained in
-\code{pars1} argument to generate the first k projections. For the later
-k projections the functions uses a \code{beta(shape1 = 2,shape = 7)}
-distribution contained in \code{pars2} argument.
+By default, uses a \code{beta(shape1 = 100,shape = 1)} distribution contained
+in \code{pars1} argument to generate the first k projections. For the later k
+projections the functions uses a \code{beta(shape1 = 2,shape = 7)} distribution
+contained in \code{pars2} argument.
 
 The test was proposed by \emph{Nieto-Reyes, A.,Cuesta-Albertos, J. &
 Gamboa, F. (2014)}.

@@ -1,6 +1,6 @@
-#' The exact Lobato and Velasco's Test for normality.
+#' The asymptotic Lobato and Velasco's Test for normality.
 #'
-#' Performs the exact Lobato and Velasco's test of normality for univariate time series.
+#' Performs the asymptotic Lobato and Velasco's test of normality for univariate time series.
 #' Computes the p-value using the asymptotic Gamma Distribution.
 #'
 #' @usage lobato.test(y,c = 1)

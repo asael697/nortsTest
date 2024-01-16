@@ -1,6 +1,6 @@
-#' The exact Epps and Pulley Test for normality.
+#' The asymptotic Epps and Pulley Test for normality.
 #'
-#' Performs the exact Epps test of normality for univariate time series.
+#' Performs the asymptotic Epps test of normality for univariate time series.
 #' Computes the p-value using the asymptotic Gamma Distribution.
 #'
 #' @usage epps.test(y, lambda = c(1,2))
