@@ -1,12 +1,20 @@
 **Packages NEWS and Updates**
 ============
 
+**nortsTest 1.1.1 Date: 16/01/2024**
+----------------------------------
+
+### Fixes:
+
+- bugfix in the rp.sample function.
+- Update rejection_rate and rejection_table functions to be more efficient.
+
 **nortsTest 1.1.0 Date: 16/01/2024**
 ----------------------------------
 
 ### Features:
 - Add initial values as an argument to the Epps and Pulley test.
-= Add the bivariate `elbouch.test()`.
+- Add the bivariate `elbouch.test()`.
 - Add the `lobato-bootstrap.test()`.
 - Add the `epps-bootstrap.test()`.
 - Add the `jb-bootstrap.test()`.
