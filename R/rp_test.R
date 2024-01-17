@@ -219,7 +219,7 @@ rp.sample = function(y, k = 1, pars1 = c(100,1), pars2 = c(2,7), seed = NULL){
   })
 
   x = rbind(matrix(unlist(x1),ncol = 3,byrow = TRUE),
-            matrix(unlist(x1),ncol = 3,byrow = TRUE))
+            matrix(unlist(x2),ncol = 3,byrow = TRUE))
 
   rp.sample = list(lobato = x[,2],epps = x[,3])
 
