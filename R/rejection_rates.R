@@ -33,32 +33,42 @@
 #' nortsTest:::rejection_rate(reps = 1,n = 100,phi = 0.5)
 #'
 #'
-rejection_rate = function(reps = 1000,n = 100,dist = rnorm,seed = NULL,htest = "lobato",
-                          alpha = 0.05,k = 64,phi = 0.5,sd = 1,...){
+rejection_rate = function(reps = 1000, n = 100, dist = rnorm, seed = NULL, htest = "lobato",
+                          alpha = 0.05, k = 1, phi = 0.5, sd = 1, ...){
 
   if (!is.null(seed))
     set.seed(seed)
 
-  pvalues = rep(0,reps)
+  start_time = Sys.time()
+  pvalues = parallel::mclapply(1:reps, FUN = function(i){
 
-  for(i in 1:reps){
-    x = stats::arima.sim(n=n,n.start = 500,list(ar = phi),rand.gen = dist,...)
+    x = stats::arima.sim(n = n, n.start = 500, list(ar = phi), rand.gen = dist, ...)
 
     if(htest == "vavra"){
-      pvalues[i] = vavra.test(x,reps = 100,h = 50)$p.value
+      suppressWarnings(vavra.test(x, reps = 100, h = 50)$p.value)
     }
     else if(htest == "lobato"){
-      pvalues[i] = suppressWarnings(lobato.test(x)$p.value)
+      suppressWarnings(lobato.test(x)$p.value)
     }
     else if(htest == "epps"){
-      pvalues[i] = suppressWarnings(epps.test(x)$p.value)
+      suppressWarnings(epps.test(x)$p.value)
     }
     else if(htest == "rp"){
-      pvalues[i] = suppressWarnings(rp.test(x,k = k)$p.value)
+      suppressWarnings(rp.test(x, k = k)$p.value)
     }
-  }
+    else if(htest == "epps_bootstrap"){
+      suppressWarnings(epps_bootstrap.test(x, reps = 250, h = 50)$p.value)
+    }
+    else if(htest == "lobato_bootstrap"){
+      suppressWarnings(lobato_bootstrap.test(x, reps = 250, h = 50)$p.value)
+    }
+    else if(htest == "elbouch"){
+      suppressWarnings(elbouch.test(y = x)$p.value)
+    }
+  })
+  end_time = Sys.time()
 
-  rr = mean(pvalues < alpha)
+  rr = c(mean(unlist(pvalues) < alpha), end_time - start_time)
   return(rr)
 }
 #' Rejection rates table.
@@ -91,33 +101,64 @@ rejection_rate = function(reps = 1000,n = 100,dist = rnorm,seed = NULL,htest = "
 #' Statistics & Data Analysis, Elsevier}, vol. 75(C), pages 124-141.
 #'
 #' @examples
-#' # rejection rate for a Gaussian AR(1) process with phi = 0.5 and lobatos test
+#' # rejection rate for a Gaussian AR(1) process with phi = 0.5 and Lobato's test
 #' nortsTest:::rejection_table(reps = 1,n = 100)
 #'
-rejection_table = function(reps = 1000,n = 100,phi = c(-0.4,-0.25,0.0,0.25,0.4),
-                           seed = NULL,htest = "lobato",alpha = 0.05,k = 64){
+rejection_table = function(reps = 1000, n = 100, phi = c(-0.4,-0.25,0.0,0.25,0.4),
+                           seed = NULL, htest = "lobato", alpha = 0.05, k = 1){
 
   if (!is.null(seed))
     set.seed(seed)
 
-  nphi = length(phi)
-  df = matrix(0,nrow =5,ncol = nphi)
-  row.names(df) = c("N","logN","t_3","Chisq_10","beta(7,1)")
-  colnames(df) = phi
+  df = matrix(0, nrow =5, ncol = length(phi) + 1)
+  row.names(df) = c("N","logN","t_3","Chisq_10","Gamma(1,1)")
+  colnames(df) = c(phi, "max-time")
+
   #normal
-  for(i in 1:nphi) df[1,i] = rejection_rate(reps = reps,n=n,phi = phi[i],dist = rnorm,
-                                         htest = htest,alpha = alpha,k = k,sd = 1,seed = seed)
+  x1 = parallel::mclapply(phi, FUN = function(i){
+    rejection_rate(reps = reps,n = n,phi = i,dist = rnorm,
+                   htest = htest,alpha = alpha,k = k,sd = 1,seed = seed)
+  })
+
+  x1 = matrix(unlist(x1),nrow = 2,byrow = FALSE)
+  df[1, ] = c(x1[1,],max(x1[2,]))
+
   #logN
-  for(i in 1:nphi) df[2,i] = rejection_rate(reps = reps,n=n,phi = phi[i],dist = rlnorm,
-                                         htest = htest,alpha = alpha,k = k,sdlog = 1,seed = seed)
+  x1 = parallel::mclapply(phi, FUN = function(i){
+    rejection_rate(reps = reps,n = n,phi = i, dist = rlnorm,
+                   htest = htest,alpha = alpha,k = k,sdlog = 1,seed = seed)
+  })
+
+  x1 = matrix(unlist(x1), nrow = 2, byrow = FALSE)
+  df[2, ] = c(x1[1, ], max(x1[2, ]))
+
   #t_3
-  for(i in 1:nphi) df[3,i] = rejection_rate(reps = reps,n=n,phi = phi[i],dist = rt,df = 3,
-                                         htest = htest,alpha = alpha,k = k,seed = seed)
+  x1 = parallel::mclapply(phi, FUN = function(i){
+    rejection_rate(reps = reps, n = n, phi = i, dist = rt, df = 3,
+                   htest = htest, alpha = alpha, k = k, seed = seed)
+  })
+
+  x1 = matrix(unlist(x1), nrow = 2, byrow = FALSE)
+  df[3, ] = c(x1[1, ], max(x1[2, ]))
+
   #chi_10
-  for(i in 1:nphi) df[4,i] = rejection_rate(reps = reps,n=n,phi = phi[i],dist = rchisq,df = 10,
-                                         htest = htest,alpha = alpha,k = k,seed = seed)
-  #beta(7,1)
-  for(i in 1:nphi) df[5,i] = rejection_rate(reps = reps,n=n,phi = phi[i],dist = rbeta,shape1 = 7,shape2 = 1,
-                                         htest = htest,alpha = alpha,k = k,seed = seed)
+  x1 = parallel::mclapply(phi, FUN = function(i){
+    rejection_rate(reps = reps, n = n, phi = i, dist = rchisq, df = 10,
+                   htest = htest, alpha = alpha, k = k, seed = seed)
+  })
+
+  x1 = matrix(unlist(x1), nrow = 2, byrow = FALSE)
+  df[4, ] = c(x1[1, ], max(x1[2, ]))
+
+  #gamma(1,1)
+
+  x1 = parallel::mclapply(phi, FUN = function(i){
+    rejection_rate(reps = reps, n = n,phi = i, dist = rgamma,shape = 1,
+                   htest = htest, alpha = alpha, k = k, seed = seed)
+  })
+
+  x1 = matrix(unlist(x1), nrow = 2, byrow = FALSE)
+  df[5, ] = c(x1[1, ], max(x1[2, ]))
+
   return(df)
 }
