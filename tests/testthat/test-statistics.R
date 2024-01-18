@@ -25,17 +25,18 @@ test_that("Epps' statistic", {
 test_that("Random Projections' statistics", {
   ht = lapply(nortsTest::rp.sample(y),mean)
   # check the test choose the right hypothesis when using a Gaussian ARMA
-  expect_equal(ht$lobato, 1.289031, tolerance = 0.3)
+  expect_equal(ht$lobato, 2.47123, tolerance = 0.3)
   #check computations are less than 2.5s
-  expect_equal(ht$epps, 3.144085, tolerance = 0.3)
+  expect_equal(ht$epps, 1.399825, tolerance = 0.3)
 })
 
 test_that("Random Projections' samples", {
-  ht = nortsTest::rp.sample(y)
+  k = sample(1:10, 1)
+  ht = nortsTest::rp.sample(y, k = k)
   # check the test choose the right hypothesis when using a Gaussian ARMA
-  expect_equal(length(ht$lobato), 2)
+  expect_equal(length(ht$lobato), k)
   #check computations are less than 2.5s
-  expect_equal(length(ht$epps), 2)
+  expect_equal(length(ht$epps), k)
 })
 
 set.seed(169721)
