@@ -46,11 +46,11 @@ is that the given data follows a stationary Gaussian process.
 }
 \details{
 The random projection test generates `2k` random projections of `y`. Applies
-both Lobato and Velasco’s, and Epps statistics to each of the `2k` random
-projections. Computes the `4k` p.values using an asymptotic chi-square distribution
+Epps statistics to the odd projections and Lobato and Velasco’s statistics to
+the even ones. Computes the `2k` p.values using an asymptotic chi-square distribution
 with two degrees of freedom. Finally, mixes the p.values using a false discover
-rate procedure. By default, mixes the p.values using Benjamin and Yekutieli’s (2001)
-method.
+rate procedure. By default, mixes the p.values using Benjamin and Yekutieli’s
+(2001) method.
 
 The function uses beta distributions for generating the `2k` random projections.
 By default, uses a \code{beta(shape1 = 100,shape = 1)} distribution contained
@@ -58,7 +58,8 @@ in \code{pars1} argument to generate the first `k` projections. For the later
 `k` projections the functions uses a \code{beta(shape1 = 2,shape = 7)} distribution
 contained in \code{pars2} argument.
 
-The test was proposed by \emph{Nieto-Reyes, A.,Cuesta-Albertos, J. & Gamboa, F. (2014)}.
+The test was proposed by \emph{Nieto-Reyes, A.,Cuesta-Albertos, J. & Gamboa,
+F. (2014)}.
 }
 \examples{
 # Generating an stationary arma process

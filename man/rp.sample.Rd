@@ -30,16 +30,17 @@ A list with 2 real value vectors:
  \item{epps:}{A vector with the Epps statistics sample.}
 }
 \description{
-Generates a 4k sample of test statistics  projecting the stationary process
+Generates a 2k sample of test statistics  projecting the stationary process
 using the random projections procedure.
 }
 \details{
-The \code{rp.sample} function generates `4k` tests statistics by projecting
+The \code{rp.sample} function generates `2k` tests statistics by projecting
 the time series using `2k` stick breaking processes. First, the function
-samples a stick breaking process using \code{pars1} argument. Then, projects
-the time series using the sampled stick process. Later, applies both the Lobato
-and Velasco's, and the Epps statistics to the obtained projection. Analogously,
-the function performs the three steps using also \code{pars2} argument
+samples `k` stick breaking processes using \code{pars1} argument. Then, projects
+the time series using the sampled stick processes. Later, applies the Epps
+statistics to the odd projections and the Lobato and Velasco’s statistics to
+the even ones. Analogously, the function performs the three steps using also
+\code{pars2} argument
 
 The function uses beta distributions for generating the `2k` random projections.
 By default, uses a \code{beta(shape1 = 100,shape = 1)} distribution contained
