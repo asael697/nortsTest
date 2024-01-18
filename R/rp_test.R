@@ -34,11 +34,11 @@
 #'
 #' @details
 #' The random projection test generates `2k` random projections of `y`. Applies
-#' both Lobato and Velasco’s, and Epps statistics to each of the `2k` random
-#' projections. Computes the `4k` p.values using an asymptotic chi-square distribution
+#' Epps statistics to the odd projections and Lobato and Velasco’s statistics to
+#' the even ones. Computes the `2k` p.values using an asymptotic chi-square distribution
 #' with two degrees of freedom. Finally, mixes the p.values using a false discover
-#' rate procedure. By default, mixes the p.values using Benjamin and Yekutieli’s (2001)
-#' method.
+#' rate procedure. By default, mixes the p.values using Benjamin and Yekutieli’s
+#' (2001) method.
 #'
 #' The function uses beta distributions for generating the `2k` random projections.
 #' By default, uses a \code{beta(shape1 = 100,shape = 1)} distribution contained
@@ -46,7 +46,8 @@
 #' `k` projections the functions uses a \code{beta(shape1 = 2,shape = 7)} distribution
 #' contained in \code{pars2} argument.
 #'
-#' The test was proposed by \emph{Nieto-Reyes, A.,Cuesta-Albertos, J. & Gamboa, F. (2014)}.
+#' The test was proposed by \emph{Nieto-Reyes, A.,Cuesta-Albertos, J. & Gamboa,
+#' F. (2014)}.
 #'
 #' @export
 #'
@@ -132,7 +133,7 @@ rp.test = function(y, k = 1, FDR = TRUE, pars1 = c(100,1), pars2 = c(2,7), seed 
 }
 #' Generates a test statistics sample of random projections.
 #'
-#' Generates a 4k sample of test statistics  projecting the stationary process
+#' Generates a 2k sample of test statistics  projecting the stationary process
 #' using the random projections procedure.
 #'
 #' @usage rp.sample(y, k = 1, pars1 = c(100,1), pars2 = c(2,7), seed = NULL)
@@ -155,12 +156,13 @@ rp.test = function(y, k = 1, FDR = TRUE, pars1 = c(100,1), pars2 = c(2,7), seed 
 #'  \item{epps:}{A vector with the Epps statistics sample.}
 #'
 #' @details
-#' The \code{rp.sample} function generates `4k` tests statistics by projecting
+#' The \code{rp.sample} function generates `2k` tests statistics by projecting
 #' the time series using `2k` stick breaking processes. First, the function
-#' samples a stick breaking process using \code{pars1} argument. Then, projects
-#' the time series using the sampled stick process. Later, applies both the Lobato
-#' and Velasco's, and the Epps statistics to the obtained projection. Analogously,
-#' the function performs the three steps using also \code{pars2} argument
+#' samples `k` stick breaking processes using \code{pars1} argument. Then, projects
+#' the time series using the sampled stick processes. Later, applies the Epps
+#' statistics to the odd projections and the Lobato and Velasco’s statistics to
+#' the even ones. Analogously, the function performs the three steps using also
+#' \code{pars2} argument
 #'
 #' The function uses beta distributions for generating the `2k` random projections.
 #' By default, uses a \code{beta(shape1 = 100,shape = 1)} distribution contained
@@ -206,22 +208,24 @@ rp.sample = function(y, k = 1, pars1 = c(100,1), pars2 = c(2,7), seed = NULL){
   if(k <= 1)
     k = 1
 
-  n = length(y);
+  k2 = ifelse(k %% 2 == 0, k/2,(k+1)/2)
 
-  x1 = parallel::mclapply(1:k, FUN = function(i){
-    yh = random.projection(as.numeric(y),shape1 = pars1[1],shape2 = pars1[2])
-    c(i,lobato.statistic(yh),epps.statistic(yh))
+  x1 = parallel::mclapply(1:k2, FUN = function(i){
+    yh1 = random.projection(as.numeric(y),shape1 = pars1[1],shape2 = pars1[2])
+    yh2 = random.projection(as.numeric(y),shape1 = pars1[1],shape2 = pars1[2])
+    c(i,epps.statistic(yh1),lobato.statistic(yh2))
   })
 
-  x2 = parallel::mclapply(1:k, FUN = function(i){
-    yh = random.projection(as.numeric(y),shape1 = pars2[1],shape2 = pars2[2])
-    c(i,lobato.statistic(yh),epps.statistic(yh))
+  x2 = parallel::mclapply(1:k2, FUN = function(i){
+    yh1 = random.projection(as.numeric(y),shape1 = pars2[1],shape2 = pars2[2])
+    yh2 = random.projection(as.numeric(y),shape1 = pars2[1],shape2 = pars2[2])
+    c(i,epps.statistic(yh1),lobato.statistic(yh2))
   })
 
   x = rbind(matrix(unlist(x1),ncol = 3,byrow = TRUE),
             matrix(unlist(x2),ncol = 3,byrow = TRUE))
 
-  rp.sample = list(lobato = x[,2],epps = x[,3])
+  rp.sample = list(lobato = x[1:k, 2],epps = x[1:k ,3])
 
   return(rp.sample)
 }
