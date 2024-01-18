@@ -68,7 +68,7 @@ rejection_rate = function(reps = 1000, n = 100, dist = rnorm, seed = NULL, htest
   })
   end_time = Sys.time()
 
-  rr = c(mean(unlist(pvalues) < alpha), end_time - start_time)
+  rr = c(mean(unlist(pvalues) < alpha), difftime(end_time, start_time, units="secs"))
   return(rr)
 }
 #' Rejection rates table.
