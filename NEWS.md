@@ -1,13 +1,15 @@
 **Packages NEWS and Updates**
 ============
 
-**nortsTest 1.1.1 Date: 16/01/2024**
+**nortsTest 1.1.1 Date: 18/01/2024**
 ----------------------------------
 
 ### Fixes:
 
-- bugfix in the rp.sample function.
-- Update rejection_rate and rejection_table functions to be more efficient.
+- Update `rejection_rate` and `rejection_table` functions to be more efficient.
+- Increase time compilation checks for test-performance and test-basics.
+- change the `rp.sample` function. It computes 2k projections and apply
+ `epp.statistic` to odd projections and `lobato.statistics` to the even ones.
 
 **nortsTest 1.1.0 Date: 16/01/2024**
 ----------------------------------

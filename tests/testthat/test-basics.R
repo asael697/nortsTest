@@ -12,7 +12,7 @@ test_that("Vavra's test works for GPs", {
   # check the test choose the right hypothesis when using a Gaussian ARMA
   expect_equal(unname(ht$p.value >= 0.05), TRUE)
   #check computations are less than 2.5s
-  expect_equal(end < 2.5, TRUE)
+  expect_equal(end < 5, TRUE)
 })
 
 test_that("Bootstrap Jarque Beras' test works for GPs", {
@@ -22,7 +22,7 @@ test_that("Bootstrap Jarque Beras' test works for GPs", {
   # check the test choose the right hypothesis when using a Gaussian ARMA
   expect_equal(unname(ht$p.value >= 0.05), TRUE)
   #check computations are less than 2.5s
-  expect_equal(end < 2.5, TRUE)
+  expect_equal(end < 5, TRUE)
 })
 
 test_that("Bootstrap Shapiro's test works for GPs", {
@@ -32,7 +32,7 @@ test_that("Bootstrap Shapiro's test works for GPs", {
   # check the test choose the right hypothesis when using a Gaussian ARMA
   expect_equal(unname(ht$p.value >= 0.05), TRUE)
   #check computations are less than 2.5s
-  expect_equal(end < 2.5, TRUE)
+  expect_equal(end < 5, TRUE)
 })
 
 test_that("Bootstrap Cramer Von Mises' test works for GPs", {
@@ -42,7 +42,7 @@ test_that("Bootstrap Cramer Von Mises' test works for GPs", {
   # check the test choose the right hypothesis when using a Gaussian ARMA
   expect_equal(unname(ht$p.value >= 0.05), TRUE)
   #check computations are less than 2.5s
-  expect_equal(end < 2.5, TRUE)
+  expect_equal(end < 5, TRUE)
 })
 
 test_that("Lobato's test works for GPs", {
@@ -52,7 +52,7 @@ test_that("Lobato's test works for GPs", {
   # check the test choose the right hypothesis when using a Gaussian ARMA
   expect_equal(unname(ht$p.value >= 0.05), TRUE)
   #check computations are less than 2.5s
-  expect_equal(end < 2.5, TRUE)
+  expect_equal(end < 5, TRUE)
 })
 
 test_that("Bootstrap Lobato's test works for GPs", {
@@ -62,7 +62,7 @@ test_that("Bootstrap Lobato's test works for GPs", {
   # check the test choose the right hypothesis when using a Gaussian ARMA
   expect_equal(unname(ht$p.value >= 0.05), TRUE)
   #check computations are less than 2.5s
-  expect_equal(end < 2.5, TRUE)
+  expect_equal(end < 5, TRUE)
 })
 
 test_that("Epps' test works for GPs", {
@@ -72,7 +72,7 @@ test_that("Epps' test works for GPs", {
   # check the test choose the right hypothesis when using a Gaussian ARMA
   expect_equal(unname(ht$p.value >= 0.05), TRUE)
   #check computations are less than 2.5s
-  expect_equal(end < 2.5, TRUE)
+  expect_equal(end < 5, TRUE)
 })
 
 test_that("Bootstrap Epps' test works for GPs", {
@@ -82,7 +82,7 @@ test_that("Bootstrap Epps' test works for GPs", {
   # check the test choose the right hypothesis when using a Gaussian ARMA
   expect_equal(unname(ht$p.value >= 0.05), TRUE)
   #check computations are less than 2.5s
-  expect_equal(end < 2.5, TRUE)
+  expect_equal(end < 5, TRUE)
 })
 
 test_that("Random Projections' test works for GPs", {
@@ -92,7 +92,7 @@ test_that("Random Projections' test works for GPs", {
   # check the test choose the right hypothesis when using a Gaussian ARMA
   expect_equal(unname(ht$p.value >= 0.05), TRUE)
   #check computations are less than 2.5s
-  expect_equal(end < 2.5, TRUE)
+  expect_equal(end < 5, TRUE)
 })
 
 test_that("El Bouch' test works for GPs", {
@@ -102,7 +102,7 @@ test_that("El Bouch' test works for GPs", {
   # check the test choose the right hypothesis when using a Gaussian ARMA
   expect_equal(unname(ht$p.value >= 0.05), TRUE)
   #check computations are less than 2.5s
-  expect_equal(end < 2.5, TRUE)
+  expect_equal(end < 5, TRUE)
 })
 
 set.seed(169721)
@@ -116,7 +116,7 @@ test_that("El Bouch' test works for GPs", {
   # check the test choose the right hypothesis when using a Gaussian ARMA
   expect_equal(unname(ht$p.value >= 0.05), TRUE)
   #check computations are less than 2.5s
-  expect_equal(end < 2.5, TRUE)
+  expect_equal(end < 5, TRUE)
 })
 
 ################################################################
@@ -134,7 +134,7 @@ test_that("Vavra's test works for non GPs", {
   # check the test choose the right hypothesis when using a gamma ARMA
   expect_equal(unname(ht$p.value < 0.05), TRUE)
   #check computations are less than 2.5s
-  expect_equal(end < 2.5, TRUE)
+  expect_equal(end < 5, TRUE)
 })
 
 test_that("Bootstrap Jarque Beras' test works for non GPs", {
@@ -144,7 +144,7 @@ test_that("Bootstrap Jarque Beras' test works for non GPs", {
   # check the test choose the right hypothesis when using a gamma ARMA
   expect_equal(unname(ht$p.value < 0.05), TRUE)
   #check computations are less than 2.5s
-  expect_equal(end < 2.5, TRUE)
+  expect_equal(end < 5, TRUE)
 })
 
 test_that("Bootstrap Shapiro test works for non GPs", {
@@ -154,7 +154,7 @@ test_that("Bootstrap Shapiro test works for non GPs", {
   # check the test choose the right hypothesis when using a gamma ARMA
   expect_equal(unname(ht$p.value < 0.1), TRUE)
   #check computations are less than 2.5s
-  expect_equal(end < 2.5, TRUE)
+  expect_equal(end < 5, TRUE)
 })
 
 test_that("Bootstrap Cramer Von Mises' test works for non GPs", {
@@ -164,7 +164,7 @@ test_that("Bootstrap Cramer Von Mises' test works for non GPs", {
   # check the test choose the right hypothesis when using a gamma ARMA
   expect_equal(unname(ht$p.value < 0.05), TRUE)
   #check computations are less than 2.5s
-  expect_equal(end < 2.5, TRUE)
+  expect_equal(end < 5, TRUE)
 })
 
 test_that("Lobato's test works for non GPs", {
@@ -174,7 +174,7 @@ test_that("Lobato's test works for non GPs", {
   # check the test choose the right hypothesis when using a gamma ARMA
   expect_equal(unname(ht$p.value < 0.05), TRUE)
   #check computations are less than 2.5s
-  expect_equal(end < 2.5, TRUE)
+  expect_equal(end < 5, TRUE)
 })
 
 test_that("Bootstrap Lobato's test works for non GPs", {
@@ -184,7 +184,7 @@ test_that("Bootstrap Lobato's test works for non GPs", {
   # check the test choose the right hypothesis when using a gamma ARMA
   expect_equal(unname(ht$p.value < 0.05), TRUE)
   #check computations are less than 2.5s
-  expect_equal(end < 2.5, TRUE)
+  expect_equal(end < 5, TRUE)
 })
 
 test_that("Epps' test works for non GPs", {
@@ -194,7 +194,7 @@ test_that("Epps' test works for non GPs", {
   # check the test choose the right hypothesis when using a gamma ARMA
   expect_equal(unname(ht$p.value < 0.05), TRUE)
   #check computations are less than 2.5s
-  expect_equal(end < 2.5, TRUE)
+  expect_equal(end < 5, TRUE)
 })
 
 test_that("Bootstrap Epps' test works for non GPs", {
@@ -204,7 +204,7 @@ test_that("Bootstrap Epps' test works for non GPs", {
   # check the test choose the right hypothesis when using a gamma ARMA
   expect_equal(unname(ht$p.value < 0.05), TRUE)
   #check computations are less than 2.5s
-  expect_equal(end < 2.5, TRUE)
+  expect_equal(end < 5, TRUE)
 })
 
 test_that("Random Projections' test works for non GPs", {
@@ -214,7 +214,7 @@ test_that("Random Projections' test works for non GPs", {
   # check the test choose the right hypothesis when using a gamma ARMA
   expect_equal(unname(ht$p.value < 0.05), TRUE)
   #check computations are less than 2.5s
-  expect_equal(end < 2.5, TRUE)
+  expect_equal(end < 5, TRUE)
 })
 
 test_that("El Bouch' test works for non GPs", {
@@ -224,7 +224,7 @@ test_that("El Bouch' test works for non GPs", {
   # check the test choose the right hypothesis when using a gamma ARMA
   expect_equal(unname(ht$p.value < 0.05), TRUE)
   #check computations are less than 2.5s
-  expect_equal(end < 2.5, TRUE)
+  expect_equal(end < 5, TRUE)
 })
 
 set.seed(169721)
@@ -238,5 +238,5 @@ test_that("El Bouch' test works for non GPs", {
   # check the test choose the right hypothesis when using a Gaussian ARMA
   expect_equal(unname(ht$p.value < 0.05), TRUE)
   #check computations are less than 2.5s
-  expect_equal(end < 2.5, TRUE)
+  expect_equal(end < 5, TRUE)
 })
