@@ -331,7 +331,7 @@ check_plot<- function(y,...) {
 #'
 #' @seealso \code{check_residuals}
 #'
-#' @importFrom gridExtra grid.arrange
+#' @importFrom cowplot plot_grid
 #' @method check_plot ts
 #' @export
 #'
@@ -348,18 +348,14 @@ check_plot.ts = function(y,model = " ",...){
   lay = matrix(c(1,1,2,3,4,5),nrow = 3,ncol = 2,byrow = TRUE)
   tit = paste0("check residuals: ",model)
 
-  p1 = autoplot(y,main = tit,...)
+  p1 = nortsTest::autoplot(y, main = tit, ...)
 
   p2 = gghist(y = y,add.normal = TRUE)
   p3 = ggnorm(y = y,add.normal = TRUE)
   p4 = ggacf(y = y)
   p5 = ggpacf(y = y)
-
-  gorb = list(p1,p2,p3,p4,p5)
-
-  suppressMessages(suppressWarnings(
-    gridExtra::grid.arrange(grobs = gorb,ncol=2,nrow = 3,layout_matrix = lay)
-  ))
+  p6 = cowplot::plot_grid(p2, p3, p4, p5, nrow = 2, ncol = 2)
+  cowplot::plot_grid(p1, p6, nrow = 2)
 }
 #'
 #' @method check_plot numeric

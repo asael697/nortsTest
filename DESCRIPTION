@@ -1,7 +1,7 @@
 Package: nortsTest
 Title: Assessing Normality of Stationary Process
 Version: 1.1.1
-Date: 2024-01-18
+Date: 2024-01-23
 Authors@R: c(
   person("Asael","Alonzo Matamoros", role = c("aut", "cre"),email = "asael.alonzo@gmail.com"),
   person("Alicia","Nieto-Reyes", role = 'aut', email = "alicia.nieto@unican.es"),
@@ -22,6 +22,7 @@ Imports:
     nortest,
     ggplot2,
     gridExtra,
+    cowplot,
     tseries,
     uroot,
     MASS,

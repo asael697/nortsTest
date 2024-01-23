@@ -1,11 +1,12 @@
 **Packages NEWS and Updates**
 ============
 
-**nortsTest 1.1.1 Date: 18/01/2024**
+**nortsTest 1.1.1 Date: 23/01/2024**
 ----------------------------------
 
 ### Fixes:
 
+- use cowplot package for the check_residuals plot function.
 - Update `rejection_rate` and `rejection_table` functions to be more efficient.
 - Increase time compilation checks for test-performance and test-basics.
 - change the `rp.sample` function. It computes 2k projections and apply
