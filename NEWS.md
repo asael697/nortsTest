@@ -8,7 +8,7 @@
 
 - use cowplot package for the check_residuals plot function.
 - Update `rejection_rate` and `rejection_table` functions to be more efficient.
-- Increase time compilation checks for test-performance and test-basics.
+- Increase time compilation checks for test-performance to 30s and test-basics to 15s.
 - change the `rp.sample` function. It computes 2k projections and apply
  `epp.statistic` to odd projections and `lobato.statistics` to the even ones.
 
