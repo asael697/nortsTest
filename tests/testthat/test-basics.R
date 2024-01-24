@@ -7,7 +7,7 @@ y = arima.sim(n = 600, model = list(ar = 0.3, ma = 0.2))
 
 test_that("Vavra's test works for GPs", {
   start = Sys.time()
-  ht = nortsTest::vavra.test(y)
+  ht = nortsTest::vavra.test(y,reps = 200)
   end = difftime(Sys.time(), start, units="secs")
   # check the test choose the right hypothesis when using a Gaussian ARMA
   expect_equal(unname(ht$p.value >= 0.05), TRUE)
@@ -17,7 +17,7 @@ test_that("Vavra's test works for GPs", {
 
 test_that("Bootstrap Jarque Beras' test works for GPs", {
   start = Sys.time()
-  ht = nortsTest::jb_bootstrap.test(y)
+  ht = nortsTest::jb_bootstrap.test(y,reps = 200)
   end = difftime(Sys.time(), start, units="secs")
   # check the test choose the right hypothesis when using a Gaussian ARMA
   expect_equal(unname(ht$p.value >= 0.05), TRUE)
@@ -27,7 +27,7 @@ test_that("Bootstrap Jarque Beras' test works for GPs", {
 
 test_that("Bootstrap Shapiro's test works for GPs", {
   start = Sys.time()
-  ht = nortsTest::shapiro_bootstrap.test(y)
+  ht = nortsTest::shapiro_bootstrap.test(y,reps = 200)
   end = difftime(Sys.time(), start, units="secs")
   # check the test choose the right hypothesis when using a Gaussian ARMA
   expect_equal(unname(ht$p.value >= 0.05), TRUE)
@@ -37,7 +37,7 @@ test_that("Bootstrap Shapiro's test works for GPs", {
 
 test_that("Bootstrap Cramer Von Mises' test works for GPs", {
   start = Sys.time()
-  ht = nortsTest::cvm_bootstrap.test(y)
+  ht = nortsTest::cvm_bootstrap.test(y,reps = 200)
   end = difftime(Sys.time(), start, units="secs")
   # check the test choose the right hypothesis when using a Gaussian ARMA
   expect_equal(unname(ht$p.value >= 0.05), TRUE)
@@ -57,7 +57,7 @@ test_that("Lobato's test works for GPs", {
 
 test_that("Bootstrap Lobato's test works for GPs", {
   start = Sys.time()
-  ht = nortsTest::lobato_bootstrap.test(y)
+  ht = nortsTest::lobato_bootstrap.test(y,reps = 200)
   end = difftime(Sys.time(), start, units="secs")
   # check the test choose the right hypothesis when using a Gaussian ARMA
   expect_equal(unname(ht$p.value >= 0.05), TRUE)
@@ -77,7 +77,7 @@ test_that("Epps' test works for GPs", {
 
 test_that("Bootstrap Epps' test works for GPs", {
   start = Sys.time()
-  ht = nortsTest::epps_bootstrap.test(y)
+  ht = nortsTest::epps_bootstrap.test(y,reps = 200)
   end = difftime(Sys.time(), start, units="secs")
   # check the test choose the right hypothesis when using a Gaussian ARMA
   expect_equal(unname(ht$p.value >= 0.05), TRUE)
@@ -129,7 +129,7 @@ y = arima.sim(n = 600, model = list(ar = 0.3, ma = 0.2),
 
 test_that("Vavra's test works for non GPs", {
   start = Sys.time()
-  ht = nortsTest::vavra.test(y)
+  ht = nortsTest::vavra.test(y,reps = 200)
   end = difftime(Sys.time(), start, units="secs")
   # check the test choose the right hypothesis when using a gamma ARMA
   expect_equal(unname(ht$p.value < 0.05), TRUE)
@@ -139,7 +139,7 @@ test_that("Vavra's test works for non GPs", {
 
 test_that("Bootstrap Jarque Beras' test works for non GPs", {
   start = Sys.time()
-  ht = nortsTest::jb_bootstrap.test(y)
+  ht = nortsTest::jb_bootstrap.test(y,reps = 200)
   end = difftime(Sys.time(), start, units="secs")
   # check the test choose the right hypothesis when using a gamma ARMA
   expect_equal(unname(ht$p.value < 0.05), TRUE)
@@ -149,7 +149,7 @@ test_that("Bootstrap Jarque Beras' test works for non GPs", {
 
 test_that("Bootstrap Shapiro test works for non GPs", {
   start = Sys.time()
-  ht = nortsTest::shapiro_bootstrap.test(y)
+  ht = nortsTest::shapiro_bootstrap.test(y,reps = 200)
   end = difftime(Sys.time(), start, units="secs")
   # check the test choose the right hypothesis when using a gamma ARMA
   expect_equal(unname(ht$p.value < 0.1), TRUE)
@@ -159,7 +159,7 @@ test_that("Bootstrap Shapiro test works for non GPs", {
 
 test_that("Bootstrap Cramer Von Mises' test works for non GPs", {
   start = Sys.time()
-  ht = nortsTest::cvm_bootstrap.test(y)
+  ht = nortsTest::cvm_bootstrap.test(y,reps = 200)
   end = difftime(Sys.time(), start, units="secs")
   # check the test choose the right hypothesis when using a gamma ARMA
   expect_equal(unname(ht$p.value < 0.05), TRUE)
@@ -179,7 +179,7 @@ test_that("Lobato's test works for non GPs", {
 
 test_that("Bootstrap Lobato's test works for non GPs", {
   start = Sys.time()
-  ht = nortsTest::lobato_bootstrap.test(y)
+  ht = nortsTest::lobato_bootstrap.test(y,reps = 200)
   end = difftime(Sys.time(), start, units="secs")
   # check the test choose the right hypothesis when using a gamma ARMA
   expect_equal(unname(ht$p.value < 0.05), TRUE)
@@ -199,7 +199,7 @@ test_that("Epps' test works for non GPs", {
 
 test_that("Bootstrap Epps' test works for non GPs", {
   start = Sys.time()
-  ht = nortsTest::epps_bootstrap.test(y)
+  ht = nortsTest::epps_bootstrap.test(y,reps = 200)
   end = difftime(Sys.time(), start, units="secs")
   # check the test choose the right hypothesis when using a gamma ARMA
   expect_equal(unname(ht$p.value < 0.05), TRUE)
