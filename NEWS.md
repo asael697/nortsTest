@@ -1,6 +1,14 @@
 **Packages NEWS and Updates**
 ============
 
+**nortsTest 1.1.2 Date: 25/01/2024**
+----------------------------------
+
+### Fixes:
+
+- Minor bug fix with seed when running rp tests using parallel programming.
+- Minor bug fix with seed when running bootstrap tests using parallel programming.
+
 **nortsTest 1.1.1 Date: 23/01/2024**
 ----------------------------------
 

@@ -75,7 +75,7 @@ vavra.test = function(y, normality = c("ad","lobato","jb","cvm","epps"),
       warning("y has a seasonal unit root, vavra.test requires stationary process")
   }
 
-  if (!is.null(seed))
+  if(!is.null(seed))
     set.seed(seed)
 
   normality = match.arg(normality)
@@ -89,7 +89,7 @@ vavra.test = function(y, normality = c("ad","lobato","jb","cvm","epps"),
   dname = deparse(substitute(y))
   alt = paste(dname,"does not follow a Gaussian Process")
   # Bootstrap test statistic
-  tstat = mean(ad)
+  tstat = ad0
   names(tstat) = paste("bootstrap",normality,sep = "-")
 
   mtd =ifelse(normality == "ad",
@@ -164,13 +164,13 @@ vavra.test = function(y, normality = c("ad","lobato","jb","cvm","epps"),
 vavra.sample = function(y, normality = c("ad","lobato","jb","cvm","shapiro","epps"),
                         reps = 1000, h = 100, seed = NULL, c = 1, lambda = c(1,2)){
 
-  if( !is.numeric(y) & !is(y,class2 = "ts") )
+  if(!is.numeric(y) & !is(y,class2 = "ts"))
     stop("y object must be numeric or a time series")
 
-  if( anyNA(y) )
+  if(anyNA(y))
     stop("The time series contains missing values")
 
-  if (!is.null(seed))
+  if(!is.null(seed))
     set.seed(seed)
 
   normality = match.arg(normality)
@@ -223,13 +223,13 @@ vavra.sample = function(y, normality = c("ad","lobato","jb","cvm","shapiro","epp
 #'
 sieve.bootstrap = function(y,reps = 1000,pmax = NULL,h = 100,seed = NULL){
 
-  if( !is.numeric(y) & !is(y,class2 = "ts") )
+  if(!is.numeric(y) & !is(y,class2 = "ts"))
     stop("y object must be numeric or a time series")
 
   if( anyNA(y) )
     stop("The time series contains missing values")
 
-  if (!is.null(seed))
+  if(!is.null(seed))
     set.seed(seed)
 
   n = length(y)
@@ -263,7 +263,7 @@ sieve.bootstrap = function(y,reps = 1000,pmax = NULL,h = 100,seed = NULL){
   N = n + h
   sig = sd(mod$residuals)/sqrt(n-2*p-1)
 
-  x <- parallel::mclapply(1:reps, FUN = function(i){
+  x <- parallel::mclapply(1:reps, mc.set.seed = is.null(seed), FUN = function(i){
     N = n + h
     ar_boot <- arima.sim(n = N,model = list(ar = phi,sd = sig))
     c(i,as.vector(ar_boot[(h+1):N]))
