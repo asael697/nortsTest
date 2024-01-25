@@ -6,7 +6,8 @@
 
 ### Fixes:
 
-- Minor bug fix with seed when running bootstrap tests.
+- Minor bug fix with seed when running rp tests using parallel programming.
+- Minor bug fix with seed when running bootstrap tests using parallel programming.
 
 **nortsTest 1.1.1 Date: 23/01/2024**
 ----------------------------------
