@@ -210,13 +210,13 @@ rp.sample = function(y, k = 1, pars1 = c(100,1), pars2 = c(2,7), seed = NULL){
 
   k2 = ifelse(k %% 2 == 0, k/2,(k+1)/2)
 
-  x1 = parallel::mclapply(1:k2, FUN = function(i){
+  x1 = parallel::mclapply(1:k2, mc.set.seed = is.null(seed), FUN = function(i){
     yh1 = random.projection(as.numeric(y),shape1 = pars1[1],shape2 = pars1[2])
     yh2 = random.projection(as.numeric(y),shape1 = pars1[1],shape2 = pars1[2])
     c(i,epps.statistic(yh1),lobato.statistic(yh2))
   })
 
-  x2 = parallel::mclapply(1:k2, FUN = function(i){
+  x2 = parallel::mclapply(1:k2, mc.set.seed = is.null(seed), FUN = function(i){
     yh1 = random.projection(as.numeric(y),shape1 = pars2[1],shape2 = pars2[2])
     yh2 = random.projection(as.numeric(y),shape1 = pars2[1],shape2 = pars2[2])
     c(i,epps.statistic(yh1),lobato.statistic(yh2))
