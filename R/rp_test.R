@@ -271,7 +271,7 @@ rp.sample = function(y, k = 1, pars1 = c(100,1), pars2 = c(2,7), seed = NULL){
 #' y = arima.sim(100,model = list(ar = 0.3))
 #' rp.test(y)
 #'
-random.projection = function(y,shape1,shape2,seed = NULL){
+random.projection = function(y, shape1, shape2, seed = NULL){
 
   if( !is.numeric(y) & !is(y,class2 = "ts") )
     stop("y object must be numeric or a time series")
