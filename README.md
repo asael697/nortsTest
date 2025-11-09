@@ -9,7 +9,7 @@ The package works as an extension of the `nortest` package that performs
 normality tests in random samples (*independent data*). The package's principal 
 functions are:
 
--   `elbouch.test()` function that computes the bivariate [El Bouch et al. test](https://www.sciencedirect.com/science/article/abs/pii/S0165168422002444),
+-   `elbouch.test()` function that computes the bivariate [El Bouch et al. test](https://doi.org/10.1016/j.sigpro.2022.108705),
 
 -   `epps.test()` function that implements the [Epps test](https://projecteuclid.org/euclid.aos/1176350618),
 

@@ -1,6 +1,21 @@
 **Packages NEWS and Updates**
 ============
 
+**nortsTest 1.1.3 Date: 12/11/2025**
+----------------------------------
+
+### Fixes:
+
+- Minor compatibility error with the `autoplot.ts` documentation.
+- Minor fix with the package's description.
+
+### Changes:
+- refactor epps.statistic using optim's quadratic optimization
+- use 'Nelder-Mead" simplex optimization for the Epps statistic
+
+### depreated:
+- amoebam method for optimazing the Epp's test.
+
 **nortsTest 1.1.2 Date: 25/01/2024**
 ----------------------------------
 
