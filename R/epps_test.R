@@ -154,13 +154,24 @@ epps.statistic =  function(y, lambda = c(1, 2)){
   Gm = MASS::ginv(cov(z));
 
   me = mean(y); sts = sd(y)/sqrt(n); ts2 = sqrt(2/n); Va = sd(y)^2;
-  P  = matrix(c(me-sts, me+sts, me, Va*(1-ts2), Va*(1-ts2), Va*(1+ts2)),
-              nrow = 3, ncol = 2)
-  Y  = cbind(rep(0, 3))
+  init_points <- list(
+    c(me - sts, Va*(1 - ts2)),
+    c(me + sts, Va*(1 - ts2)),
+    c(me, Va*(1 + ts2))
+  )
 
-  for (i in 1:3) Y[i] = Quadratic(P[i,], gn, lambda_std, Gm)
+  best_value <- Inf
+  for (p0 in init_points) {
+    res <- optim(
+      par = p0,
+      fn = function(par) Quadratic(par, gn, lambda_std, Gm),
+      method = "Nelder-Mead",
+      control = list(maxit = 500, reltol = 1e-4)
+    )
+    if (res$value < best_value) best_value <- res$value
+  }
 
-  return(amoebam(P, Y, n, gn, lambda_std, Gm))
+  n * best_value
 }
 #' The Sieve Bootstrap Epps and Pulley test for normality.
 #'
