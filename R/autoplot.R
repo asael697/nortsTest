@@ -8,7 +8,7 @@
 #'
 #' @param object Object of class \dQuote{\code{ts}} or \dQuote{\code{mts}}.
 #' @param series Identifies the time series with a colour, which integrates well
-#' with the functionality of \link{geom_forecast}.
+#' with the functionality of \link[forecast]{geom_forecast}.
 #' @param xlab a string with the plot's x axis label. By default a NULL value.
 #' @param ylab a string with the plot's y axis label. By default a counts" value.
 #' @param main a string with the plot's title.
@@ -18,7 +18,7 @@
 #' @param colour If TRUE, the time series will be assigned a colour aesthetic.
 #' @param model Object of class \dQuote{\code{ts}} to be converted to
 #' \dQuote{\code{data.frame}}.
-#' @param data Not used (required for \link{fortify} method).
+#' @param data Not used (required for the `fortify` method).
 #' @param ... Other plotting parameters to affect the plot.
 #'
 #'
